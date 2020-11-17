@@ -12,11 +12,8 @@ The tailer API is a set of features intended for operations teams allowing them 
 
 Here are a few use cases of the Tailer API:
 
-Integrating Tailer data pipelines into larger business orchestrations
-
-Applying more complex orchestration rules, such as the ones from $U or Vtom
-
-Monitoring the service quality of pipelines and generating alerts when they don't run timely
-
-Rebooting workflow with the resetting feature, and enabling/disabling data pipelines
+* Integrating Tailer data pipelines into larger business orchestrations
+* Implementing more complex orchestration rules, such as the ones from $U or Vtom
+* Monitoring the service quality of data pipelines and generating alerts when they don't run as planned
+* Rebooting workflow with the resetting feature, and enabling/disabling data pipelines
 
