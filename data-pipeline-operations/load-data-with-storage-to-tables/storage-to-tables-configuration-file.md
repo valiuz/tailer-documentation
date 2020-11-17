@@ -671,10 +671,39 @@ The "table" object contains the definition of expected input files and their Big
     </tr>
     <tr>
       <td style="text-align:left">
-        <p><b>ddl_file</b>
+        <p><b>ddl_mode</b>
         </p>
         <p>type: string</p>
         <p>mandatory</p>
+      </td>
+      <td style="text-align:left">
+        <p>This parameter allows you to specify how the schema of the table will
+          be obtained.</p>
+        <p></p>
+        <p>Possible values:</p>
+        <ul>
+          <li>&quot;file&quot; (default): Legacy mode. The table schema is described
+            in the DDL file specified in the <b>ddl_file</b> parameter.</li>
+          <li>&quot; file_template&quot;: The table schema is described in a DDL file
+            provided in the source directory together with the source file. It must
+            have the same filename as the source file, with the &quot;.ddl.json&quot;
+            suffix.</li>
+          <li>&quot;header&quot; (CSV file only): The columns of the CSV file first
+            line are automatically used as columns for the database table. All the
+            columns are given the STRING type. No DDL file needs to be provided.</li>
+          <li>&quot;autodectect&quot; (not recommended): Google&#x2019;s default mode.
+            The schema is automatically detected from the source file. This mode doesn&#x2019;t
+            work well with CSV files, but gives good results with structured formats
+            such as JSON. (see <a href="https://cloud.google.com/bigquery/docs/schema-detect">Google BigQuery documentation</a>).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>ddl_file</b>
+        </p>
+        <p>type: string</p>
+        <p>mandatory if <b>ddl_mode</b> is set to &quot;file&quot;</p>
       </td>
       <td style="text-align:left">Path to the <a href="storage-to-tables-ddl-files.md">DDL file</a> where
         the destination schema is described.</td>
