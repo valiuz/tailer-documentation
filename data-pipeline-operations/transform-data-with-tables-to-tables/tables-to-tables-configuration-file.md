@@ -414,6 +414,7 @@ General information about the data operation.
       </td>
       <td style="text-align:left">
         <p>Action that occurs if the destination table already exists (see <a href="https://googleapis.github.io/google-cloud-python/latest/bigquery/generated/google.cloud.bigquery.job.WriteDisposition.html#google.cloud.bigquery.job.WriteDisposition">Google BigQuery documentation</a>).</p>
+        <p></p>
         <p>Possible values:</p>
         <ul>
           <li>&quot;WRITE_TRUNCATE&quot; (default): The run will write table data from
@@ -430,6 +431,25 @@ General information about the data operation.
         </ul>
         <p>This parameter can be set for each workflow task sub-object, and will
           be overridden by that value if it is different.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>direct_execution</b>
+        </p>
+        <p>type: boolean</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>Tailer&apos;s execution engine has been rewritten to switch from Airflow/Composer
+          to a Kubernetes severless architecture, improving its speed, stability,
+          security and scalability.</p>
+        <p></p>
+        <p>To use the new execution mode, the <b>direct_execution</b> parameter must
+          be set to &quot;true&quot;.</p>
+        <p></p>
+        <p>If not set, the default value will be &quot;false&quot; until January
+          5, 2021, after which the default value will become &quot;true&quot;.</p>
       </td>
     </tr>
   </tbody>
