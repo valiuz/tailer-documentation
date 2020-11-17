@@ -47,3 +47,7 @@
 * [Add notes to data operations and runs](tailer-studio/add-notes-to-data-operations-and-runs.md)
 * [View your data catalog](tailer-studio/view-your-data-catalog.md)
 
+## Tailer API
+
+* [Overview](tailer-api/overview.md)
+
