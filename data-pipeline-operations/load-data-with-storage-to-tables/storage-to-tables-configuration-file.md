@@ -60,6 +60,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
           "table_name": "sales_details_test",
           "short_description": "Daily sales with tickets and tickets lines",
           "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-ORS-ventes.csv",
+          "ddl_mode": "file",
           "ddl_file": "ddl/sales_details.json",
           "doc_md": "ddl/sales_details.md",
           "skip_leading_rows": 0,
@@ -69,6 +70,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
           "table_name": "stores",
           "short_description": "Full Stores referential",
           "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-ORS-magasins.csv",
+          "ddl_mode": "file",
           "ddl_file": "ddl/stores.json",
           "doc_md": "ddl/stores.md"
         }
@@ -318,6 +320,7 @@ Example:
         "table_name": "sales_details_test",
         "short_description": "Daily detailed Sales with tickets and tickets lines",
         "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-ORS-ventes.csv",
+        "ddl_mode": "file",
         "ddl_file": "ddl/sales_details.json",
         "doc_md": "ddl/sales_details.md",
         "skip_leading_rows": 0,
@@ -327,6 +330,7 @@ Example:
         "table_name": "stores",
         "short_description": "Full Stores referential",
         "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-ORS-magasins.csv",
+        "ddl_mode": "file",
         "ddl_file": "ddl/stores.json",
         "doc_md": "ddl/stores.md"
       }
@@ -682,8 +686,8 @@ The "table" object contains the definition of expected input files and their Big
         <p></p>
         <p>Possible values:</p>
         <ul>
-          <li>&quot;file&quot; (default): Legacy mode. The table schema is described
-            in the DDL file specified in the <b>ddl_file</b> parameter.</li>
+          <li>&quot;file&quot;: Legacy mode. The table schema is described in the DDL
+            file specified in the <b>ddl_file</b> parameter.</li>
           <li>&quot; file_template&quot;: The table schema is described in a DDL file
             provided in the source directory together with the source file. It must
             have the same filename as the source file, with the &quot;.ddl.json&quot;
