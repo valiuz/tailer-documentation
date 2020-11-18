@@ -1,6 +1,6 @@
 # API features
 
-## Launching a job's execution
+## 🚀 Launching a job's execution
 
 Tables to Tables or Tables to Storage data operations can be launched through the Tailer API.
 
@@ -28,7 +28,7 @@ As a result, the job is launched and you get a unique run ID in the following fo
 "run_id": "20201105-1588f12a-73f0-4f5c-8592-5cd3ce793a29"
 ```
 
-## Checking a run's status
+## 🏃♂ Checking a run's status
 
 Once you have a run ID, you can check its current status to see how the processing is going.
 
@@ -50,9 +50,13 @@ TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-## Getting a job's last status
+## 💼 Getting a job's last status
 
-## Getting a data operation's last status
+You can check the current status for the latest run of a job.
+
+You need to provide the full identity of the job as input:
+
+## 🔄 Getting a data operation's last status
 
 ## Getting the last status of a data operation with specific parameters
 

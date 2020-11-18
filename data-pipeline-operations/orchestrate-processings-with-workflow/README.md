@@ -16,5 +16,5 @@ Some data operations can also be launched through events or scheduling, so the W
 
 ## **📋 How to deploy a Workflow data operation**
 
-A Workflow data operation is never deployed alone, as it is only used to trigger another data operation. To know how to deploy one, refer to the documentation associated to the data operation you want to trigger.To learn about he Workflow configuration file parameters, refer to [this page](workflow-configuration-file.md).
+A Workflow data operation is never deployed alone, as it is only used to trigger another data operation. To know how to deploy one, refer to the documentation associated to the data operation you want to trigger. To learn about the Workflow configuration file parameters, refer to [this page](workflow-configuration-file.md).
 
