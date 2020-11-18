@@ -17,3 +17,16 @@ Here are a few use cases of the Tailer API:
 * Monitoring the service quality of data pipelines and generating alerts when they don't run as planned
 * Rebooting workflow with the resetting feature, and enabling/disabling data pipelines
 
+## ✨ Features
+
+Here is a list of the available features:
+
+* Launching a job
+* Checking a job status
+* Getting last status
+* Resetting a workflow
+* Disabling a data operation
+* Enabling a data operation
+
+
+
