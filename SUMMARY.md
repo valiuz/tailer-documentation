@@ -49,6 +49,7 @@
 
 ## Tailer API
 
-* [Overview](tailer-api/overview/README.md)
-  * [Getting started](tailer-api/overview/getting-started.md)
+* [Overview](tailer-api/overview.md)
+* [Getting started](tailer-api/getting-started-1.md)
+* [API features](tailer-api/api-features.md)
 
