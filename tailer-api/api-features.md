@@ -60,18 +60,16 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 
 You can check the current status for the latest run of a job/data operation.
 
-You need to provide the full identity of the job/data operation as input.
-
-If needed, you can specify some parameters for the job/data operation in order to target a specific one.
+You need to provide the full identity of the job/data operation as input. If needed, you can specify some parameters for the job/data operation in order to target a specific one:
 
 **Example with a job**
 
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "get_last_status", 
           "account": "000110", 
           "environment": "DEV", 
@@ -84,11 +82,11 @@ TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
 **Example with a data operation**
 
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "get_last_status", 
           "account": "000110", 
           "environment": "DEV", 
@@ -100,11 +98,11 @@ TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
 **Example with a data operation with specific parameters**
 
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "get_last_status", 
           "account": "000110", 
           "environment": "DEV", 
@@ -117,7 +115,7 @@ TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
 
 ## Resetting a workflow
 
-The Tailer API allows you to reset a workflow. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the data operation was just deployed. \(This feature is also available in Tailer Studio.\)
+The Tailer API allows you to reset a Workflow data operation. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the it was just deployed. \(This feature is also available in Tailer Studio.\)
 
 **Example of a case requiring a workflow reset**
 
@@ -125,12 +123,14 @@ We have three jobs, named JA, JB, and JC which trigger a job named JT when they 
 
 If a situation happens where JA and JB are OK, but JC is not, JT is not triggered. You fix and relaunch JC, which becomes OK, and JT is triggered. The next morning, you launch JC again to make sure it works: you get JA\(0\), JB\(0\) and JC\(1\). When JA and JB are automatically started a few hours later, JC is already considered as OK, which creates an unbalanced situation. A reset is necessary.
 
+You need to provide the full identity of the Workflow data operation as input:
+
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "reset_workflow_status", 
           "account": "000110", 
           "environment": "DEV", 
@@ -141,5 +141,43 @@ TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
 
 ## Disabling a data operation
 
+You can disable a data operation using the API. \(This feature is also available in Tailer Studio.\)
+
+You need to provide the full identity of the data operation as input:
+
+```bash
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{ "action": "deactivate_conf",
+          "action": "get_last_status",
+          "account": "000110", 
+          "environment": "DEV", 
+          "configuration_type": "gbq-to-gbq",
+          "configuration_id": "000110-tailer-TTT-POC-ETL-VTE_DEV"}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
+```
+
 ## Enabling a data operation
+
+You can enable a data operation that had been disabled using the API. \(This feature is also available in Tailer Studio.\)
+
+You need to provide the full identity of the data operation as input:
+
+```bash
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{ "action": "activate_conf",
+          "action": "get_last_status",
+          "account": "000110", 
+          "environment": "DEV", 
+          "configuration_type": "gbq-to-gbq",
+          "configuration_id": "000110-tailer-TTT-POC-ETL-VTE_DEV"}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
+```
 
