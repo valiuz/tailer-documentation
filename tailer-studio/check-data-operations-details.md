@@ -39,7 +39,7 @@ The following information is available about each execution of the data operatio
 * **Other runs**: Other executions associated to the same data operation.
 * **Notes**: Comments and answers can be added by users about the data operation in the form of conversations.
 
-## 👁️ View a data operation's details
+## 👀 View a data operation's details
 
 To view information about a data operation:
 
