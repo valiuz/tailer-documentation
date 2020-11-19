@@ -4,7 +4,7 @@ description: "This page introduces Tailer\_Studio and its main capacities."
 
 # Overview
 
-## 🖥️ What is Tailer Studio?
+## 🖥 What is Tailer Studio?
 
 Tailer Studio is the User Interface component of Tailer Platform. It allows you to display information about the data you're managing and your data operations.
 
@@ -22,7 +22,7 @@ This feature allows you to monitor and launch data operation executions, to chec
 
 This feature allows you to display information about the data located in BigQuery tables that you're handling with Tailer Platform.
 
-#### **Profile settings**
+### **Profile settings**
 
 This feature allows you to display and edit your Tailer Studio profile settings.
 
