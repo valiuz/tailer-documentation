@@ -13,11 +13,11 @@ Tables to Tables or Tables to Storage data operations can be launched through th
 You need to provide the full identity of the job as input \(the **execution\_date** parameter is optional\):
 
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "launch_job",
           "account": "000110",
           "environment": "DEV",
@@ -41,11 +41,11 @@ Once you have a run ID, you can check its current status to see how the processi
 You need to provide the full identity of the job and the run ID as input:
 
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{"action": "check_run_status",
          "account": "000110",
          "environment": "DEV",

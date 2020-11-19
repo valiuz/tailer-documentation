@@ -34,11 +34,11 @@ To communicate with the Tailer API, you can use the cURL CLI.
 Here is an example of request allowing you to check the status of a Tables to Tables data operation run:
 
 ```bash
-TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
---header "Authorization: Bearer ${TAILER_API_API}" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "check_run_status", 
           "account": "000110", 
           "environment": "DEV", 
