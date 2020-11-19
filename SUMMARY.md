@@ -43,6 +43,7 @@
 * [Check data operations' details](tailer-studio/check-data-operations-details.md)
 * [Monitor data operations' status](tailer-studio/monitor-data-operations-status.md)
 * [Execute data operations](tailer-studio/execute-data-operations.md)
+* [Reset Workflow data operations](tailer-studio/reset-workflow-data-operations.md)
 * [Archive data operations](tailer-studio/archive-data-operations.md)
 * [Add notes to data operations and runs](tailer-studio/add-notes-to-data-operations-and-runs.md)
 * [View your data catalog](tailer-studio/view-your-data-catalog.md)
