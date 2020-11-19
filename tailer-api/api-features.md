@@ -113,7 +113,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-## Resetting a workflow
+## 0⃣ Resetting a workflow
 
 The Tailer API allows you to reset a Workflow data operation. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the it was just deployed. \(This feature is also available in Tailer Studio.\)
 
@@ -139,7 +139,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/workflow/status"
 ```
 
-## Disabling a data operation
+## ⏹ Disabling a data operation
 
 You can disable a data operation using the API. \(This feature is also available in Tailer Studio.\)
 
@@ -160,7 +160,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-## Enabling a data operation
+## ▶ Enabling a data operation
 
 You can enable a data operation that had been disabled using the API. \(This feature is also available in Tailer Studio.\)
 
