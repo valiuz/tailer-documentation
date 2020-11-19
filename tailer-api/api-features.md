@@ -117,6 +117,28 @@ TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
 
 ## Resetting a workflow
 
+The Tailer API allows you to reset a workflow. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the data operation was just deployed. \(This feature is also available in Tailer Studio.\)
+
+**Example of a case requiring a workflow reset**
+
+We have three jobs, named JA, JB, and JC which trigger a job named JT when they are all successfully executed.
+
+If a situation happens where JA and JB are OK, but JC is not, JT is not triggered. You fix and relaunch JC, which becomes OK, and JT is triggered. The next morning, you launch JC again to make sure it works: you get JA\(0\), JB\(0\) and JC\(1\). When JA and JB are automatically started a few hours later, JC is already considered as OK, which creates an unbalanced situation. A reset is necessary.
+
+```bash
+TAILER_API_API=`python3 google-jwt-generator.py your-credentials.json` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_API}" \
+--data '{ "action": "reset_workflow_status", 
+          "account": "000110", 
+          "environment": "DEV", 
+          "configuration_type": "workflow",
+          "configuration_id": "000110-tailer-workflow-count"}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/workflow/status"
+```
+
 ## Disabling a data operation
 
 ## Enabling a data operation
