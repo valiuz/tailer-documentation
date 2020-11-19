@@ -4,7 +4,7 @@ description: "Learn how to archive data operations in Tailer\_Studio."
 
 # Archive data operations
 
-## 📦 What happens when you archive a data operation
+## 🗄 What happens when you archive a data operation
 
 Once a data operation has been archived, it disappears completely from Tailer Studio with all its versions. Only super-administrators can still see them, and disarchive them if necessary.
 
