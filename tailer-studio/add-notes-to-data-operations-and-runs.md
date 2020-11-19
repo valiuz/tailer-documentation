@@ -4,11 +4,11 @@ description: "Learn how to add notes to data operations and runs in Tailer\_Stud
 
 # Add notes to data operations and runs
 
-## 🗒️ What you can do with notes
+## 📋 What you can do with notes
 
 Jarvis Studio allows users to add notes about data operations or runs, and to reply to each other, thus creating threads of comments. You can edit or delete your own notes and replies.
 
-## 👁️ View all notes about a data operation/run
+## 👀 View all notes about a data operation/run
 
 To view the notes for a data operation/run:
 
@@ -27,7 +27,7 @@ To add a note to a data operation/run:
 2. Write your note in the input field, and apply the formatting of your choice.
 3. Click the ![](../.gitbook/assets/tailer_studio_add_note.png) button.
 
-## ✏️ Edit a note
+## ✏ Edit a note
 
 Note that you can only edit your own notes. To do so:
 
@@ -37,7 +37,7 @@ Note that you can only edit your own notes. To do so:
 4. Modify your note as you want.
 5. Click the ![](../.gitbook/assets/tailer_studio_edit_note_2.png) button.
 
-## 🗑️ Delete a note
+## 🗑 Delete a note
 
 Note that you can only delete your own notes. If you delete a note that has replies, the replies will be deleted as well. To do so:
 
@@ -45,7 +45,7 @@ Note that you can only delete your own notes. If you delete a note that has repl
 2. Hover the note. Three buttons display on the right of the screen.
 3. Click the ![](../.gitbook/assets/tailer_studio_delete_note.png) button. The note is deleted directly.
 
-## 🗨️ Reply to a note
+## 💬 Reply to a note
 
 To reply to a note on a data operation/run:
 
