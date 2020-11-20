@@ -6,7 +6,7 @@ description: >-
 
 # Table to Table SQL and DDL files
 
-## 🗺️ Overview
+## 🗺 Overview
 
 A SQL workflow is a sequence of tasks that feed tables in parallel or sequentially.
 
@@ -16,7 +16,7 @@ A workflow can be composed of the following task types:
 * Table creation task \("create\_gbq\_table"\): instructions to create a destination table.
 * Table copy task \("copy\_gbq\_table"\): instructions to duplicate a table \(provided in the [data operation configuration file](tables-to-tables-configuration-file.md)\).
 
-## 🛢️ SQL tasks
+## 🛢 SQL tasks
 
 SQL tasks are steps of the workflow. Each SQL task is defined with a .sql file that contains the query. You can write the queries directly in the query editor of [BigQuery](https://console.cloud.google.com/bigquery) and then save them to .sql files.
 
@@ -60,32 +60,26 @@ Once the SQL queries are ready, you need to use one or several DDL files to crea
 
 ```text
 {
-  "bq_table_description": "List of collections and every related produit_id.",
-  "bq_table_schema": [
-    {
-      "name": "PK_collection_plan",
-      "type": "STRING",
-      "description": "Primary key."
-    },
-    {
-      "name": "reference_id",
-      "type": "STRING",
-      "description": "Reference ID (R), gathering every SKU of a same reference."
-    },
-    {
-      "name": "code_coloris",
-      "type": "STRING",
-      "description": "Color code."
-    }
-  ],
-    "bq_table_clustering_fields": [
-    "reference_id",
-    "code_coloris"
-  ],
-  "bq_table_timepartitioning_field",
-  "bq_table_timepartitioning_expiration_ms",
-  "bq_table_timepartitioning_require_partition_filter"
-}
+"bq_table_description": "List of collections and every related produit_id for every consumption zone.",
+ "bq_table_schema": [
+                {
+                    "name": "x_date",
+                    "type": "DATE",
+                    "description": "date we calculate this indicators"
+                },
+                {
+                    "name": "master_customer_id",
+                    "type": "STRING",
+                    "description": "master_customer_id"
+                },
+                {
+                    "name": "nb_visites_web",
+                    "type": "INTEGER",
+                    "description": " number of visits on the website"
+                }
+            ],
+            "bq_table_timepartitioning_field": "x_date"
+ }
 ```
 
 ### **Parameters**
