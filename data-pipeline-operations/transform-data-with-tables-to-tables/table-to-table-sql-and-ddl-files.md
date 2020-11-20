@@ -115,8 +115,7 @@ Once the SQL queries are ready, you need to use one or several DDL files to crea
         <ul>
           <li><b>name</b>
           </li>
-          <li><b>type</b>
-          </li>
+          <li>&lt;b&gt;&lt;/b&gt;<a href="table-to-table-sql-and-ddl-files.md#data-types"><b>type</b></a>&lt;b&gt;&lt;/b&gt;</li>
           <li><b>description</b>
           </li>
         </ul>
@@ -192,6 +191,98 @@ Once the SQL queries are ready, you need to use one or several DDL files to crea
     </tr>
   </tbody>
 </table>
+
+### Data types
+
+Tailer Platform supports the following data types.
+
+#### Numeric types
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>int64</code>
+      </td>
+      <td style="text-align:left">
+        <p>Integers are numeric values that do not have fractional components.</p>
+        <p>They range from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>float64</code>
+      </td>
+      <td style="text-align:left">Floating point values are approximate numeric values with fractional components.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>numeric</code>
+      </td>
+      <td style="text-align:left">
+        <p>This data type represents decimal values with 38 decimal digits of precision
+          and 9 decimal digits of scale. (Precision is the number of digits that
+          the number contains. Scale is how many of these digits appear after the
+          decimal point.)</p>
+        <p>It is particularly useful for financial calculations.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Boolean type
+
+| Name | Description |
+| :--- | :--- |
+| `boolean` |  This data type supports the `true`, `false`, and `null` values. It can perform some basic conversions, such as `'true'`, `'True'`, `True`, or 1 becoming `true`. |
+
+#### String type
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">
+        <p>Variable-length character data.</p>
+        <p>When converting data from string to a different data type, makes sure
+          to use <code>safe_cast</code> when you&apos;re unsure about the data quality.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Bytes type
+
+| Name | Description |
+| :--- | :--- |
+| `bytes` | Variable-length binary data. This data type is rarely used but can be useful for characters with unusual encoding. |
+
+#### Time types
+
+{% hint style="info" %}
+Only the `date`, `datetime` and `timestamp` data types \(not `time`\) allow table partitioning.
+{% endhint %}
+
+{% hint style="info" %}
+Time zone management being difficult with BigQuery, prefer the UTC format.
+{% endhint %}
+
+| Name | Description |
+| :--- | :--- |
+| `date` | This data type represents a calendar date. It includes the year, month, and day. |
+| `time` | This data type represents a time, as might be displayed on a watch, independent of a specific date. It includes the hour, minute, second, and subsecond. |
+| `datetime` | This data type represents a date and time, as they might be displayed on a calendar or clock. It includes the year, month, day, hour, minute, second, and subsecond. |
+| `timestamp` | This data type represents an absolute point in time, with microsecond precision. |
 
 ## ♒ Table copy tasks
 
