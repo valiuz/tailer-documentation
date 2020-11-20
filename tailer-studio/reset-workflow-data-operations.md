@@ -6,7 +6,7 @@ description: Learn how to reset Workflow data operations from Tailer Studio.
 
 ## 0⃣ Why reset a Workflow data operation
 
-Tailer Studio allows you to reset a Workflow data operation. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the it was just deployed. \(This feature is also available using the Tailer API.\)
+Tailer Studio allows you to reset a Workflow data operation. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the it was just deployed. \(This feature is also available using the [Tailer API](../tailer-api/api-features.md#resetting-a-workflow).\)
 
 **Example of a case requiring a workflow reset**
 
