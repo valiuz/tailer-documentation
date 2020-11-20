@@ -1,5 +1,5 @@
 ---
-description: This page introduces the Tailer API and its main use cases.
+description: 'This page introduces the Tailer API, and its main use cases and features'
 ---
 
 # Overview
