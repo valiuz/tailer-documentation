@@ -31,7 +31,7 @@ The following information is available:
 * **Full JSON**: JSON configuration file of the data operation through which the table was created.
 * **Notes**: Comments and answers can be added by users about the table in the form of conversations.
 
-## 👁️ View your data catalog
+## 👀 View your data catalog
 
 To view your data catalog:
 
