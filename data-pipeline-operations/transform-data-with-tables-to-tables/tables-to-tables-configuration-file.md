@@ -605,7 +605,7 @@ For each workflow sub-object, parameters will differ depending on the task type.
           (and not today&apos;s date).</p>
         <p>For example, if you want to retrieve data corresponding to the execution
           date, you can use the following instruction:</p>
-        <p><code>WHERE sale_date = DATE(&apos;&apos;)</code>
+        <p><code>WHERE sale_date = DATE(&apos;</code>{{TEMPLATE_CURRENT_DATE}}<code>&apos;)</code>
         </p>
       </td>
     </tr>
