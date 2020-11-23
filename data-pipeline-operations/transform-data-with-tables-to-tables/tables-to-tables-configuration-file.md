@@ -599,10 +599,10 @@ For each workflow sub-object, parameters will differ depending on the task type.
         <p>optional</p>
       </td>
       <td style="text-align:left">
-        <p>If you want to use the &quot;&quot; variable in your SQL query, you need
-          to set this parameter to &quot;TEMPLATE_CURRENT_DATE&quot; (only supported
-          value). This variable will be set to the execution date of the data operation
-          (and not today&apos;s date).</p>
+        <p>If you want to use variables in your SQL query, you need to set this parameter
+          to &quot;TEMPLATE_CURRENT_DATE&quot; (only supported value). This variable
+          will be set to the execution date of the data operation (and not today&apos;s
+          date).</p>
         <p>For example, if you want to retrieve data corresponding to the execution
           date, you can use the following instruction:</p>
         <p><code>WHERE sale_date = DATE(&apos;</code>{{TEMPLATE_CURRENT_DATE}}<code>&apos;)</code>
