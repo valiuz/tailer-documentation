@@ -56,28 +56,8 @@
 
 ## Release Notes
 
-* [jarvis-sdk](release-notes/tailer-sdk-releases/README.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-1.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-2.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-3.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-4.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-5.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-6.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-7.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-8.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-9.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-10.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-11.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-12.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-13.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-14.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-15.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-16.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-17.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-18.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-19.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-20.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-21.md)
-  * [jarvis-sdk](release-notes/tailer-sdk-releases/jarvis-sdk-22.md)
+---
+
+* [Tailer SDK Stable Releases](https://pypi.org/project/jarvis-sdk/)
+* [Tailer Beta Releases](tailer-beta-releases.md)
 
