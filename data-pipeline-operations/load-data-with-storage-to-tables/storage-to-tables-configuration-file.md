@@ -695,7 +695,7 @@ The "table" object contains the definition of expected input files and their Big
           <li>&quot;header&quot; (CSV file only): The columns of the CSV file first
             line are automatically used as columns for the database table. All the
             columns are given the STRING type. No DDL file needs to be provided.</li>
-          <li>&quot;autodectect&quot; (not recommended): Google&#x2019;s default mode.
+          <li>&quot;autodetect&quot; (not recommended): Google&#x2019;s default mode.
             The schema is automatically detected from the source file. This mode doesn&#x2019;t
             work well with CSV files, but gives good results with structured formats
             such as JSON. (see <a href="https://cloud.google.com/bigquery/docs/schema-detect">Google BigQuery documentation</a>).</li>
