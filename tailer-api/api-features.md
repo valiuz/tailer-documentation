@@ -6,6 +6,15 @@ description: >-
 
 # API features
 
+{% hint style="warning" %}
+Currently, the API features are still referencing the **table-to-table** configuration, job and runs as a **gbq-to-gbq** configuration type. It should change in the future.
+{% endhint %}
+
+{% hint style="warning" %}
+For the table-to-table configurations, don't forget to add at the end of the configuration_id the environnement \(DEV, PROD, etc.\) before querying it throw the APIs._  
+Example :  the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
+{% endhint %}
+
 ## 🚀 Launching a job's execution
 
 Tables to Tables or Tables to Storage data operations can be launched through the Tailer API.
