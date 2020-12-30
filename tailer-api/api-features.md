@@ -90,13 +90,59 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --http2 \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
---data '{ "action": "get_last_status", 
-          "account": "000110", 
-          "environment": "DEV", 
-          "configuration_type": "storage-to-storage",
-          "configuration_id": "000110-tailer-STS-POC-ETL-VTE",
-          "job_id": "storage-to-storage|000110-tailer-STS-POC-ETL-VTE"}' \
+--data '{ "action": "get_last_status",
+          "account": "000099",
+          "environment": "DEV",
+          "configuration_type": "gbq-to-gbq",
+          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+          "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```
+
+As a result, you get a json payload with information about the last runs of this conf/job in the following format: 
+
+```bash
+{
+	"results": [
+		{
+			"account": "000099",
+			"configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+			"configuration_type": "gbq-to-gbq",
+			"duration": "0:01:24.002519",
+			"environment": "DEV",
+			"job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
+			"last_update_date": "2020-12-30T11:30:07.960767+00:00",
+			"run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179",
+			"start_execution_date": "2020-12-30T11:28:43.861340+00:00",
+			"status": "SUCCESS"
+		},
+		{
+			"account": "000099",
+			"configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+			"configuration_type": "gbq-to-gbq",
+			"duration": "0:01:35.345232",
+			"environment": "DEV",
+			"job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
+			"last_update_date": "2020-12-30T11:10:49.097747+00:00",
+			"run_id": "20201230-110907-47b31b2d-a54a-4a95-a3a6-b4fbc2168333",
+			"start_execution_date": "2020-12-30T11:09:13.665798+00:00",
+			"status": "SUCCESS"
+		},
+		{
+			"account": "000099",
+			"configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+			"configuration_type": "gbq-to-gbq",
+			"duration": "0:01:39.201091",
+			"environment": "DEV",
+			"job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
+			"last_update_date": "2020-12-10T14:07:56.739284+00:00",
+			"run_id": "20201210-140612-19e547a1-de6a-47f0-b563-b8a3d5754118",
+			"start_execution_date": "2020-12-10T14:06:17.415294+00:00",
+			"status": "SUCCESS"
+		}
+	]
+}
+
 ```
 
 **Example with a data operation**
