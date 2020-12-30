@@ -99,7 +99,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last runs of this conf/job in the following format: 
+As a result, you get a json payload with information about the last runs of this job in the following format: 
 
 ```bash
 {
@@ -145,7 +145,7 @@ As a result, you get a json payload with information about the last runs of this
 
 ```
 
-**Example with a data operation**
+**Example with a data operation \(configuration level\)**
 
 ```bash
 TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
@@ -153,15 +153,58 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --http2 \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
---data '{ "action": "get_last_status", 
-          "account": "000110", 
-          "environment": "DEV", 
+--data '{ "action": "get_last_status",
+          "account": "000099",
+          "environment": "DEV",
           "configuration_type": "storage-to-storage",
-          "configuration_id": "000110-tailer-STS-POC-ETL-VTE"}' \
+          "configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-**Example with a data operation with specific parameters**
+As a result, you get a json payload with information about the last runs of this configuration in the following format: 
+
+```bash
+{
+	"results": [
+		{
+			"account": "000099",
+			"configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
+			"configuration_type": "storage-to-storage",
+			"duration": "0:00:03.885654",
+			"environment": "DEV",
+			"job_id": "storage-to-storage|000099|000099-jarvis-demo-iowa-liquor-storage-to-storage|DEV|stores-{{FD_DATE}}-{{FD_TIME}}.csv",
+			"run_id": "20201209-cf026ae9-c79c-4cf9-8ffb-0bb63ad39469",
+			"start_execution_date": "2020-12-09T17:17:23+00:00",
+			"status": "SUCCESS"
+		},
+		{
+			"account": "000099",
+			"configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
+			"configuration_type": "storage-to-storage",
+			"duration": "0:00:04.373931",
+			"environment": "DEV",
+			"job_id": "storage-to-storage|000099|000099-jarvis-demo-iowa-liquor-storage-to-storage|DEV|stores-{{FD_DATE}}-{{FD_TIME}}.csv",
+			"run_id": "20201209-7b7b7a66-1cc0-4f09-a893-ce4a35adf09b",
+			"start_execution_date": "2020-12-09T17:17:18+00:00",
+			"status": "SUCCESS"
+		},
+		{
+			"account": "000099",
+			"configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
+			"configuration_type": "storage-to-storage",
+			"duration": "0:00:04.295537",
+			"environment": "DEV",
+			"job_id": "storage-to-storage|000099|000099-jarvis-demo-iowa-liquor-storage-to-storage|DEV|stores-{{FD_DATE}}-{{FD_TIME}}.csv",
+			"run_id": "20201209-4d76a90a-b092-4c69-a87f-b0cd79305428",
+			"start_execution_date": "2020-12-09T17:17:18+00:00",
+			"status": "SUCCESS"
+		}
+	]
+}
+
+```
+
+**Example with a data operation \(configuration\) with specific parameters**
 
 ```bash
 TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
@@ -169,14 +212,46 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --http2 \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
---data '{ "action": "get_last_status", 
-          "account": "000110", 
-          "environment": "DEV", 
+--data '{ "action": "get_last_status",
+          "account": "000099",
+          "environment": "DEV",
           "configuration_type": "storage-to-storage",
-          "configuration_id": "000110-tailer-STS-POC-ETL-VTE"
-          "execution_date": "2020/11/19",
-          "limit": 10}' \
+          "configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
+          "start_execution_date": "2020/12/09",
+          "status": "SUCCESS",
+          "limit": 2}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```
+
+As a result, you get a json payload with information about the last 2 runs ins success, with a start date the 2020/12/09 of this configuration in the following format: 
+
+```bash
+{
+	"results": [
+		{
+			"account": "000099",
+			"configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
+			"configuration_type": "storage-to-storage",
+			"duration": "0:00:03.885654",
+			"environment": "DEV",
+			"job_id": "storage-to-storage|000099|000099-jarvis-demo-iowa-liquor-storage-to-storage|DEV|stores-{{FD_DATE}}-{{FD_TIME}}.csv",
+			"run_id": "20201209-cf026ae9-c79c-4cf9-8ffb-0bb63ad39469",
+			"start_execution_date": "2020-12-09T17:17:23+00:00",
+			"status": "SUCCESS"
+		},
+		{
+			"account": "000099",
+			"configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
+			"configuration_type": "storage-to-storage",
+			"duration": "0:00:04.373931",
+			"environment": "DEV",
+			"job_id": "storage-to-storage|000099|000099-jarvis-demo-iowa-liquor-storage-to-storage|DEV|stores-{{FD_DATE}}-{{FD_TIME}}.csv",
+			"run_id": "20201209-7b7b7a66-1cc0-4f09-a893-ce4a35adf09b",
+			"start_execution_date": "2020-12-09T17:17:18+00:00",
+			"status": "SUCCESS"
+		}
+	]
+}
 ```
 
 ## 0⃣ Resetting a workflow
