@@ -282,16 +282,22 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "reset_workflow_status", 
-          "account": "000110", 
+          "account": "000099", 
           "environment": "DEV", 
           "configuration_type": "workflow",
-          "configuration_id": "000110-tailer-workflow-count"}' \
+          "configuration_id": "000099-iowa-liquor-load-pda"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/workflow/status"
+```
+
+As a result, you get a response \(OK, or KO\) in the following format: 
+
+```bash
+{"message":"ok"}
 ```
 
 ## ⏹ Disabling a data operation
 
-You can disable a data operation using the API. \(This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).\)
+You can disable a data operation \(configuration\) using the API. \(This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).\)
 
 You need to provide the full identity of the data operation as input:
 
@@ -302,12 +308,17 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "deactivate_conf",
-          "action": "get_last_status",
-          "account": "000110", 
+          "account": "000099", 
           "environment": "DEV", 
           "configuration_type": "gbq-to-gbq",
-          "configuration_id": "000110-tailer-TTT-POC-ETL-VTE_DEV"}' \
+          "configuration_id": "dlk_demo_iowa_liquor_pda_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
+```
+
+As a result, you get a response \(OK, or KO\) in the following format: 
+
+```bash
+{"message":"ok"}
 ```
 
 ## ▶ Enabling a data operation
@@ -323,11 +334,18 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
 --data '{ "action": "activate_conf",
-          "action": "get_last_status",
-          "account": "000110", 
+          "account": "000099", 
           "environment": "DEV", 
           "configuration_type": "gbq-to-gbq",
-          "configuration_id": "000110-tailer-TTT-POC-ETL-VTE_DEV"}' \
+          "configuration_id": "dlk_demo_iowa_liquor_pda_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
+
+As a result, you get a response \(OK, or KO\) in the following format: 
+
+```bash
+{"message":"ok"}
+```
+
+
 
