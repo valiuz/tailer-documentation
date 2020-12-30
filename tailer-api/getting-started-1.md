@@ -39,13 +39,13 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --http2 \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
---data '{ "action": "check_run_status", 
-          "account": "000110", 
-          "environment": "DEV", 
-          "run_id": "20201104-050111-cac8abe4-449f-4b9a-98d5-114bfc848da1",
-          "job_id": "gbq-to-gbq|000110-tailer-TTT-POC-ETL-VTE_DEV",
-          "configuration_type": "gbq-to-gbq",
-          "configuration_id": "000110-tailer-TTT-POC-ETL-VTE_DEV"}' \
+--data '{"action": "check_run_status",
+         "account": "000099",
+         "environment": "DEV",
+         "configuration_type": "gbq-to-gbq",
+         "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+         "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
+         "run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
