@@ -226,7 +226,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
           "environment": "DEV",
           "configuration_type": "storage-to-storage",
           "configuration_id": "000099-jarvis-demo-iowa-liquor-storage-to-storage",
-          "start_execution_date": "2020/12/09",
+          "execution_date": "2020-12-09",
           "status": "SUCCESS",
           "limit": 2}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
