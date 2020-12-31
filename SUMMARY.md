@@ -36,6 +36,8 @@
   * [Table to Storage SQL file](data-pipeline-operations/export-data-with-tables-to-storage/table-to-storage-sql-file.md)
 * [Orchestrate processings with Workflow](data-pipeline-operations/orchestrate-processings-with-workflow/README.md)
   * [Workflow configuration file](data-pipeline-operations/orchestrate-processings-with-workflow/workflow-configuration-file.md)
+* [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
+  * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 
 ## Tailer Studio
 
