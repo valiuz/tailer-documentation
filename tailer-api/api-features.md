@@ -351,5 +351,33 @@ As a result, you get a response \(OK, or KO\) in the following format:
 {"message":"ok"}
 ```
 
+## ▶ Archive a data operation
+
+You can archive a data operation using the API. \(This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).\)
+
+You need to provide the full identity of the data operation as input:
+
+```bash
+TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{ "action": "set_configuration_status",
+          "activated" : false,
+          "archived" : true,
+          "account": "000099", 
+          "environment": "DEV", 
+          "configuration_type": "gbq-to-gbq",
+          "configuration_id": "000099_Load_PDA_f_traffic_ma_DEV"}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
+```
+
+As a result, you get a response \(OK, or KO\) in the following format: 
+
+```bash
+{"message":"ok"}
+```
+
 
 
