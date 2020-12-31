@@ -307,11 +307,13 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --http2 \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
---data '{ "action": "deactivate_conf",
+--data '{ "action": "set_configuration_status",
+          "activated" : false,
+          "archived" : false,
           "account": "000099", 
           "environment": "DEV", 
           "configuration_type": "gbq-to-gbq",
-          "configuration_id": "dlk_demo_iowa_liquor_pda_DEV"}' \
+          "configuration_id": "000099_Load_PDA_f_traffic_ma_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
@@ -333,11 +335,13 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --http2 \
 --header "content-type:application/json" \
 --header "Authorization: Bearer ${TAILER_API_JWT}" \
---data '{ "action": "activate_conf",
+--data '{ "action": "set_configuration_status",
+          "activated" : true,
+          "archived" : false,
           "account": "000099", 
           "environment": "DEV", 
           "configuration_type": "gbq-to-gbq",
-          "configuration_id": "dlk_demo_iowa_liquor_pda_DEV"}' \
+          "configuration_id": "000099_Load_PDA_f_traffic_ma_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
