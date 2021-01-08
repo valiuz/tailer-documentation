@@ -228,6 +228,22 @@ General information about the data operation.
         <p>For example, &quot;{{DATE}}_{{TIME}}_my_data_extraction.csv&quot;</p>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>destination_format</b>
+        </p>
+        <p>type: string</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>Define the format of the output file :</p>
+        <p>Default value: &quot;CSV&quot;</p>
+        <p>Possible values: &quot;NEWLINE_DELIMITED_JSON&quot; to generate a JSON
+          file.</p>
+        <p>Note that if you specify &quot;NEWLINE_DELIMITED_JSON&quot;, the field-delimiter
+          parameter is not taken into account.</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
