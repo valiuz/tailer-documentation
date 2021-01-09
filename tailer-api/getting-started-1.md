@@ -42,7 +42,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --data '{"action": "check_run_status",
          "account": "000099",
          "environment": "DEV",
-         "configuration_type": "gbq-to-gbq",
+         "configuration_type": "table-to-table",
          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
          "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
          "run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179"}' \

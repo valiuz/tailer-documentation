@@ -7,11 +7,7 @@ description: >-
 # API features
 
 {% hint style="warning" %}
-Currently, the API features are still referencing the **table-to-table** configuration, job and runs as a **gbq-to-gbq** configuration type. It should change in the future.
-{% endhint %}
-
-{% hint style="warning" %}
-For the table-to-table configurations, don't forget to add at the end of the configuration_id the environnement \(DEV, PROD, etc.\) before querying it throw the APIs._  
+For the table-to-table configurations, don't forget to add at the end of the configuration\__id the environnement \(DEV, PROD, etc.\) before querying it throw the APIs._  
 Example :  the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
 {% endhint %}
 
@@ -30,9 +26,8 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --data '{ "action": "launch_job",
           "account": "000099",
           "environment": "DEV",
-          "configuration_type": "gbq-to-gbq",
-          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
-          "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV"}' \
+          "configuration_type": "table-to-table",
+          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/launch"
 ```
 
@@ -57,7 +52,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --data '{"action": "check_run_status",
          "account": "000099",
          "environment": "DEV",
-         "configuration_type": "gbq-to-gbq",
+         "configuration_type": "table-to-table",
          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
          "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
          "run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179"}' \
@@ -72,7 +67,7 @@ As a result, you get a json payload with information about the run in the follow
 		{
 			"account": "000099",
 			"configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
-			"configuration_type": "gbq-to-gbq",
+			"configuration_type": "table-to-table",
 			"duration": "0:01:24.002519",
 			"environment": "DEV",
 			"job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
@@ -102,9 +97,8 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 --data '{ "action": "get_last_status",
           "account": "000099",
           "environment": "DEV",
-          "configuration_type": "gbq-to-gbq",
-          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
-          "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV"}' \
+          "configuration_type": "table-to-table",
+          "configuration_id": "000099_iowa_liquor_prepare_pda_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
@@ -312,7 +306,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
           "archived" : false,
           "account": "000099", 
           "environment": "DEV", 
-          "configuration_type": "gbq-to-gbq",
+          "configuration_type": "table-to-table",
           "configuration_id": "000099_Load_PDA_f_traffic_ma_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
@@ -340,7 +334,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
           "archived" : false,
           "account": "000099", 
           "environment": "DEV", 
-          "configuration_type": "gbq-to-gbq",
+          "configuration_type": "table-to-table",
           "configuration_id": "000099_Load_PDA_f_traffic_ma_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
@@ -368,7 +362,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
           "archived" : true,
           "account": "000099", 
           "environment": "DEV", 
-          "configuration_type": "gbq-to-gbq",
+          "configuration_type": "table-to-table",
           "configuration_id": "000099_Load_PDA_f_traffic_ma_DEV"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
