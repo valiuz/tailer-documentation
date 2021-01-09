@@ -17,7 +17,7 @@ Currently, you can only send on alert message, and only by email. But we are thi
 
 ##  Example
 
-Here is an example of TTT configuration file:
+Here is an example in a TTT configuration file:
 
 ```text
 {
