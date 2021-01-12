@@ -89,7 +89,7 @@ Once your JSON file is ready, you can deploy the data operation:
 2. To deploy the data operation, run the following command:
 
    ```text
-   tailer deploy 000099-tailer-demo-copy-files.json
+   tailer deploy configuration 000099-tailer-demo-copy-files.json
    ```
 
 ## ✅ Check the data operation status in Tailer Studio
