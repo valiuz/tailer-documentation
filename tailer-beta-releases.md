@@ -20,7 +20,7 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 * TTT new task type : run\_gbq_\__script. Available for direct execution only.
 
-{% file src=".gitbook/assets/package \(7\).zip" %}
+{% file src=".gitbook/assets/package \(8\).zip" %}
 
 ### Install Jarvis SDK Package using PIP
 
