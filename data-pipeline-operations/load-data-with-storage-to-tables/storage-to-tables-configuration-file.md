@@ -503,6 +503,8 @@ Example:
       <td style="text-align:left">
         <p>Character used to quote data sections, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.quote_character">Google BigQuery documentation</a>).</p>
         <p>Default value: &quot;&quot;</p>
+        <p><b>Note:</b> For quote and double quotes, set to &quot;\&apos;&quot; and
+          &quot;\&quot;&quot; respectively.</p>
         <p>This parameter can be set for each <b>table</b> sub-object, and will be
           overridden by that value if it is different.</p>
       </td>
