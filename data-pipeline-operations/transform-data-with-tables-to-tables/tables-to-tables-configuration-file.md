@@ -448,8 +448,8 @@ General information about the data operation.
         <p>To use the new execution mode, the <b>direct_execution</b> parameter must
           be set to &quot;true&quot;.</p>
         <p></p>
-        <p>If not set, the default value will be &quot;false&quot; until January
-          5, 2021, after which the default value will become &quot;true&quot;.</p>
+        <p>If not set, the default value will be &quot;true&quot; from January 5,
+          2021</p>
       </td>
     </tr>
   </tbody>
