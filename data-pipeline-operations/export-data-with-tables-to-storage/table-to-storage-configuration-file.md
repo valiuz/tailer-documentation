@@ -87,6 +87,15 @@ General information about the data operation.
     </tr>
     <tr>
       <td style="text-align:left">
+        <p><b>short_description</b>
+        </p>
+        <p>type: string</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">Short description of the table to storage data operation.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
         <p><b>environment</b>
         </p>
         <p>type: string</p>
