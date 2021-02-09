@@ -19,6 +19,7 @@ Here is an example of TTS configuration file:
 {
   "configuration_type": "table-to-storage",
   "configuration_id": "tts-some-id-example",
+  "short_description" : "Short description of the job",
   "environment": "DEV",
   "account": "000111",
   "activated": true,
