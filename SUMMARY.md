@@ -35,6 +35,7 @@
   * [Table to Storage configuration file](data-pipeline-operations/export-data-with-tables-to-storage/table-to-storage-configuration-file.md)
   * [Table to Storage SQL file](data-pipeline-operations/export-data-with-tables-to-storage/table-to-storage-sql-file.md)
 * [Orchestrate processings with Workflow](data-pipeline-operations/orchestrate-processings-with-workflow/README.md)
+  * [Execute code processings with VM Launcher](data-pipeline-operations/orchestrate-processings-with-workflow/execute-code-processings-with-vm-launcher.md)
   * [Workflow configuration file](data-pipeline-operations/orchestrate-processings-with-workflow/workflow-configuration-file.md)
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
