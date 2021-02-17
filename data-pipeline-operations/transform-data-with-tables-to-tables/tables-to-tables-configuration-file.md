@@ -318,9 +318,6 @@ General information about the data operation.
           <li><b>copy_gbq_table</b>
           </li>
         </ol>
-        <p>If there are no dependencies, specify an empty array: <code>[]</code>
-        </p>
-        <p>&lt;code&gt;&lt;/code&gt;</p>
         <p><b>Syntax</b>
         </p>
         <ul>
@@ -330,6 +327,11 @@ General information about the data operation.
           <li>The square brackets <code>[</code> and <code>]</code> allow you to define
             a set of tasks that will run together.</li>
         </ul>
+        <p>&#x26A0; If there are <b>no dependencies</b>, or only one task in you workflow,
+          specify an <b>empty array</b>: <code>[]</code>
+        </p>
+        <p>For example, <code>[ &quot; taskA &quot; ]</code>would raise an error</p>
+        <p></p>
         <p>For detailed information about the syntax, refer to the Airflow documentation:
           <a
           href="https://airflow.apache.org/concepts.html#bitshift-composition">https://airflow.apache.org/concepts.html#bitshift-composition</a>
