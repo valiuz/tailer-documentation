@@ -595,6 +595,24 @@ For each workflow sub-object, parameters will differ depending on the task type.
     </tr>
     <tr>
       <td style="text-align:left">
+        <p><b>temporary_table</b>
+        </p>
+        <p>type: boolean</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>If set to &quot;true&quot;, this parameter will force the deletion of
+          the table at the end of the data operation. If the TTT data operation failed
+          before deleting the temporary table, the table will be deleted automatically
+          after 24 hours.
+          <br />
+        </p>
+        <p><em>Default value : false</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
         <p><b>sql_query_template</b>
         </p>
         <p>type: string</p>
