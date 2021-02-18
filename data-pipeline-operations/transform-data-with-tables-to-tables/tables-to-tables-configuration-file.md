@@ -614,7 +614,7 @@ For each workflow sub-object, parameters will differ depending on the task type.
   </tbody>
 </table>
 
-### **Table creation task parameters**
+### **Table Creation task parameters**
 
 <table>
   <thead>
