@@ -289,9 +289,14 @@ General information about the data operation.
             starting from the current date.</li>
         </ul>
         <p>&#x26A0; If the data operation is scheduled to happen frequently and/or
-          the missed execution period is long, the amount of runs might be important.
-          Make sure you have enough resources to handle all the executions when deploying
+          the missed execution period is long, <b>the amount of runs might be important.</b> Make
+          sure you have enough resources to handle all the executions when deploying
           a data operation with <b>catchup</b> set to &quot;true&quot;.</p>
+        <p>&#x26A0; If you plan to store a version of your configuration file for
+          further modifications (in a Git repository for example), it&apos;s recommended
+          to store it with a catchup set to &quot;false&quot; to avoid to accidentaly
+          create a lot of runs when you will deploy and execute your next version
+          in the future.</p>
         <p></p>
         <p>If not set, the default value is &quot;false&quot;.</p>
       </td>
