@@ -294,7 +294,7 @@ General information about the data operation.
           a data operation with <b>catchup</b> set to &quot;true&quot;.</p>
         <p>&#x26A0; If you plan to store a version of your configuration file for
           further modifications (in a Git repository for example), it&apos;s recommended
-          to store it with a catchup set to &quot;false&quot; to avoid to accidentaly
+          to store it with a catchup set to &quot;false&quot; to avoid to accidentally
           create a lot of runs when you will deploy and execute your next version
           in the future.</p>
         <p></p>
