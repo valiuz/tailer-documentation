@@ -10,7 +10,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 * Global parameters: General information about the data operation.
 * Filenames templating: Optionally, you can add a creation step for a table that will contain the result of the extraction.
-* Credentials parameters : Mandatory credentials parameters of a service account that can access the input/output buckets.
+* Credentials parameters: Mandatory credentials parameters of a service account that can access the input/output buckets.
 
 ## 👁🗨 Example
 

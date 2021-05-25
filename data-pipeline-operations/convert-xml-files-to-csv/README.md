@@ -13,7 +13,7 @@ Extensible Markup Language (XML) is a markup language that defines a set of rule
 
 The design goals of XML emphasize simplicity, generality, and usability across the Internet. It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures such as those used in web services.
 
-In addition to being well-formed, an XML document may be valid. This means that it contains a reference to a document (usually XSD which stands for XML Schema Definition) that defines its elements and attributes and also describes the grammatical rules that applies to elements and attributes. 
+In addition to being well-formed, an XML document may be valid. This means that it contains a reference to a document (usually XSD which stands for XML Schema Definition) that defines its elements and attributes and also describes the grammatical rules that apply to elements and attributes. 
 
 A conversion to CSV files requires a XML and the associated XSD file.
 
