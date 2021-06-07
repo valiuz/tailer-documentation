@@ -1,43 +1,41 @@
 ---
 description: >-
-  Learn how to convert XML located in a Google Cloud Storage bukcet into CSV
-  files using a Convert-XML operation.
+  Learn how to convert XML files located in a Google Cloud Storage bucket into
+  CSV files using a Convert XML to CSV data operation.
 ---
 
-# index
+# Convert XML to CSV
 
-## 💡 What is Convert-xml-to-csv Operation?
+## 💡 What is the Convert XML to CSV operation?
 
-Extensible Markup Language \(XML\) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable \(Wikipedia\).
+XML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
 
-The design goals of XML emphasize simplicity, generality, and usability across the Internet. It is a textual data format with strong support via Unicode for different human languages. Although the design of XML focuses on documents, the language is widely used for the representation of arbitrary data structures such as those used in web services.
-
-In addition to being well-formed, an XML document may be valid. This means that it contains a reference to a document \(usually XSD which stands for XML Schema Definition\) that defines its elements and attributes and also describes the grammatical rules that apply to elements and attributes.
+In addition to being well-formed, an XML document may be valid. This means that it contains a reference to an XSD file that defines its elements and attributes, and the rules that apply to them.
 
 A conversion to CSV files requires a XML and the associated XSD file.
 
-## ✅ Supported file types
+## ✅ File types
 
 ### **Source files**
 
-* XML file in Google Cloud Storage
-* XSD file in Google Cloud Storage
+* Multiple XML files in Google Cloud Storage
+* One XSD file
 
 ### **Export files**
 
-* CSV file in Google Cloud Storage
-* DDL file in Google Cloud Storage
+* Multiple CSV files in Google Cloud Storage
+* One DDL file in Google Cloud Storage
 
 ## ⚙️ How it works
 
-After deploying a configuration for a specific xml file pattern, when a file is uploaded in a dedicated bucket:
+After deploying a configuration for a specific XML file pattern, when a file is uploaded in a dedicated bucket:
 
 * The xml file will be checked for a matching xsd file
 * A conversion process will start with the launch of a dedicated Virtual Machine
 * A set of CSV files and DDL files \(that describes the schema of all CSV\) will be generated into the destination bucket
 * A filtering might occurs at the end of the process to remove unwanted files.
 
-## **📋 How to deploy a Convert-xml-to-csv data operation**
+## **📋 How to deploy a** Convert XML to CSV **data operation**
 
 1. Access your **tailer** folder \(created during [installation](../../getting-started/install-tailer-sdk.md)\).
 2. Create a working folder as you want, and create a JSON file for your data operation inside.
