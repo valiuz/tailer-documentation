@@ -167,15 +167,15 @@ General parameters about the monitoring.
 
 ## ⚠ Alert parameters
 
-An alert will be able to trigger different types of messages. Currently, only an email alert could be sent.
+An alert will be able to trigger different types of messages. Currently, only an email alert can be sent.
 
 For each alert message, parameters will differ depending on the message type.
 
-### 📨 Email Alert
+### 📨 Email alert
 
 An email alert will send an email with specific parameters each time the data operation fails in the specified environments. 
 
-By default, Tailer provides an email template with detailed information. Thus, you don't have to fill in all the parameters such as subject, body, etc. But you can also personalize all the parameters to set precisely how the alert email should look like. For that, you can use alert variables described below.
+By default, Tailer provides an email template with detailed information. Thus, you don't have to fill in all the parameters such as subject, body, etc. But you can also personalize all the parameters to set precisely how the alert email should look like. For that, you can use the alert variables described below.
 
 <table>
   <thead>
@@ -233,8 +233,8 @@ By default, Tailer provides an email template with detailed information. Thus, y
         <p>optional</p>
       </td>
       <td style="text-align:left">
-        <p>The subject of the triggered alert email.</p>
-        <p>Default value: &quot;TAILER RUN ALERT: @job<em>id FAILED at </em>@execution<em>_</em>date</p>
+        <p>Subject of the triggered alert email.</p>
+        <p>Default value: &quot;TAILER RUN ALERT: @job<em>id FAILED at </em>@execution<em>_</em>date&quot;</p>
         <p>You can personalize the subject with the alert variables described below.</p>
       </td>
     </tr>
@@ -260,10 +260,9 @@ By default, Tailer provides an email template with detailed information. Thus, y
       </td>
       <td style="text-align:left">
         <p>Body of the alert email.</p>
-        <p>Default value: See attached html file below</p>
+        <p>Default value: &quot;See attached html file below&quot;</p>
         <p>You can personalize the body with the alert variables described below.
-          Be careful to use the right body format according to the email_body_type
-          parameter.</p>
+          Be careful to use the right body format according to the <b>email_body_type</b> parameter.</p>
       </td>
     </tr>
   </tbody>
@@ -277,18 +276,18 @@ Alert messages can be personalized with alert message variables. Those variables
 
 | Variable | Description |
 | :--- | :--- |
-| **@url\_to\_tailer\_studio\_run\_id** | The Tailer Studio URL of the Run |
-| **@url\_to\_tailer\_studio\_conf\_id** | The Tailer Studio URL of the run current configuration id |
+| **@url\_to\_tailer\_studio\_run\_id** | Tailer Studio URL for the run |
+| **@url\_to\_tailer\_studio\_conf\_id** | Tailer Studio URL for the run current configuration ID |
 | **@account** | Account of the data operation's run |
-| **@environment** | Environnement of the data operation's run |
-| **@configuration\_type** | Configuration Type of the data operation's run |
-| **@execution\_date** | Executation Date of the data operation's run |
-| **@short\_description** | Short Description of the data operation |
-| **@job\_id** | Job Id of the data operation |
-| **@run\_id** | Run Id of the data operation's run |
-| **@updated\_by** | The email of the user who last updates the configuration |
-| **@update\_date** | The Date Tile of the last configuration update |
-| **@impact** | The Monitoring Impact Level parameter |
-| **@urgency** | The Monitoring Urgency Level parameter |
-| **@alert\_info** | The alert info set in the monitoring parameter |
+| **@environment** | Environment of the data operation's run |
+| **@configuration\_type** | Configuration type of the data operation's run |
+| **@execution\_date** | Execution date of the data operation's run |
+| **@short\_description** | Short description of the data operation |
+| **@job\_id** | Job ID of the data operation |
+| **@run\_id** | Run ID of the data operation's run |
+| **@updated\_by** | Email address of the user who last updated the configuration |
+| **@update\_date** | Date tile of the last configuration update |
+| **@impact** | Monitoring impact level parameter |
+| **@urgency** | Monitoring urgency level parameter |
+| **@alert\_info** | Alert info set in the monitoring parameter |
 

@@ -47,7 +47,7 @@ When the Table to Storage Tailer workflow is triggered by an event \(usually a B
    tailer deploy configuration your-configuration.json
    ```
 
-8. Log in to [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601454251429.1601460096069.15&__hssc=57968821.4.1601460096069&__hsfp=649433320) to check the status and details of your data operation.
-9. For your workflow to be executed, you either need to run the data operation that is set to trigger it in your Workflow data operation \(previous step in your data pipeline\), or to launch it manually from [Tailer Studio](https://jarvis-platform.io/sign-in?&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601454251429.1601460096069.15&__hssc=57968821.4.1601460096069&__hsfp=649433320).
+8. Log in to [Tailer Studio](http://studio.tailer.ai/) to check the status and details of your data operation.
+9. For your workflow to be executed, you either need to run the data operation that is set to trigger it in your Workflow data operation \(previous step in your data pipeline\), or to launch it manually from [Tailer Studio](http://studio.tailer.ai/).
 10. Access the GCS bucket to check your output file \(CSV or JSON\).
 
