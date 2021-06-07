@@ -115,7 +115,7 @@ Once your files are ready, you can deploy the data operation:
 Deploying the workflow at this stage would not launch it, as the workflow will only be triggered by the execution of the previous step \(building predictions\). We will run it manually for now so we can see the result. Once we finish setting up the pipeline, the workflow will run automatically starting from its first step \(copying files\) when we add files into the source bucket.
 {% endhint %}
 
-1. Access [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601371486250.1601381577044.10&__hssc=57968821.1.1601381577044&__hsfp=649433320).‌
+1. Access [Tailer Studio](http://studio.tailer.ai/).‌
 2. In the left navigation menu, select **Table-to-storage**.
 3. In the **Configurations** tab, search for your data operation, **000099-tailer-demo-export-data**.
 4. Click the data operation ID to display its details.

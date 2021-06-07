@@ -261,7 +261,7 @@ Your data operation status is now visible in Tailer Studio.
 
 ## ✅ Check the data operation status in Tailer Studio
 
-1. Access [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601368536601.1601371486250.9&__hssc=57968821.1.1601371486250&__hsfp=649433320).‌
+1. Access [Tailer Studio](http://studio.tailer.ai/).‌
 2. In the left navigation menu, select **Table-to-table**.
 3. In the **Configurations** tab, search for your data operation, **000099-tailer-demo-build-predictions**. You can see its status is **Activated**.
 4. Click the data operation ID to display its parameters and full JSON file, or to leave comments about it.
