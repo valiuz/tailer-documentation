@@ -502,7 +502,7 @@ Your data operation is now deployed, which means the new tables will shortly be 
 
 ## ✅ Check the data operation status in Tailer Studio
 
-1. Access [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601366647379.1601368536601.8&__hssc=57968821.1.1601368536601&__hsfp=649433320) again.‌
+1. Access [Tailer Studio](http://studio.tailer.ai/) again.‌
 2. In the left navigation menu, select **Tables-to-tables**.
 3. In the **Configurations** tab, search for your data operation, **000099-tailer-demo-prepare-data**. You can see its status is **Activated**.
 4. Click the data operation ID to display its parameters and full JSON file, or to leave comments about it.
