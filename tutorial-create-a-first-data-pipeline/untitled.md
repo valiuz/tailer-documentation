@@ -94,7 +94,7 @@ Once your JSON file is ready, you can deploy the data operation:
 
 ## ✅ Check the data operation status in Tailer Studio
 
-1. Access [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601309087670.1601364404124.6&__hssc=57968821.3.1601364404124&__hsfp=649433320).
+1. Access [Tailer Studio](http://studio.tailer.ai/).
 2. Sign in with your Tailer Platform credentials.
 3. In the left navigation menu, select **Storage-to-storage**.
 4. In the **Configurations** tab, search for your data operation, **000099-tailer-demo-copy-files**. You can see its status is **Activated**.
