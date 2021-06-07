@@ -8,8 +8,6 @@ description: "This page introduces Tailer\_Studio and its main capacities."
 
 Tailer Studio is the User Interface component of Tailer Platform. It allows you to display information about the data you're managing and your data operations.
 
-![](../.gitbook/assets/tailer_studio_overview.png)
-
 ## ✨ Main features
 
 Tailer Studio offers the following main features:

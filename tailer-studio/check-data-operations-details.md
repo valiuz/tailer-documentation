@@ -10,7 +10,7 @@ Tailer Studio allows you to display a number of information about the data oper
 
 ### **About data operations**
 
-![](../.gitbook/assets/tailer_studio_info_about_data_operations.png)
+![](../.gitbook/assets/tailer_studio_data_operation_details.png)
 
 The following information is available about each data operation:
 
@@ -22,7 +22,7 @@ The following information is available about each data operation:
 
 ### **About data operations' executions**
 
-![](../.gitbook/assets/tailer_studio_info_about_data_operations_executions.png)
+![](../.gitbook/assets/tailer_studio_run_details.png)
 
 A data operation's execution corresponds to an instance of the data operation. Every time a file or a table matching the data operations conditions is found at the specified location, a new execution takes place and displays in Tailer Studio.
 
