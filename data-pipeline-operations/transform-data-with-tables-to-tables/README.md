@@ -48,7 +48,7 @@ When a Tables to Tables Tailer data operation is triggered by an event \(for exa
    tailer deploy your-file.json
    ```
 
-8. Log in to [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601451055929.1601454251429.14&__hssc=57968821.2.1601454251429&__hsfp=649433320) to check the status and details of your data operation.
-9. For your workflow to be executed, you either need to run the data operation corresponding to the previous step of your data pipeline \(per your Workflow configuration file\), or to launch it manually from [Tailer Studio](https://jarvis-platform.io/sign-in?&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601451055929.1601454251429.14&__hssc=57968821.2.1601454251429&__hsfp=649433320).
+8. Log in to [Tailer Studio](http://studio.tailer.ai/) to check the status and details of your data operation.
+9. For your workflow to be executed, you either need to run the data operation corresponding to the previous step of your data pipeline \(per your Workflow configuration file\), or to launch it manually from [Tailer Studio](http://studio.tailer.ai/).
 10. Access your output table\(s\) in BigQuery to check the result of the data operation.
 

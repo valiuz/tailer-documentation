@@ -41,6 +41,6 @@ Every time a new file matching the specified rule appears in the source director
    tailer deploy configuration your-file.json
    ```
 
-6. Log in to [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601381577044.1601386024805.11&__hssc=57968821.5.1601386024805&__hsfp=649433320) to check the status and details of your data operation.
+6. Log in to [Tailer Studio](http://studio.tailer.ai/) to check the status and details of your data operation.
 7. Access your output folder\(s\), and archive folder, if any, to check the result of the data operation.
 
