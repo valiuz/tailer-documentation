@@ -189,15 +189,6 @@ Information related to the input/output working directory in Google Cloud Storag
     </tr>
     <tr>
       <td style="text-align:left">
-        <p><b>gcp_project</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">ID of the Google Cloud project containing the BigQuery instance.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
         <p><b>gcp_credentials_secret</b>
         </p>
         <p>type: dict</p>
