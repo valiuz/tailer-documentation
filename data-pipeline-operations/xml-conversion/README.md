@@ -14,6 +14,8 @@ The Convert XML to CSV data operation allows you to retrieve all the information
 Note that the XML file provided must be well-formed and valid against a matching XSD file \(defining its elements and attributes, and the rules that apply to them\).
 
 The XML and XSD file must have the same name \(suffix excluded\). Refer to [this page](untitled-1.md) for more details.
+
+If the XML contains entities not set in the XSD, then the corresponding data will not be exported to CSV files.
 {% endhint %}
 
 ## ✅ Supported file types
@@ -32,7 +34,8 @@ Every time a new file matching the specified XML file name pattern appears in a 
 
 * The XML file is checked against the matching XSD file.
 * If the XML file is valid, the conversion process is launched.
-* A set of CSV files with their matching DDL files \(describing their schema\) is generated in the destination bucket.
+* A set of CSV files with their matching DDL files \(describing their schema\) is generated in the working directory.
+* The source XML files are deleted from the working directory.
 * If set, a filtering occurs at the end of the process to remove unwanted files.
 
 ## **📋 How to deploy a** Convert XML to CSV **data operation**
