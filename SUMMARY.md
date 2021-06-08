@@ -40,7 +40,7 @@
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 * [Convert XML to CSV](data-pipeline-operations/xml-conversion/README.md)
-  * [index](data-pipeline-operations/xml-conversion/untitled-1.md)
+  * [Convert XML to CSV configuration file](data-pipeline-operations/xml-conversion/untitled-1.md)
 
 ## Tailer Studio
 

@@ -1,16 +1,16 @@
 ---
 description: >-
-  This is the description of the JSON configuration file of a XML Conversion
-  data operation.
+  This is the description of the JSON configuration file for a Convert XML to
+  CSV data operation.
 ---
 
-# index
+# Convert XML to CSV configuration file
 
 The configuration file is in JSON format. It contains the following sections:
 
-* Global parameters: General information about the data operation.
-* Filenames templating: Optionally, you can add a creation step for a table that will contain the result of the extraction.
-* Credentials parameters: Mandatory credentials parameters of a service account that can access the input/output buckets.
+* [Global parameters](untitled-1.md#global-parameters): General information about the data operation.
+* Working folder parameters: Information related to the input/output folder for the files.
+* Filenames templates: Optionally, you can add a creation step for a table that will contain the result of the extraction.
 
 ## 👁🗨 Example
 
@@ -27,6 +27,16 @@ Here is an example of xml-conversion configuration file:
     "gcp_project_id": "fd-io-jarvis-demo-dlk",
     "gcs_bucket": "fd-io-demo-ds",
     "gcs_working_directory": "test_xml_conversion",
+    "credentials": {
+        "gcp-credentials.json": {
+            "content": {
+                "cipher_aes": "dd34e56f4...",
+                "tag": "3d968340...",
+                "ciphertext": "046ffe41f9c00448ea0f816119...",
+                "enc_session_key": "36a0f8ffe1b1f0..."
+            }
+        }
+    },
     "filename_templates": [
         {
             "filename_template": "coupon_{{FD_DATE}}.xml",
@@ -37,17 +47,7 @@ Here is an example of xml-conversion configuration file:
                 "barcodeType.tsv"
             ]
         }
-    ],
-    "credentials": {
-        "gcp-credentials.json": {
-            "content": {
-                "cipher_aes": "dd34e56f4...",
-                "tag": "3d968340...",
-                "ciphertext": "046ffe41f9c00448ea0f816119...",
-                "enc_session_key": "36a0f8ffe1b1f0..."
-            }
-        }
-    }
+    ]
 }
 ```
 
