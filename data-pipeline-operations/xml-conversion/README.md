@@ -8,39 +8,39 @@ description: >-
 
 ## 💡 What is the Convert XML to CSV operation?
 
-XML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
+The Convert XML to CSV data operation allows you to retrieve all the information contained in a possibly complex XML file into to a set of CSV files that you can later convert into database tables using a [Storage to Tables](../load-data-with-storage-to-tables/) data operation.
 
-In addition to being well-formed, an XML document may be valid. This means that it contains a reference to an XSD file that defines its elements and attributes, and the rules that apply to them.
+{% hint style="warning" %}
+Note that the XML file provided must be well-formed and valid against a matching XSD file \(defining its elements and attributes, and the rules that apply to them\).
 
-A conversion to CSV files requires a XML and the associated XSD file.
+The XML and XSD file must have the same name \(suffix excluded\). Refer to [this page](untitled-1.md) for more details.
+{% endhint %}
 
-## ✅ File types
+## ✅ Supported file types
 
 ### **Source files**
 
-* Multiple XML files in Google Cloud Storage
-* One XSD file
+* XML + XSD file pair\(s\)
 
 ### **Export files**
 
-* Multiple CSV files in Google Cloud Storage
-* One DDL file in Google Cloud Storage
+* Multiple TSV \(_Tab_ Separated Values\) + DDL file pairs
 
 ## ⚙️ How it works
 
-After deploying a configuration for a specific XML file pattern, when a file is uploaded in a dedicated bucket:
+Every time a new file matching the specified XML file name pattern appears in a given directory of a Google Cloud Storage bucket:
 
-* The xml file will be checked for a matching xsd file
-* A conversion process will start with the launch of a dedicated Virtual Machine
-* A set of CSV files and DDL files \(that describes the schema of all CSV\) will be generated into the destination bucket
-* A filtering might occurs at the end of the process to remove unwanted files.
+* The XML file is checked against the matching XSD file.
+* If the XML file is valid, the conversion process is launched.
+* A set of CSV files with their matching DDL files \(describing their schema\) is generated in the destination bucket.
+* If set, a filtering occurs at the end of the process to remove unwanted files.
 
 ## **📋 How to deploy a** Convert XML to CSV **data operation**
 
 1. Access your **tailer** folder \(created during [installation](../../getting-started/install-tailer-sdk.md)\).
 2. Create a working folder as you want, and create a JSON file for your data operation inside.
-3. Place the XSD file at the same location than your JSON configuration file.
-4. Prepare your JSON configuration file. Refer to this page to learn about all the [parameters](tconvert-xml-configuration-file.md).
+3. Place the XSD file in the same location as your JSON file.
+4. Prepare your JSON configuration file. Refer to this page to learn about all the [parameters](untitled-1.md).
 5. Access your working folder by running the following command:
 
    ```text
@@ -53,7 +53,7 @@ After deploying a configuration for a specific XML file pattern, when a file is 
    tailer deploy configuration your-configuration.json
    ```
 
-7. Log in to [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601454251429.1601460096069.15&__hssc=57968821.4.1601460096069&__hsfp=649433320) to check the status and details of your data operation.
-8. For your Convert-xml-to-csv to be executed, you either need to copy a file into the source folder.
-9. Access the GCS bucket to check your output file \(CSV and DDL files\).
+7. Log in to [Tailer Studio](http://studio.tailer.ai/) to check the status and details of your data operation.
+8. For your Convert XML to CSV data operation to be executed, you need to place a file into the source folder.
+9. Access the GCS bucket to check your output files \(CSV and DDL files\).
 
