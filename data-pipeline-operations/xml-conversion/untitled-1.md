@@ -10,7 +10,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 * [Global parameters](untitled-1.md#global-parameters): General information about the data operation.
 * [Working folder parameters](untitled-1.md#working-folder-parameters): Information related to the input/output folder for the files.
-* Conversion parameters: Information about the input file to convert and the output files generated.
+* [Conversion parameters](untitled-1.md#conversion-parameters): Information about the input file to convert and the output files generated.
 
 ## 👁🗨 Example
 
@@ -241,9 +241,33 @@ Information about the input file to convert and the output files generated.
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left">A file name template that will trigger the conversion. The file name template
-        can contains defined keyword (like {{FD_DATE}} for a date substring part).
-        See STS for more information about all the keywords.</td>
+      <td style="text-align:left">
+        <p>When a file with a name matching the template set here is added to the
+          specified GCS folder, the conversion will be launched automatically.</p>
+        <p>
+          <br />The following placeholders are currently supported:</p>
+        <ul>
+          <li>&quot;FD_DATE&quot; looks for an 8-digit date (e.g. &quot;20191015&quot;).</li>
+          <li>&quot;FD_TIME&quot; looks for a 6-digit time (e.g. &quot;124213&quot;).</li>
+          <li>&quot;FD_BLOB_XYZ&quot;, where XYZ is a non-zero positive integer, looks
+            for a string of characters of XYZ length.</li>
+        </ul>
+        <p><b>Example 1</b>
+        </p>
+        <p>This template:</p>
+        <p><code>&quot;stores_{{FD_DATE}}_{{FD_TIME}}.txt&quot;</code>
+        </p>
+        <p>will allow you to process this type of files:</p>
+        <p>&quot;stores_20201116_124213.txt&quot;</p>
+        <p></p>
+        <p><b>Example 2</b>
+        </p>
+        <p>This template:</p>
+        <p><code>&quot;{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz&quot;</code>
+        </p>
+        <p>will allow you to process this type of files:</p>
+        <p>&quot;20201116_12397_fixedvalue_12312378934.gz&quot;</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -261,9 +285,9 @@ Information about the input file to convert and the output files generated.
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left">the name of the XSD file that will be used to convert the XML into a CSV.
-        Note that the XSD will be used to validate the XML file. In the current
-        version, only one XSD can be used be XML entry.</td>
+      <td style="text-align:left">Name of the XSD file that will be used to validate the XML file before
+        the conversion. In the current version, only one XSD can be used per XML
+        entry.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -273,14 +297,14 @@ Information about the input file to convert and the output files generated.
         <p>optional</p>
       </td>
       <td style="text-align:left">
-        <p>Define the names of the output file that need to be kept after a conversion.</p>
-        <p>During a XML to CSV conversion, if the xml file contains of lot of child
-          entities, the conversion will create a lot of files (one for each entity
-          in fact). This filter allows to prevent unnecessary file upload on the
-          output bucket. It works by finding an occurence of the string in the filename.
-          For example if after a conversion a file named &quot;coupon_20210404_advantage.tsv&quot;
-          is generated and the filter advantage.tsv is added, then this file will
-          be kept.</p>
+        <p>Names of the output files that need to be kept after the conversion.</p>
+        <p>If the XML file contains many child entities, the conversion will create
+          a lot of CSV files (one for each entity). This filter allows you to prevent
+          unnecessary file upload to the output bucket.</p>
+        <p>It works by finding an occurrence of the string in the filename. For example,
+          if after a conversion a file named &quot;coupon_20210404_advantage.tsv&quot;
+          is generated and the filter &quot;advantage.tsv&quot; is added, then this
+          file will be kept.</p>
       </td>
     </tr>
   </tbody>
