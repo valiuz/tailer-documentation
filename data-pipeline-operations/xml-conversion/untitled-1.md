@@ -285,9 +285,14 @@ Information about the input file to convert and the output files generated.
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left">Name of the XSD file that will be used to validate the XML file before
-        the conversion. In the current version, only one XSD can be used per XML
-        entry.</td>
+      <td style="text-align:left">
+        <p>Name of the XSD file that will be used to validate the XML file before
+          the conversion.</p>
+        <p>In the current version, only one XSD can be used per XML entry.
+          <br />The XSD file name <b>must be identical</b> to the corresponding XML file
+          name, excluding suffixes. For example &quot;coupon.xsd&quot; can be used
+          to validate &quot;coupon_20210404.xml&quot;.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
