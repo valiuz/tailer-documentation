@@ -37,10 +37,10 @@
 * [Orchestrate processings with Workflow](data-pipeline-operations/orchestrate-processings-with-workflow/README.md)
   * [Execute code processings with VM Launcher](data-pipeline-operations/orchestrate-processings-with-workflow/execute-code-processings-with-vm-launcher.md)
   * [Workflow configuration file](data-pipeline-operations/orchestrate-processings-with-workflow/workflow-configuration-file.md)
-* [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
-  * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 * [Convert XML to CSV](data-pipeline-operations/xml-conversion/README.md)
   * [Convert XML to CSV configuration file](data-pipeline-operations/xml-conversion/untitled-1.md)
+* [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
+  * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 
 ## Tailer Studio
 
