@@ -23,6 +23,8 @@
 ## Data Pipeline Operations
 
 * [Overview](data-pipeline-operations/untitled.md)
+* [Set constants with Context](data-pipeline-operations/set-constants-with-context/README.md)
+  * [Context configuration file](data-pipeline-operations/set-constants-with-context/context-configuration-file.md)
 * [Move files with Storage to Storage](data-pipeline-operations/move-files-with-storage-to-storage/README.md)
   * [Storage to Storage configuration file](data-pipeline-operations/move-files-with-storage-to-storage/storage-to-storage-configuration-file.md)
 * [Load data with Storage to Tables](data-pipeline-operations/load-data-with-storage-to-tables/README.md)
@@ -35,10 +37,13 @@
   * [Table to Storage configuration file](data-pipeline-operations/export-data-with-tables-to-storage/table-to-storage-configuration-file.md)
   * [Table to Storage SQL file](data-pipeline-operations/export-data-with-tables-to-storage/table-to-storage-sql-file.md)
 * [Orchestrate processings with Workflow](data-pipeline-operations/orchestrate-processings-with-workflow/README.md)
-  * [Execute code processings with VM Launcher](data-pipeline-operations/orchestrate-processings-with-workflow/execute-code-processings-with-vm-launcher.md)
   * [Workflow configuration file](data-pipeline-operations/orchestrate-processings-with-workflow/workflow-configuration-file.md)
 * [Convert XML to CSV](data-pipeline-operations/xml-conversion/README.md)
   * [Convert XML to CSV configuration file](data-pipeline-operations/xml-conversion/untitled-1.md)
+* [Use advanced features with VM Launcher](data-pipeline-operations/execute-code-processings-with-vm-launcher/README.md)
+  * [VM Launcher code processing configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-code-processing-configuration-file.md)
+  * [VM Launcher data encryption configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-encryption-configuration-file.md)
+  * [VM Launcher data decryption configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-decryption-configuration-file.md)
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 
