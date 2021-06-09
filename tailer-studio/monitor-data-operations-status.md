@@ -34,7 +34,7 @@ Each execution of a data operation can have the following status:
 
 To display/edit the status of a data operation/execution:
 
-1. Log in to [Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601469338939.1601472992239.17&__hssc=57968821.2.1601472992239&__hsfp=649433320).
+1. Log in to [Tailer Studio](http://studio.tailer.ai/).
 2. In the left navigation panel, in the **Data pipeline** section, select the [type of your data operation](../data-pipeline-operations/untitled.md#types-of-data-pipeline-operations), \(for example, **Storage to Storage**\).
 3. In the right panel, access the **Configurations** tab for data operations or the **Runs** tab for executions.
 4. The list of all the deployed data operations/executions displays. You can see their status in the corresponding row. If necessary, click the status to edit it.

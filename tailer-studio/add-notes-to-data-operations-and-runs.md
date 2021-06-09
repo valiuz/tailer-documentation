@@ -12,7 +12,7 @@ Jarvis Studio allows users to add notes about data operations or runs, and to re
 
 To view the notes for a data operation/run:
 
-1. Log in to [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601472992239.1601476688274.18&__hssc=57968821.4.1601476688274&__hsfp=649433320).
+1. Log in to [Tailer Studio](http://studio.tailer.ai/).
 2. If necessary, select an account in the drop-down menu at the top of the screen.
 3. In the left navigation panel, in the **Data workflows** section, select the [type of your data operation](../data-pipeline-operations/untitled.md#types-of-data-pipeline-operations), \(for example, **Storage to Storage**\).
 4. In the right panel, access the **Configurations** tab for data operations or the **Runs** tab for executions.

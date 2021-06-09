@@ -21,7 +21,7 @@ When launching a data operation, you can decide of the time and date when you wa
 
 To execute a data operation manually:
 
-1. Log in to [Tailer Studio](https://jarvis-platform.io/sign-in?redirect=%2F&__hstc=57968821.199e85015347f5cf00c120e5932c4c81.1601276395705.1601469338939.1601472992239.17&__hssc=57968821.4.1601472992239&__hsfp=649433320).
+1. Log in to [Tailer Studio](http://studio.tailer.ai/).
 2. In the left navigation panel, in the **Data workflows** section, select the [type of your data operation](../data-pipeline-operations/untitled.md#types-of-data-pipeline-operations), \(for example, **Tables to Tables**\).
 3. In the right panel, access the **Configurations** tab.
 4. Click the **Configuration id** link corresponding to the data operation of your choice.
