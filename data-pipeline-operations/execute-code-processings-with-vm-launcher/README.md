@@ -8,10 +8,10 @@ description: >-
 
 ##  💡 What is VM Launcher?
 
-A VM Launcher \(VML\) data operation allows you to launch and stop a GCP virtual machine automatically in order to perform one of the following actions:
+A VM Launcher \(VML\) data operation allows you to launch and stop a Google Cloud Platform virtual machine automatically in order to perform one of the following actions:
 
 * Execute a program in the language of your choice \(Python, R, JavaScript, etc.\)
-* Encrypt data using PGP
+* Encrypt data using PGP \(Pretty Good Privacy\)
 * Decrypt data using PGP
 * Other actions
 
