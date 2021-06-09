@@ -6,9 +6,7 @@ description: Learn how to set constants with the Context data operation.
 
 ## 💡What is Context?
 
-A Context data operation allows you to set constants that you will be able to use in other data operations.
-
-Constants are objects which act as placeholders to a memory location where their value is stored.
+Before getting started with the creation of your data pipeline operations, you can first set constants using a Context data operation. Constants are objects which act as placeholders. Their value is stored through a Context data operation, and can be called in all your subsequent data operations.
 
 ## ✅ Supported data operations
 
