@@ -234,9 +234,13 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left">Virtual CPU (vCPU) count.
-        <br />It is recommended to leave the default parameter, as this should allow
-        sufficient performance to run a standard script.</td>
+      <td style="text-align:left">
+        <p>Virtual CPU (vCPU) count.
+          <br />It is recommended to leave the default parameter, as this should allow
+          sufficient performance to run a standard script.</p>
+        <p></p>
+        <p>Default value: 2</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -249,6 +253,8 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p>System memory size (in GB).</p>
         <p>It is recommended to leave the default parameter, as this should allow
           sufficient performance to run a standard script.</p>
+        <p></p>
+        <p>Default value: 4</p>
       </td>
     </tr>
     <tr>
@@ -262,6 +268,8 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p>Persistent disk size (in GB).</p>
         <p>It is recommended to leave the default parameter, as this should provide
           enough space to store the data to process.</p>
+        <p></p>
+        <p>Default value: 20</p>
       </td>
     </tr>
   </tbody>
