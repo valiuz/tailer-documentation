@@ -43,7 +43,7 @@
 * [Use advanced features with VM Launcher](data-pipeline-operations/execute-code-processings-with-vm-launcher/README.md)
   * [VM Launcher configuration file for code processing](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-code-processing-configuration-file.md)
   * [VM Launcher configuration file for data encryption](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-encryption-configuration-file.md)
-  * [VM Launcher data decryption configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-decryption-configuration-file.md)
+  * [VM Launcher configuration file for data decryption](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-decryption-configuration-file.md)
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 
