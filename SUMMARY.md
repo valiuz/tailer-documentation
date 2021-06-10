@@ -41,7 +41,7 @@
 * [Convert XML to CSV](data-pipeline-operations/xml-conversion/README.md)
   * [Convert XML to CSV configuration file](data-pipeline-operations/xml-conversion/untitled-1.md)
 * [Use advanced features with VM Launcher](data-pipeline-operations/execute-code-processings-with-vm-launcher/README.md)
-  * [VM Launcher code processing configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-code-processing-configuration-file.md)
+  * [VM Launcher configuration file for code processing](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-code-processing-configuration-file.md)
   * [VM Launcher data encryption configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-encryption-configuration-file.md)
   * [VM Launcher data decryption configuration file](data-pipeline-operations/execute-code-processings-with-vm-launcher/vm-launcher-data-decryption-configuration-file.md)
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
