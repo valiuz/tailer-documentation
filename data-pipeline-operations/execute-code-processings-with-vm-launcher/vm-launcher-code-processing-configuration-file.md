@@ -9,7 +9,7 @@ description: >-
 The configuration file is in JSON format. It contains the following sections:
 
 * Global parameters: General information about the data operation.
-* Working directory parameters: Information related to the working directory containing the script.
+* Script parameters: Information about the script location and instructions to execute on the VM.
 * VM parameters: Information related to the VM where to execute the script.
 
 ## 👁🗨 Example
@@ -28,15 +28,6 @@ Here is an example of VM Launcher configuration file for code processing:
     "gcp_project_id": "fd-io-sct-jules",
     "gcs_bucket": "fd-io-sct-jules-s-critizr-in",
     "gcs_working_directory": "/",
-    "script_to_execute": [
-        "mkdir -p input_DEV",
-        "cd ./input_DEV && python3 critizr_API_JUL.py"
-    ],
-    "vm_delete": true,
-    "vm_core_number": "2",
-    "vm_memory_amount": "4",
-    "vm_disk_size": "20",
-    "vm_compute_zone": "europe-west1-b",
     "credentials": {
         "gcp-credentials.json": {
             "content": {
@@ -47,6 +38,15 @@ Here is an example of VM Launcher configuration file for code processing:
             }
         }
     }
+    "script_to_execute": [
+        "mkdir -p input_DEV",
+        "cd ./input_DEV && python3 critizr_API_JUL.py"
+    ],
+    "vm_delete": true,
+    "vm_core_number": "2",
+    "vm_memory_amount": "4",
+    "vm_disk_size": "20",
+    "vm_compute_zone": "europe-west1-b",
 }
 ```
 
@@ -143,9 +143,9 @@ Here is an example of VM Launcher configuration file for code processing:
   </tbody>
 </table>
 
-## 💼 Working directory parameters
+## ✍ Script parameters
 
-Information related to the working directory containing the script in Google Cloud Storage.
+Information about the script location and instructions to execute it.
 
 <table>
   <thead>
@@ -194,6 +194,15 @@ Information related to the working directory containing the script in Google Clo
         <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
           To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>script_to_execute</b>
+        </p>
+        <p>type: array</p>
+        <p>mandatory</p>
+      </td>
+      <td style="text-align:left">List of Unix commands to be executed (similar to a Bash script).</td>
     </tr>
   </tbody>
 </table>
