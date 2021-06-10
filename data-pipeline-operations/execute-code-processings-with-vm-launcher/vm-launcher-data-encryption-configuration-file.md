@@ -10,7 +10,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 * Global parameters: General information about the data operation.
 * Working directory parameters: Information about the input/output directories.
-* Credential parameters.
+* Credential parameters: Information about the credentials for the input/output buckets and the PGP public key.
 
 ## 👁🗨 Example
 
