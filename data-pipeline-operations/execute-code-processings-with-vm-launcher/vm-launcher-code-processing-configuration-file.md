@@ -202,7 +202,8 @@ Information about the script location and instructions to execute it.
         <p>type: array</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left">List of Unix commands to be executed (similar to a Bash script).</td>
+      <td style="text-align:left">List of Unix commands to be executed (similar to a Bash script) on the
+        VM.</td>
     </tr>
   </tbody>
 </table>
