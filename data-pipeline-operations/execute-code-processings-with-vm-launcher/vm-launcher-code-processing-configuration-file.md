@@ -200,7 +200,7 @@ Information related to the working directory containing the script in Google Clo
 
 ## 💻 VM parameters
 
-Information related to the Google Cloud Platform VM where the script will be executed.
+Information related to the Google Cloud Compute Engine VM where the script will be executed.
 
 <table>
   <thead>
@@ -217,7 +217,15 @@ Information related to the Google Cloud Platform VM where the script will be exe
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>If set to &quot;true&quot;, this parameter will force the deletion of
+          the VM at the end of the data operation. Running Compute Engine VMs will
+          incur extra costs, so it is recommended to leave this parameter on &quot;true&quot;.
+          <br
+          />
+        </p>
+        <p>Default value: true</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -226,7 +234,9 @@ Information related to the Google Cloud Platform VM where the script will be exe
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">Virtual CPU (vCPU) count.
+        <br />It is recommended to leave the default parameter, as this should allow
+        sufficient performance to run a standard script.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -235,7 +245,11 @@ Information related to the Google Cloud Platform VM where the script will be exe
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>System memory size (in GB).</p>
+        <p>It is recommended to leave the default parameter, as this should allow
+          sufficient performance to run a standard script.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -244,7 +258,11 @@ Information related to the Google Cloud Platform VM where the script will be exe
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>Persistent disk size (in GB).</p>
+        <p>It is recommended to leave the default parameter, as this should provide
+          enough space to store the data to process.</p>
+      </td>
     </tr>
   </tbody>
 </table>
