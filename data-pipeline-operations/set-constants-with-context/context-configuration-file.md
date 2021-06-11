@@ -114,6 +114,7 @@ Here is an example of Context configuration file:
 
 General information about the data operation.
 
+* 
 <table>
   <thead>
     <tr>
@@ -146,13 +147,7 @@ General information about the data operation.
         <p>You can pick any name you want, but is has to be <b>unique</b> for this
           data operation type.</p>
         <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one. To guarantee its uniqueness, the best practice
-          is to name your data operation by concatenating:</p>
-        <ul>
-          <li>your account ID,</li>
-          <li>the source bucket name,</li>
-          <li>and the source directory name.</li>
-        </ul>
+          overwrite the previous one.</p>
       </td>
     </tr>
     <tr>
@@ -235,7 +230,8 @@ Information related to the constants to set.
         <p>type: string</p>
         <p>mandatory</p>
       </td>
-      <td style="text-align:left">Value of the constant.</td>
+      <td style="text-align:left">Value that will be used to replace the placeholder in data operation configuration
+        files.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -245,11 +241,14 @@ Information related to the constants to set.
         <p>mandatory</p>
       </td>
       <td style="text-align:left">
-        <p>Possible values:</p>
-        <p>integer
-          <br />string
-          <br />float
-          <br />object</p>
+        <p>Type of constant.
+          <br />Possible values:</p>
+        <ul>
+          <li>integer</li>
+          <li>string</li>
+          <li>float</li>
+          <li>object</li>
+        </ul>
       </td>
     </tr>
     <tr>
@@ -260,11 +259,14 @@ Information related to the constants to set.
         <p>mandatory</p>
       </td>
       <td style="text-align:left">
+        <p>Type of resource.</p>
         <p>Possible values:</p>
-        <p>value
-          <br />gcp_project_id
-          <br />gcs_bucket
-          <br />gcp_credentials_secret</p>
+        <ul>
+          <li>value</li>
+          <li>gcp_project_id</li>
+          <li>gcs_bucket</li>
+          <li>gcp_credentials_secret</li>
+        </ul>
       </td>
     </tr>
     <tr>
