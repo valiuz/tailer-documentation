@@ -20,7 +20,7 @@ Every time the VM Launcher data operation is launched:
 
 PGP is a protocol used for encrypting, decrypting and signing messages or files using a key pair. Every PGP user has both a public and private key. A public key is the key that other people use to encrypt a message that only you can open. A private key is the key that allows you to decrypt the messages sent to you based on your public key. A public key can be shared, but a private key should never be shared.
 
-![](../../../.gitbook/assets/public-key-encryption_bw.png)
+![](../../../.gitbook/assets/private_public_key_perso2.png)
 
 ## \*\*\*\*📋 **How to deploy a** VM Launcher **data operation for data encryption/decryption**
 
