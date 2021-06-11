@@ -12,6 +12,10 @@ Before getting started with the creation of your data pipeline operations, you c
 
 All data operations can contain the constants set with Context.
 
+{% hint style="warning" %}
+For  STS, STT, TTT and TTS data operations, you will need to add`"version" : "2"`in the JSON configuration file to be able to use constants.
+{% endhint %}
+
 ## ⚙️ How it works
 
 You set a constant as follows through a Context data operation:
@@ -49,9 +53,5 @@ Once you have deployed your Context data operation, you can start using the cons
    ```
 
 6. Log in to [Tailer Studio](http://studio.tailer.ai/) to check the status and details of your data operation.
-7. You can now use your constants in other data operation configurations files using the `{% myConstant %}` syntax.
-
-{% hint style="warning" %}
-For  STS, STT, TTT and TTS data operations, you need to add`"version" : "2"`to the JSON configuration file be able to use Context constants.
-{% endhint %}
+7. You can now use your constants in other data operation configurations files using the `{% myConstant %}` syntax. Dont forget to add `"version" : "2"` for STS, STT, TTT and TTS data operations.
 
