@@ -10,19 +10,17 @@ The VM Launcher data operation allows you to start a Google Compute Engine VM wh
 
 ## ⚙ How **it** works
 
-### Pretty Good Privacy \(PGP\)
-
-PGP is a protocol used for encrypting, decrypting and signing messages or files using a key pair. Every PGP user has both a public and private key. A public key is the key that other people use to encrypt a message that only you can open. A private key is the key that allows you to decrypt the messages sent to you based on your public key. A public key can be shared, but a private key should never be shared.
-
-![](../../../.gitbook/assets/public-key-encryption_bw.png)
-
-### VM Launcher
-
 Every time the VM Launcher data operation is launched:
 
 * A VM with the specified characteristics is started on GCE.
 * The files placed in the bucket are either encrypted or decrypted using PGP.
 * Once the execution is complete, the VM is stopped automatically.
+
+## Pretty Good Privacy \(PGP\)
+
+PGP is a protocol used for encrypting, decrypting and signing messages or files using a key pair. Every PGP user has both a public and private key. A public key is the key that other people use to encrypt a message that only you can open. A private key is the key that allows you to decrypt the messages sent to you based on your public key. A public key can be shared, but a private key should never be shared.
+
+![](../../../.gitbook/assets/public-key-encryption_bw.png)
 
 ## \*\*\*\*📋 **How to deploy a** VM Launcher **data operation for data encryption/decryption**
 
