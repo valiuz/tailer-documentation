@@ -6,9 +6,17 @@ description: Learn how to use a VM Launcher data operation to encrypt and decryp
 
 ## 💡 What is the VM Launcher data operation for data encryption/decryption?
 
-The VM Launcher data operation allows you to start a Google Compute Engine VM where you can encrypt and decrypt data using PGP \(Pretty Good Privacy\), and then to stop the VM automatically to save resources.
+The VM Launcher data operation allows you to start a Google Compute Engine VM where you can encrypt and decrypt data using Pretty Good Privacy \(PGP\), and then to stop the VM automatically to save resources. PGP is a popular solution providing cryptographic privacy and authentication for data communication.
 
-## ⚙ How it works
+## ⚙ How **it** works
+
+### Pretty Good Privacy \(PGP\)
+
+PGP is a protocol used for encrypting, decrypting and signing messages or files using a key pair. Every PGP user has both a public and private key. A public key is the key that other people use to encrypt a message that only you can open. A private key is the key that allows you to decrypt the messages sent to you based on your public key. A public key can be shared, but a private key should never be shared.
+
+![](../../../.gitbook/assets/public-key-encryption.png)
+
+### VM Launcher
 
 Every time a script file appears in a given directory of a Google Cloud Storage bucket:
 

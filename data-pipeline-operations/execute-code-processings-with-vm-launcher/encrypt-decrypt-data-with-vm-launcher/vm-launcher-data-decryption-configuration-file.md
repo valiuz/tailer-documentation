@@ -167,7 +167,7 @@ Here is an example of VM Launcher configuration file for data decryption:
       </td>
       <td style="text-align:left">
         <p>PGP mode.</p>
-        <p>For data encryption, the value is always &quot;ENCRYPT&quot;.</p>
+        <p>For data decryption, the value is always &quot;DECRYPT&quot;.</p>
       </td>
     </tr>
   </tbody>
