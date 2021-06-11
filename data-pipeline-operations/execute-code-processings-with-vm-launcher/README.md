@@ -6,10 +6,10 @@ description: >-
 
 # Use advanced features with VM Launcher
 
-A VM Launcher \(VML\) data operation allows you to launch and stop a Google Cloud Platform virtual machine automatically in order to perform one of the following actions:
+A VM Launcher \(VML\) data operation allows you to launch a Google Compute Engine virtual machine \(VM\), use the VM to perform one of the following actions, and then stop the VM automatically.
 
-* Execute a program in the language of your choice \(Python, R, JavaScript, etc.\)
-* Encrypt and decrypt data using PGP \(Pretty Good Privacy\)
+* [Execute a program](process-code-with-vm-launcher/) in the language of your choice \(Python, R, JavaScript, etc.\)
+* [Encrypt and decrypt data](encrypt-decrypt-data-with-vm-launcher/) using PGP \(Pretty Good Privacy\)
 
 
 
