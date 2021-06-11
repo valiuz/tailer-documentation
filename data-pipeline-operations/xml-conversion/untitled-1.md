@@ -9,8 +9,8 @@ description: >-
 The configuration file is in JSON format. It contains the following sections:
 
 * [Global parameters](untitled-1.md#global-parameters): General information about the data operation.
-* [Working folder parameters](untitled-1.md#working-folder-parameters): Information related to the input/output folder for the files.
-* [Conversion parameters](untitled-1.md#conversion-parameters): Information about the input file to convert and the output files generated.
+* [Working folder parameters](untitled-1.md#working-folder-parameters): Information related to the working folder for the files.
+* [Conversion parameters](untitled-1.md#conversion-parameters): Information about the input file to process and the output files generated.
 
 ## 👁🗨 Example
 
@@ -195,7 +195,7 @@ Information related to the input/output working directory in Google Cloud Storag
         <p>mandatory</p>
       </td>
       <td style="text-align:left">
-        <p>Encrypted credentials needed to read/move data from the source bucket.</p>
+        <p>Encrypted credentials needed to read and write data in the GCS bucket.</p>
         <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
           To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
       </td>
@@ -205,7 +205,7 @@ Information related to the input/output working directory in Google Cloud Storag
 
 ## 💱 Conversion parameters
 
-Information about the input file to convert and the output files generated.
+Information about the input file to process and the output files generated.
 
 <table>
   <thead>
@@ -293,14 +293,14 @@ Information about the input file to convert and the output files generated.
         <p>optional</p>
       </td>
       <td style="text-align:left">
-        <p>Names of the output files that need to be kept after the conversion.</p>
+        <p>Names of the output files to be kept after the conversion.</p>
         <p>If the XML file contains many child entities, the conversion will create
           a lot of CSV files (one for each entity). This filter allows you to prevent
           unnecessary file upload to the output bucket.</p>
         <p>It works by finding an occurrence of the string in the filename. For example,
-          if after a conversion a file named &quot;coupon_20210404_advantage.tsv&quot;
-          is generated and the filter &quot;advantage.tsv&quot; is added, then this
-          file will be kept.</p>
+          if a file named &quot;coupon_20210404_advantage.tsv&quot; is generated
+          and the filter &quot;advantage.tsv&quot; was added, then this file will
+          be kept.</p>
       </td>
     </tr>
   </tbody>
