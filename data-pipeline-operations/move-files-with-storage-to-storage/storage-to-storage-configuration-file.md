@@ -161,9 +161,24 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
           <br />The following placeholders are currently supported:</p>
         <ul>
           <li>&quot;FD_DATE&quot; looks for an 8-digit date (e.g. &quot;20191015&quot;).</li>
+          <li>&quot;FD_DATE_YEAR_4&quot; looks for 4-digit year (e.g &quot;2021&quot;).</li>
+          <li>&quot;FD_DATE_YEAR_2&quot; looks for 2-digit year (e.g &quot;21&quot;).</li>
+          <li>&quot;FD_DATE_MONTH&quot; looks for 2-digit month (e.g &quot;05&quot;).</li>
+          <li>&quot;FD_DATE_DAY&quot; looks for 2-digit day (e.g &quot;12&quot;).</li>
           <li>&quot;FD_TIME&quot; looks for a 6-digit time (e.g. &quot;124213&quot;).</li>
           <li>&quot;FD_BLOB_XYZ&quot;, where XYZ is a non-zero positive integer, looks
             for a string of characters of XYZ length.</li>
+        </ul>
+        <p><b>Information:</b>
+        </p>
+        <ul>
+          <li>if &quot;FD_DATE&quot; is specified, it will have priority upon &quot;FD_DATE_YEAR_X&quot;.</li>
+          <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified,
+            the final date will be concatenated with &quot;FD_DATE_MONTH&quot; and
+            &quot;FD_DATE_DAY&quot;.</li>
+          <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified
+            only &quot;FD_DATE_MONTH&quot; and &quot;FD_DATE_DAY&quot; will be set
+            to &quot;01&quot;.</li>
         </ul>
         <p><b>Example 1</b>
         </p>

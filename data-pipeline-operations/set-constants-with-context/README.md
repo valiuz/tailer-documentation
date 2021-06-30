@@ -8,6 +8,8 @@ description: Learn how to set constants with the Context data operation.
 
 Before getting started with the creation of your data pipeline operations, you can first set constants using a Context data operation. Constants are objects which act as placeholders. Their value is stored through a Context data operation, and can be called in all your subsequent data operations.
 
+Constants can be used for example to replace GCP credential parameters, so they can remain confidential, GCS bucket names, account numbers, etc.
+
 ## ✅ Supported data operations
 
 All data operations can contain the constants set with Context.
