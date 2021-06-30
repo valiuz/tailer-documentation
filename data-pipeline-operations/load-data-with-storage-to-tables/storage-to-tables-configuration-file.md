@@ -659,6 +659,7 @@ The "table" object contains the definition of expected input files and their Big
           <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified,
             the final date will be concatenated with &quot;FD_DATE_MONTH&quot; and
             &quot;FD_DATE_DAY&quot;.</li>
+          <li>if &quot;FD_DATE_YEAR_2&quot; is specified, it will be prefixed by &quot;20&quot;.</li>
           <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified
             only &quot;FD_DATE_MONTH&quot; and &quot;FD_DATE_DAY&quot; will be set
             to &quot;01&quot;.</li>
