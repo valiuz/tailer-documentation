@@ -19,6 +19,7 @@ A Workflow data operation is used to specify one or several data operation IDs t
   "account": "000099",
   "activated": true,
   "archived": false,
+  "gcp_project_id": "fd-io-jarvis-demo-dlk",
   "authorized_job_ids": ["gbq-to-gbq|000099-build-iowa-liquor-model_DEV"],
   "target_dag": "table-to-storage",
   "extra_parameters": {
@@ -93,6 +94,16 @@ A Workflow data operation is used to specify one or several data operation IDs t
       </td>
       <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer&#xA0;Platform
         administrator.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>gcp_project</b>
+        </p>
+        <p>type: string</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">ID of the Google Cloud project containing the BigQuery instance to be
+        triggered.</td>
     </tr>
     <tr>
       <td style="text-align:left">
