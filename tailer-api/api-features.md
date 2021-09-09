@@ -286,7 +286,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 As a result, you get a response \(OK, or KO\) in the following format: 
 
 ```bash
-{"message":"ok"}
+{"code":200,"data":{},"message":"ok"}
 ```
 
 ## ⏹ Disabling a data operation
