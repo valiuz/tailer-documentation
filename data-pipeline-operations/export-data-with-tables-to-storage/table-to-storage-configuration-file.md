@@ -28,6 +28,7 @@ Here is an example of TTS configuration file:
   "gcs_dest_prefix": "jultest_table_to_storage/",
   "gcp_project": "fd-tailer-datalake",
   "field_delimiter": "|",
+  "print_header": true,
   "sql_file": "jul_test.sql",
   "compression": "None",
   "output_filename": "{{DATE}}_some_file_name.csv",
@@ -195,6 +196,19 @@ General information about the data operation.
         <p>Separator for fields in the CSV output file, e.g. &quot;;&quot;.</p>
         <p><b>Note</b>: For Tab separator, set to &quot;\t&quot;.</p>
         <p>Default value: &quot;|&quot;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>print_header</b>
+        </p>
+        <p>type: boolean</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>Print a header row in the exported data.</p>
+        <p>&lt;b&gt;&lt;/b&gt;</p>
+        <p>Default value: true</p>
       </td>
     </tr>
     <tr>
