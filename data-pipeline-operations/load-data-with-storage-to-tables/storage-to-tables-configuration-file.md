@@ -24,6 +24,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
   "account": "000099",
   "activated": true,
   "archived": false,
+  "max_active_runs" : 5,
   "short_description": "This Job load sales files sended by IT into the Orsay PSA",
   "doc_md": "Load_sales_files_from_it.md",
   "source": {
@@ -167,6 +168,18 @@ General information about the data operation
         configuration and runs in Tailer&#xA0;Studio.
         <br />
         <br />If not specified, the default value will be &quot;false&quot;.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>max_active_runs</b>
+        </p>
+        <p>type: integer</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>This parameter limits the number of concurrent runs for this data operation.</p>
+        <p>If not set, the default value is 1.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
