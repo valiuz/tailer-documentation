@@ -70,6 +70,6 @@
 
 ---
 
-* [Tailer SDK Stable Releases](https://pypi.org/project/jarvis-sdk/)
+* [Tailer SDK Stable Releases](https://pypi.org/project/tailer-sdk/)
 * [Tailer Beta Releases](tailer-beta-releases.md)
 
