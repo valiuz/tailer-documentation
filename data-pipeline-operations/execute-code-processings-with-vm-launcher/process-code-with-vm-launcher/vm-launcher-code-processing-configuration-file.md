@@ -47,6 +47,8 @@ Here is an example of VM Launcher configuration file for code processing:
     "vm_memory_amount": "4",
     "vm_disk_size": "20",
     "vm_compute_zone": "europe-west1-b",
+    "vm_custom_os_image_family": "ubuntu-2004-lts",
+    "vm_custom_os_image_project: "ubuntu-os-cloud"
 }
 ```
 
@@ -225,7 +227,7 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p><b>vm_delete</b>
         </p>
         <p>type: string</p>
-        <p>mandatory</p>
+        <p>optional</p>
       </td>
       <td style="text-align:left">
         <p>If set to &quot;true&quot;, this parameter will force the deletion of
@@ -242,7 +244,7 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p><b>vm_core_number</b>
         </p>
         <p>type: string</p>
-        <p>mandatory</p>
+        <p>optional</p>
       </td>
       <td style="text-align:left">
         <p>Virtual CPU (vCPU) count.
@@ -257,7 +259,7 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p><b>vm_memory_amount</b>
         </p>
         <p>type: string</p>
-        <p>mandatory</p>
+        <p>optional</p>
       </td>
       <td style="text-align:left">
         <p>System memory size (in GB).</p>
@@ -272,7 +274,7 @@ Information related to the Google Cloud Compute Engine VM where the script will 
         <p><b>vm_disk_size</b>
         </p>
         <p>type: string</p>
-        <p>mandatory</p>
+        <p>optional</p>
       </td>
       <td style="text-align:left">
         <p>Persistent disk size (in GB).</p>
@@ -280,6 +282,38 @@ Information related to the Google Cloud Compute Engine VM where the script will 
           enough space to store the data to process.</p>
         <p></p>
         <p>Default value: 20</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>vm_custom_os_image_family</b>
+        </p>
+        <p>type: string</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>Image family of the custom image.</p>
+        <p></p>
+        <p>Note that for the time being, custom OS images MUST be based on a Ubuntu
+          20.04 LTS.</p>
+        <p></p>
+        <p>Default value: ubuntu-2004-lts</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>vm_custom_os_image_project</b>
+        </p>
+        <p>type: string</p>
+        <p>optional</p>
+      </td>
+      <td style="text-align:left">
+        <p>GCP Project hosting the custom image.</p>
+        <p></p>
+        <p>Note that this parameter is mandatory if <b>vm_custom_os_image_family</b> is
+          set.</p>
+        <p>&lt;b&gt;&lt;/b&gt;</p>
+        <p>Default value: ubuntu-os-cloud</p>
       </td>
     </tr>
   </tbody>
