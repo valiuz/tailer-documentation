@@ -37,7 +37,7 @@ Here is an example of VM Launcher configuration file for code processing:
                 "enc_session_key": ""
             }
         }
-    }
+    },
     "script_to_execute": [
         "mkdir -p input_DEV",
         "cd ./input_DEV && python3 critizr_API_JUL.py"
@@ -48,7 +48,7 @@ Here is an example of VM Launcher configuration file for code processing:
     "vm_disk_size": "20",
     "vm_compute_zone": "europe-west1-b",
     "vm_custom_os_image_family": "ubuntu-2004-lts",
-    "vm_custom_os_image_project: "ubuntu-os-cloud"
+    "vm_custom_os_image_project": "ubuntu-os-cloud"
 }
 ```
 
