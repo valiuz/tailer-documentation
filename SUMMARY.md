@@ -9,7 +9,7 @@
 * [Set up Google Cloud Platform](getting-started/set-up-google-cloud-platform.md)
 * [Encrypt your credentials](getting-started/encrypt-your-credentials.md)
 
-## \[Tutorial\] Create a first data pipeline
+## \[Tutorial] Create a first data pipeline
 
 * [Introduction](tutorial-create-a-first-data-pipeline/introduction.md)
 * [Prepare the demonstration environment](tutorial-create-a-first-data-pipeline/prepare-the-demonstration-environment.md)
@@ -30,6 +30,9 @@
 * [Load data with Storage to Tables](data-pipeline-operations/load-data-with-storage-to-tables/README.md)
   * [Storage to Tables configuration file](data-pipeline-operations/load-data-with-storage-to-tables/storage-to-tables-configuration-file.md)
   * [Storage to Tables DDL files](data-pipeline-operations/load-data-with-storage-to-tables/storage-to-tables-ddl-files.md)
+* [Stream incoming data with API To Storage](data-pipeline-operations/stream-incoming-data-with-api-to-storage/README.md)
+  * [API To Storage configuration file](data-pipeline-operations/stream-incoming-data-with-api-to-storage/api-to-storage-configuration-file.md)
+  * [API To Storage usage examples](data-pipeline-operations/stream-incoming-data-with-api-to-storage/api-to-storage-usage-examples.md)
 * [Transform data with Tables to Tables](data-pipeline-operations/transform-data-with-tables-to-tables/README.md)
   * [Tables to Tables configuration file](data-pipeline-operations/transform-data-with-tables-to-tables/tables-to-tables-configuration-file.md)
   * [Table to Table SQL and DDL files](data-pipeline-operations/transform-data-with-tables-to-tables/table-to-table-sql-and-ddl-files.md)
@@ -68,8 +71,7 @@
 
 ## Release Notes
 
----
+***
 
 * [Tailer SDK Stable Releases](https://pypi.org/project/tailer-sdk/)
 * [Tailer Beta Releases](tailer-beta-releases.md)
-
