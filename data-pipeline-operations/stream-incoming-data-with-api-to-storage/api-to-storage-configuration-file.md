@@ -23,7 +23,8 @@ Here is an example of ATS configuration file exposing a Pub/Sub endpoint and an 
   "source": {
     "type": "pubsub",
     "gcp_project_id": "fd-io-jarvis-demo-dlk",
-    "pubsub_topic_suffix": "example-products"
+    "pubsub_topic_suffix": "example-products",
+    "protocol_buffers_file": "000099-ats-example-products.proto"
   },
   "destinations": [
     {
@@ -67,15 +68,56 @@ The destination section contains all information related to the data source prov
 "source": {
     "type": "pubsub",
     "gcp_project_id": "fd-io-jarvis-demo-dlk",
-    "pubsub_topic_suffix": "example-products"
+    "pubsub_topic_suffix": "example-products",
+    "protocol_buffers_file": "000099-ats-example-products.proto"
   }
 ```
 
-| Parameter                                                                      | Description                                                                                                                                                                              |
-| ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                | <p>Source type.</p><p>The only supported source type for now is "pubsub".</p>                                                                                                            |
-| <p><strong>gcp_project_id</strong></p><p>type: string</p><p>mandatory</p>      | <p>Specify the Google Cloud Platform project where to deploy the data operation and its associated cloud functions.</p><p>If not set, the user will be prompted to choose a project.</p> |
-| <p><strong>pubsub_topic_suffix</strong></p><p>type: string</p><p>mandatory</p> | Name of the Pub/Sub topic that will be created.                                                                                                                                          |
+| Parameter                                                                       | Description                                                                                                                                                                                                  |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                 | <p>Source type.</p><p>The only supported source type for now is "pubsub".</p>                                                                                                                                |
+| <p><strong>gcp_project_id</strong></p><p>type: string</p><p>mandatory</p>       | <p>Specify the Google Cloud Platform project where to deploy the data operation and its associated cloud functions.</p><p>If not set, the user will be prompted to choose a project.</p>                     |
+| <p><strong>pubsub_topic_suffix</strong></p><p>type: string</p><p>mandatory</p>  | Name of the Pub/Sub topic that will be created.                                                                                                                                                              |
+| <p><strong>protocol_buffers_file</strong></p><p>type: string</p><p>optional</p> | <p>Filename pointing to a Protocol Buffers 2 file.</p><p></p><p>If specified, all incoming data streamed through the topic will be checked against the definition included in the Protocol Buffers file.</p> |
+
+
+
+### Protocol Buffers File syntax
+
+Pub/Sub allow to verify an incoming payload using a Protocol Buffers definition.
+
+Protocol Buffers (proto2) langage guide : [https://developers.google.com/protocol-buffers/docs/proto?hl=fr](https://developers.google.com/protocol-buffers/docs/proto?hl=fr)
+
+The definition should be defined as follow. Note that the message "Item" is where you must customize your payload schema.
+
+Let's use the following example where the attribute "new\_item" is optional:
+
+```
+{
+    "product_id": "66668888",
+    "label": "Some label XYZ",
+    "description": "A specific description for product 66668888",
+    "new_item": "some data"
+}
+```
+
+The corresponding Protocol Buffers definition should be like this:
+
+```
+syntax = "proto2";
+
+message GlobalMessage {
+
+  message Item {
+    required string product_id = 1;
+    required string label = 2;
+    required string description = 3;
+    optional string new_item = 4;
+  }
+
+  repeated Item input_data = 1;
+}
+```
 
 ## Destination parameters
 
