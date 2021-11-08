@@ -25,3 +25,10 @@ description: >-
     ```
 6. Log in to [Tailer Studio](https://studio.tailer.ai) to check the status and details of your data operation.
 7. Access your output table(s), and archive folder, if any, to check the result of the data operation.
+
+{% hint style="danger" %}
+The incoming data, a base64 encoded JSON payload, MUST follow the following rules:
+
+* attributes names must be written in Camel or Snake case, i.e : shortDescription or short\_description
+* the source attribute must be names "input\_data" and should be of type "array"
+{% endhint %}

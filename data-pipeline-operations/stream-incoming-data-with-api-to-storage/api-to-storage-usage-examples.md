@@ -27,7 +27,7 @@ API To Storage processor expects an array of objects build with the following sc
 
 ```
 {
-    "input-data": [
+    "input_data": [
         { JSON Object 1 },
         { JSON Object 2 },
         { JSON Object 3 },
@@ -41,7 +41,7 @@ Example:
 
 ```
 {
-    "input-data": [
+    "input_data": [
         {
             "product_id": "123456789",
             "label": "Some label ABC",
