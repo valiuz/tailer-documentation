@@ -94,10 +94,29 @@ Let's use the following example where the attribute "new\_item" is optional:
 
 ```
 {
-    "product_id": "66668888",
-    "label": "Some label XYZ",
-    "description": "A specific description for product 66668888",
-    "new_item": "some data"
+    "input_data": [
+        {
+            "product_id": "123456789",
+            "label": "Some label ABC",
+            "description": "A specific description for product 123456789"
+        },
+        {
+            "product_id": "987654321",
+            "label": "Some label YUI",
+            "description": "A specific description for product 987654321"
+        },
+        {
+            "label": "Some label XYZ",
+            "product_id": "66668888",
+            "description": "A specific description for product 66668888"
+        },
+        {
+            "product_id": "66668888",
+            "label": "Some label XYZ",
+            "description": "A specific description for product 66668888",
+            "new_item": "some new data"
+        }
+    ]
 }
 ```
 
