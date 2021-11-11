@@ -12,11 +12,11 @@ The configuration file is in JSON format. It contains the following sections:
 * Source parameters: One source block, containing information about the data source.
 * Destination parameters: One or several destination blocks, containing information about the data destinations.
 
-## 👁🗨 Example
+## :eye\_in\_speech\_bubble: Example
 
 Here is an example of STS configuration file for a GCS to SFTP transfer:
 
-```text
+```
 {
   "configuration_type": "storage-to-storage",
   "configuration_id": "152-composer-test-gcs-to-sftp",
@@ -66,176 +66,21 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
 }
 ```
 
-## 🌐 Global parameters
+## :globe\_with\_meridians: Global parameters
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of data operation.</p>
-        <p>For an STS data operation, the value is always &quot;storage-to-storage&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>ID of the data operation.</p>
-        <p>You can pick any name you want, but is has to be <b>unique</b> for this
-          data operation type.</p>
-        <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one. To guarantee its uniqueness, the best practice
-          is to name your data operation by concatenating:</p>
-        <ul>
-          <li>your account ID,</li>
-          <li>the source bucket name,</li>
-          <li>and the source directory name.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>environment</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Deployment context.</p>
-        <p>Values: PROD, PREPROD, STAGING, DEV.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>account</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer&#xA0;Platform
-        administrator.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>filename_templates</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>List of filename templates that will be processed.</p>
-        <p>You can set the value to &quot;*&quot; for all files to be copied. However,
-          this is not recommended, as unnecessary or sensitive files might be included
-          by mistake. Besides, the date value specified in <b>filename_template</b> will
-          be used to sort files in the archive folder. If no date value is specified,
-          all files will be stored together under one folder named <b>/ALL</b>.</p>
-        <p>The best practice is to specify one or more filename templates with the <b>filename_template</b> and <b>file_description</b> parameters
-          as described below.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>filename_template</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Template for the files to be processed.
-          <br />The following placeholders are currently supported:</p>
-        <ul>
-          <li>&quot;FD_DATE&quot; looks for an 8-digit date (e.g. &quot;20191015&quot;).</li>
-          <li>&quot;FD_DATE_YEAR_4&quot; looks for 4-digit year (e.g &quot;2021&quot;).</li>
-          <li>&quot;FD_DATE_YEAR_2&quot; looks for 2-digit year (e.g &quot;21&quot;).</li>
-          <li>&quot;FD_DATE_MONTH&quot; looks for 2-digit month (e.g &quot;05&quot;).</li>
-          <li>&quot;FD_DATE_DAY&quot; looks for 2-digit day (e.g &quot;12&quot;).</li>
-          <li>&quot;FD_TIME&quot; looks for a 6-digit time (e.g. &quot;124213&quot;).</li>
-          <li>&quot;FD_BLOB_XYZ&quot;, where XYZ is a non-zero positive integer, looks
-            for a string of characters of XYZ length.</li>
-        </ul>
-        <p><b>Information:</b>
-        </p>
-        <ul>
-          <li>if &quot;FD_DATE&quot; is specified, it will have priority upon &quot;FD_DATE_YEAR_X&quot;.</li>
-          <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified,
-            the final date will be concatenated with &quot;FD_DATE_MONTH&quot; and
-            &quot;FD_DATE_DAY&quot;.</li>
-          <li>if &quot;FD_DATE_YEAR_2&quot; is specified, it will be prefixed by &quot;20&quot;.</li>
-          <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified
-            only &quot;FD_DATE_MONTH&quot; and &quot;FD_DATE_DAY&quot; will be set
-            to &quot;01&quot;.</li>
-        </ul>
-        <p><b>Example 1</b>
-        </p>
-        <p>This template:</p>
-        <p><code>&quot;stores_{{FD_DATE}}_{{FD_TIME}}.txt&quot;</code>
-        </p>
-        <p>will allow you to process this type of files:</p>
-        <p>&quot;stores_20201116_124213.txt&quot;</p>
-        <p></p>
-        <p><b>Example 2</b>
-        </p>
-        <p>This template:</p>
-        <p><code>&quot;{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz&quot;</code>
-        </p>
-        <p>will allow you to process this type of files:</p>
-        <p>&quot;20201116_12397_fixedvalue_12312378934.gz&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>file_description</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Short description of the files that will match the filename template.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>activated</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the execution of the data operation.</p>
-        <p>If not specified, the default value will be &quot;true&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>archived</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the visibility of the data operation&apos;s
-          configuration and runs in Tailer&#xA0;Studio.</p>
-        <p>If not specified, the default value will be &quot;false&quot;.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p> | <p>Type of data operation.</p><p>For an STS data operation, the value is always "storage-to-storage".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one. To guarantee its uniqueness, the best practice is to name your data operation by concatenating:</p><ul><li>your account ID,</li><li>the source bucket name,</li><li>and the source directory name.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>        | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| <p><strong>filename_templates</strong></p><p>type: string</p><p>mandatory</p> | <p>List of filename templates that will be processed.</p><p>You can set the value to "*" for all files to be copied. However, this is not recommended, as unnecessary or sensitive files might be included by mistake. Besides, the date value specified in <strong>filename_template</strong> will be used to sort files in the archive folder. If no date value is specified, all files will be stored together under one folder named <strong>/ALL</strong>.</p><p>The best practice is to specify one or more filename templates with the <strong>filename_template</strong> and <strong>file_description</strong> parameters as described below.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <p><strong>filename_template</strong></p><p>type: string</p><p>optional</p>   | <p>Template for the files to be processed.<br>The following placeholders are currently supported:</p><ul><li>"FD_DATE" looks for an 8-digit date (e.g. "20191015").</li><li>"FD_DATE_YEAR_4" looks for 4-digit year (e.g "2021").</li><li>"FD_DATE_YEAR_2" looks for 2-digit year (e.g "21").</li><li>"FD_DATE_MONTH" looks for 2-digit month (e.g "05").</li><li>"FD_DATE_DAY" looks for 2-digit day (e.g "12").</li><li>"FD_TIME" looks for a 6-digit time (e.g. "124213").</li><li>"FD_BLOB_XYZ", where XYZ is a non-zero positive integer, looks for a string of characters of XYZ length.</li></ul><p><strong>Information:</strong></p><ul><li>if "FD_DATE" is specified, it will have priority upon "FD_DATE_YEAR_X".</li><li>if "FD_DATE_YEAR_4" or "FD_DATE_YEAR_2" is specified, the final date will be concatenated with "FD_DATE_MONTH" and "FD_DATE_DAY".</li><li>if "FD_DATE_YEAR_2" is specified, it will be prefixed by "20".</li><li>if "FD_DATE_YEAR_4" or "FD_DATE_YEAR_2" is specified only "FD_DATE_MONTH" and "FD_DATE_DAY" will be set to "01".</li></ul><p><strong>Example 1</strong></p><p>This template:</p><p><code>"stores_{{FD_DATE}}_{{FD_TIME}}.txt"</code></p><p>will allow you to process this type of files:</p><p>"stores_20201116_124213.txt"</p><p></p><p><strong>Example 2</strong></p><p>This template: </p><p><code>"{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz"</code></p><p>will allow you to process this type of files:</p><p>"20201116_12397_fixedvalue_12312378934.gz"</p> |
+| <p><strong>file_description</strong></p><p>type: string</p><p>optional</p>    | Short description of the files that will match the filename template.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
-## ⬇ Source parameters
+## :arrow\_down: Source parameters
 
 There can only be one source block, as STS data operations can only process one source at a time.
 
@@ -243,7 +88,7 @@ There can only be one source block, as STS data operations can only process one 
 
 Example:
 
-```text
+```
 {
   "source": {
     "type": "gcs",
@@ -261,93 +106,20 @@ Example:
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left"><b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of source.</p>
-        <p>In this case : &quot;gcs&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_project_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Set the project where deploy the source configuration and associated cloud
-          functions</p>
-        <p>If not set, the user will be prompted to choose a profile where deploy
-          the configuration</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_source_bucket</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Name of the source bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_source_prefix</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Path where the files will be found, e.g. &quot;some/sub/dir&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_archive_prefix</b>
-        </p>
-        <p>type: string optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Path where the source files will be archived.</p>
-        <p>If present and populated, the STS data operation will archive the source
-          files in the location specified, in the GCS source bucket.</p>
-        <p>If not present or empty, there will be no archiving.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_credentials_secret</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted credentials needed to read/move data from the source bucket.</p>
-        <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
-          To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                       | **Description**                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                 | <p>Type of source.</p><p>In this case : "gcs".</p>                                                                                                                                                                                                                                                                                   |
+| <p><strong>gcp_project_id</strong></p><p>type: string</p><p>mandatory</p>       | <p>Set the project where deploy the source configuration and associated cloud functions</p><p>If not set, the user will be prompted to choose a profile where deploy the configuration</p>                                                                                                                                           |
+| <p><strong>gcs_source_bucket</strong></p><p>type: string</p><p>mandatory</p>    | Name of the source bucket.                                                                                                                                                                                                                                                                                                           |
+| <p><strong>gcs_source_prefix</strong></p><p>type: string</p><p>mandatory</p>    | Path where the files will be found, e.g. "some/sub/dir".                                                                                                                                                                                                                                                                             |
+| <p><strong>gcs_archive_prefix</strong></p><p>type: string optional</p>          | <p>Path where the source files will be archived.</p><p>If present and populated, the STS data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p>                                                                            |
+| <p><strong>gcp_credentials_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted credentials needed to read/move data from the source bucket.</p><p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **Amazon S3 source**
 
 Example:
 
-```text
+```
 {
   "source": {
     "type": "s3",
@@ -362,57 +134,17 @@ Example:
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left"><b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of source.</p>
-        <p>In this case : &quot;s3&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>aws_access_key</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Amazon S3 access key ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>aws_access_key_secret</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted Amazon S3 access private key.</p>
-        <p>This is needed to read/move data from the source bucket. To learn how
-          to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                        | **Description**                                                                                                                                                                                                                                  |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                  | <p>Type of source.</p><p>In this case : "s3".</p>                                                                                                                                                                                                |
+| <p><strong>aws_access_key</strong></p><p>type: string</p><p>mandatory</p>        | Amazon S3 access key ID.                                                                                                                                                                                                                         |
+| <p><strong>aws_access_key_secret</strong></p><p>type: string</p><p>mandatory</p> | <p>Encrypted Amazon S3 access private key.</p><p>This is needed to read/move data from the source bucket. To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **SFTP source**
 
 Example:
 
-```text
+```
 {
   "source": {
     "type": "sftp",
@@ -431,89 +163,17 @@ Example:
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"><b>Parameter</b>
-      </th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of source.</p>
-        <p>In this case : &quot;sftp&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_source_filename</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">File to retrieve.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_source_directory</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Sub-path to switch to before downloading the file.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_host</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">SFTP host, e.g. &quot;sftp.something.com&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_port</b>
-        </p>
-        <p>type: integer</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">SFTP port, e.g. &quot;22&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_userid</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">SFTP user ID, e.g. &quot;john_doe&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_password_secret</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted SFTP password for the user ID.</p>
-        <p>This is needed to read/move data from the source SFTP.</p>
-        <p>To learn how to encrypt the password, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| **Parameter**                                                                    | Description                                                                                                                                                                                                                                  |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                  | <p>Type of source.</p><p>In this case : "sftp".</p>                                                                                                                                                                                          |
+| <p><strong>sftp_source_filename</strong></p><p>type: string</p><p>mandatory</p>  | File to retrieve.                                                                                                                                                                                                                            |
+| <p><strong>sftp_source_directory</strong></p><p>type: string</p><p>mandatory</p> | Sub-path to switch to before downloading the file.                                                                                                                                                                                           |
+| <p><strong>sftp_host</strong></p><p>type: string</p><p>mandatory</p>             | SFTP host, e.g. "sftp.something.com".                                                                                                                                                                                                        |
+| <p><strong>sftp_port</strong></p><p>type: integer</p><p>mandatory</p>            | SFTP port, e.g. "22".                                                                                                                                                                                                                        |
+| <p><strong>sftp_userid</strong></p><p>type: string</p><p>mandatory</p>           | SFTP user ID, e.g. "john\_doe".                                                                                                                                                                                                              |
+| <p><strong>sftp_password_secret</strong></p><p>type: dict</p><p>mandatory</p>    | <p>Encrypted SFTP password for the user ID.</p><p>This is needed to read/move data from the source SFTP.</p><p>To learn how to encrypt the password, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
-## ⬆ Destination parameters
+## :arrow\_up: Destination parameters
 
 These parameters allow you specify a list of destinations. You can add as many "destination" sub-objects as you want, they will all be processed.
 
@@ -521,7 +181,7 @@ These parameters allow you specify a list of destinations. You can add as many "
 
 Example:
 
-```text
+```
 {
   "destinations": [
     {
@@ -539,67 +199,18 @@ Example:
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of destination.</p>
-        <p>In this case : &quot;gcs&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_destination_bucket</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Google Cloud Storage destination bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_destination_prefix</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Google Cloud Storage destination path, e.g. &quot;/subdir/subdir_2&quot;
-        to send the files to &quot;gs://BUCKET/subdir/subdir_2/source_file.ext&quot;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_credentials_secret</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted credentials needed to read/write/move data from the destination
-          bucket.</p>
-        <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
-          To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                         | Description                                                                                                                                                                                                                                                                                                                                     |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                   | <p>Type of destination.</p><p>In this case : "gcs".</p>                                                                                                                                                                                                                                                                                         |
+| <p><strong>gcs_destination_bucket</strong></p><p>type: string</p><p>mandatory</p> | Google Cloud Storage destination bucket.                                                                                                                                                                                                                                                                                                        |
+| <p><strong>gcs_destination_prefix</strong></p><p>type: string</p><p>mandatory</p> | Google Cloud Storage destination path, e.g. "/subdir/subdir\_2" to send the files to "gs://BUCKET/subdir/subdir\_2/source\_file.ext"                                                                                                                                                                                                            |
+| <p><strong>gcp_credentials_secret</strong></p><p>type: dict</p><p>mandatory</p>   | <p>Encrypted credentials needed to read/write/move data from the destination bucket.</p><p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **Amazon S3 destination**
 
 Example:
 
-```text
+```
 {
   "destinations": [
     {
@@ -618,75 +229,19 @@ Example:
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of destination.</p>
-        <p>In this case : &quot;s3&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>s3_bucket</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Amazon S3 bucket name.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>s3_destination_prefix</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Amazon S3 destination path, e.g. &quot;subdir_A/subdir_B&quot; to send
-        the files to &quot;http://bucket.s3.amazonaws.com/subdir_A/subdir_B/source_file.ext&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>aws_access_key</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Amazon S3 access key ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>aws_access_key_secret</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted Amazon S3 access private key.</p>
-        <p>This is needed to read/write/move data from the destination bucket.</p>
-        <p>To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                        | Description                                                                                                                                                                                                                                                       |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                  | <p>Type of destination.</p><p>In this case : "s3".</p>                                                                                                                                                                                                            |
+| <p><strong>s3_bucket</strong></p><p>type: string</p><p>mandatory</p>             | Amazon S3 bucket name.                                                                                                                                                                                                                                            |
+| <p><strong>s3_destination_prefix</strong></p><p>type: string</p><p>mandatory</p> | Amazon S3 destination path, e.g. "subdir\_A/subdir\_B" to send the files to "http://bucket.s3.amazonaws.com/subdir\_A/subdir\_B/source\_file.ext".                                                                                                                |
+| <p><strong>aws_access_key</strong></p><p>type: string</p><p>mandatory</p>        | Amazon S3 access key ID.                                                                                                                                                                                                                                          |
+| <p><strong>aws_access_key_secret</strong></p><p>type: dict</p><p>mandatory</p>   | <p>Encrypted Amazon S3 access private key.</p><p>This is needed to read/write/move data from the destination bucket.</p><p>To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **SFTP destination**
 
 Example:
 
-```text
+```
 {
   "source": [
     {
@@ -708,103 +263,13 @@ Example:
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of destination.</p>
-        <p>In this case : &quot;sftp&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>generate_top_file</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>This flag, if set, will generate a TOP file along with the file copied.</p>
-        <p>Possible values are:</p>
-        <ul>
-          <li>&quot;REPLACE_EXTENSION&quot;: if the source file is &quot;20190708_data.txt&quot;,
-            the TOP file will be &quot;20190708_data.top&quot;.</li>
-          <li>&quot;ADD_EXTENSION&quot;: if the source file is &quot;20190708_data.txt&quot;,
-            the TOP file will be &quot;20190708_data.txt.top&quot;.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_destination_dir</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Path to switch to before uploading the file.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_destination_dir_create</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Will try to create the subdir specified in <b>sftp_destination_dir</b> on
-        the SFTP filesystem before switching to it and copying files.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_host</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">SFTP host, e.g. &quot;sftp.something.com&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_port</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">SFTP port, e.g. &quot;22&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_userid</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">SFTP user ID, e.g. &quot;john_doe&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sftp_password_secret</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted SFTP password for the user ID.</p>
-        <p>This is needed to read/move data from the source SFTP.</p>
-        <p>To learn how to encrypt the password, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+| Parameter                                                                              | Description                                                                                                                                                                                                                                                                                                                                            |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                        | <p>Type of destination.</p><p>In this case : "sftp".</p>                                                                                                                                                                                                                                                                                               |
+| <p><strong>generate_top_file</strong></p><p>type: string</p><p>mandatory</p>           | <p>This flag, if set, will generate a TOP file along with the file copied.</p><p>Possible values are:</p><ul><li>"REPLACE_EXTENSION": if the source file is "20190708_data.txt", the TOP file will be "20190708_data.top".</li><li>"ADD_EXTENSION": if the source file is "20190708_data.txt", the TOP file will be "20190708_data.txt.top".</li></ul> |
+| <p><strong>sftp_destination_dir</strong></p><p>type: string</p><p>mandatory</p>        | Path to switch to before uploading the file.                                                                                                                                                                                                                                                                                                           |
+| <p><strong>sftp_destination_dir_create</strong></p><p>type: string</p><p>mandatory</p> | Will try to create the subdir specified in **sftp\_destination\_dir** on the SFTP filesystem before switching to it and copying files.                                                                                                                                                                                                                 |
+| <p><strong>sftp_host</strong></p><p>type: string</p><p>mandatory</p>                   | SFTP host, e.g. "sftp.something.com".                                                                                                                                                                                                                                                                                                                  |
+| <p><strong>sftp_port</strong></p><p>type: string</p><p>mandatory</p>                   | SFTP port, e.g. "22".                                                                                                                                                                                                                                                                                                                                  |
+| <p><strong>sftp_userid</strong></p><p>type: string</p><p>mandatory</p>                 | SFTP user ID, e.g. "john\_doe".                                                                                                                                                                                                                                                                                                                        |
+| <p><strong>sftp_password_secret</strong></p><p>type: string</p><p>mandatory</p>        | <p>Encrypted SFTP password for the user ID.</p><p>This is needed to read/move data from the source SFTP.</p><p>To learn how to encrypt the password, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>                                                                                                           |

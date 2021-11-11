@@ -7,15 +7,15 @@ description: >-
 # API features
 
 {% hint style="warning" %}
-For the table-to-table configurations, don't forget to add at the end of the configuration\__id the environnement \(DEV, PROD, etc.\) before querying it throw the APIs._  
-Example :  the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
+For the table-to-table configurations, don't forget to add at the end of the configuration\__id the environnement (DEV, PROD, etc.) before querying it throw the APIs._\
+__Example :  the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
 {% endhint %}
 
-## 🚀 Launching a job's execution
+## :rocket: Launching a job's execution
 
 Tables to Tables or Tables to Storage data operations can be launched through the Tailer API.
 
-You need to provide the full identity of the job as input \(the **execution\_date** parameter is optional\):
+You need to provide the full identity of the job as input (the **execution\_date** parameter is optional):
 
 ```bash
 TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
@@ -31,13 +31,13 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/launch"
 ```
 
-As a result, the job is launched and you get a unique run ID in the following format: 
+As a result, the job is launched and you get a unique run ID in the following format:&#x20;
 
 ```bash
 {"run_id":"20201230-113940-1fb692b0-3531-4578-9919-acf6fdb0a5b1"}
 ```
 
-## 🏃♂ Checking a run's status
+## :man\_running: Checking a run's status
 
 Once you have a run ID, you can check its current status to see how the processing is going.
 
@@ -59,7 +59,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the run in the following format: 
+As a result, you get a json payload with information about the run in the following format:&#x20;
 
 ```typescript
 {
@@ -80,7 +80,7 @@ As a result, you get a json payload with information about the run in the follow
 }
 ```
 
-## ⌛ Getting the last status of a job/data operation
+## :hourglass: Getting the last status of a job/data operation
 
 You can check the current status for the latest run of a job/data operation.
 
@@ -102,7 +102,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last runs of this job in the following format: 
+As a result, you get a json payload with information about the last runs of this job in the following format:&#x20;
 
 ```bash
 {
@@ -148,7 +148,7 @@ As a result, you get a json payload with information about the last runs of this
 
 ```
 
-**Example with a data operation \(configuration level\)**
+**Example with a data operation (configuration level)**
 
 ```bash
 TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
@@ -164,7 +164,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last runs of this configuration in the following format: 
+As a result, you get a json payload with information about the last runs of this configuration in the following format:&#x20;
 
 ```bash
 {
@@ -207,7 +207,7 @@ As a result, you get a json payload with information about the last runs of this
 
 ```
 
-**Example with a data operation \(configuration\) with specific parameters**
+**Example with a data operation (configuration) with specific parameters**
 
 ```bash
 TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
@@ -226,7 +226,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last 2 runs ins success, with a start date the 2020/12/09 of this configuration in the following format: 
+As a result, you get a json payload with information about the last 2 runs ins success, with a start date the 2020/12/09 of this configuration in the following format:&#x20;
 
 ```bash
 {
@@ -257,15 +257,15 @@ As a result, you get a json payload with information about the last 2 runs ins s
 }
 ```
 
-## 0⃣ Resetting a workflow
+## :zero: Resetting a workflow
 
-The Tailer API allows you to reset a Workflow data operation. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the it was just deployed. \(This feature is also available in [Tailer Studio](../tailer-studio/reset-workflow-data-operations.md).\)
+The Tailer API allows you to reset a Workflow data operation. The reset feature deletes all the triggered jobs so the workflow can start from scratch, as when the it was just deployed. (This feature is also available in [Tailer Studio](../tailer-studio/reset-workflow-data-operations.md).)
 
 **Example of a case requiring a workflow reset**
 
 We have three jobs, named JA, JB, and JC which trigger a job named JT when they are all successfully executed.
 
-If a situation happens where JA and JB are OK, but JC is not, JT is not triggered. You fix and relaunch JC, which becomes OK, and JT is triggered. The next morning, you launch JC again to make sure it works: you get JA\(0\), JB\(0\) and JC\(1\). When JA and JB are automatically started a few hours later, JC is already considered as OK, which creates an unbalanced situation. A reset is necessary.
+If a situation happens where JA and JB are OK, but JC is not, JT is not triggered. You fix and relaunch JC, which becomes OK, and JT is triggered. The next morning, you launch JC again to make sure it works: you get JA(0), JB(0) and JC(1). When JA and JB are automatically started a few hours later, JC is already considered as OK, which creates an unbalanced situation. A reset is necessary.
 
 You need to provide the full identity of the Workflow data operation as input:
 
@@ -283,15 +283,15 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/workflow/status"
 ```
 
-As a result, you get a response \(OK, or KO\) in the following format: 
+As a result, you get a response (OK, or KO) in the following format:&#x20;
 
 ```bash
 {"code":200,"data":{},"message":"ok"}
 ```
 
-## ⏹ Disabling a data operation
+## :stop\_button: Disabling a data operation
 
-You can disable a data operation \(configuration\) using the API. \(This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).\)
+You can disable a data operation (configuration) using the API. (This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).)
 
 You need to provide the full identity of the data operation as input:
 
@@ -311,15 +311,15 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-As a result, you get a response \(OK, or KO\) in the following format: 
+As a result, you get a response (OK, or KO) in the following format:&#x20;
 
 ```bash
 {"message":"ok"}
 ```
 
-## ▶ Enabling a data operation
+## :arrow\_forward: Enabling a data operation
 
-You can enable a data operation that had been disabled using the API. \(This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).\)
+You can enable a data operation that had been disabled using the API. (This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).)
 
 You need to provide the full identity of the data operation as input:
 
@@ -339,15 +339,15 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-As a result, you get a response \(OK, or KO\) in the following format: 
+As a result, you get a response (OK, or KO) in the following format:&#x20;
 
 ```bash
 {"message":"ok"}
 ```
 
-## ▶ Archive a data operation
+## :arrow\_forward: Archive a data operation
 
-You can archive a data operation using the API. \(This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).\)
+You can archive a data operation using the API. (This feature is also available in [Tailer Studio](../tailer-studio/monitor-data-operations-status.md#display-or-edit-the-status-of-a-data-operation-execution).)
 
 You need to provide the full identity of the data operation as input:
 
@@ -367,11 +367,9 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-As a result, you get a response \(OK, or KO\) in the following format: 
+As a result, you get a response (OK, or KO) in the following format:&#x20;
 
 ```bash
 {"message":"ok"}
 ```
-
-
 

@@ -12,11 +12,11 @@ The configuration file is in JSON format. It contains the following sections:
 * Source parameters: Information related to the data source provider.
 * Destination parameters: Information about input file templates and destination tables. The "destinations" section will refer to [DDL files](storage-to-tables-ddl-files.md), which contain the schema of the destination tables.
 
-## 👁🗨 Example
+## :eye\_in\_speech\_bubble: Example
 
 Here is an example of STT configuration file for a GCS to BigQuery transfer:
 
-```text
+```
 {
   "configuration_type": "storage-to-tables",
   "configuration_id": "Load_sales_files_from_it",
@@ -81,133 +81,27 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
 }
 ```
 
-## 🌐 Global parameters
+## :globe\_with\_meridians: Global parameters
 
 General information about the data operation
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Type of data operation.
-        <br />
-        <br />For an STT data operation, the value is always &quot;storage-to-tables&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>ID of the data operation.</p>
-        <p>You can pick any name you want, but is has to be <b>unique</b> for this
-          data operation type.</p>
-        <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one. To guarantee its uniqueness, the best practice
-          is to name your data operation by concatenating:</p>
-        <ul>
-          <li>your account ID,</li>
-          <li>the source bucket name,</li>
-          <li>and the source directory name.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>environment</b>
-        </p>
-        <p>type: string</p>
-        <p>Mandatory</p>
-      </td>
-      <td style="text-align:left">Deployment context.
-        <br />
-        <br />Values: PROD, PREPROD, STAGING, DEV.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>account</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer&#xA0;Platform
-        administrator.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>activated</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Flag used to enable/disable the execution of the data operation.
-        <br />
-        <br />If not specified, the default value will be &quot;true&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>archived</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Flag used to enable/disable the visibility of the data operation&apos;s
-        configuration and runs in Tailer&#xA0;Studio.
-        <br />
-        <br />If not specified, the default value will be &quot;false&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>max_active_runs</b>
-        </p>
-        <p>type: integer</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>This parameter limits the number of concurrent runs for this data operation.</p>
-        <p>If not set, the default value is 1.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>short_description</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Short description of the context of the configuration.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>doc_md</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Path to a file containing a detailed description. The file must be in
-        Markdown format.</td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p> | <p>Type of data operation.<br><br>For an STT data operation, the value is always "storage-to-tables".</p>                                                                                                                                                                                                                                                                                                                                                      |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one. To guarantee its uniqueness, the best practice is to name your data operation by concatenating:</p><ul><li>your account ID,</li><li>the source bucket name,</li><li>and the source directory name.</li></ul> |
+| <p><strong>environment</strong></p><p>type: string</p><p>Mandatory</p>        | <p>Deployment context.<br><br>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                                         |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.<br><br>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                             |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.<br><br>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                 |
+| <p><strong>max_active_runs</strong></p><p>type: integer</p><p>optional</p>    | <p>This parameter limits the number of concurrent runs for this data operation.</p><p>If not set, the default value is 1.</p>                                                                                                                                                                                                                                                                                                                                  |
+| <p><strong>short_description</strong></p><p>type: string</p><p>optional</p>   | Short description of the context of the configuration.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <p><strong>doc_md</strong></p><p>type: string</p><p>optional</p>              | Path to a file containing a detailed description. The file must be in Markdown format.                                                                                                                                                                                                                                                                                                                                                                         |
 
-## ⬇ Source parameters \(GCS\)
+## :arrow\_down: Source parameters (GCS)
 
 The destination section contains all information related to the data source provider.
 
-```text
+```
 "source": {
   "type": "gcs",
   "gcp_project_id": "fd-io-dlk-orsay",
@@ -223,87 +117,16 @@ The destination section contains all information related to the data source prov
 }
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Source type.</p>
-        <p>The only supported source type for now is &quot;gcs&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_project_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Specify the Google Cloud Platform project where to deploy the data operation
-          and its associated cloud functions.</p>
-        <p>If not set, the user will be prompted to choose a project.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_source_bucket</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Name of the source bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_source_prefix</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Path where the files will be found, e.g. &quot;some/sub/dir&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_archive_prefix</b>
-        </p>
-        <p>type: string optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Path where the source files will be archived.</p>
-        <p>If present and populated, the STT data operation will archive the source
-          files in the location specified, in the GCS source bucket.</p>
-        <p>If not present or empty, there will be no archiving.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_credentials_secret</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted credentials needed to read/move data from the source bucket.</p>
-        <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
-          To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                       | Description                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                 | <p>Source type.</p><p>The only supported source type for now is "gcs".</p>                                                                                                                                                                                                                                                           |
+| <p><strong>gcp_project_id</strong></p><p>type: string</p><p>mandatory</p>       | <p>Specify the Google Cloud Platform project where to deploy the data operation and its associated cloud functions.</p><p>If not set, the user will be prompted to choose a project.</p>                                                                                                                                             |
+| <p><strong>gcs_source_bucket</strong></p><p>type: string</p><p>mandatory</p>    | Name of the source bucket.                                                                                                                                                                                                                                                                                                           |
+| <p><strong>gcs_source_prefix</strong></p><p>type: string</p><p>mandatory</p>    | Path where the files will be found, e.g. "some/sub/dir".                                                                                                                                                                                                                                                                             |
+| <p><strong>gcs_archive_prefix</strong></p><p>type: string optional</p>          | <p>Path where the source files will be archived.</p><p>If present and populated, the STT data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p>                                                                            |
+| <p><strong>gcp_credentials_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted credentials needed to read/move data from the source bucket.</p><p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
-## ⬆ Destination parameters \(BigQuery\)
+## :arrow\_up: Destination parameters (BigQuery)
 
 The destination section contains all the information related to the data destinations.
 
@@ -311,7 +134,7 @@ The **destinations** parameter is an array containing maps. Each map can contain
 
 Example:
 
-```text
+```
 "destinations": [
 {
   "type": "bigquery",
@@ -354,402 +177,34 @@ Example:
 
 ### Global destination parameters
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of destination.</p>
-        <p>The only supported destination type for now is &quot;bigquery&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_project_id</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Default GCP Project ID.
-          <br />Default value: None</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gbq_dataset</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Default value: None</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_credentials_secret</b>
-        </p>
-        <p>type: object</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted credentials needed to interact with Storage and BigQuery.</p>
-        <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
-          To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-        <p>Default value: None</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>source_format</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Default source format for input files.</p>
-        <p>Possible values (case sensitive):</p>
-        <ul>
-          <li>&quot;CSV&quot; (default)</li>
-          <li>&quot;JSON&quot;</li>
-        </ul>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>create_disposition</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Specifies behavior for creating tables (see <a href="https://googleapis.github.io/google-cloud-python/latest/bigquery/generated/google.cloud.bigquery.job.CreateDisposition.html#google.cloud.bigquery.job.CreateDisposition">Google BigQuery documentation</a>).</p>
-        <p>Possible values:</p>
-        <ul>
-          <li>&quot;CREATE_IF_NEEDED&quot; (default): If the table does not exist, BigQuery
-            creates the table.</li>
-          <li>&quot;CREATE_NEVER&quot;: The table must already exist.</li>
-        </ul>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>write_disposition</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Action that occurs if the destination table already exists (see <a href="https://googleapis.github.io/google-cloud-python/latest/bigquery/generated/google.cloud.bigquery.job.WriteDisposition.html#google.cloud.bigquery.job.WriteDisposition">Google BigQuery documentation</a>).</p>
-        <p>Possible values:</p>
-        <ul>
-          <li>&quot;WRITE_TRUNCATE&quot; (default): The run will write table data from
-            the beginning. If the table already contained lines, they will all be deleted
-            and replaced by the new lines. This option is used most of the time for
-            daily runs to avoid duplicates.</li>
-          <li>&quot;WRITE_APPEND&quot;: The run will append new lines to the table.
-            When using this option, make sure not to run the data operation several
-            times.</li>
-          <li>&quot;WRITE_EMPTY&quot;: This option only allows adding data to an empty
-            table. If the table already contains data, it returns an error. It is hardly
-            ever used as data operations are usually run periodically, so they will
-            always contain data after the first run.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>skip_leading_rows</b>
-        </p>
-        <p>type: integer</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Number of rows to skip when reading data, CSV only.</p>
-        <p>Default value: 1</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>field_delimiter</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Separator for fields in a CSV file, e.g. &quot;;&quot;.</p>
-        <p><b>Note</b>: For Tab separator, set to &quot;\t&quot;.</p>
-        <p>Default value: &quot;|&quot;</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>quote_character</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Character used to quote data sections, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.quote_character">Google BigQuery documentation</a>).</p>
-        <p>Default value: &quot;&quot;</p>
-        <p><b>Note:</b> For quote and double quotes, set to &quot;\&apos;&quot; and
-          &quot;\&quot;&quot; respectively.</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>null_marker</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Represents a null value, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.null_marker">Google BigQuery documentation</a>).</p>
-        <p>Default value: &quot;&quot;</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>bq_load_job_ignore_unknown_values</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Ignore extra values not represented in the table schema (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.ignore_unknown_values">Google BigQuery documentation</a>).</p>
-        <p>Default value: false</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>bq_load_job_max_bad_records</b>
-        </p>
-        <p>type: integer</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Number of invalid rows to ignore (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p>
-        <p>Default value: 0</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>bq_load_job_schema_update_options</b>
-        </p>
-        <p>type: array</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Specifies updates to the destination table schema to allow as a side effect
-          of the load job (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p>
-        <p>Default value: []</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>bq_load_job_allow_quoted_newlines</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Allows quoted data containing newline characters, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p>
-        <p>Default value: false</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>bq_load_job_allow_jagged_rows</b>
-        </p>
-        <p>type : boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Allows missing trailing optional columns, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p>
-        <p>Default value: false</p>
-        <p>This parameter can be set for each <b>table</b> sub-object, and will be
-          overridden by that value if it is different.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                              | <p>Type of destination.</p><p>The only supported destination type for now is "bigquery".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| <p><strong>gcp_project_id</strong></p><p>type: string</p><p>optional</p>                     | <p>Default GCP Project ID.<br>Default value: None</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <p><strong>gbq_dataset</strong></p><p>type: string</p><p>optional</p>                        | <p>Default value: None</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| <p><strong>gcp_credentials_secret</strong></p><p>type: object</p><p>optional</p>             | <p>Encrypted credentials needed to interact with Storage and BigQuery.</p><p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p><p>Default value: None</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>source_format</strong></p><p>type: string</p><p>optional</p>                      | <p>Default source format for input files.</p><p>Possible values (case sensitive):</p><ul><li>"CSV" (default)</li><li>"JSON"</li></ul><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <p><strong>create_disposition</strong></p><p>type: string</p><p>optional</p>                 | <p>Specifies behavior for creating tables (see <a href="https://googleapis.github.io/google-cloud-python/latest/bigquery/generated/google.cloud.bigquery.job.CreateDisposition.html#google.cloud.bigquery.job.CreateDisposition">Google BigQuery documentation</a>).</p><p>Possible values:</p><ul><li>"CREATE_IF_NEEDED" (default): If the table does not exist, BigQuery creates the table.</li><li>"CREATE_NEVER": The table must already exist.</li></ul><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                              |
+| <p><strong>write_disposition</strong></p><p>type: string</p><p>optional</p>                  | <p>Action that occurs if the destination table already exists (see <a href="https://googleapis.github.io/google-cloud-python/latest/bigquery/generated/google.cloud.bigquery.job.WriteDisposition.html#google.cloud.bigquery.job.WriteDisposition">Google BigQuery documentation</a>).</p><p>Possible values:</p><ul><li>"WRITE_TRUNCATE" (default): The run will write table data from the beginning. If the table already contained lines, they will all be deleted and replaced by the new lines. This option is used most of the time for daily runs to avoid duplicates.</li><li>"WRITE_APPEND": The run will append new lines to the table. When using this option, make sure not to run the data operation several times.</li><li>"WRITE_EMPTY": This option only allows adding data to an empty table. If the table already contains data, it returns an error. It is hardly ever used as data operations are usually run periodically, so they will always contain data after the first run.</li></ul> |
+| <p><strong>skip_leading_rows</strong></p><p>type: integer</p><p>optional</p>                 | <p>Number of rows to skip when reading data, CSV only.</p><p>Default value: 1</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| <p><strong>field_delimiter</strong></p><p>type: string</p><p>optional</p>                    | <p>Separator for fields in a CSV file, e.g. ";".</p><p><strong>Note</strong>: For Tab separator, set to "\t".</p><p>Default value: "|"</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| <p><strong>quote_character</strong></p><p>type: string</p><p>optional</p>                    | <p>Character used to quote data sections, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.quote_character">Google BigQuery documentation</a>).</p><p>Default value: ""</p><p><strong>Note:</strong> For quote and double quotes, set to "\'" and "\"" respectively.</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <p><strong>null_marker</strong></p><p>type: string</p><p>optional</p>                        | <p>Represents a null value, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.null_marker">Google BigQuery documentation</a>).</p><p>Default value: ""</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>bq_load_job_ignore_unknown_values</strong></p><p>type: boolean</p><p>optional</p> | <p>Ignore extra values not represented in the table schema (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.ignore_unknown_values">Google BigQuery documentation</a>).</p><p>Default value: false</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <p><strong>bq_load_job_max_bad_records</strong></p><p>type: integer</p><p>optional</p>       | <p>Number of invalid rows to ignore (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p><p>Default value: 0</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <p><strong>bq_load_job_schema_update_options</strong></p><p>type: array</p><p>optional</p>   | <p>Specifies updates to the destination table schema to allow as a side effect of the load job (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p><p>Default value: []</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| <p><strong>bq_load_job_allow_quoted_newlines</strong></p><p>type: boolean</p><p>optional</p> | <p>Allows quoted data containing newline characters, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p><p>Default value: false</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>bq_load_job_allow_jagged_rows</strong></p><p>type : boolean</p><p>optional</p>    | <p>Allows missing trailing optional columns, CSV only (see <a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html#google.cloud.bigquery.job.LoadJobConfig.max_bad_records">Google BigQuery documentation</a>).</p><p>Default value: false</p><p>This parameter can be set for each <strong>table</strong> sub-object, and will be overridden by that value if it is different.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 ### **Table sub-object parameters**
 
 The "table" object contains the definition of expected input files and their BigQuery target.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"><b>Parameter</b>
-      </th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>table_name</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Name of the destination BigQuery table.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>short_description</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Short description of the destination BigQuery table.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>filename_template</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Template for the files to be processed.
-          <br />The following placeholders are currently supported:</p>
-        <ul>
-          <li>&quot;FD_DATE&quot; looks for an 8-digit date (e.g. &quot;20191015&quot;).</li>
-          <li>&quot;FD_DATE_YEAR_4&quot; looks for 4-digit year (e.g &quot;2021&quot;).</li>
-          <li>&quot;FD_DATE_YEAR_2&quot; looks for 2-digit year (e.g &quot;21&quot;).</li>
-          <li>&quot;FD_DATE_MONTH&quot; looks for 2-digit month (e.g &quot;05&quot;).</li>
-          <li>&quot;FD_DATE_DAY&quot; looks for 2-digit day (e.g &quot;12&quot;).</li>
-          <li>&quot;FD_TIME&quot; looks for a 6-digit time (e.g. &quot;124213&quot;).</li>
-          <li>&quot;FD_BLOB_n&quot;, where &quot;n&quot; is a non-zero positive integer,
-            looks for a string of characters of &quot;n&quot; length.</li>
-          <li>FD_TABLE_NAME: This is a special template used when you have to process
-            a large number of different files sharing the same destination schema.
-            This template has to be used in conjunction with the <b>table_name</b> parameter.</li>
-        </ul>
-        <p></p>
-        <p><b>Information:</b>
-        </p>
-        <ul>
-          <li>if &quot;FD_DATE&quot; is specified, it will have priority upon &quot;FD_DATE_YEAR_X&quot;.</li>
-          <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified,
-            the final date will be concatenated with &quot;FD_DATE_MONTH&quot; and
-            &quot;FD_DATE_DAY&quot;.</li>
-          <li>if &quot;FD_DATE_YEAR_2&quot; is specified, it will be prefixed by &quot;20&quot;.</li>
-          <li>if &quot;FD_DATE_YEAR_4&quot; or &quot;FD_DATE_YEAR_2&quot; is specified
-            only &quot;FD_DATE_MONTH&quot; and &quot;FD_DATE_DAY&quot; will be set
-            to &quot;01&quot;.</li>
-        </ul>
-        <p><b>Example 1</b>
-        </p>
-        <p>This template:</p>
-        <p><code>&quot;stores_{{FD_DATE}}_{{FD_TIME}}.txt&quot;</code>
-        </p>
-        <p>will allow you to process this type of files:</p>
-        <p>&quot;stores_20201116_124213.txt&quot;</p>
-        <p></p>
-        <p><b>Example 2</b>
-        </p>
-        <p>This template:</p>
-        <p><code>&quot;{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz&quot;</code>
-        </p>
-        <p>will allow you to process this type of files:</p>
-        <p>&quot;20201116_12397_fixedvalue_12312378934.gz&quot;</p>
-        <p></p>
-        <p><b>Example 3</b>
-        </p>
-        <p>If <b>table_name</b> is set to: <code>&quot;table_{{FD_TABLE_NAME}}&quot;</code>
-        </p>
-        <p>and <b>filename_template</b> to: <code>&quot;{{FD_DATE}}_{{FD_TIME}}_fixedvalue_{{FD_TABLE_NAME}}.csv&quot;</code>
-        </p>
-        <p>A file named &quot;20201116_124523_fixedvalue_stores.csv&quot; will be
-          loaded into a table named: &quot;table_stores_20191205&quot;</p>
-        <p>A file named &quot;20190212_063412_fixedvalue_visits.csv&quot; will be
-          loaded into a table named: &quot;table_visits_20190212&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>ddl_mode</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>This parameter allows you to specify how the schema of the table will
-          be obtained.</p>
-        <p></p>
-        <p>Possible values:</p>
-        <ul>
-          <li>&quot;file&quot;: Legacy mode. The table schema is described in the DDL
-            file specified in the <b>ddl_file</b> parameter.</li>
-          <li>&quot; file_template&quot;: The table schema is described in a DDL file
-            provided in the source directory together with the source file. It must
-            have the same filename as the source file, with the &quot;.ddl.json&quot;
-            suffix.</li>
-          <li>&quot;header&quot; (CSV file only): The columns of the CSV file first
-            line are automatically used as columns for the database table. All the
-            columns are given the STRING type. No DDL file needs to be provided.</li>
-          <li>&quot;autodetect&quot; (not recommended): Google&#x2019;s default mode.
-            The schema is automatically detected from the source file. This mode doesn&#x2019;t
-            work well with CSV files, but gives good results with structured formats
-            such as JSON. (see <a href="https://cloud.google.com/bigquery/docs/schema-detect">Google BigQuery documentation</a>).</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>ddl_file</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory if <b>ddl_mode</b> is set to &quot;file&quot;</p>
-      </td>
-      <td style="text-align:left">Path to the <a href="storage-to-tables-ddl-files.md">DDL file</a> where
-        the destination schema is described.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>doc_md<br /></b>type: string
-        <br />optional</td>
-      <td style="text-align:left">Path to the Markdown file containing detailed information about the destination
-        table.</td>
-    </tr>
-  </tbody>
-</table>
-
+| **Parameter**                                                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>table_name</strong></p><p>type: string</p><p>mandatory</p>                                             | Name of the destination BigQuery table.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <p><strong>short_description</strong></p><p>type: string</p><p>optional</p>                                       | Short description of the destination BigQuery table.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <p><strong>filename_template</strong></p><p>type: string</p><p>mandatory</p>                                      | <p>Template for the files to be processed.<br>The following placeholders are currently supported:</p><ul><li>"FD_DATE" looks for an 8-digit date (e.g. "20191015").</li><li>"FD_DATE_YEAR_4" looks for 4-digit year (e.g "2021").</li><li>"FD_DATE_YEAR_2" looks for 2-digit year (e.g "21").</li><li>"FD_DATE_MONTH" looks for 2-digit month (e.g "05").</li><li>"FD_DATE_DAY" looks for 2-digit day (e.g "12").</li><li>"FD_TIME" looks for a 6-digit time (e.g. "124213").</li><li>"FD_BLOB_n", where "n" is a non-zero positive integer, looks for a string of characters of "n" length.</li><li>FD_TABLE_NAME: This is a special template used when you have to process a large number of different files sharing the same destination schema. This template has to be used in conjunction with the <strong>table_name</strong> parameter.</li></ul><p></p><p><strong>Information:</strong></p><ul><li>if "FD_DATE" is specified, it will have priority upon "FD_DATE_YEAR_X".</li><li>if "FD_DATE_YEAR_4" or "FD_DATE_YEAR_2" is specified, the final date will be concatenated with "FD_DATE_MONTH" and "FD_DATE_DAY".</li><li>if "FD_DATE_YEAR_2" is specified, it will be prefixed by "20".</li><li>if "FD_DATE_YEAR_4" or "FD_DATE_YEAR_2" is specified only "FD_DATE_MONTH" and "FD_DATE_DAY" will be set to "01".</li></ul><p><strong>Example 1</strong></p><p>This template:</p><p><code>"stores_{{FD_DATE}}_{{FD_TIME}}.txt"</code></p><p>will allow you to process this type of files:</p><p>"stores_20201116_124213.txt"</p><p></p><p><strong>Example 2</strong></p><p>This template: </p><p><code>"{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz"</code></p><p>will allow you to process this type of files:</p><p>"20201116_12397_fixedvalue_12312378934.gz"</p><p></p><p><strong>Example 3</strong></p><p>If <strong>table_name</strong> is set to: <code>"table_{{FD_TABLE_NAME}}"</code></p><p>and <strong>filename_template</strong> to: <code>"{{FD_DATE}}_{{FD_TIME}}_fixedvalue_{{FD_TABLE_NAME}}.csv"</code></p><p>A file named "20201116_124523_fixedvalue_stores.csv" will be loaded into a table named: "table_stores_20191205"</p><p>A file named "20190212_063412_fixedvalue_visits.csv" will be loaded into a table named: "table_visits_20190212"</p> |
+| <p><strong>ddl_mode</strong></p><p>type: string</p><p>mandatory</p>                                               | <p>This parameter allows you to specify how the schema of the table will be obtained.</p><p></p><p>Possible values:</p><ul><li>"file": Legacy mode. The table schema is described in the DDL file specified in the <strong>ddl_file</strong> parameter.</li><li>" file_template": The table schema is described in a DDL file provided in the source directory together with the source file. It must have the same filename as the source file, with the ".ddl.json" suffix. </li><li>"header" (CSV file only): The columns of the CSV file first line are automatically used as columns for the database table. All the columns are given the STRING type. No DDL file needs to be provided.</li><li>"autodetect" (not recommended): Google’s default mode. The schema is automatically detected from the source file. This mode doesn’t work well with CSV files, but gives good results with structured formats such as JSON. (see <a href="https://cloud.google.com/bigquery/docs/schema-detect">Google BigQuery documentation</a>).</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <p><strong>ddl_file</strong></p><p>type: string</p><p>mandatory if <strong>ddl_mode</strong> is set to "file"</p> |  Path to the [DDL file](storage-to-tables-ddl-files.md) where the destination schema is described.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| <p><strong>doc_md</strong><br><strong></strong>type: string<br>optional</p>                                       | Path to the Markdown file containing detailed information about the destination table.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |

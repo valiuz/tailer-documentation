@@ -8,9 +8,9 @@ description: >-
 
 A Workflow data operation is used to specify one or several data operation IDs that need to be successfully executed for one target data operation to be triggered.
 
-## 👁🗨 Example
+## :eye\_in\_speech\_bubble: Example
 
-```text
+```
 {
   "configuration_type": "workflow",
   "configuration_id": "000099_iowa_liquor_workflow_export_cluster_stores",
@@ -28,165 +28,19 @@ A Workflow data operation is used to specify one or several data operation IDs t
 }
 ```
 
-## ⚙ Parameters
+## :gear: Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Type of configuration file.
-        <br />
-        <br />In this case, the value has to be &quot;workflow&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>ID of the workflow.</p>
-        <p>You can pick any name you want, but is has to be <b>unique</b> for this
-          type of configuration file.</p>
-        <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>environment</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Deployment context.</p>
-        <p>Values: PROD, PREPROD, STAGING, DEV.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>short_description</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Short description of the context of the configuration file.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>account</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer&#xA0;Platform
-        administrator.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_project</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">ID of the Google Cloud project containing the BigQuery instance to be
-        triggered.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>activated</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the execution of the workflow.</p>
-        <p>If not specified, the default value will be &quot;true&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>archived</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the visibility of the workflow&apos;s configuration
-          and runs in Tailer&#xA0;Studio.</p>
-        <p>If not specified, the default value will be &quot;false&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>authorized_job_ids</b>
-        </p>
-        <p>type: string array</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Data operations that need to be executed and successful for the current
-        workflow to be triggered.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>target_dag</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Data operation to trigger.</p>
-        <p>For Tables to Tables data operations, you need to specify the data operation <b>configuration_id</b>,
-          concatenated with the environment (&quot;_PROD&quot; or &quot;_DEV&quot;).</p>
-        <p>Example: &quot;000099_load_stores_details_PROD&quot;</p>
-        <p>For Storage to Storage, Storage to Tables et Table to Storage data operations,
-          you only specify the type of data operation with one of the following values:</p>
-        <ul>
-          <li>storage-to-storage</li>
-          <li>storage-to-tables</li>
-          <li>table-to-storage</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>extra_parameters</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>This array contains the list of data operations to trigger.</p>
-        <p>Leave it empty for Tables to Tables data operations, as the <b>target_dag</b> parameter
-          already contains this information.</p>
-        <p>For other data operations, list one or several <b>firestore_conf_doc_id</b> parameters.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>firestore_conf_doc_id</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>List of data operations to trigger.</p>
-        <p>Specify the <b>configuration_id</b> of the data operations to trigger.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+| Parameter                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p>       | <p>Type of configuration file.<br><br>In this case, the value has to be "workflow".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>         | <p>ID of the workflow.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this type of configuration file.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one.</p>                                                                                                                                                                                                                                                                    |
+| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>              | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>short_description</strong></p><p>type: string</p><p>optional</p>         | Short description of the context of the configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>                  | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <p><strong>gcp_project</strong></p><p>type: string</p><p>optional</p>               | ID of the Google Cloud project containing the BigQuery instance to be triggered.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>                | <p>Flag used to enable/disable the execution of the workflow.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>                 | <p>Flag used to enable/disable the visibility of the workflow's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                                                                                   |
+| <p><strong>authorized_job_ids</strong></p><p>type: string array</p><p>mandatory</p> | Data operations that need to be executed and successful for the current workflow to be triggered.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <p><strong>target_dag</strong></p><p>type: string</p><p>mandatory</p>               | <p>Data operation to trigger.</p><p>For Tables to Tables data operations, you need to specify the data operation <strong>configuration_id</strong>, concatenated with the environment ("_PROD" or "_DEV").</p><p>Example: "000099_load_stores_details_PROD"</p><p>For Storage to Storage, Storage to Tables et Table to Storage data operations, you only specify the type of data operation with one of the following values:</p><ul><li>storage-to-storage</li><li>storage-to-tables</li><li>table-to-storage</li></ul> |
+| <p><strong>extra_parameters</strong></p><p>type: dict</p><p>mandatory</p>           | <p>This array contains the list of data operations to trigger.</p><p>Leave it empty for Tables to Tables data operations, as the <strong>target_dag</strong> parameter already contains this information.</p><p>For other data operations, list one or several <strong>firestore_conf_doc_id</strong> parameters.</p>                                                                                                                                                                                                     |
+| <p><strong>firestore_conf_doc_id</strong></p><p>type: string</p><p>optional</p>     | <p>List of data operations to trigger.</p><p>Specify the <strong>configuration_id</strong> of the data operations to trigger.</p>                                                                                                                                                                                                                                                                                                                                                                                         |

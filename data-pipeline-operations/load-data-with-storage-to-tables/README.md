@@ -6,9 +6,9 @@ description: >-
 
 # Load data with Storage to Tables
 
-## 💡 What is Storage to Tables?
+## :bulb: What is Storage to Tables?
 
-A Storage to Tables \(STT\) data pipeline operation allows you to load data files from a Google Cloud Storage \(GCS\) bucket into one or several BigQuery databases.
+A Storage to Tables (STT) data pipeline operation allows you to load data files from a Google Cloud Storage (GCS) bucket into one or several BigQuery databases.
 
 {% hint style="warning" %}
 Note that the uniqueness of the configuration is checked against the GCS bucket name AND directory combination. This means that you can have only **one configuration per bucket/directory combination**, as any new configuration will overwrite the previous one.
@@ -36,22 +36,19 @@ Every time a new file matching the specified rule appears in a given directory o
 
 ## **📋 How to deploy a Storage to Tables data operation**
 
-1. Access your **tailer** folder \(created during [installation](../../getting-started/install-tailer-sdk.md)\).
+1. Access your **tailer** folder (created during [installation](../../getting-started/install-tailer-sdk.md)).
 2. Create a working folder as you want, and create a JSON file for your data operation inside.
 3. Prepare your JSON configuration file. Refer to this page to learn about all the [parameters](storage-to-tables-configuration-file.md).
 4. Prepare a DDL file for each database table. Refer to this page to learn about all the [parameters](storage-to-tables-ddl-files.md).
-5. Access your working folder by running the following command:
+5.  Access your working folder by running the following command:
 
-   ```text
-   cd "[path to your working folder]"
-   ```
+    ```
+    cd "[path to your working folder]"
+    ```
+6.  To deploy the data operation, run the following command:
 
-6. To deploy the data operation, run the following command:
-
-   ```text
-   tailer deploy your-file.json
-   ```
-
-7. Log in to [Tailer Studio](https://studio.tailer.ai/) to check the status and details of your data operation.
-8. Access your output table\(s\), and archive folder, if any, to check the result of the data operation.
-
+    ```
+    tailer deploy your-file.json
+    ```
+7. Log in to [Tailer Studio](https://studio.tailer.ai) to check the status and details of your data operation.
+8. Access your output table(s), and archive folder, if any, to check the result of the data operation.

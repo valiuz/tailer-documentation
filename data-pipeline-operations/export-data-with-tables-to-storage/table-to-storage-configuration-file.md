@@ -11,11 +11,11 @@ The configuration file is in JSON format. It contains the following sections:
 * Global parameters: General information about the data operation.
 * Table copy parameters: Optionally, you can add a creation step for a table that will contain the result of the extraction.
 
-## 👁🗨 Example
+## :eye\_in\_speech\_bubble: Example
 
 Here is an example of TTS configuration file:
 
-```text
+```
 {
   "configuration_type": "table-to-storage",
   "configuration_id": "tts-some-id-example",
@@ -41,295 +41,38 @@ Here is an example of TTS configuration file:
 }
 ```
 
-## 🌐 Global parameters
+## :globe\_with\_meridians: Global parameters
 
 General information about the data operation.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of data operation.</p>
-        <p>For a TTS data operation, the value is always &quot;table-to-storage&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>ID of the data operation.</p>
-        <p>You can pick any name you want, but is has to be <b>unique</b> for this
-          data operation type.</p>
-        <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one. To guarantee its uniqueness, the best practice
-          is to name your data operation by concatenating:</p>
-        <ul>
-          <li>your account ID,</li>
-          <li>the word &quot;extract&quot;,</li>
-          <li>and a description of the data to extract.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>short_description</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Short description of the table to storage data operation.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>environment</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Deployment context.</p>
-        <p>Values: PROD, PREPROD, STAGING, DEV.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>account</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer&#xA0;Platform
-        administrator.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>activated</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the execution of the data operation.</p>
-        <p>If not specified, the default value will be &quot;true&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>archived</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the visibility of the data operation&apos;s
-          configuration and runs in Tailer&#xAF;Studio.</p>
-        <p>If not specified, the default value will be &quot;false&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_dest_bucket</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Google Cloud Storage destination bucket.</p>
-        <p>This is the bucket where the data is going to be extracted.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_dest_prefix</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Path in the GCS bucket where the files will be extracted, e.g. &quot;some/sub/dir&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>delete_dest_bucket_content</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>If set to true, this parameter will trigger the deletion of any items
-          present in the destination directory.</p>
-        <p>Default value: false</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_project</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">ID of the Google Cloud project containing the BigQuery instance.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>field_delimiter</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Separator for fields in the CSV output file, e.g. &quot;;&quot;.</p>
-        <p><b>Note</b>: For Tab separator, set to &quot;\t&quot;.</p>
-        <p>Default value: &quot;|&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>print_header</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Print a header row in the exported data.</p>
-        <p>&lt;b&gt;&lt;/b&gt;</p>
-        <p>Default value: true</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>sql_file</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Path to the file containing the extraction query.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>compression</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Compression mode for the output file.</p>
-        <p>Default value: &quot;None&quot;</p>
-        <p>Possible values: &quot;None&quot;, &quot;GZIP&quot;</p>
-        <p>Note that if you specify &quot;GZIP&quot;, a &quot;.gz&quot; extension
-          will be added at the end of the filename.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>output_filename</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Template for the output filename.</p>
-        <p>You can use the following placeholders inside the name:</p>
-        <ul>
-          <li>{{DATE}}: The date format will be YYYYMMDD</li>
-          <li>{{TIME}}: The time format will be hhmmss</li>
-        </ul>
-        <p>For example, &quot;{{DATE}}_{{TIME}}_my_data_extraction.csv&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>destination_format</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Define the format of the output file :</p>
-        <p>Default value: &quot;CSV&quot;</p>
-        <p>Possible values: &quot;NEWLINE_DELIMITED_JSON&quot; (JSON file), &quot;AVRO&quot;</p>
-        <p>Note that if you specify &quot;NEWLINE_DELIMITED_JSON&quot;, the field-delimiter
-          parameter is not taken into account.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p>         | <p>Type of data operation.</p><p>For a TTS data operation, the value is always "table-to-storage".</p>                                                                                                                                                                                                                                                                                                                                                                |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>           | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one. To guarantee its uniqueness, the best practice is to name your data operation by concatenating:</p><ul><li>your account ID,</li><li>the word "extract",</li><li>and a description of the data to extract.</li></ul> |
+| <p><strong>short_description</strong></p><p>type: string</p><p>optional</p>           | Short description of the table to storage data operation.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>                | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                                                 |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>                    | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                            |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>                  | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>                   | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer¯Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                         |
+| <p><strong>gcs_dest_bucket</strong></p><p>type: string</p><p>mandatory</p>            | <p>Google Cloud Storage destination bucket.</p><p>This is the bucket where the data is going to be extracted.</p>                                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>gcs_dest_prefix</strong></p><p>type: string</p><p>mandatory</p>            | Path in the GCS bucket where the files will be extracted, e.g. "some/sub/dir".                                                                                                                                                                                                                                                                                                                                                                                        |
+| <p><strong>delete_dest_bucket_content</strong></p><p>type: boolean</p><p>optional</p> | <p>If set to true, this parameter will trigger the deletion of any items present in the destination directory.</p><p>Default value: false</p>                                                                                                                                                                                                                                                                                                                         |
+| <p><strong>gcp_project</strong></p><p>type: string</p><p>mandatory</p>                | ID of the Google Cloud project containing the BigQuery instance.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <p><strong>field_delimiter</strong></p><p>type: string</p><p>optional</p>             | <p>Separator for fields in the CSV output file, e.g. ";".</p><p><strong>Note</strong>: For Tab separator, set to "\t".</p><p>Default value: "|"</p>                                                                                                                                                                                                                                                                                                                   |
+| <p><strong>print_header</strong></p><p>type: boolean</p><p>optional</p>               | <p>Print a header row in the exported data.</p><p><strong></strong></p><p>Default value: true</p>                                                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>sql_file</strong></p><p>type: string</p><p>mandatory</p>                   | Path to the file containing the extraction query.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <p><strong>compression</strong></p><p>type: string</p><p>optional</p>                 | <p>Compression mode for the output file.</p><p>Default value: "None"</p><p>Possible values: "None", "GZIP"</p><p>Note that if you specify "GZIP", a ".gz" extension will be added at the end of the filename.</p>                                                                                                                                                                                                                                                     |
+| <p><strong>output_filename</strong></p><p>type: string</p><p>mandatory</p>            | <p>Template for the output filename.</p><p>You can use the following placeholders inside the name:</p><ul><li>{{DATE}}: The date format will be YYYYMMDD</li><li>{{TIME}}: The time format will be hhmmss</li></ul><p>For example, "{{DATE}}_{{TIME}}_my_data_extraction.csv"</p>                                                                                                                                                                                     |
+| <p><strong>destination_format</strong></p><p>type: string</p><p>optional</p>          | <p>Define the format of the output file : </p><p>Default value: "CSV"</p><p>Possible values: "NEWLINE_DELIMITED_JSON" (JSON file), "AVRO"</p><p>Note that if you specify "NEWLINE_DELIMITED_JSON", the field-delimiter parameter is not taken into account.</p>                                                                                                                                                                                                       |
 
-## 👬 Table copy parameters
+## :two\_men\_holding\_hands: Table copy parameters
 
 If you want to create a copy of your output data in a BigQuery table, you need to set the following parameters.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>copy_table</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Parameter used to enable a copy of the output data in a BigQuery table.</p>
-        <p>Default value: &quot;false&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>dest_gcp_project_id</b>
-        </p>
-        <p>mandatory if <b>copy_table</b> is set to &quot;true&quot;</p>
-      </td>
-      <td style="text-align:left">ID of the GCP project that will contain the table copy.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>dest_gbq_dataset</b>
-        </p>
-        <p>mandatory if <b>copy_table</b> is set to &quot;true&quot;</p>
-      </td>
-      <td style="text-align:left">Name of the BigQuery dataset that will contain the table copy.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>dest_gbq_table</b>
-        </p>
-        <p>mandatory if <b>copy_table</b> is set to &quot;true&quot;</p>
-      </td>
-      <td style="text-align:left">Name of the BigQuery table copy.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>dest_gbq_table_suffix</b>
-        </p>
-        <p>optional, to use only if <b>copy_table</b> is set to &quot;true&quot;</p>
-      </td>
-      <td style="text-align:left">
-        <p>The only supported value for this parameter is &quot;dag_execution_date&quot;.</p>
-        <p>This will add &quot;_yyyymmdd&quot; at the end of the table name to enable
-          ingestion time partitioning.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+| Parameter                                                                                                                 | Description                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>copy_table</strong></p><p>type: boolean</p><p>optional</p>                                                     | <p>Parameter used to enable a copy of the output data in a BigQuery table.</p><p>Default value: "false"</p>                                                                     |
+| <p><strong>dest_gcp_project_id</strong></p><p>mandatory if <strong>copy_table</strong> is set to "true"</p>               | ID of the GCP project that will contain the table copy.                                                                                                                         |
+| <p><strong>dest_gbq_dataset</strong></p><p>mandatory if <strong>copy_table</strong> is set to "true"</p>                  | Name of the BigQuery dataset that will contain the table copy.                                                                                                                  |
+| <p><strong>dest_gbq_table</strong></p><p>mandatory if <strong>copy_table</strong> is set to "true"</p>                    | Name of the BigQuery table copy.                                                                                                                                                |
+| <p><strong>dest_gbq_table_suffix</strong></p><p>optional, to use only if <strong>copy_table</strong> is set to "true"</p> | <p>The only supported value for this parameter is "dag_execution_date".</p><p>This will add "_yyyymmdd" at the end of the table name to enable ingestion time partitioning.</p> |

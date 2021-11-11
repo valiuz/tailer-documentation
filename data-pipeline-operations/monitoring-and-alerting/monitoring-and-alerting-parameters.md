@@ -15,11 +15,11 @@ The monitoring and alerting parameters are defined in a JSON object added at the
 Currently, you can only send on alert message, and only by email. But we are thinking about adding more alert systems like Pagerduty, Datadog, or throw a generic web-hook. Feel free to suggest to us your preferred alerting platform.
 {% endhint %}
 
-##  Example
+## &#x20;Example
 
 Here is an example in a TTT configuration file:
 
-```text
+```
 {
 	"configuration_type": "table-to-table",
 	"configuration_id": "000001_append_tailer_activities_runs",
@@ -75,219 +75,61 @@ Here is an example in a TTT configuration file:
 
 ```
 
-## 🌐 Global monitoring parameters
+## :globe\_with\_meridians: Global monitoring parameters
 
 General parameters about the monitoring.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>impact</b>
-        </p>
-        <p>type: integer</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>&apos;Impact&apos; is an ITIL measure of the extent of the Incident and
-          of the potential damage caused by the Incident before it can be resolved.
-          <a
-          href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a>
-        </p>
-        <p>If not specified, the default value will be 2.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>urgency</b>
-        </p>
-        <p>type: integer</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>&apos;Urgency&apos; is a measure of how quickly a resolution of the Incident
-          is required. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a>
-        </p>
-        <p>If not specified, the default value will be 2.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>alert_enabled</b>
-        </p>
-        <p>type: boolean</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Flag used to enable/disable the execution of the alerting (i.e. send an
-        alert to a recipient when the run failed)</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>alert_environment</b>
-        </p>
-        <p>type: array</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Specifies the environments that will trigger the alert.</p>
-        <p>Possible values: PROD, PREPROD, STAGING, DEV.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>alert_info</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">Short information describing the alert.
-        <br />You can refer it as a variable in your triggering message (as email) with
-        the @alert_info parameter.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>alert</b>
-        </p>
-        <p>type: array of maps</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>List of alert messages the data operation will trigger if it fails.</p>
-        <p>Check the section below for detailed information on their parameters.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                   | Description                                                                                                                                                                                                                                                                                           |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>impact</strong></p><p>type: integer</p><p>optional</p>           | <p>'Impact' is an ITIL measure of the extent of the Incident and of the potential damage caused by the Incident before it can be resolved. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a></p><p>If not specified, the default value will be 2.</p> |
+| <p><strong>urgency</strong></p><p>type: integer</p><p>optional</p>          | <p>'Urgency' is a measure of how quickly a resolution of the Incident is required. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a></p><p>If not specified, the default value will be 2.</p>                                                         |
+| <p><strong>alert_enabled</strong></p><p>type: boolean</p><p>mandatory</p>   | Flag used to enable/disable the execution of the alerting  (i.e. send an alert to a recipient when the run failed)                                                                                                                                                                                    |
+| <p><strong>alert_environment</strong></p><p>type: array</p><p>mandatory</p> | <p>Specifies the environments that will trigger the alert.</p><p>Possible values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                    |
+| <p><strong>alert_info</strong></p><p>type: string</p><p>optional</p>        | <p>Short information describing the alert.<br>You can refer it as a variable in your triggering message (as email) with the @alert_info parameter.</p>                                                                                                                                                |
+| <p><strong>alert</strong></p><p>type: array of maps</p><p>optional</p>      | <p>List of alert messages the data operation will trigger if it fails.</p><p>Check the section below for detailed information on their parameters.</p>                                                                                                                                                |
 
-## ⚠ Alert parameters
+## :warning: Alert parameters
 
 An alert will be able to trigger different types of messages. Currently, only an email alert can be sent.
 
 For each alert message, parameters will differ depending on the message type.
 
-### 📨 Email alert
+### :incoming\_envelope: Email alert
 
-An email alert will send an email with specific parameters each time the data operation fails in the specified environments. 
+An email alert will send an email with specific parameters each time the data operation fails in the specified environments.&#x20;
 
 By default, Tailer provides an email template with detailed information. Thus, you don't have to fill in all the parameters such as subject, body, etc. But you can also personalize all the parameters to set precisely how the alert email should look like. For that, you can use the alert variables described below.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>email_from</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Surcharge the &quot;email from&quot; attribute.</p>
-        <p>Default value: &quot;no_reply@tailer.ai&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>email_to</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>List of email recipients</p>
-        <p>You can specify more than one recipient by separating the email addresses
-          with a <b>;</b>
-        </p>
-        <p><em>example: &quot;steve@apple.com;support@amazon.com&quot;</em>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>email_reply_to</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Surcharge the &quot;email reply to&quot; attribute.</p>
-        <p>Default value: &quot;no_reply@tailer.ai&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>email_subject</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Subject of the triggered alert email.</p>
-        <p>Default value: &quot;TAILER RUN ALERT: @job<em>id FAILED at </em>@execution<em>_</em>date&quot;</p>
-        <p>You can personalize the subject with the alert variables described below.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>email_body_type</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Format type of the email body.</p>
-        <p>Default value: &quot;html&quot;</p>
-        <p>Other possible value: &quot;txt&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>email_body</b>
-        </p>
-        <p>type: string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Body of the alert email.</p>
-        <p>Default value: &quot;See attached html file below&quot;</p>
-        <p>You can personalize the body with the alert variables described below.
-          Be careful to use the right body format according to the <b>email_body_type</b> parameter.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                 | Description                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>email_from</strong></p><p>type: string</p><p>optional</p>      | <p>Surcharge the "email from" attribute. </p><p>Default value: "no_reply@tailer.ai"</p>                                                                                                                                                                               |
+| <p><strong>email_to</strong></p><p>type: string</p><p>mandatory</p>       | <p>List of email recipients</p><p>You can specify more than one recipient by separating the email addresses with a <strong>;</strong></p><p><em>example: "steve@apple.com;support@amazon.com"</em></p>                                                                |
+| <p><strong>email_reply_to</strong></p><p>type: string</p><p>optional</p>  | <p>Surcharge the "email reply to" attribute. </p><p>Default value: "no_reply@tailer.ai"</p>                                                                                                                                                                           |
+| <p><strong>email_subject</strong></p><p>type: string</p><p>optional</p>   | <p>Subject of the triggered alert email.</p><p>Default value: "TAILER RUN ALERT: @job<em>id FAILED at </em>@execution<em>_</em>date"</p><p>You can personalize the subject with the alert variables described below.</p>                                              |
+| <p><strong>email_body_type</strong></p><p>type: string</p><p>optional</p> | <p>Format type of the email body.</p><p>Default value: "html"</p><p>Other possible value: "txt"</p>                                                                                                                                                                   |
+| <p><strong>email_body</strong></p><p>type: string</p><p>optional</p>      | <p>Body of the alert email.</p><p>Default value: "See attached html file below"</p><p>You can personalize the body with the alert variables described below. Be careful to use the right body format according to the <strong>email_body_type</strong> parameter.</p> |
 
-{% file src="../../.gitbook/assets/tailer-alert-failed-email-template.html" caption="Default Alert Failed Email Template.html" %}
+{% file src="../../.gitbook/assets/Tailer Alert Failed Email Template.html" %}
+Default Alert Failed Email Template.html
+{% endfile %}
 
-### 🧩 Alert message variables
+### :jigsaw: Alert message variables
 
 Alert messages can be personalized with alert message variables. Those variables are contextualized during the data operation run.
 
-| Variable | Description |
-| :--- | :--- |
-| **@url\_to\_tailer\_studio\_run\_id** | Tailer Studio URL for the run |
-| **@url\_to\_tailer\_studio\_conf\_id** | Tailer Studio URL for the run current configuration ID |
-| **@account** | Account of the data operation's run |
-| **@environment** | Environment of the data operation's run |
-| **@configuration\_type** | Configuration type of the data operation's run |
-| **@execution\_date** | Execution date of the data operation's run |
-| **@short\_description** | Short description of the data operation |
-| **@job\_id** | Job ID of the data operation |
-| **@run\_id** | Run ID of the data operation's run |
-| **@updated\_by** | Email address of the user who last updated the configuration |
-| **@update\_date** | Date tile of the last configuration update |
-| **@impact** | Monitoring impact level parameter |
-| **@urgency** | Monitoring urgency level parameter |
-| **@alert\_info** | Alert info set in the monitoring parameter |
-
+| Variable                               | Description                                                  |
+| -------------------------------------- | ------------------------------------------------------------ |
+| **@url\_to\_tailer\_studio\_run\_id**  | Tailer Studio URL for the run                                |
+| **@url\_to\_tailer\_studio\_conf\_id** | Tailer Studio URL for the run current configuration ID       |
+| **@account**                           | Account of the data operation's run                          |
+| **@environment**                       | Environment of the data operation's run                      |
+| **@configuration\_type**               | Configuration type of the data operation's run               |
+| **@execution\_date**                   | Execution date of the data operation's run                   |
+| **@short\_description**                | Short description of the data operation                      |
+| **@job\_id**                           | Job ID of the data operation                                 |
+| **@run\_id**                           | Run ID of the data operation's run                           |
+| **@updated\_by**                       | Email address of the user who last updated the configuration |
+| **@update\_date**                      | Date tile of the last configuration update                   |
+| **@impact**                            | Monitoring impact level parameter                            |
+| **@urgency**                           | Monitoring urgency level parameter                           |
+| **@alert\_info**                       | Alert info set in the monitoring parameter                   |

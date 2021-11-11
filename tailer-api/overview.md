@@ -1,14 +1,14 @@
 ---
-description: 'This page introduces the Tailer API, and its main use cases and features'
+description: This page introduces the Tailer API, and its main use cases and features
 ---
 
 # Overview
 
-## 🔐 What is the Tailer API?
+## :closed\_lock\_with\_key: What is the Tailer API?
 
 The tailer API is a set of features intended for operations teams allowing them to control the orchestration of Tailer data pipelines, and to monitor the jobs executions.
 
-## 💼 Use cases
+## :briefcase: Use cases
 
 Here are a few use cases of the Tailer API:
 
@@ -17,7 +17,7 @@ Here are a few use cases of the Tailer API:
 * Monitoring the service quality of data pipelines and generating alerts when they don't run as planned
 * Rebooting workflows with the resetting feature, and enabling/disabling data pipelines
 
-## ✨ Features
+## :sparkles: Features
 
 Here is a list of the available features:
 
@@ -27,6 +27,4 @@ Here is a list of the available features:
 * Resetting a workflow
 * Disabling a data operation
 * Enabling a data operation
-
-
 

@@ -12,11 +12,11 @@ The configuration file is in JSON format. It contains the following sections:
 * [Working folder parameters](untitled-1.md#working-folder-parameters): Information related to the working folder for the files.
 * [Conversion parameters](untitled-1.md#conversion-parameters): Information about the input file to process and the output files generated.
 
-## 👁🗨 Example
+## :eye\_in\_speech\_bubble: Example
 
 Here is an example of Convert XML to CSV configuration file:
 
-```text
+```
 {
     "configuration_type": "xml-conversion",
     "configuration_id": "000099-test-xml-conversion",
@@ -51,258 +51,38 @@ Here is an example of Convert XML to CSV configuration file:
 }
 ```
 
-## 🌐 Global parameters
+## :globe\_with\_meridians: Global parameters
 
 General information about the data operation.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of data operation.</p>
-        <p>For a Convert XML to CSV data operation, the value is always &quot;xml-conversion&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>ID of the data operation.</p>
-        <p>You can pick any name you want, but is has to be <b>unique</b> for this
-          data operation type.</p>
-        <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one. To guarantee its uniqueness, the best practice
-          is to name your data operation by concatenating:</p>
-        <ul>
-          <li>your account ID,</li>
-          <li>&quot;xml-conversion&quot;.</li>
-          <li>and a description of the data to convert.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>environment</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Deployment context.</p>
-        <p>Values: PROD, PREPROD, STAGING, DEV.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>account</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer Platform
-        administrator.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>activated</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the execution of the data operation.</p>
-        <p>If not specified, the default value will be &quot;true&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>archived</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the visibility of the data operation&apos;s
-          configuration and runs in Tailer&#xA0;Studio.</p>
-        <p>If not specified, the default value will be &quot;false&quot;.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p> | <p>Type of data operation.</p><p>For a Convert XML to CSV data operation, the value is always "xml-conversion".</p>                                                                                                                                                                                                                                                                                                                                                 |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one. To guarantee its uniqueness, the best practice is to name your data operation by concatenating:</p><ul><li>your account ID,</li><li>"xml-conversion".</li><li>and a description of the data to convert.</li></ul> |
+| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>        | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                          |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                                   |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                       |
 
-## 💼 Working folder parameters
+## :briefcase: Working folder parameters
 
 Information related to the input/output working directory in Google Cloud Storage.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_project_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Google Cloud Platform project ID for the bucket where the data is going
-        to be converted.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_bucket</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Name of the GCS bucket where the data is going to be converted.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcs_working_directory</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Path in the GCS bucket where the input files will be placed, and the output
-        files generated, e.g. &quot;some/sub/dir&quot;.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>gcp_credentials_secret</b>
-        </p>
-        <p>type: dict</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Encrypted credentials needed to read and write data in the GCS bucket.</p>
-        <p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>.
-          To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                            |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>gcp_project_id</strong></p><p>type: string</p><p>mandatory</p>        | Google Cloud Platform project ID for the bucket where the data is going to be converted.                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>gcs_bucket</strong></p><p>type: string</p><p>mandatory</p>            | Name of the GCS bucket where the data is going to be converted.                                                                                                                                                                                                                                                                                                                                                        |
+| <p><strong>gcs_working_directory</strong></p><p>type: string</p><p>mandatory</p> | Path in the GCS bucket where the input files will be placed, and the output files generated, e.g. "some/sub/dir".                                                                                                                                                                                                                                                                                                      |
+| <p><strong>gcp_credentials_secret</strong></p><p>type: dict</p><p>mandatory</p>  | <p>Encrypted credentials needed to read and write data in the GCS bucket.</p><p>You should have generated credentials when <a href="https://app.gitbook.com/s/-MIIsP_DvP2J-c1szWrQ/getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="https://app.gitbook.com/s/-MIIsP_DvP2J-c1szWrQ/getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
-## 💱 Conversion parameters
+## :currency\_exchange: Conversion parameters
 
 Information about the input file to process and the output files generated.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>filename_templates</b>
-        </p>
-        <p>type: array</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Array containing one or several <b>filename_template</b> parameters (see
-        below).</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>filename_template</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>When a file with a name matching the template set here is added to the
-          specified GCS folder, the conversion will be launched automatically.</p>
-        <p>
-          <br />The following placeholders are currently supported:</p>
-        <ul>
-          <li>&quot;FD_DATE&quot; looks for an 8-digit date (e.g. &quot;20191015&quot;).</li>
-          <li>&quot;FD_TIME&quot; looks for a 6-digit time (e.g. &quot;124213&quot;).</li>
-          <li>&quot;FD_BLOB_XYZ&quot;, where XYZ is a non-zero positive integer, looks
-            for a string of characters of XYZ length.</li>
-        </ul>
-        <p><b>Example 1</b>
-        </p>
-        <p>This template:</p>
-        <p><code>&quot;stores_{{FD_DATE}}_{{FD_TIME}}.txt&quot;</code>
-        </p>
-        <p>will allow you to process this type of files:</p>
-        <p>&quot;stores_20201116_124213.txt&quot;</p>
-        <p></p>
-        <p><b>Example 2</b>
-        </p>
-        <p>This template:</p>
-        <p><code>&quot;{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz&quot;</code>
-        </p>
-        <p>will allow you to process this type of files:</p>
-        <p>&quot;20201116_12397_fixedvalue_12312378934.gz&quot;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>file_description</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">A short description of the file template entry.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>xsd_schema_file</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Name of the XSD file that will be used to validate the XML file before
-          the conversion.</p>
-        <p>In the current version, only one XSD can be used per XML entry.
-          <br />The XSD file name <b>must be identical</b> to the corresponding XML file
-          name, excluding suffixes. For example &quot;coupon.xsd&quot; can be used
-          to validate &quot;coupon_20210404.xml&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>output_suffix_filter</b>
-        </p>
-        <p>type: array of string</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Names of the output files to be kept after the conversion.</p>
-        <p>If the XML file contains many child entities, the conversion will create
-          a lot of CSV files (one for each entity). This filter allows you to prevent
-          unnecessary file upload to the output bucket.</p>
-        <p>It works by finding an occurrence of the string in the filename. For example,
-          if a file named &quot;coupon_20210404_advantage.tsv&quot; is generated
-          and the filter &quot;advantage.tsv&quot; was added, then this file will
-          be kept.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+| Parameter                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>filename_templates</strong></p><p>type: array</p><p>mandatory</p>            | Array containing one or several **filename\_template** parameters (see below).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <p><strong>filename_template</strong></p><p>type: string</p><p>mandatory</p>            | <p>When a file with a name matching the template set here is added to the specified GCS folder, the conversion will be launched automatically.</p><p><br>The following placeholders are currently supported:</p><ul><li>"FD_DATE" looks for an 8-digit date (e.g. "20191015").</li><li>"FD_TIME" looks for a 6-digit time (e.g. "124213").</li><li>"FD_BLOB_XYZ", where XYZ is a non-zero positive integer, looks for a string of characters of XYZ length.</li></ul><p><strong>Example 1</strong></p><p>This template:</p><p><code>"stores_{{FD_DATE}}_{{FD_TIME}}.txt"</code></p><p>will allow you to process this type of files:</p><p>"stores_20201116_124213.txt"</p><p></p><p><strong>Example 2</strong></p><p>This template: </p><p><code>"{{FD_DATE}}_{{FD_BLOB_5}}_fixedvalue_{{FD_BLOB_11}}.gz"</code></p><p>will allow you to process this type of files:</p><p>"20201116_12397_fixedvalue_12312378934.gz"</p> |
+| <p><strong>file_description</strong></p><p>type: string</p><p>mandatory</p>             | A short description of the file template entry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <p><strong>xsd_schema_file</strong></p><p>type: string</p><p>mandatory</p>              | <p>Name of the XSD file that will be used to validate the XML file before the conversion.</p><p>In the current version, only one XSD can be used per XML entry.<br>The XSD file name <strong>must be identical</strong> to the corresponding XML file name, excluding suffixes. For example "coupon.xsd" can be used to validate "coupon_20210404.xml".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <p><strong>output_suffix_filter</strong></p><p>type: array of string</p><p>optional</p> | <p>Names of the output files to be kept after the conversion.</p><p>If the XML file contains many child entities, the conversion will create a lot of CSV files (one for each entity). This filter allows you to prevent unnecessary file upload to the output bucket.</p><p>It works by finding an occurrence of the string in the filename. For example, if a file named "coupon_20210404_advantage.tsv" is generated and the filter "advantage.tsv" was added, then this file will be kept.</p>                                                                                                                                                                                                                                                                                                                                                                                                                        |

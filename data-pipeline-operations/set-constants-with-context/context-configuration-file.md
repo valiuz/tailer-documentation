@@ -11,11 +11,11 @@ The configuration file is in JSON format. It contains the following sections:
 * [Global parameters](context-configuration-file.md#global-parameters): General information about the data operation.
 * [Constant parameters](context-configuration-file.md#constant-parameters): Information related to the constants to set.
 
-## 👁🗨 Example
+## :eye\_in\_speech\_bubble: Example
 
 Here is an example of Context configuration file:
 
-```text
+```
 {
 	"configuration_type": "context",
 	"configuration_id": "context_dev",
@@ -110,174 +110,29 @@ Here is an example of Context configuration file:
 
 ```
 
-## 🌐 Global parameters
+## :globe\_with\_meridians: Global parameters
 
 General information about the data operation.
 
-* 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of data operation.</p>
-        <p>For an STS data operation, the value is always &quot;storage-to-storage&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>configuration_id</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>ID of the data operation.</p>
-        <p>You can pick any name you want, but is has to be <b>unique</b> for this
-          data operation type.</p>
-        <p>Note that in case of conflict, the newly deployed data operation will
-          overwrite the previous one.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>environment</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Deployment context.</p>
-        <p>Values: PROD, PREPROD, STAGING, DEV.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>account</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Your account ID is a 6-digit number assigned to you by your Tailer Platform
-        administrator.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>activated</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the execution of the data operation.</p>
-        <p>If not specified, the default value will be &quot;true&quot;.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>archived</b>
-        </p>
-        <p>type: boolean</p>
-        <p>optional</p>
-      </td>
-      <td style="text-align:left">
-        <p>Flag used to enable/disable the visibility of the data operation&apos;s
-          configuration and runs in Tailer Studio.</p>
-        <p>If not specified, the default value will be &quot;false&quot;.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+*
 
-## 🔣 Constant parameters
+| Parameter                                                                     | Description                                                                                                                                                                                                                                           |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p> | <p>Type of data operation.</p><p>For an STS data operation, the value is always "storage-to-storage".</p>                                                                                                                                             |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one.</p> |
+| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>        | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                 |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                            |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                     |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                         |
+
+## :symbols: Constant parameters
 
 Information related to the constants to set.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left"><b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><b>parameters</b>
-        </p>
-        <p>type: array</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Array containing a list of constants, all of them including a name, and
-        the parameters listed below.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>value</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Value that will be used to replace the placeholder in data operation configuration
-        files.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>type</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of constant.
-          <br />Possible values:</p>
-        <ul>
-          <li>integer</li>
-          <li>string</li>
-          <li>float</li>
-          <li>object</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>resource</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">
-        <p>Type of resource.</p>
-        <p>Possible values:</p>
-        <ul>
-          <li>value</li>
-          <li>gcp_project_id</li>
-          <li>gcs_bucket</li>
-          <li>gcp_credentials_secret</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><b>description</b>
-        </p>
-        <p>type: string</p>
-        <p>mandatory</p>
-      </td>
-      <td style="text-align:left">Description of the constant.</td>
-    </tr>
-  </tbody>
-</table>
-
+| Parameter                                                              | **Description**                                                                                                                                 |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>parameters</strong></p><p>type: array</p><p>mandatory</p>   | Array containing a list of constants, all of them including a name, and the parameters listed below.                                            |
+| <p><strong>value</strong></p><p>type: string</p><p>mandatory</p>       | Value that will be used to replace the placeholder in data operation configuration files.                                                       |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>        | <p>Type of constant.<br>Possible values:</p><ul><li>integer</li><li>string</li><li>float</li><li>object</li></ul>                               |
+| <p><strong>resource</strong></p><p>type: string</p><p>mandatory</p>    | <p>Type of resource.</p><p>Possible values:</p><ul><li>value</li><li>gcp_project_id</li><li>gcs_bucket</li><li>gcp_credentials_secret</li></ul> |
+| <p><strong>description</strong></p><p>type: string</p><p>mandatory</p> | Description of the constant.                                                                                                                    |

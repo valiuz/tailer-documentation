@@ -1,10 +1,10 @@
 ---
-description: 'Welcome to Tailer, an Open Source data platform dedicated to retailers.'
+description: Welcome to Tailer, an Open Source data platform dedicated to retailers.
 ---
 
 # What is Tailer Platform?
 
-## 🛫 Introduction
+## :airplane\_departure: Introduction
 
 Retail companies need to handle ever-growing amounts of data. To do so, they require a simple, scalable and easy-to-implement solution offering instant performance at an affordable cost.
 
@@ -12,7 +12,7 @@ Tailer aims at helping all members of B2C companies that need to make sense of h
 
 "Tailer" is an anagram of "Retail". As a high tech haute couture solution, it allows you to tailor your data, e-commerce, and sales predictions to your needs.
 
-## ✨ What makes Tailer special?
+## :sparkles: What makes Tailer special?
 
 Easy to use, and quick to get up and running, Tailer allows you to achieve your business objectives faster.
 
@@ -22,7 +22,7 @@ Easy to integrate, Tailer can be deployed in only 24h to 48h, and runs inside yo
 
 Tailer is really agile, as its data flows adapt to all contexts. Being DevOps-ready, it allows you to adopt an iterative approach, and a Git branching strategy.
 
-## 🛠 Main features
+## :tools: Main features
 
 Tailer offers the following features:
 
@@ -31,7 +31,7 @@ Tailer offers the following features:
 * Transforming and enriching data
 * Using data for analysis and predictions
 
-## 👥 Who is Tailer intended for?
+## :busts\_in\_silhouette: Who is Tailer intended for?
 
 ### **Data engineers**
 
@@ -44,4 +44,3 @@ Data scientists can use Tailer to work directly within the company data lake wit
 ### **Decision makers**
 
 Decision makers can take advantage of the better, quicker business insights achieved thanks to Tailer Platform to boost the data-driven transformation of their company.
-
