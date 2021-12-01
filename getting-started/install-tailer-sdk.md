@@ -72,3 +72,16 @@ The account is successfully created and you're now logged in to Tailer Platform
 
 You can now proceed with the [configuration of Google Cloud Platform](set-up-google-cloud-platform.md).
 {% endhint %}
+
+## :unlock:Reset password
+
+If you forgot your password, you can reset it with the Tailer SDK.&#x20;
+
+1.  To reset your password, run the following command:
+
+    ```
+    tailer auth reset-password
+    ```
+2. An email is sent to the email address you have configured. Don't forget to check your spam folder.
+3. Follow the link in the email to rest your password. Please note that this link will expire after a reasonable amount of time. You can get a new link by running again the command above.
+4. After you have reseted your password, please run 'tailer auth login' to log in again to Tailer Platform and provide the new password.
