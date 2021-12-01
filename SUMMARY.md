@@ -51,7 +51,7 @@
     * [VM Launcher configuration file for data decryption](data-pipeline-operations/execute-code-processings-with-vm-launcher/encrypt-decrypt-data-with-vm-launcher/vm-launcher-data-decryption-configuration-file.md)
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
-
+* [Asserting Data quality with Expectations](data-pipeline-operations/expectations/README.md)
 ## Tailer Studio
 
 * [Overview](tailer-studio/untitled.md)
