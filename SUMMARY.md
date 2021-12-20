@@ -52,6 +52,7 @@
 * [Monitoring and Alerting](data-pipeline-operations/monitoring-and-alerting/README.md)
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 * [Asserting Data quality with Expectations](data-pipeline-operations/expectations/README.md)
+  * [List of Expectations](data-pipeline-operations/monitoring-and-alerting/Expectations.md)
 ## Tailer Studio
 
 * [Overview](tailer-studio/untitled.md)
