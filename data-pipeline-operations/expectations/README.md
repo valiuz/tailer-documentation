@@ -1,894 +1,354 @@
-# Expectations
+# Guide
 
+This is the guide page to Fashion Data Expectation stored procedures.
 
-### Expectations FashionDataExpectations
-Stored Procedures for Data Quality
+# A Short Introduction to “Expectations”
 
+What are expectations ? A set of simple SQL Stored Procedures that ease the writing of tests.
+Too often, writing tests in sql requires assertions that are complex to write, that are not
+factorized. In a complex project, those assertions are spread amongst many
+projects and scripts and this can be a tedious tasks to maintain them. Fashion Data Expectations
+are a way to solve these problems :
+- a set of simple stored procedures that manage a large number of common assertions (check for
+primary key, check for integrity constraints, regular expression, etc.)
+- one liners that are still part of the SQL ecosystem, so they live with your SQL Code and
+your Tailer configurations and can benefit from classic sql syntax.
+- fast execution with parallel processing.
+- full assertion metrics including number of rejected lines, assertion processing time,
+timestamping, metrics history, etc.
 
-#### expect_everyday_increasing_since(dataset, tablename, value)
-Expect a table to have a number of line continuously increasing since a predefined date
+Let’s say that you imported data into a bigquery project and you want to check for a primary key constraint
+with a certain threshold. In SQL you would write something like that :
 
-This procedure is a part of a specific set where daily/weekly/monthly execution is 
-required. We store each iteration in a timely manner and assert that for each iteration
-over time, we get a positive or null variation.
+`\`
+assert ( ((select count(distinct PK_products) from  \`fd-io-dlk-demo.dlk_demo_pda.products\`) / (select count(\*) from  \`fd-io-dlk-demo.dlk_demo_pda.products\`) ) = 0)  as "pk issue with table fd-io-dlk-demo.dlk_demo_pda.products";
+\``
 
+With FD Expectations, you just write :
 
-* **Parameters**
 
-    
-    * **project** (*STRING*) – The GCP project
 
+```
+``
+```
 
-    * **dataset** (*STRING*) – The dataset of the table
+\`
+CALL 
 
+```
+`
+```
 
-    * **tablename** (*STRING*) – The table name
+tailer-ai.expect.primarykey\`(‘fd-io-dlk-demo.dlk_demo_pda’, ‘products_r7’);
 
 
-    * **value** (*DATE*) – The starting date to check for increase in value
 
+```
+``
+```
 
 
-* **Returns**
 
-    nothing (the result is stored in expectation_output table)
+```
+`
+```
 
 
+# Getting Started
 
-* **Return type**
+## Launching Expectation in the Bigquery Console
 
-    nothing (expectation result sets are defined in the “Output” section)
+You can launch an expectation directly from your bigquery console. This eases the developpement of a set of expectations
+and can also be useful for ensuring adhoc quality of an element.
 
+`\`
+--- Expectations have usually the following format
+--- CALL \`tailer-ai.expect.EXPECTATION\`('PROJECT_ID.DATASET_ID', 'TABLE_ID', SOME_PARAMETERS);
+CALL \`tailer-ai.expect.table_count_greater\`('fd-io-dlk-demo.dlk_demo_pda', 'products_r7', 100000,0);
+\``
 
+*Important Note* : In your expectation call, always specify the name of the project, otherwise the expectation
+will search for your table in “tailer-ai” (and will fail) instead of wherever your data are.
 
-* **Raises**
+## Creating an Expectation in a Tailer Table to Table Configuration
 
-    **<Exception>** – An exception will be thrown if the assertion fails.
+To create an expectation, you need two elements :
+\* a dedicated configuration task
+\* a dedicated sql file
 
+The dedicated configuration task must be of type “expectation”. For example :
 
 
-#### expect_everyday_since(dataset, tablename, column, start_date, exception, minimum)
-Expect a table to have a date column to be filled with a minimum value for a everyday since a start date.
 
-Check for a table to have a date type column to be present and have a minimum grouped lines for 
-a specific period of time in a daily manner from the start_date (included) up to the current date. 
-So if I enter 1/1/2021 for column date_to_check, 
-it will count all lines grouped by date_to_check and assert that the count is not below minimum (included) and that all
-dates are properly present. An Exception array can be provided to avoid an error where a date has no data. 
-This test ensure daily continuity of data and is part of a freshness
-test suite.
+```
+``
+```
 
 
-* **Parameters**
 
-    
-    * **project** (*STRING*) – The GCP project
+```
+`
+```
 
 
-    * **dataset** (*STRING*) – The dataset of the table
 
+    > > {
 
-    * **tablename** (*STRING*) – The table name
+    > “id”: “expects_tables”,
+    > “task_type”: “expectation”,
+    > “short_description”: “Check for data integrity (pk, count, dates,…).”,
+    > “doc_md”: “000001_load_PDA_products.md”,
+    > “sql_file”: “000001_load_PDA_products_expects_r7.sql”,
+    > “task_criticality”: “warning”
 
+    }
 
-    * **column** (*STRING*) – The column name
 
 
-    * **start_date** (*STRING*) – The date to start the control
+```
+``
+```
 
 
-    * **exception** (*ARRAY*) – An array that contains dates that will not be checked
 
+```
+`
+```
 
-    * **minimum** (*INT64*) – The minimum amount of lines per date expected.
 
+In your sql file, you can add as much expectations as you want :
 
+`\`
+-- assert count greater than 0
+CALL \`tailer-ai.expect.table_count_greater\`('fd-io-dlk-demo.dlk_demo_pda', 'products_r7', 100000,0);
+-- assert primary key is ok
+CALL \`tailer-ai.expect.primarykey\`('fd-io-dlk-demo.dlk_demo_pda', 'products_r7');
+-- assert freshness on the final table (we want to have at least 10k products for today iteration)
+CALL \`tailer-ai.expect.values_to_contain\`('fd-io-dlk-demo.dlk_demo_pda', 'products_r7', 'max_importdate' ,cast(current_date() as string),10000,0);
+-- assert freshness on the psa table (we want to have at least 10k product for today psa)
+CALL \`tailer-ai.expect.table_count_greater\`('fd-io-dlk-demo.dlk_demo_psa', concat('products_', replace(cast(current_date() as string), '-','')),100000,0);
+-- assert freshness on the psa table for yesterday(we want to have at least 10k product for yesterday psa)
+CALL \`tailer-ai.expect.table_count_greater\`('fd-io-dlk-demo.dlk_demo_psa', concat('products_', replace(cast(date_sub(current_date(), interval 1 day) as string), '-','')),100000,0);
+\``
 
-* **Returns**
+*Important Note 1* : In your sql expectation file, only expectations will be executed. Classic sql commands or comments will be ignored.
 
-    nothing (the result is stored in expectation_output table)
+*Important Note 2* : Your call to a stored procedure will be treated as a sql instruction. This allows writing
+great expectations with powerful features. For example, doing “CONCAT” or using “DATE_SUB” or “CURRENT_DATE”
+enable counting with a sliding window on a specific table.
 
+`\`
+CALL \`tailer-ai.expect.table_count_greater\`('fd-io-dlk-demo.dlk_demo_psa', concat('products_', replace(cast(date_sub(current_date(), interval 1 day) as string), '-','')),100000,0);
+\``
 
+# Analyzing raw metrics
 
-* **Return type**
+Everytime an expectation is executed, it generates some metrics that are added to the follwing table :
 
-    nothing (expectation result sets are defined in the “Output” section)
+`\`
+SELECT \* FROM \`fd-io-dlk-demo.tailer_common.expectation_results\` LIMIT 1000
+\``
 
+Here are the fields of this:
 
 
-* **Raises**
 
-    **<Exception>** – An exception will be thrown if the assertion fails.
+```
+|Field Name|Type|Description|
+```
 
 
 
-#### expect_everymonth_since(dataset, tablename, column, start_date, exception, minimum)
-Expect a table to have a date column to be filled with a minimum value for a every month since a start date.
 
-Check for a table to have a date type column to be present and have a minimum grouped lines for 
-a specific period of time in a monthly manner from the start_date (included) up to the current date. 
-So if I enter 1/1/2021 for column date_to_check, 
-it will count all lines grouped by date_to_check and assert that the count is not below minimum and that all
-dates are properly present. An Exception array can be provided to avoid an error where a date has no data. 
-A specific attention to the day used as it will
-be the day of the month that will be repeated (so if I set first day a 5 January, it will be every 5th of the month).
-This test ensure monthly continuity of data and is part of a freshness
-test suite.
+```
+|:------------|
+```
 
+:————-
 
-* **Parameters**
+```
+|:-------------|
+```
 
-    
-    * **project** (*STRING*) – The GCP project
 
 
-    * **dataset** (*STRING*) – The dataset of the table
 
+```
+|job_id|STRING|Identifier of the Job|
+```
 
-    * **tablename** (*STRING*) – The table name
 
 
-    * **column** (*STRING*) – The column name
 
+```
+|dag_id|STRING|Identifier of the Direct Acyclic Graph|
+```
 
-    * **start_date** (*STRING*) – The date to start the control
 
 
-    * **exception** (*ARRAY*) – An array that contains dates that will not be checked
 
+```
+|account|STRING|Account Name|
+```
 
-    * **minimum** (*INT64*) – The minimum amount of lines per date expected.
 
 
 
-* **Returns**
+```
+|environment|STRING|Execution Environnement (DEV, PROD,...)|
+```
 
-    nothing (the result is stored in expectation_output table)
 
 
 
-* **Return type**
+```
+|run_id|STRING|Identifier of the Execution|
+```
 
-    nothing (expectation result sets are defined in the “Output” section)
 
 
 
-* **Raises**
+```
+|configuration_type|STRING|Configuration Type|
+```
 
-    **<Exception>** – An exception will be thrown if the assertion fails.
 
 
 
-#### expect_everyweek_since(dataset, tablename, column, start_date, exception, minimum)
-Expect a table to have a date column to be filled with a minimum value for a everyweek since a start date.
+```
+|configuration_id|STRING|Identifier of the Configuration|
+```
 
-Check for a table to have a date type column to be present and have a minimum grouped lines for 
-a specific period of time in a weekly manner from the start_date (included) up to the current date. 
-So if I enter 1/1/2021 for column date_to_check, 
-it will count all lines grouped by date_to_check and assert that the count is not below minimum and that all
-dates are properly present. An Exception array can be provided to avoid an error where a date has no data. 
-A specific attention to the first day as it will
-be the day of the week that will be repeated (so if I set first day a monday, it will be every monday).
-This test ensure weekly continuity of data and is part of a freshness
-test suite.
 
 
-* **Parameters**
 
-    
-    * **project** (*STRING*) – The GCP project
+```
+|task_id|STRING|Identifier of the Task|
+```
 
 
-    * **dataset** (*STRING*) – The dataset of the table
 
 
-    * **tablename** (*STRING*) – The table name
+```
+|execution_date|STRING|Execution Date|
+```
 
 
-    * **column** (*STRING*) – The column name
 
 
-    * **start_date** (*STRING*) – The date to start the control
+```
+|task_criticality|STRING|Task Criticality|
+```
 
 
-    * **exception** (*ARRAY*) – An array that contains dates that will not be checked
 
 
-    * **minimum** (*INT64*) – The minimum amount of lines per date expected.
+```
+|expectation_result|STRING|Expectation Result|
+```
 
 
+The field called “expectation_result” contains additionnal and specific informations about the expectation in JSON format:
 
-* **Returns**
 
-    nothing (the result is stored in expectation_output table)
 
+```
+``
+```
 
+\`
+{
 
-* **Return type**
+> “dataset”: “fd-io-dlk-demo.dlk_demo_pda”,
+> “tablename”: “products_r7”,
+> “column_name”: “”,
+> “procedure_name”: “expect_table_count_greater”,
+> “date_count”: “2021-12-03T14:02:51.284016”,
+> “all_count”: 158357,
+> “target_dataset”: “”,
+> “target_table_name”: “”,
+> “target_value”: [
 
-    nothing (expectation result sets are defined in the “Output” section)
+> > “100000”
 
+> ],
+> “reject_count”: 58357,
+> “reject_threshold”: 0,
+> “passed”: true
 
+A complete description of the specifics field is available on each expectation documentation.
 
-* **Raises**
+# Tailer Studio Integration
 
-    **<Exception>** – An exception will be thrown if the assertion fails.
+To be announced.
 
+Within the TTT Run result and configuration :
+Expectation will be displayed as a specific task in your task list of your configuration.
 
+In a dedicated screen for expectation :
+Screenshot
 
-#### expect_foreignkey(dataset, tablename, column, target_project, target_dataset, target_tablename, target_column, threshold)
-Expect a table to have a column to be fully present into another table’s column
+# A Quick List of available Expectations
 
-So we select source.column and target.column_target from source and “left outer join” to target.
-Source and target column are joined on “source.column = target.column”.
-Perfect fk means we have the very same number of pk on both side, delta means fk constraint is badly
-formed.
+A complete documentation is available on [https://documentation.tailer.ai](https://documentation.tailer.ai). But here’s a quick list
+of all the available stored procedures :
 
 
-* **Parameters**
+* expect_column_values_to_be_between
 
-    
-    * **project** (*STRING*) – The GCP project
 
+* expect_column_values_to_be_in_set
 
-    * **dataset** (*STRING*) – The dataset of the table
 
+* expect_column_values_to_contain
 
-    * **tablename** (*STRING*) – The table name
 
+* expect_column_values_to_not_be_in_set
 
-    * **column** (*STRING*) – The column name
 
+* expect_everyday_increasing_since
 
-    * **target_project** (*STRING*) – The target project of the foreign table
 
+* expect_everyday_since
 
-    * **target_dataset** (*STRING*) – The target dataset of the foreign table
 
+* expect_everymonth_since
 
-    * **target_tablename** (*STRING*) – The foreign table name
 
+* expect_everyweek_since
 
-    * **target_column** (*STRING*) – The the foreign key of the foreign table
 
+* expect_foreignkey
 
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
 
+* expect_not_null
 
 
-* **Returns**
+* expect_null
 
-    nothing (the result is stored in expectation_output table)
 
+* expect_primarykey
 
 
-* **Return type**
+* expect_primarykey_named
 
-    nothing (expectation result sets are defined in the “Output” section)
 
+* expect_primarykey_threshold
 
 
-* **Raises**
+* expect_table_row_count_to_be_between
 
-    **<Exception>** – An exception will be thrown if the assertion fails.
 
+* expect_table_row_count_to_be_equal
 
 
-#### expect_not_null(dataset, tablename, column, threshold)
-Expect a table to have a column to never be null
+* expect_table_row_count_to_be_equal_other_table
 
-The target column must always contain a value.
 
+* expect_table_row_count_to_be_greater
 
-* **Parameters**
 
-    
-    * **project** (*STRING*) – The GCP project
+* expect_type
 
 
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name to check for value
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_null(dataset, tablename, column)
-Expect a table to have a column to be fully null
-
-The target column must not contain any value.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name to check for value
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_primarykey(dataset, tablename, column, target_project, target_dataset, target_tablename, target_column, threshold)
-Expect a table to have a column to be fully present into another table’s column
-
-So we select source.column and target.column_target from source and “left outer join” to target.
-Source and target column are joined on “source.column = target.column”.
-Perfect fk means we have the very same number of pk on both side, delta means fk constraint is badly
-formed.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-    * **target_project** (*STRING*) – The target project of the foreign table
-
-
-    * **target_dataset** (*STRING*) – The target dataset of the foreign table
-
-
-    * **target_tablename** (*STRING*) – The foreign table name
-
-
-    * **target_column** (*STRING*) – The the foreign key of the foreign table
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_primarykey_named(dataset, tablename, column)
-Expect a table to have a column to be behave like a primary key.
-
-To be a primary key a column must be not null and unique within the current table.
-This is enforced by counting the total number of lines within the table and 
-comparing it to the number of distinct element in the column.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name (can be an sql operation)
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_primarykey_threshold(dataset, tablename, column, threshold)
-Expect a table to have a column named or described as a PK to be unique with a defined tolerance
-
-This procedures uses naming or tagging to detect the column that is likely to be a primary key.
-More precisely, it looks for “PK” in the name of the column or “PK” in the description of the column (the lookup is one on the metadata table).
-The threshold is a percentage of the total number of lines that can be wrong (1.0 means 1% and it means
-the assertion will fail if there is more than 1% of duplicated primary keys).
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_table_count_between(dataset, tablename, value)
-Expect a table to have a number of lines to be between two values.
-
-The values for the comparison must be provided as string and will be
-cast to integer during the assertion. The order in the array is important
-as we use the “between” predicat function to enforce this expectation.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **value** (*ARRAY<string>*) – The array of values that will be used to check the table
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_table_count_equal(dataset, tablename, value)
-Expect a table to have a count equal to a predefined value.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **value** (*INT64*) – the value the table count must be equal to
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_table_count_equal_other_table(tablename, target_dataset, target_tablename, threshold)
-Expect a table to have the same number of lines than another table.
-
-The threshold value is compared at an absolute value of the source count.
-
-
-* **Parameters**
-
-    
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **target_dataset** (*STRING*) – The target dataset of the foreign table
-
-
-    * **target_tablename** (*STRING*) – The foreign table name
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_table_count_greater(dataset, tablename, value)
-Expect a table to have a count greater than or equal to a predefined value.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **value** (*INT64*) – the value the table count must be greater to
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_type(tablename, column, type)
-Expect a table to have a column to be of a predefined type.
-
-This procedure checks for the type of a column by ensuring that a casted (to the wanted type) 
-non null value will not be null. Allow types are the one permitted by bigquery.
--> Integer INT64 Numeric values without fractional components
--> Floating point  FLOAT64 Approximate numeric values with fractional components
--> Numeric NUMERIC Exact numeric values with fractional components
--> BigNumeric  BIGNUMERIC  Exact numeric values with fractional components
--> Boolean BOOL  TRUE or FALSE (case insensitive)
--> String  STRING  Variable-length character (Unicode) data
--> Bytes BYTES Variable-length binary data
--> Date  DATE  A logical calendar date
--> Date/Time DATETIME  A year, month, day, hour, minute, second, and subsecond
--> Time  TIME  A time, independent of a specific date
--> Timestamp TIMESTAMP An absolute point in time, with microsecond precision
--> Struct (Record) STRUCT  Container of ordered fields each with a type (required) and field name (optional)
--> Geography GEOGRAPHY
-
-
-* **Parameters**
-
-    
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-    * **type** (*STRING*) – The type of the column to check
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_unique(tablename, column)
-Expect a table to have a column to be unique per line
-
-This procedure checks that the number of distinct value of the specified column is equal to the total number of lines in the table.
-Null values are part of the process (so one line can be null but it must be the only one).
-
-
-* **Parameters**
-
-    
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_values_to_be_between(dataset, tablename, column, value, threshold)
-Expect a table to have a column to be between two values.
-
-The authorized value type may be integer, float or dates to work properly. The between predicate
-requires the parameter to be included and in the proper order (for exemple for a set of date, the first
-date must be before the second date).
-A threshold might be specified so marginal value might not trigger any assertion exception.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-    * **value** (*ARRAY<string>*) – The array that contains the two values range
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_values_to_be_in_set(dataset, tablename, column, value, threshold)
-Expect a table to have a column to be in a predefined set.
-
-The authorized value type must be in a array as string as there is a cast in the verification predicat.
-A threshold might be specified so marginal value might not trigger any assertion exception.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-    * **value** (*ARRAY<STRING>*) – The values array of the predefined set
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
-
-
-
-#### expect_values_to_not_be_in_set(dataset, tablename, column, value, threshold)
-Expect a table to have a column to be fully present into another table’s column
-
-Expect a table to have a column to NOT be in a predetermined set of values.
-
-The not authorized value type must be in a array as string as there is a cast in the verification predicat.
-A threshold might be specified so marginal value might not trigger any assertion exception.
-
-
-* **Parameters**
-
-    
-    * **project** (*STRING*) – The GCP project
-
-
-    * **dataset** (*STRING*) – The dataset of the table
-
-
-    * **tablename** (*STRING*) – The table name
-
-
-    * **column** (*STRING*) – The column name
-
-
-    * **value** (*STRING*) – The target project of the foreign table
-
-
-    * **threshold** (*FLOAT64*) – the threshold to use to trigger an assertion failure
-
-
-
-* **Returns**
-
-    nothing (the result is stored in expectation_output table)
-
-
-
-* **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-
-
-
-* **Raises**
-
-    **<Exception>** – An exception will be thrown if the assertion fails.
+* expect_unique
