@@ -15,7 +15,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of Context configuration file:
 
-```
+```json
 {
 	"configuration_type": "context",
 	"configuration_id": "context_dev",
@@ -58,10 +58,10 @@ Here is an example of Context configuration file:
 
 		"gcp_credentials_secret_source_n_in": {
 			"value": {
-				"cipher_aes": "",
-				"ciphertext": "",
-				"enc_session_key": "",
-				"tag": ""
+				"cipher_aes": "xxx",
+				"ciphertext": "xxx",
+				"enc_session_key": "xxx",
+				"tag": "xxx"
 			},
 			"type": "object",
 			"resource": "gcp_credentials_secret",
@@ -84,10 +84,10 @@ Here is an example of Context configuration file:
 
 		"gcp_credentials_secret_mirror_n_in": {
 			"value": {
-				"cipher_aes": "",
-				"ciphertext": "",
-				"enc_session_key": "",
-				"tag": ""
+				"cipher_aes": "xxx",
+				"ciphertext": "xxx",
+				"enc_session_key": "xxx",
+				"tag": "xxx"
 			},
 			"type": "object",
 			"resource": "gcp_credentials_secret",
@@ -96,10 +96,10 @@ Here is an example of Context configuration file:
 
 		"gcp_credentials_secret_bigquery_dlk": {
 			"value": {
-				"cipher_aes": "",
-				"ciphertext": "",
-				"enc_session_key": "",
-				"tag": ""
+				"cipher_aes": "xxx",
+				"ciphertext": "xxx",
+				"enc_session_key": "xxx",
+				"tag": "xxx"
 			},
 			"type": "object",
 			"resource": "gcp_credentials_secret",
@@ -107,23 +107,20 @@ Here is an example of Context configuration file:
 		}
 	}
 }
-
 ```
 
 ## :globe\_with\_meridians: Global parameters
 
-General information about the data operation.
+General information about the configuration.
 
-*
-
-| Parameter                                                                     | Description                                                                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p> | <p>Type of data operation.</p><p>For an STS data operation, the value is always "storage-to-storage".</p>                                                                                                                                             |
-| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one.</p> |
-| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>        | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                 |
-| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                            |
-| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                     |
-| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                         |
+| Parameter                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>configuration_type</strong></p><p>type: string</p><p>mandatory</p> | <p>Type of configuration.</p><p>For an Context configuration, the value is always "context".</p>                                                                                                                                                                                                                                                                                                                                          |
+| <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the configuration.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this configuration type in your account. For this configuration, the account is added as a prefix to your configuration_id to generate the definitive configuration id that will be displayed in Tailer Studio.</p><p>Note that in case of conflict, the newly deployed configuration will overwrite the previous one.</p> |
+| <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>        | <p>Deployment environment.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                 |
+| <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                |
+| <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                         |
+| <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                             |
 
 ## :symbols: Constant parameters
 
