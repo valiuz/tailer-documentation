@@ -22,7 +22,7 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
   "version": "2",
   
   "configuration_type": "storage-to-storage",
-  "configuration_id": "152-composer-test-gcs-to-sftp",
+  "configuration_id": "copy-my-files-gcs-to-sftp",
   
   "environment": "PROD",
   "account": "000099",
@@ -34,25 +34,25 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
   
   "filename_templates": [
     {
-      "filename_template": "{{FD_DATE}}_test_file.txt",
-      "file_description": "This is a description for test_file.txt."
+      "filename_template": "{{FD_DATE}}_sales_file.txt",
+      "file_description": "This is a description for sales_file.txt."
     },
     {
-      "filename_template": "{{FD_DATE}}_other.txt",
-      "file_description": "This is a description for other.txt."
+      "filename_template": "{{FD_DATE}}_products.txt",
+      "file_description": "This is a description for proucts.txt."
     }
   ],
   
   "source": {
     "type": "gcs"
-    "gcs_source_bucket" : "152-composer-test",
-    "gcs_source_prefix" : "INPUT_SOMEDIR",
-    "gcs_archive_prefix": "archive",
+    "gcs_source_bucket" : "my-input-bucket",
+    "gcs_source_prefix" : "input-folder",
+    "gcs_archive_prefix": "archive-folder",
     "gcp_credentials_secret": {
-      "cipher_aes": "b42724dcbbf6c3310aba89a0f106d1c4",
-      "tag": "5c8816ea0a7aded9cb47c6f2df61f5b9",
-      "ciphertext": "fdf09c6e",
-      "enc_session_key": "8f63f7c"
+      "cipher_aes": "b42724dcbbf0aba89a0f106d1c4",
+      "tag": "5c8816ea0a7aded7c6f2df61f5b9",
+      "ciphertext": "fd096e",
+      "enc_session_key": "8f6f7c"
     }
   },
   
@@ -64,10 +64,10 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
       "sftp_port": 22,
       "sftp_userid": "john_doe",
       "sftp_password_secret": {
-        "cipher_aes": "3926f71cd00f8d2b812d10b07d0fee4e",
-        "tag": "1f5c066351db5f91041343a2ab37aebe",
-        "ciphertext": "921776fd0caa71a04228fe8aaa42af04",
-        "enc_session_key": "2fb0ad2b0d0edf9771"
+        "cipher_aes": "3926f71cd00d10b07d0fee4e",
+        "tag": "1f5c066351d91041343a2ab37aebe",
+        "ciphertext": "921776fd04228fe8aaa42af04",
+        "enc_session_key": "2fb0ad2b0df9771"
       },
       "sftp_destination_dir": "/",
       "sftp_destination_dir_create": false
