@@ -22,7 +22,7 @@ Every time a new file matching the specified rule appears in the source director
 
 * removed from the source directory,
 * if options have been set accordingly, copied to an archive directory located in the same storage, inside a folder named as the filename date,
-* and transferred to one or more output directories located in different storages.
+* and transferred to one or more output directories (destinations) located in different storages.
 
 ## **📋 How to deploy a Storage to Storage data operation**
 
@@ -39,5 +39,6 @@ Every time a new file matching the specified rule appears in the source director
     ```
     tailer deploy configuration your-file.json
     ```
-6. Log in to [Tailer Studio](http://studio.tailer.ai) to check the status and details of your data operation.
-7. Access your output folder(s), and archive folder, if any, to check the result of the data operation.
+6. Log in to [Tailer Studio](http://studio.tailer.ai) to check the status and details of your data operation.
+7. Add a file with the right template in the source folder
+8. Access your output folder(s), and archive folder, if any, to check the result of the data operation.
