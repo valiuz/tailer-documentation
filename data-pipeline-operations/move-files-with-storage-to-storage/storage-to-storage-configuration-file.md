@@ -18,12 +18,20 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
 
 ```json
 {
+  "$schema": "http://jsonschema.tailer.ai/schema/storage-to-storage",
+  "version": "2",
+  
   "configuration_type": "storage-to-storage",
   "configuration_id": "152-composer-test-gcs-to-sftp",
+  
   "environment": "PROD",
-  "account": "000010",
+  "account": "000099",
+  
   "activated": true,
   "archived": false,
+  
+  "max_active_runs": 5,
+  
   "filename_templates": [
     {
       "filename_template": "{{FD_DATE}}_test_file.txt",
@@ -34,6 +42,7 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
       "file_description": "This is a description for other.txt."
     }
   ],
+  
   "source": {
     "type": "gcs"
     "gcs_source_bucket" : "152-composer-test",
@@ -46,6 +55,7 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
       "enc_session_key": "8f63f7c"
     }
   },
+  
   "destinations": [
     {
       "type": "sftp",
