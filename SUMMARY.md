@@ -75,3 +75,4 @@
 
 * [Tailer SDK Stable Releases](https://pypi.org/project/tailer-sdk/)
 * [Tailer Beta Releases](tailer-beta-releases.md)
+* [Tailer Status](release-notes/tailer-status.md)
