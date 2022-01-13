@@ -6,6 +6,10 @@ Stored Procedures for Data Quality
 
 #### <mark style="color:purple;">everyday\_increasing\_since(dataset, tablename, value)</mark>
 
+```sql
+call `tailer-ai.expect.everyday_increasing_since`(‘my-gcp-project.my_dataset’, ‘products’, cast(‘2021-11-01’ as date));
+```
+
 Expect a table to have a number of line continuously increasing since a predefined date
 
 This procedure is a part of a specific set where daily/weekly/monthly execution is required. We store each iteration in a timely manner and assert that for each iteration over time, we get a positive or null variation.
@@ -27,9 +31,13 @@ This procedure is a part of a specific set where daily/weekly/monthly execution 
 
 #### <mark style="color:purple;">everyday\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
-Expect a table to have a date column to be filled with a minimum value for a everyday since a start date.
+```sql
+CALL `tailer-ai.expect.everyday_since`(‘my-project.my_dataset’, ‘sales_details’, ‘sale_date’, DATE_sub(current_date, interval 31 day), [‘2022-01-01’, ‘2021-12-25’], 1000);
+```
 
-Check for a table to have a date type column to be present and have a minimum grouped lines for a specific period of time in a daily manner from the start\_date (included) up to the current date. So if I enter 1/1/2021 for column date\_to\_check, it will count all lines grouped by date\_to\_check and assert that the count is not below minimum (included) and that all dates are properly present. An Exception array can be provided to avoid an error where a date has no data. This test ensure daily continuity of data and is part of a freshness test suite.
+Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error where a date has no data for a good reason.
+
+Count the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, then the test fails, except if the date is specified in the exception list. An exception array can be provided to avoid an error where a date has no data. This test ensure daily continuity of data and is part of a freshness test suite.
 
 * **Parameters**
   * **project** (_STRING_) – The GCP project
