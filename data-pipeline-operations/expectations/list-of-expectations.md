@@ -85,9 +85,13 @@ This procedure generates a date array containing the start\_date and the same da
 
 #### <mark style="color:purple;">everyweek\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
-Expect a table to have a date column to be filled with a minimum value for a everyweek since a start date.
+```sql
+CALL `tailer-ai.expect.everyweek_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 2 month), week), ['2022-01-01', cast(current_date as string)], 1000);
+```
 
-Check for a table to have a date type column to be present and have a minimum grouped lines for a specific period of time in a weekly manner from the start\_date (included) up to the current date. So if I enter 1/1/2021 for column date\_to\_check, it will count all lines grouped by date\_to\_check and assert that the count is not below minimum and that all dates are properly present. An Exception array can be provided to avoid an error where a date has no data. A specific attention to the first day as it will be the day of the week that will be repeated (so if I set first day a monday, it will be every monday). This test ensure weekly continuity of data and is part of a freshness test suite.
+Expect a table to have a date column with a date every week since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
+
+This procedure generates a date array containing the start\_date and the same day for every week until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
 
 * **Parameters**
   * **project** (_STRING_) – The GCP project
