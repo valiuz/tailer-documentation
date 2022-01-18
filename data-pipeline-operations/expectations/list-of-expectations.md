@@ -10,9 +10,7 @@ Stored Procedures for Data Quality
 call `tailer-ai.expect.everyday_increasing_since`('my-gcp-project.my_dataset', 'products', cast('2021-11-01' as date));
 ```
 
-Expect a table to have a number of line continuously increasing since a predefined date
-
-This procedure is a part of a specific set where daily/weekly/monthly execution is required. We store each iteration in a timely manner and assert that for each iteration over time, we get a positive or null variation.
+Expect a table to have a daily number of rows continuously increasing since a predefined date.
 
 * **Parameters**
   * **project** (_STRING_) – The GCP project
@@ -32,12 +30,12 @@ This procedure is a part of a specific set where daily/weekly/monthly execution 
 #### <mark style="color:purple;">everyday\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
 ```sql
-CALL `tailer-ai.expect.everyday_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_sub(current_date, interval 31 day), ['2022-01-01', '2021-12-25'], 1000);
+CALL tailer-ai.expect.everyday_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);
 ```
 
-Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error where a date has no data for a good reason.
+Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error when a date has no data for a good reason.
 
-Count the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, then the test fails, except if the date is specified in the exception list. An exception array can be provided to avoid an error where a date has no data. This test ensure daily continuity of data and is part of a freshness test suite.
+This procedure counts the number of rows of the specified table grouped by date. If a day between the specified start\_date and today is missing, or if a daily count is below minimum, then the test fails, except if the date is specified in the exception list.
 
 * **Parameters**
   * **project** (_STRING_) – The GCP project
@@ -59,9 +57,13 @@ Count the rows of the table grouped by date. If a day between the specified star
 
 #### <mark style="color:purple;">everymonth\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
-Expect a table to have a date column to be filled with a minimum value for a every month since a start date.
+```sql
+CALL tailer-ai.expect.everymonth_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);
+```
 
-Check for a table to have a date type column to be present and have a minimum grouped lines for a specific period of time in a monthly manner from the start\_date (included) up to the current date. So if I enter 1/1/2021 for column date\_to\_check, it will count all lines grouped by date\_to\_check and assert that the count is not below minimum and that all dates are properly present. An Exception array can be provided to avoid an error where a date has no data. A specific attention to the day used as it will be the day of the month that will be repeated (so if I set first day a 5 January, it will be every 5th of the month). This test ensure monthly continuity of data and is part of a freshness test suite.
+Expect a table to have a date column with a date every month since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
+
+This procedure generates a date array containing the start\_date and the same day for every month until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
 
 * **Parameters**
   * **project** (_STRING_) – The GCP project
