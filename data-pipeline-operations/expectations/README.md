@@ -33,7 +33,7 @@ CALL `tailer-ai.expect.primarykey_named`('dlk-demo.dlk_demo_pda', 'products', 'P
 
 ### Launching Expectation in the BigQuery console
 
-You can launch an expectation directly from your BigQuery console and check the results. This eases the developpement of a set of expectations and can also be useful for ensuring adhoc quality of an element.
+You can launch an expectation directly from your BigQuery console and check your test. If the call is properly formed, BigQuery will launch the jobs described in the procedure and you will see the test status and the related metrics in the result of the last job. This eases the developpement of a set of expectations and can also be useful for ensuring adhoc quality of an element.
 
 ```sql
 -- Expectations have usually the following format

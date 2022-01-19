@@ -7,14 +7,13 @@ Stored Procedures for Data Quality
 #### <mark style="color:purple;">everyday\_increasing\_since(dataset, tablename, value)</mark>
 
 ```sql
-call `tailer-ai.expect.everyday_increasing_since`('my-gcp-project.my_dataset', 'products', cast('2021-11-01' as date));
+CALL `tailer-ai.expect.everyday_increasing_since`('my-gcp-project.my_dataset', 'products', cast('2021-11-01' as date));          
 ```
 
 Expect a table to have a daily number of rows continuously increasing since a predefined date.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **value** (_DATE_) – The starting date to check for increase in value
 *   **Returns**
@@ -30,7 +29,7 @@ Expect a table to have a daily number of rows continuously increasing since a pr
 #### <mark style="color:purple;">everyday\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
 ```sql
-CALL tailer-ai.expect.everyday_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);
+CALL tailer-ai.expect.everyday_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);          
 ```
 
 Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error when a date has no data for a good reason.
@@ -38,12 +37,11 @@ Expect a table to have a minimum number of rows per day since a start date. An e
 This procedure counts the number of rows of the specified table grouped by date. If a day between the specified start\_date and today is missing, or if a daily count is below minimum, then the test fails, except if the date is specified in the exception list.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **start\_date** (_STRING_) – The date to start the control
-  * **exception** (_ARRAY_) – An array that contains dates that will not be checked
+  * **exception** (_ARRAY\<DATE>_) – An array that contains dates that will not be checked
   * **minimum** (_INT64_) – The minimum amount of lines per date expected.
 *   **Returns**
 
@@ -58,7 +56,7 @@ This procedure counts the number of rows of the specified table grouped by date.
 #### <mark style="color:purple;">everymonth\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
 ```sql
-CALL tailer-ai.expect.everymonth_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);
+CALL tailer-ai.expect.everymonth_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);          
 ```
 
 Expect a table to have a date column with a date every month since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
@@ -66,12 +64,11 @@ Expect a table to have a date column with a date every month since start\_date, 
 This procedure generates a date array containing the start\_date and the same day for every month until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)of the table
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **start\_date** (_STRING_) – The date to start the control
-  * **exception** (_ARRAY_) – An array that contains dates that will not be checked
+  * **exception** (_ARRAY\<DATE>_) – An array that contains dates that will not be checked
   * **minimum** (_INT64_) – The minimum amount of lines per date expected.
 *   **Returns**
 
@@ -86,7 +83,7 @@ This procedure generates a date array containing the start\_date and the same da
 #### <mark style="color:purple;">everyweek\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
 ```sql
-CALL `tailer-ai.expect.everyweek_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 2 month), week), ['2022-01-01', cast(current_date as string)], 1000);
+CALL `tailer-ai.expect.everyweek_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 2 month), week), ['2022-01-01', cast(current_date as string)], 1000);          
 ```
 
 Expect a table to have a date column with a date every week since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
@@ -94,8 +91,7 @@ Expect a table to have a date column with a date every week since start\_date, a
 This procedure generates a date array containing the start\_date and the same day for every week until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **start\_date** (_STRING_) – The date to start the control
@@ -111,22 +107,24 @@ This procedure generates a date array containing the start\_date and the same da
 
     – An exception will be thrown if the assertion fails.
 
-#### f<mark style="color:purple;">oreignkey(dataset, tablename, column, target\_project, target\_dataset, target\_tablename, target\_column, threshold)</mark>
+#### <mark style="color:purple;">foreignkey(dataset, tablename, column, target\_dataset, target\_tablename, target\_column, threshold)</mark>
 
-Expect a table to have a column to be fully present into another table’s column
+```sql
+CALL tailer-ai.expect.foreignkey('my-project.my_dataset', 'sales_details', 'customer_id', 'my-project.my_dataset', 'customers', 'customer_id', 0.001);          
+```
 
-So we select source.column and target.column\_target from source and “left outer join” to target. Source and target column are joined on “source.column = target.column”. Perfect fk means we have the very same number of pk on both side, delta means fk constraint is badly formed.
+Expect a column in a table to respect a pseudo Foreign Key constraint.
+
+This procedure checks that every not-null value in the column can be found in the values of the target column of the reference target table. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
-  * **target\_project** (_STRING_) – The target project of the foreign table
-  * **target\_dataset** (_STRING_) – The target dataset of the foreign table
+  * **target\_dataset** (_STRING_) – The target dataset of the foreign table (and its GCP project)
   * **target\_tablename** (_STRING_) – The foreign table name
-  * **target\_column** (_STRING_) – The the foreign key of the foreign table
-  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
+  * **target\_column** (_STRING_) – The foreign key column of the foreign table
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -139,13 +137,16 @@ So we select source.column and target.column\_target from source and “left out
 
 #### <mark style="color:purple;">not\_null(dataset, tablename, column, threshold)</mark>
 
-Expect a table to have a column to never be null
+```sql
+CALL `tailer-ai.expect.not_null`('my-project.my_dataset', 'sales_details', 'product_sku', 0.001);          
+```
 
-The target column must always contain a value.
+Expect a table to have a column to never be null.
+
+This procedure counts the number of null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name to check for value
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
@@ -159,15 +160,18 @@ The target column must always contain a value.
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">null(dataset, tablename, column)</mark>
+#### <mark style="color:purple;">null(dataset, tablename, column, threshold)</mark>
 
-Expect a table to have a column to be fully null
+```sql
+CALL `tailer-ai.expect.null`('my-project.my_dataset', 'logs', 'error_code', 0.05);          
+```
 
-The target column must not contain any value.
+Expect a table to have a column to be fully null.
+
+This procedure counts the number of not-null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name to check for value
 *   **Returns**
@@ -180,22 +184,22 @@ The target column must not contain any value.
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">primarykey(dataset, tablename, column, target\_project, target\_dataset, target\_tablename, target\_column, threshold)</mark>
+#### <mark style="color:purple;">primarykey\_named(dataset, tablename, column, threshold)</mark>
 
-Expect a table to have a column to be fully present into another table’s column
+```sql
+CALL `tailer-ai.expect.primarykey_named`('my-project.my_dataset', 'sales_details', 'PK_sales_details', 0);
+CALL `tailer-ai.expect.primarykey_named`('my-project.my_dataset', 'sales_details', 'CONCAT(ticket_id, "-", line_number)', 0.0001);          
+```
 
-So we select source.column and target.column\_target from source and “left outer join” to target. Source and target column are joined on “source.column = target.column”. Perfect fk means we have the very same number of pk on both side, delta means fk constraint is badly formed.
+Expect a column in a table to respect a pseudo Primary Key constraint.
+
+This procedure checks that every value of the specified column is not null and unique within the current table. This is enforced by counting the total number of rows within the table and comparing it to the number of distinct element in the column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name
-  * **target\_project** (_STRING_) – The target project of the foreign table
-  * **target\_dataset** (_STRING_) – The target dataset of the foreign table
-  * **target\_tablename** (_STRING_) – The foreign table name
-  * **target\_column** (_STRING_) – The the foreign key of the foreign table
-  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
+  * **column** (_STRING_) – The column name, or an sql operation that creates a pseudo column that can be inserted into a count distinct
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -206,17 +210,20 @@ So we select source.column and target.column\_target from source and “left out
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">primarykey\_named(dataset, tablename, column)</mark>
+#### <mark style="color:purple;">primarykey(dataset, tablename, threshold)</mark>
 
-Expect a table to have a column to be behave like a primary key.
+```sql
+CALL tailer-ai.expect.primarykey('my-project.my_dataset', 'sales_details', 0);
+```
 
-To be a primary key a column must be not null and unique within the current table. This is enforced by counting the total number of lines within the table and comparing it to the number of distinct element in the column.
+Expect a table to have a column that respects a pseudo Primary Key constraint.
+
+This procedure looks for a column with a name that starts wiht 'PK' or with a desdcription that contains '#PK'. Then it checks that every value of this column is not null and unique within the current table. This is enforced by counting the total number of rows within the table and comparing it to the number of distinct element in the column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name (can be an sql operation)
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -251,15 +258,18 @@ This procedures uses naming or tagging to detect the column that is likely to be
 
 #### <mark style="color:purple;">table\_count\_between(dataset, tablename, value)</mark>
 
-Expect a table to have a number of lines to be between two values.
+```sql
+CALL `tailer-ai.expect.table_count_between`('my-project.my_dataset', 'customers', ['2000000', '300000']);           
+```
 
-The values for the comparison must be provided as string and will be cast to integer during the assertion. The order in the array is important as we use the “between” predicat function to enforce this expectation.
+Expect a table to have a number of rows to be between two values.
+
+The values for the comparison must be provided as string and will be cast to integer during the assertion. The order in the array is important as we use the “between” predicat function to enforce this expectation: the lower value must be before the upper value.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
-  * **value** (_ARRAY_) – The array of values that will be used to check the table
+  * **value** (_ARRAY\<STRING>_) – The array of values that will be used to check the table
 *   **Return type**
 
     nothing (expectation result sets are defined in the “Output” section)
@@ -269,13 +279,19 @@ The values for the comparison must be provided as string and will be cast to int
 
 #### <mark style="color:purple;">table\_count\_equal(dataset, tablename, value)</mark>
 
+```sql
+CALL `tailer-ai.expect.table_count_equal`('my-project.my_dataset', 'stores', 500, 0.1);           
+```
+
 Expect a table to have a count equal to a predefined value.
 
+A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
+
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **value** (_INT64_) – the value the table count must be equal to
+  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
