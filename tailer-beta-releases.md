@@ -9,35 +9,36 @@ description: >-
 ## Tailer SDK Beta releases
 
 {% hint style="danger" %}
-Beta versions of Jarvis SDK are available here for testing purposes.
+Beta versions of Tailer SDK are available here for testing purposes.
 
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.1.7
+### Latest BETA package : 1.3.5
 
-#### Beta 1.1.7 Release Note
+#### Beta 1.3.5 Release Note
 
-* TTT new task type : run\_gbq_\__script. Available for direct execution only.
+* TTS : added support for new version (v3) of Table To Storage configuration.
+* TTT : added SQL query details in run infos for "expectation" task type.
+* Context : added new template for context : {{FD\_CONTEXT}}. This template will insert the Context ID.
+* Context : context will always be applied, disregarding the version number.
 
-{% file src=".gitbook/assets/package \(11\).zip" %}
+{% file src=".gitbook/assets/package (12).zip" %}
 
-### Install Jarvis SDK Package using PIP
+### Install Tailer SDK Package using PIP
 
 1. Download the package above on your computer
-2. Unzip the zip file. You should get a file named : **jarvis\_sdk-X.Y.Z-py3-none-any.whl**
+2.  Unzip the zip file. You should get a file named : **tailer\_sdk-X.Y.Z-py3-none-any.whl**
 
-   X.Y.Z is the SDK version number.
+    X.Y.Z is the SDK version number.
+3.  Install using PIP :
 
-3. Install using PIP :
-
-   `pip3 install jarvis_sdk-X.Y.Z-py3-none-any.whl --force-reinstall --use-feature=2020-resolver`
+    `pip3 install tailer_sdk-X.Y.Z-py3-none-any.whl --force-reinstall`
 
 ### Go back to the latest RELEASE version
 
-From a terminal, use PIP to go back to the latest Jarvis SDK RELEASE:
+From a terminal, use PIP to go back to the latest Tailer SDK RELEASE:
 
-`pip3 install jarvis-sdk --force-reinstall --use-feature=2020-resolver`
+`pip3 install tailer-sdk --force-reinstall`
 
-### 
-
+###
