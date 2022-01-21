@@ -302,18 +302,22 @@ A threshold percentage can be provided, so the test is passed if the number of r
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">table\_count\_equal\_other\_table(tablename, target\_dataset, target\_tablename, threshold)</mark>
+#### <mark style="color:purple;">table\_count\_equal\_other\_table(dataset, tablename, target\_dataset, target\_tablename, threshold)</mark>
+
+```sql
+CALL `tailer-ai.expect.table_count_equal_other_table`('my-project.my_dataset', 'stores', 'my-project.my_other_dataset', 'stores', 0.01);          sql
+```
 
 Expect a table to have the same number of lines than another table.
 
-The threshold value is compared at an absolute value of the source count.
+A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
-  * **target\_dataset** (_STRING_) – The target dataset of the foreign table
-  * **target\_tablename** (_STRING_) – The foreign table name
-  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
+  * **target\_dataset** (_STRING_) – The target dataset
+  * **target\_tablename** (_STRING_) – The target table name
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -326,13 +330,19 @@ The threshold value is compared at an absolute value of the source count.
 
 #### <mark style="color:purple;">table\_count\_greater(dataset, tablename, value)</mark>
 
+```sql
+CALL `tailer-ai.expect.table_count_greater`('my-project.my_dataset', 'stores', 1600, 0.01);          
+```
+
 Expect a table to have a count greater than or equal to a predefined value.
 
+A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
+
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
-  * **value** (_INT64_) – the value the table count must be greater to
+  * **value** (_INT64_) – The value the table count must be greater to
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -343,14 +353,18 @@ Expect a table to have a count greater than or equal to a predefined value.
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">type(tablename, column, type)</mark>
+#### <mark style="color:purple;">type(dataset, tablename, column, type)</mark>
 
-Expect a table to have a column to be of a predefined type.
+```sql
+CALL `tailer-ai.expect.type`('my-project.my_dataset', 'stores', 'store_id', 'INT64');           
+```
 
-This procedure checks for the type of a column by ensuring that a casted (to the wanted type) non null value will not be null. Allow types are the one permitted by bigquery. -> Integer INT64 Numeric values without fractional components -> Floating point FLOAT64 Approximate numeric values with fractional components -> Numeric NUMERIC Exact numeric values with fractional components -> BigNumeric BIGNUMERIC Exact numeric values with fractional components -> Boolean BOOL TRUE or FALSE (case insensitive) -> String STRING Variable-length character (Unicode) data -> Bytes BYTES Variable-length binary data -> Date DATE A logical calendar date -> Date/Time DATETIME A year, month, day, hour, minute, second, and subsecond -> Time TIME A time, independent of a specific date -> Timestamp TIMESTAMP An absolute point in time, with microsecond precision -> Struct (Record) STRUCT Container of ordered fields each with a type (required) and field name (optional) -> Geography GEOGRAPHY
+Expect a table to have a column that can be casted as the predefined type with no error.
+
+This procedure checks that a safe casted (to the wanted type) non null value will not be null. Allowed types are the one permitted by BigQuery (see doc [here](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types)).&#x20;
 
 * **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its related GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **type** (_STRING_) – The type of the column to check
@@ -364,14 +378,18 @@ This procedure checks for the type of a column by ensuring that a casted (to the
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">unique(tablename, column)</mark>
+#### <mark style="color:purple;">unique(dataset, tablename, column)</mark>
 
-Expect a table to have a column to be unique per line
+```sql
+CALL `tailer-ai.expect.unique`('my-project.my_dataset', 'stores', 'store_id');          
+```
+
+Expect every value in the column to be unique.
 
 This procedure checks that the number of distinct value of the specified column is equal to the total number of lines in the table. Null values are part of the process (so one line can be null but it must be the only one).
 
 * **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
 *   **Returns**
@@ -386,13 +404,17 @@ This procedure checks that the number of distinct value of the specified column 
 
 #### <mark style="color:purple;">values\_to\_be\_between(dataset, tablename, column, value, threshold)</mark>
 
+```sql
+CALL `tailer-ai.expect.values_to_be_between`('my-project.my_dataset', 'sales', 'quantity' ,['-20','20'], 0.01);       
+CALL `tailer-ai.expect.values_to_be_between`('my-project.my_dataset', 'sales', 'date', ['2015-01-01','2025-01-01'], 0);          
+```
+
 Expect a table to have a column to be between two values.
 
 The authorized value type may be integer, float or dates to work properly. The between predicate requires the parameter to be included and in the proper order (for exemple for a set of date, the first date must be before the second date). A threshold might be specified so marginal value might not trigger any assertion exception.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **value** (_ARRAY_) – The array that contains the two values range
@@ -409,13 +431,17 @@ The authorized value type may be integer, float or dates to work properly. The b
 
 #### <mark style="color:purple;">values\_to\_be\_in\_set(dataset, tablename, column, value, threshold)</mark>
 
+```sql
+CALL `tailer-ai.expect.values_to_be_between`('my-project.my_dataset', 'sales', 'type', ['1','2', '3', '5', '7', '9'], 0);            
+
+```
+
 Expect a table to have a column to be in a predefined set.
 
 The authorized value type must be in an array as string as there is a cast in the verification predicat. A threshold might be specified so marginal value might not trigger any assertion exception.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **value** (_ARRAY_) – The values array of the predefined set
@@ -432,16 +458,19 @@ The authorized value type must be in an array as string as there is a cast in th
 
 #### <mark style="color:purple;">values\_to\_contain(dataset, tablename, column, value, minimum, threshold)</mark>
 
+```sql
+ CALL `tailer-ai.expect.values_to_contain`('my-project.my_dataset', 'sales', 'date', '2022-01-22', 1000, 0.01);           
+```
+
 Expect a table to have a column to contain a certain value at a certain minimum level with a threshold.
 
-The authorized value type must be in a string as there is a safe\_cast to string in the verification predicat. A threshold might be specified so marginal value might not trigger any assertion exception.
+The authorized value type must be in a string (even for numeric values) as there is a safe\_cast to string in the verification predicat. A threshold might be specified so marginal value might not trigger any assertion exception.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
-  * **value** () – The values array of the predefined set
+  * **value** (STRING) – The value of the predefined set
   * **minimum** (_INT64_) – The minimum value to have for the column
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure (as a percentage)
 *   **Returns**
@@ -456,15 +485,16 @@ The authorized value type must be in a string as there is a safe\_cast to string
 
 #### <mark style="color:purple;">values\_to\_not\_be\_in\_set(dataset, tablename, column, value, threshold)</mark>
 
-Expect a table to have a column to be fully present into another table’s column
+```sql
+CALL `tailer-ai.expect.values_to_not_be_between`('my-project.my_dataset', 'sales', 'type', ['0', '6', '8'], 0);                   
+```
 
 Expect a table to have a column to NOT be in a predetermined set of values.
 
 The not authorized value type must be in a array as string as there is a cast in the verification predicat. A threshold might be specified so marginal value might not trigger any assertion exception.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
   * **value** (_STRING_) – The target project of the foreign table
