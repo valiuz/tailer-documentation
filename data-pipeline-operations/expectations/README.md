@@ -124,14 +124,14 @@ Here are the fields of this:
 | task\_criticality   | STRING | Task Criticality                        |
 | expectation\_result | STRING | Expectation Result                      |
 
-The field called “expectation\_result” contains additionnal and specific informations about the expectation in JSON format:
+The field called “expectation\_result” contains additionnal informations about the expectation in JSON format. The generic output is defined here, and some specific results could be added for some expectations (see details in the [list of expectations](list-of-expectations.md)):
 
 ```json
 {
     "dataset": "dlk-demo.dlk_demo_pda",
     "tablename": "products",
     "column_name": "",
-    "procedure_name": "expect_table_count_greater",
+    "procedure_name": "table_count_greater",
     "date_count": "2021-12-03T14:02:51.284016",
     "all_count": 158357,
     "target_dataset": "",
@@ -140,12 +140,12 @@ The field called “expectation\_result” contains additionnal and specific inf
         "100000"
     ],
     "reject_count": 58357,
-    "reject_threshold": 0,
-    "passed": true
+    "reject_threshold": 0.01,
+    "passed": false,
+    "start_date": "1642411639", 
+    "end_date": "1642411644"
 }
 ```
-
-A complete description of the specifics field is available on each expectation documentation (see next page).
 
 {% hint style="info" %}
 The metrics of a test launched from the BigQuery console won't be inserted into the metrics table. Only the results of the tests embedded into a table-to-table configuration will be stored.

@@ -2,8 +2,6 @@
 
 ### Fashion Data Expectations
 
-Stored Procedures for Data Quality:
-
 * Key constraints
   * [primarykey\_named](list-of-expectations.md#primarykey\_named-dataset-tablename-column-threshold)
   * [primarykey](list-of-expectations.md#primarykey-dataset-tablename-threshold)
@@ -48,13 +46,7 @@ This procedure checks that every value of the specified column is not null and u
   * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">primarykey(dataset, tablename, threshold)</mark>
 
@@ -72,13 +64,7 @@ This procedure looks for a column with a name that starts wiht 'PK' or with a de
   * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">foreignkey(dataset, tablename, column, target\_dataset, target\_tablename, target\_column, threshold)</mark>
 
@@ -88,7 +74,7 @@ CALL `tailer-ai.expect.foreignkey('my-project.my_dataset', 'sales_details', 'cus
 
 Expect a column in a table to respect a pseudo Foreign Key constraint.
 
-This procedure checks that every not-null value in the column can be found in the values of the target column of the reference target table. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
+This procedure checks that every non-null value in the column can be found in the values of the target column of the reference target table. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
@@ -100,13 +86,7 @@ This procedure checks that every not-null value in the column can be found in th
   * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 ### Temporal continuity
 
@@ -129,13 +109,7 @@ This procedure counts the number of rows of the specified table grouped by date.
   * **minimum** (_INT64_) – The minimum amount of lines per date expected.
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">everyday\_increasing\_since(dataset, tablename, value)</mark>
 
@@ -151,13 +125,7 @@ Expect a table to have a daily number of rows continuously increasing since a pr
   * **value** (_DATE_) – The starting date to check for increase in value
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">everyweek\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
@@ -178,13 +146,7 @@ This procedure generates a date array containing the start\_date and the same da
   * **minimum** (_INT64_) – The minimum amount of lines per date expected.
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">everymonth\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
@@ -205,13 +167,7 @@ This procedure generates a date array containing the start\_date and the same da
   * **minimum** (_INT64_) – The minimum amount of lines per date expected.
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 ### Row count
 
@@ -232,13 +188,7 @@ A threshold percentage can be provided, so the test is passed if the number of r
   * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">table\_count\_between(dataset, tablename, value)</mark>
 
@@ -254,12 +204,9 @@ The values for the comparison must be provided as string and will be cast to int
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **value** (_ARRAY\<STRING>_) – The array of values that will be used to check the table
-*   **Return type**
+*   **Returns**
 
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">table\_count\_equal(dataset, tablename, value)</mark>
 
@@ -278,13 +225,7 @@ A threshold percentage can be provided, so the test is passed if the number of r
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">table\_count\_equal\_other\_table(dataset, tablename, target\_dataset, target\_tablename, threshold)</mark>
 
@@ -304,13 +245,7 @@ A threshold percentage can be provided, so the test is passed if the number of r
   * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 ### Column properties
 
@@ -330,13 +265,7 @@ This procedure checks that the number of distinct value of the specified column 
   * **column** (_STRING_) – The column name
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">not\_null(dataset, tablename, column, threshold)</mark>
 
@@ -355,13 +284,7 @@ This procedure counts the number of null in the specified column. A threshold pe
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">null(dataset, tablename, column, threshold)</mark>
 
@@ -371,7 +294,7 @@ CALL `tailer-ai.expect.null`('my-project.my_dataset', 'logs', 'error_code', 0.05
 
 Expect a table to have a column to be fully null.
 
-This procedure counts the number of not-null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
+This procedure counts the number of non-null values in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
@@ -379,13 +302,7 @@ This procedure counts the number of not-null in the specified column. A threshol
   * **column** (_STRING_) – The column name to check for value
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">type(dataset, tablename, column, type)</mark>
 
@@ -395,7 +312,7 @@ CALL `tailer-ai.expect.type`('my-project.my_dataset', 'stores', 'store_id', 'INT
 
 Expect a table to have a column that can be casted as the predefined type with no error.
 
-This procedure checks that a safe casted (to the wanted type) non null value will not be null. Allowed types are the one permitted by BigQuery (see doc [here](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types)).&#x20;
+This procedure checks that a safe casted (to the wanted type) non-snull value will not be null. All BigQuery types are allowed (see BigQuery documentation [here](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types)).&#x20;
 
 * **Parameters**
   * **dataset** (_STRING_) – The dataset of the table (and its related GCP project)
@@ -404,13 +321,7 @@ This procedure checks that a safe casted (to the wanted type) non null value wil
   * **type** (_STRING_) – The type of the column to check
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">values\_to\_contain(dataset, tablename, column, value, minimum, threshold)</mark>
 
@@ -431,13 +342,7 @@ The authorized value type must be in a string (even for numeric values) as there
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure (as a percentage)
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">values\_to\_be\_between(dataset, tablename, column, value, threshold)</mark>
 
@@ -458,19 +363,12 @@ The authorized value type may be integer, float or dates to work properly. The b
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">values\_to\_be\_in\_set(dataset, tablename, column, value, threshold)</mark>
 
 ```sql
 CALL `tailer-ai.expect.values_to_be_between`('my-project.my_dataset', 'sales', 'type', ['1','2', '3', '5', '7', '9'], 0);            
-
 ```
 
 Expect a table to have a column to be in a predefined set.
@@ -485,13 +383,7 @@ The authorized value type must be in an array as string as there is a cast in th
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
 
 #### <mark style="color:purple;">values\_to\_not\_be\_in\_set(dataset, tablename, column, value, threshold)</mark>
 
@@ -511,10 +403,4 @@ The not authorized value type must be in a array as string as there is a cast in
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
 *   **Returns**
 
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
