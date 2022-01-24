@@ -2,187 +2,33 @@
 
 ### Fashion Data Expectations
 
-Stored Procedures for Data Quality
+Stored Procedures for Data Quality:
 
-#### <mark style="color:purple;">everyday\_increasing\_since(dataset, tablename, value)</mark>
+* Key constraints
+  * [primarykey\_named](list-of-expectations.md#primarykey\_named-dataset-tablename-column-threshold)
+  * [primarykey](list-of-expectations.md#primarykey-dataset-tablename-threshold)
+  * [foreignkey](list-of-expectations.md#foreignkey-dataset-tablename-column-target\_dataset-target\_tablename-target\_column-threshold)
+* Temporal continuity
+  * [everyday\_since](list-of-expectations.md#everyday\_since-dataset-tablename-column-start\_date-exception-minimum)
+  * [everyday\_increasing\_since](list-of-expectations.md#everyday\_increasing\_since-dataset-tablename-value)
+  * [everyweek\_since](list-of-expectations.md#everyweek\_since-dataset-tablename-column-start\_date-exception-minimum)
+  * [everymonth\_since](list-of-expectations.md#everymonth\_since-dataset-tablename-column-start\_date-exception-minimum)
+* Row count
+  * [table\_count\_greater](list-of-expectations.md#table\_count\_greater-dataset-tablename-value)
+  * [table\_count\_between](list-of-expectations.md#table\_count\_between-dataset-tablename-value)
+  * [table\_count\_equal](list-of-expectations.md#table\_count\_equal-dataset-tablename-value)
+  * [table\_count\_equal\_other\_table](list-of-expectations.md#table\_count\_equal\_other\_table-dataset-tablename-target\_dataset-target\_tablename-threshold)
+* Column properties
+  * [unique](list-of-expectations.md#unique-dataset-tablename-column)
+  * [not\_null](list-of-expectations.md#not\_null-dataset-tablename-column-threshold)
+  * [null](list-of-expectations.md#null-dataset-tablename-column-threshold)
+  * [type](list-of-expectations.md#type-dataset-tablename-column-type)
+  * [values\_to\_contain](list-of-expectations.md#values\_to\_contain-dataset-tablename-column-value-minimum-threshold)
+  * [values\_to\_be\_between](list-of-expectations.md#values\_to\_be\_between-dataset-tablename-column-value-threshold)
+  * [values\_to\_be\_in\_set](list-of-expectations.md#values\_to\_be\_in\_set-dataset-tablename-column-value-threshold)
+  * [values\_to\_not\_be\_in\_set](list-of-expectations.md#values\_to\_not\_be\_in\_set-dataset-tablename-column-value-threshold)
 
-```sql
-CALL `tailer-ai.expect.everyday_increasing_since`('my-gcp-project.my_dataset', 'products', cast('2021-11-01' as date));          
-```
-
-Expect a table to have a daily number of rows continuously increasing since a predefined date.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **value** (_DATE_) – The starting date to check for increase in value
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">everyday\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
-
-```sql
-CALL `tailer-ai.expect.everyday_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);          
-```
-
-Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error when a date has no data for a good reason.
-
-This procedure counts the number of rows of the specified table grouped by date. If a day between the specified start\_date and today is missing, or if a daily count is below minimum, then the test fails, except if the date is specified in the exception list.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name
-  * **start\_date** (_STRING_) – The date to start the control
-  * **exception** (_ARRAY\<DATE>_) – An array that contains dates that will not be checked
-  * **minimum** (_INT64_) – The minimum amount of lines per date expected.
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">everymonth\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
-
-```sql
-CALL `tailer-ai.expect.everymonth_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);          
-```
-
-Expect a table to have a date column with a date every month since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
-
-This procedure generates a date array containing the start\_date and the same day for every month until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)of the table
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name
-  * **start\_date** (_STRING_) – The date to start the control
-  * **exception** (_ARRAY\<DATE>_) – An array that contains dates that will not be checked
-  * **minimum** (_INT64_) – The minimum amount of lines per date expected.
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">everyweek\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
-
-```sql
-CALL `tailer-ai.expect.everyweek_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 2 month), week), ['2022-01-01', cast(current_date as string)], 1000);          
-```
-
-Expect a table to have a date column with a date every week since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
-
-This procedure generates a date array containing the start\_date and the same day for every week until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name
-  * **start\_date** (_STRING_) – The date to start the control
-  * **exception** (_ARRAY_) – An array that contains dates that will not be checked
-  * **minimum** (_INT64_) – The minimum amount of lines per date expected.
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">foreignkey(dataset, tablename, column, target\_dataset, target\_tablename, target\_column, threshold)</mark>
-
-```sql
-CALL `tailer-ai.expect.foreignkey('my-project.my_dataset', 'sales_details', 'customer_id', 'my-project.my_dataset', 'customers', 'customer_id', 0.001);          
-```
-
-Expect a column in a table to respect a pseudo Foreign Key constraint.
-
-This procedure checks that every not-null value in the column can be found in the values of the target column of the reference target table. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name
-  * **target\_dataset** (_STRING_) – The target dataset of the foreign table (and its GCP project)
-  * **target\_tablename** (_STRING_) – The foreign table name
-  * **target\_column** (_STRING_) – The foreign key column of the foreign table
-  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">not\_null(dataset, tablename, column, threshold)</mark>
-
-```sql
-CALL `tailer-ai.expect.not_null`('my-project.my_dataset', 'sales_details', 'product_sku', 0.001);          
-```
-
-Expect a table to have a column to never be null.
-
-This procedure counts the number of null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name to check for value
-  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">null(dataset, tablename, column, threshold)</mark>
-
-```sql
-CALL `tailer-ai.expect.null`('my-project.my_dataset', 'logs', 'error_code', 0.05);          
-```
-
-Expect a table to have a column to be fully null.
-
-This procedure counts the number of not-null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name to check for value
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
+### Key constraints
 
 #### <mark style="color:purple;">primarykey\_named(dataset, tablename, column, threshold)</mark>
 
@@ -234,18 +80,156 @@ This procedure looks for a column with a name that starts wiht 'PK' or with a de
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">primarykey\_threshold(dataset, tablename, column, threshold)</mark>
+#### <mark style="color:purple;">foreignkey(dataset, tablename, column, target\_dataset, target\_tablename, target\_column, threshold)</mark>
 
-Expect a table to have a column named or described as a PK to be unique with a defined tolerance
+```sql
+CALL `tailer-ai.expect.foreignkey('my-project.my_dataset', 'sales_details', 'customer_id', 'my-project.my_dataset', 'customers', 'customer_id', 0.001);          
+```
 
-This procedures uses naming or tagging to detect the column that is likely to be a primary key. More precisely, it looks for “PK” in the name of the column or “PK” in the description of the column (the lookup is one on the metadata table). The threshold is a percentage of the total number of lines that can be wrong (1.0 means 1% and it means the assertion will fail if there is more than 1% of duplicated primary keys).
+Expect a column in a table to respect a pseudo Foreign Key constraint.
+
+This procedure checks that every not-null value in the column can be found in the values of the target column of the reference target table. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
 
 * **Parameters**
-  * **project** (_STRING_) – The GCP project
-  * **dataset** (_STRING_) – The dataset of the table
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
-  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
+  * **target\_dataset** (_STRING_) – The target dataset of the foreign table (and its GCP project)
+  * **target\_tablename** (_STRING_) – The foreign table name
+  * **target\_column** (_STRING_) – The foreign key column of the foreign table
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+### Temporal continuity
+
+#### <mark style="color:purple;">everyday\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
+
+```sql
+CALL `tailer-ai.expect.everyday_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);          
+```
+
+Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error when a date has no data for a good reason.
+
+This procedure counts the number of rows of the specified table grouped by date. If a day between the specified start\_date and today is missing, or if a daily count is below minimum, then the test fails, except if the date is specified in the exception list.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **column** (_STRING_) – The column name
+  * **start\_date** (_STRING_) – The date to start the control
+  * **exception** (_ARRAY\<DATE>_) – An array that contains dates that will not be checked
+  * **minimum** (_INT64_) – The minimum amount of lines per date expected.
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+#### <mark style="color:purple;">everyday\_increasing\_since(dataset, tablename, value)</mark>
+
+```sql
+CALL `tailer-ai.expect.everyday_increasing_since`('my-gcp-project.my_dataset', 'products', cast('2021-11-01' as date));          
+```
+
+Expect a table to have a daily number of rows continuously increasing since a predefined date.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **value** (_DATE_) – The starting date to check for increase in value
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+#### <mark style="color:purple;">everyweek\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
+
+```sql
+CALL `tailer-ai.expect.everyweek_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 2 month), week), ['2022-01-01', cast(current_date as string)], 1000);          
+```
+
+Expect a table to have a date column with a date every week since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
+
+This procedure generates a date array containing the start\_date and the same day for every week until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **column** (_STRING_) – The column name
+  * **start\_date** (_STRING_) – The date to start the control
+  * **exception** (_ARRAY_) – An array that contains dates that will not be checked
+  * **minimum** (_INT64_) – The minimum amount of lines per date expected.
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+#### <mark style="color:purple;">everymonth\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
+
+```sql
+CALL `tailer-ai.expect.everymonth_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);          
+```
+
+Expect a table to have a date column with a date every month since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
+
+This procedure generates a date array containing the start\_date and the same day for every month until the current date. Then it counts the rows of the table grouped by date. If a day between the specified start date and today is missing, or if a daily count is below minimum, or if an extra date is in the table but does not fit in the monthly pattern, then the test fails, except if the date is specified in the exception list.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)of the table
+  * **tablename** (_STRING_) – The table name
+  * **column** (_STRING_) – The column name
+  * **start\_date** (_STRING_) – The date to start the control
+  * **exception** (_ARRAY\<DATE>_) – An array that contains dates that will not be checked
+  * **minimum** (_INT64_) – The minimum amount of lines per date expected.
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+### Row count
+
+#### <mark style="color:purple;">table\_count\_greater(dataset, tablename, value)</mark>
+
+```sql
+CALL `tailer-ai.expect.table_count_greater`('my-project.my_dataset', 'stores', 1600, 0.01);          
+```
+
+Expect a table to have a count greater than or equal to a predefined value.
+
+A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **value** (_INT64_) – The value the table count must be greater to
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -328,21 +312,71 @@ A threshold percentage can be provided, so the test is passed if the number of r
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">table\_count\_greater(dataset, tablename, value)</mark>
+### Column properties
+
+#### <mark style="color:purple;">unique(dataset, tablename, column)</mark>
 
 ```sql
-CALL `tailer-ai.expect.table_count_greater`('my-project.my_dataset', 'stores', 1600, 0.01);          
+CALL `tailer-ai.expect.unique`('my-project.my_dataset', 'stores', 'store_id');          
 ```
 
-Expect a table to have a count greater than or equal to a predefined value.
+Expect every value in the column to be unique.
 
-A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count represents less than the threshold. Use 0 if no rejected row is allowed.
+This procedure checks that the number of distinct value of the specified column is equal to the total number of lines in the table. Null values are part of the process (so one line can be null but it must be the only one).
 
 * **Parameters**
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
-  * **value** (_INT64_) – The value the table count must be greater to
-  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
+  * **column** (_STRING_) – The column name
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+#### <mark style="color:purple;">not\_null(dataset, tablename, column, threshold)</mark>
+
+```sql
+CALL `tailer-ai.expect.not_null`('my-project.my_dataset', 'sales_details', 'product_sku', 0.001);          
+```
+
+Expect a table to have a column to never be null.
+
+This procedure counts the number of null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **column** (_STRING_) – The column name to check for value
+  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
+*   **Returns**
+
+    nothing (the result is stored in expectation\_output table)
+*   **Return type**
+
+    nothing (expectation result sets are defined in the “Output” section)
+*   **Raises**
+
+    – An exception will be thrown if the assertion fails.
+
+#### <mark style="color:purple;">null(dataset, tablename, column, threshold)</mark>
+
+```sql
+CALL `tailer-ai.expect.null`('my-project.my_dataset', 'logs', 'error_code', 0.05);          
+```
+
+Expect a table to have a column to be fully null.
+
+This procedure counts the number of not-null in the specified column. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **column** (_STRING_) – The column name to check for value
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -378,20 +412,23 @@ This procedure checks that a safe casted (to the wanted type) non null value wil
 
     – An exception will be thrown if the assertion fails.
 
-#### <mark style="color:purple;">unique(dataset, tablename, column)</mark>
+#### <mark style="color:purple;">values\_to\_contain(dataset, tablename, column, value, minimum, threshold)</mark>
 
 ```sql
-CALL `tailer-ai.expect.unique`('my-project.my_dataset', 'stores', 'store_id');          
+ CALL `tailer-ai.expect.values_to_contain`('my-project.my_dataset', 'sales', 'date', '2022-01-22', 1000, 0.01);           
 ```
 
-Expect every value in the column to be unique.
+Expect a table to have a column to contain a certain value at a certain minimum level with a threshold.
 
-This procedure checks that the number of distinct value of the specified column is equal to the total number of lines in the table. Null values are part of the process (so one line can be null but it must be the only one).
+The authorized value type must be in a string (even for numeric values) as there is a safe\_cast to string in the verification predicat. A threshold might be specified so marginal value might not trigger any assertion exception.
 
 * **Parameters**
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
+  * **value** (STRING) – The value of the predefined set
+  * **minimum** (_INT64_) – The minimum value to have for the column
+  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure (as a percentage)
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
@@ -446,33 +483,6 @@ The authorized value type must be in an array as string as there is a cast in th
   * **column** (_STRING_) – The column name
   * **value** (_ARRAY_) – The values array of the predefined set
   * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure
-*   **Returns**
-
-    nothing (the result is stored in expectation\_output table)
-*   **Return type**
-
-    nothing (expectation result sets are defined in the “Output” section)
-*   **Raises**
-
-    – An exception will be thrown if the assertion fails.
-
-#### <mark style="color:purple;">values\_to\_contain(dataset, tablename, column, value, minimum, threshold)</mark>
-
-```sql
- CALL `tailer-ai.expect.values_to_contain`('my-project.my_dataset', 'sales', 'date', '2022-01-22', 1000, 0.01);           
-```
-
-Expect a table to have a column to contain a certain value at a certain minimum level with a threshold.
-
-The authorized value type must be in a string (even for numeric values) as there is a safe\_cast to string in the verification predicat. A threshold might be specified so marginal value might not trigger any assertion exception.
-
-* **Parameters**
-  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
-  * **tablename** (_STRING_) – The table name
-  * **column** (_STRING_) – The column name
-  * **value** (STRING) – The value of the predefined set
-  * **minimum** (_INT64_) – The minimum value to have for the column
-  * **threshold** (_FLOAT64_) – the threshold to use to trigger an assertion failure (as a percentage)
 *   **Returns**
 
     nothing (the result is stored in expectation\_output table)
