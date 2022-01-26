@@ -18,12 +18,15 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 #### Beta 1.3.5 Release Note
 
+
+
 * TTS : added support for new version (v3) of Table To Storage configuration.
 * TTT : added SQL query details in run infos for "expectation" task type.
+* TTT : fixed an issue with how expectations failures are handled.
 * Context : added new template for context : {{FD\_CONTEXT}}. This template will insert the Context ID.
 * Context : context will always be applied, disregarding the version number.
 
-{% file src=".gitbook/assets/package (12).zip" %}
+{% file src="../../.gitbook/assets/package (12).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
