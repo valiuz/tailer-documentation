@@ -26,7 +26,9 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * Context : added new template for context : {{FD\_CONTEXT}}. This template will insert the Context ID.
 * Context : context will always be applied, disregarding the version number.
 
-{% file src="../../.gitbook/assets/package (12).zip" %}
+Last updated : 2022-01-27 08:08
+
+{% file src="../../.gitbook/assets/package (13).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
