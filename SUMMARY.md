@@ -53,6 +53,10 @@
   * [Monitoring and alerting parameters](data-pipeline-operations/monitoring-and-alerting/monitoring-and-alerting-parameters.md)
 * [Asserting Data quality with Expectations](data-pipeline-operations/expectations/README.md)
   * [List of Expectations](data-pipeline-operations/expectations/list-of-expectations.md)
+* [Modify files with File Utilities](data-pipeline-operations/modify-files-with-file-utilities/README.md)
+  * [Encrypt/Decrypt data with File Utilities](data-pipeline-operations/modify-files-with-file-utilities/encrypt-decrypt-data-with-vm-launcher/README.md)
+    * [Configuration file for data encryption](data-pipeline-operations/modify-files-with-file-utilities/encrypt-decrypt-data-with-vm-launcher/vm-launcher-data-encryption-configuration-file.md)
+    * [Configuration file for data decryption](data-pipeline-operations/modify-files-with-file-utilities/encrypt-decrypt-data-with-vm-launcher/vm-launcher-data-encryption-configuration-file-1.md)
 
 ## Tailer Studio
 
