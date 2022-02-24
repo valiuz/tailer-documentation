@@ -51,7 +51,7 @@ This procedure checks that every value of the specified column is not null and u
 #### <mark style="color:purple;">primarykey(dataset, tablename, threshold)</mark>
 
 ```sql
-CALL `tailer-ai.expect.primarykey('my-project.my_dataset', 'sales_details', 0);
+CALL `tailer-ai.expect.primarykey`('my-project.my_dataset', 'sales_details', 0);
 ```
 
 Expect a table to have a column that respects a pseudo Primary Key constraint.
@@ -69,7 +69,7 @@ This procedure looks for a column with a name that starts wiht 'PK' or with a de
 #### <mark style="color:purple;">foreignkey(dataset, tablename, column, target\_dataset, target\_tablename, target\_column, threshold)</mark>
 
 ```sql
-CALL `tailer-ai.expect.foreignkey('my-project.my_dataset', 'sales_details', 'customer_id', 'my-project.my_dataset', 'customers', 'customer_id', 0.001);          
+CALL `tailer-ai.expect.foreignkey`('my-project.my_dataset', 'sales_details', 'customer_id', 'my-project.my_dataset', 'customers', 'customer_id', 0.001);          
 ```
 
 Expect a column in a table to respect a pseudo Foreign Key constraint.
@@ -93,7 +93,7 @@ This procedure checks that every non-null value in the column can be found in th
 #### <mark style="color:purple;">everyday\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
 ```sql
-CALL `tailer-ai.expect.everyday_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);          
+CALL `tailer-ai.expect.everyday_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_SUB(current_date, interval 31 day), ['2022-01-01', '2021-12-25', cast(current_date as string)], 1000);          
 ```
 
 Expect a table to have a minimum number of rows per day since a start date. An exception list can be provided to avoid an error when a date has no data for a good reason.
@@ -151,7 +151,7 @@ This procedure generates a date array containing the start\_date and the same da
 #### <mark style="color:purple;">everymonth\_since(dataset, tablename, column, start\_date, exception, minimum)</mark>
 
 ```sql
-CALL `tailer-ai.expect.everymonth_since('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);          
+CALL `tailer-ai.expect.everymonth_since`('my-project.my_dataset', 'sales_details', 'sale_date', DATE_TRUNC(DATE_SUB(current_date, interval 13 month), month), ['2022-01-01', cast(current_date as string)], 1000);          
 ```
 
 Expect a table to have a date column with a date every month since start\_date, and containing a minimum number of rows. An exception list can be provided to avoid an error when a date has no data for a good reason.
