@@ -10,10 +10,6 @@ description: >-
 
 A Tables to Tables (TTT) data pipeline operation allows you to automate the execution of one or several BigQuery tasks in order to extract, transform and load data from tables to other tables.
 
-{% hint style="warning" %}
-You cannot JOIN tables from different GCP projects.
-{% endhint %}
-
 {% hint style="info" %}
 A table can be the source and the destination of the same task.
 {% endhint %}
@@ -46,6 +42,6 @@ When a Tables to Tables Tailer data operation is triggered by an event (for exam
     ```
     tailer deploy your-file.json
     ```
-8. Log in to [Tailer Studio](http://studio.tailer.ai) to check the status and details of your data operation.
-9. For your workflow to be executed, you either need to run the data operation corresponding to the previous step of your data pipeline (per your Workflow configuration file), or to launch it manually from [Tailer Studio](http://studio.tailer.ai).
+8. Log in to [Tailer Studio](http://studio.tailer.ai) to check the status and details of your data operation.
+9. For your workflow to be executed, you either need to run the data operation corresponding to the previous step of your data pipeline (per your Workflow configuration file), or to launch it manually from [Tailer Studio](http://studio.tailer.ai).
 10. Access your output table(s) in BigQuery to check the result of the data operation.
