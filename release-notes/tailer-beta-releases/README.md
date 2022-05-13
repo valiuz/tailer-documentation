@@ -14,21 +14,15 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.5
+### Latest BETA package : 1.3.6
 
-#### Beta 1.3.5 Release Note
+#### Beta 1.3.6 Release Note
 
+* TTS : added new criticality level -> break
 
+Last updated : 2022-05-13 08:40
 
-* TTS : added support for new version (v3) of Table To Storage configuration.
-* TTT : added SQL query details in run infos for "expectation" task type.
-* TTT : fixed an issue with how expectations failures are handled.
-* Context : added new template for context : {{FD\_CONTEXT}}. This template will insert the Context ID.
-* Context : context will always be applied, disregarding the version number.
-
-Last updated : 2022-01-27 08:08
-
-{% file src="../../.gitbook/assets/package (13).zip" %}
+{% file src="../../.gitbook/assets/package (13) (1).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
