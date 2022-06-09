@@ -10,6 +10,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 * Global parameters: General information about the data operation.
 * Table copy parameters: Optionally, you can add a creation step for a table that will contain the result of the extraction.
+* **​​You must select "destination\_format": "NEWLINE\_DELIMITED\_JSON", as format of output in order to be read by the python script later.**
 
 ## :eye\_in\_speech\_bubble: Example
 
@@ -17,27 +18,25 @@ Here is an example of TTS configuration file:
 
 ```
 {
-  "configuration_type": "table-to-storage",
-  "configuration_id": "tts-some-id-example",
-  "short_description" : "Short description of the job",
-  "environment": "DEV",
-  "account": "000111",
-  "activated": true,
-  "archived": false,
-  "gcs_dest_bucket": "152-composer-test",
-  "gcs_dest_prefix": "jultest_table_to_storage/",
-  "gcp_project": "fd-tailer-datalake",
-  "field_delimiter": "|",
-  "print_header": true,
-  "sql_file": "jul_test.sql",
-  "compression": "None",
-  "output_filename": "{{FD_DATE}}_some_file_name.csv",
-  "copy_table": false,
-  "dest_gcp_project_id": "GCP Project ID used if copy_table is true",
-  "dest_gbq_dataset": "GBQ Dataset used if copy_table is true",
-  "dest_gbq_table": "GBQ Table name used if copy_table is true",
-  "dest_gbq_table_suffix": "dag_execution_date",
-  "delete_dest_bucket_content": true
+    "configuration_type" : "table-to-storage",
+    "configuration_id" : "000001_load_bda_freshness_next_exe_export_json",
+    "short_description" : "this is a short description",
+    "environment" : "PROD",
+    "account" : "000001",
+    "activated" : true,
+    "archive" : false,
+    "gcs_dest_bucket" : "tailer-freshness",
+    "gcs_dest_prefix" : "gbq-to-firestore/000001/next_execution/",
+    "delete_dest_bucket_content" : false,
+    "gcp_project" : "fd-jarvis-datalake",
+    "gcp_project_id" : "fd-jarvis-datalake",
+    "field_delimiter" : ",",
+    "print_header": false,
+    "sql_file" : "000001_load_bda_freshness_next_exe_export_json.sql",
+    "compression" : "None",
+    "output_filename" : "freshness_next_execution_data.json",
+    "destination_format": "NEWLINE_DELIMITED_JSON",
+    "copy_table" : false
 }
 ```
 

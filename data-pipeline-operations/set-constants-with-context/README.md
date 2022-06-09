@@ -56,10 +56,11 @@ You can use the constants in the SQL files of your table-to-table, for example:
 
 There are two generic constants you can use in a your data operation configurations without setting them explicitly in your Context configuration:
 
-* {{FD\_ACCOUNT}} will take the value of the "account" parameter of your Context configuration
-* {{FD\_ENV}} will take the value of the "environment" parameter of your Context configuration
+* \{{FD\_ACCOUNT\}} will take the value of the "account" parameter of your Context configuration
+* \{{FD\_ENV\}} will take the value of the "environment" parameter of your Context configuration
+* \{{FD\_CONTEXT\}} will take the value of the "context" parameter of your Context configuration
 
-When you deploy a configuration using a Context, the ID of the configuration deployed in Tailer is the concatenation of the Context's `account_id`, the Context's `configuration_id`, your data operation's `configuration_id` and your data operation's `environment`. With this concatenation, you don't risk to eraze configurations for different contexts.
+When you deploy a configuration using a Context, the ID of the configuration deployed in Tailer is the concatenation of the Context's `account_id`, the Context's `configuration_id`, your data operation's `configuration_id` and your data operation's `environment`. With this concatenation, you don't risk to erase configurations for different contexts.
 
 ## **📋 How to set and use a constant**
 

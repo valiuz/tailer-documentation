@@ -21,6 +21,7 @@ Here is an example of Context configuration file:
 	"configuration_id": "context_dev",
 	"environment": "DEV",
 	"account": "000099",
+	"gcp_project_id": "fd-io-jarvis-demo-dlk",
 	"activated": true,
 	"archived": false,
 	"parameters": {
