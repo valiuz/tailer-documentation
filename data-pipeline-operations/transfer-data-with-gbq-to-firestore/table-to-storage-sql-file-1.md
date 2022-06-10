@@ -10,7 +10,7 @@ To run a GBQ to Firestore data operation, you need a precise python script like 
 
 ## :eye\_in\_speech\_bubble: Example of file-to-firestore.py :
 
-```
+```python
 import argparse
 import os
 import fnmatch

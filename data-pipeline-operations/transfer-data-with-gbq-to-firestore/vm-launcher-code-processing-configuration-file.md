@@ -16,25 +16,25 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of VM Launcher configuration file for code processing:
 
-```
+```json
 {
     "configuration_type": "vm-launcher",
     "configuration_id": "000001_json_to_firestore_freshness_next_execution",
     "environment": "PROD",
-    "account": "000010",
-    "activated": false,
+    "account": "000001",
+    "activated": true,
     "archived": false,
     "direct_execution": true,
-    "gcp_project_id": "fd-jarvis-datalake",
+    "gcp_project_id": "fd-tailer-datalake",
     "gcs_bucket": "tailer-freshness",
     "gcs_working_directory": "gbq-to-firestore",
     "credentials": {
         "gcp-credentials.json": {
             "content": {
-                "cipher_aes": "", 
-                "tag": "", 
-                "ciphertext": "", 
-                "enc_session_key": ""
+                "cipher_aes": "xxx", 
+                "tag": "xxx", 
+                "ciphertext": "xxx", 
+                "enc_session_key": "xxx"
             }
         }
     },

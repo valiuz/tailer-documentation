@@ -29,7 +29,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
   "doc_md": "Load_sales_files_from_it.md",
   "source": {
     "type": "gcs",
-    "gcp_project_id": "fd-io-dlk-orsay",
+    "gcp_project_id": "dlk_demo",
     "gcs_source_bucket": "mirror-fd-io-exc-demo-wbd--n-in",
     "gcs_source_prefix": "testjul",
     "gcs_archive_prefix": "archive",
