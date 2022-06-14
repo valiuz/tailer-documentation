@@ -23,7 +23,7 @@ A GBQ to Firestore data pipeline allows you to transform each row of a BigQuery 
 ## ⚙️ How it works
 
 1. A tables-to-storage data operation is scheduled, or triggered by an event (for example a tables-to-tables successful run)
-2. The SQL query you specified in your tables-to-storage configuration is executed to extract the relevant data from BigQuery into a JSON file located in the Google Cloud Storage bucket of your choice
+2. The SQL query you specified in your tables-to-storage data operation is executed to extract the relevant data from BigQuery into a JSON file located in the Google Cloud Storage bucket of your choice
 3. Then a vm-launcher data operation is triggered to launch a VM on Google Compute Engine to execute the Python script that loads the JSON file into Firestore
 4. Once the execution is complete, the VM is stopped automatically
 5. Lastly, you can check the file tree in Firestore and see your data!

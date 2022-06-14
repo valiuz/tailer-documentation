@@ -2,11 +2,11 @@
 
 To run a Table to Storage data operation, you first need to prepare a SQL query that will extract the data to export.
 
-The SQL file must contains a BigQuery standard SQL query. You can write it directly in the  [BigQuery](https://console.cloud.google.com/bigquery) query editor and then save it into a .sql file.
+The SQL file must contain a BigQuery standard SQL query. You can write it directly in the [BigQuery](https://console.cloud.google.com/bigquery) query editor and then save it into a .sql file.
 
 This query will be executed when the data operation is launched, and the result will be stored in the JSON file specified in your configuration.
 
-{% hint style="warning" %}
+{% hint style="info" %}
 For a GBQ to Firestore data pipeline, you must at least select a **firestore\_path** column
 {% endhint %}
 
@@ -71,57 +71,38 @@ The SQL is more complex. Here is an example:
 
 ```sql
 WITH
-tmp AS (
-    SELECT
-        CURRENT_TIMESTAMP() AS timestamp,
-        "tailer-activities-runs" AS tailer_activities_runs,
-        "freshness" AS freshness,
-        "next_execution" AS next_execution,
-        account,
-        configuration_type,
-        configuration_id,
-        job_id,
-        ARRAY_AGG(STRUCT(
-            job_id,
-            last_execution_datetime,
-            next_execution_datetime,
-            frequence,
-            status
-        )) AS data
-    FROM
-        `tailer-demo.dlk_tailer_bda_freshness.metrics`
-    WHERE
-        (1 = 1)
-    GROUP BY
-        account,
-        configuration_type,
-        configuration_id,
-        timestamp,
-        job_id,
-        last_execution_datetime,
-        next_execution_datetime,
-        frequence,
-        status
-    )
-SELECT
-    timestamp,
-    CONCAT(tailer_activities_runs,
-            "|", account, 
-            "|", configuration_type, 
-            "|", configuration_id, 
-            "|", freshness, 
-            "|", "job_id", 
-            "|", REPLACE(job_id, "|", "_"), 
-            "|", next_execution) 
-            AS firestore_path,
+  tmp AS (
+  SELECT
+    "app-data"|| "|" || "000000" || "|" || "product-details" || "|" ||season_code || "|" ||"references"|| "|" ||reference_color_id AS firestore_path,
+    CURRENT_TIMESTAMP() AS extraction_timestamp,
+    "000000" AS account,
+    season_code,
+    reference_color_id,
+    ARRAY_AGG(STRUCT(
+        date,
+        discount_value_,
+        sales_)
+    ORDER BY date ASC
+  ) AS data
+  FROM
+    `fd-io-dlk-f3.dlk_bda_pa_demo.product_metrics_details`
+  WHERE
+    (1=1) -- you could add filters here
+  GROUP BY
+    firestore_path,
+    extraction_timestamp,
     account,
-    configuration_type,
-    configuration_id,
-    job_id,
-    data
+    season_code,
+    reference_color_id)
+SELECT
+  extraction_timestamp,
+  firestore_path,
+  account,
+  season_code,
+  reference_color_id,
+  STRUCT(data AS data) AS details
 FROM
-    tmp
-
+  tmp
 ```
 
 The result looks like this in Firestore:

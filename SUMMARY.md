@@ -60,7 +60,7 @@
 * [Transfer data with GBQ to Firestore](data-pipeline-operations/transfer-data-with-gbq-to-firestore/README.md)
   * [Table to Storage: configuration file](data-pipeline-operations/transfer-data-with-gbq-to-firestore/table-to-storage-configuration-file.md)
   * [Table to Storage: SQL file](data-pipeline-operations/transfer-data-with-gbq-to-firestore/table-to-storage-sql-file.md)
-  * [VM Launcher configuration file for code processing](data-pipeline-operations/transfer-data-with-gbq-to-firestore/vm-launcher-code-processing-configuration-file.md)
+  * [VM Launcher: configuration file](data-pipeline-operations/transfer-data-with-gbq-to-firestore/vm-launcher-code-processing-configuration-file.md)
   * [File-to-firestore python file](data-pipeline-operations/transfer-data-with-gbq-to-firestore/table-to-storage-sql-file-1.md)
 
 ## Tailer Studio
