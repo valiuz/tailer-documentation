@@ -14,15 +14,15 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.6
+### Latest BETA package : 1.3.7
 
-#### Beta 1.3.6 Release Note
+#### Beta 1.3.7 Release Note
 
-* TTS : added new criticality level -> break
+* TTT : added new criticality level -> stop.
 
-Last updated : 2022-05-13 14:59
+Last updated : 2022-07-28 10:18
 
-{% file src="../../.gitbook/assets/package (13) (1).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
