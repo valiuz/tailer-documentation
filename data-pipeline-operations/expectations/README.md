@@ -26,7 +26,7 @@ ASSERT ((
 With Fashion Data Expectations, you just write:
 
 ```sql
-CALL `tailer-ai.expect.primarykey_named`('dlk-demo.dlk_demo_pda', 'products', 'PK_products');
+CALL `tailer-ai.expect.primarykey_named`('dlk-demo.dlk_demo_pda', 'products', 'PK_products', 0);                     
 ```
 
 ## :airplane\_departure: Getting started
@@ -75,7 +75,7 @@ In your SQL file, you can add as much expectations as you want:
 -- assert count greater than 0 
 CALL `tailer-ai.expect.table_count_greater`('dlk-demo.dlk_demo_pda', 'products', 100000, 0); 
 -- assert primary key is ok 
-CALL `tailer-ai.expect.primarykey`('dlk-demo.dlk_demo_pda', 'products'); 
+CALL `tailer-ai.expect.primarykey`('dlk-demo.dlk_demo_pda', 'products', 0); 
 -- assert freshness on the final table (we want to have at least 10k products for today iteration) 
 CALL `tailer-ai.expect.values_to_contain`('dlk-demo.dlk_demo_pda', 'products', 'max_importdate', cast(current_date() as string), 10000, 0); 
 -- assert freshness on the psa table (we want to have at least 10k product for today psa)
@@ -153,7 +153,11 @@ The metrics of a test launched from the BigQuery console won't be inserted into 
 
 ## :desktop: Tailer Studio integration
 
-To be announced.
+You can find an Expectations Overview in Tailer Studio.&#x20;
+
+Click in the left pannel on "Expectations Overview" in the "Data Quality" section and see all the expectations that has been recently tested.&#x20;
+
+![](<../../.gitbook/assets/image (1).png>)
 
 ## **📋** A list of available Expectations
 

@@ -53,7 +53,7 @@ WHERE
 
 You will get a BigQuery Result like this:
 
-![BigQuery Result](<../../.gitbook/assets/image (1).png>)
+![BigQuery Result](<../../.gitbook/assets/image (1) (2).png>)
 
 And after loading it into Firestore (see next pages for the next steps), you create collections and documents as specified in the firestore\_path column and get data like this in Firestore:
 
