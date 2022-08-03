@@ -157,7 +157,7 @@ You can find an Expectations Overview in Tailer Studio.&#x20;
 
 Click in the left pannel on "Expectations Overview" in the "Data Quality" section and see all the expectations that has been recently tested.&#x20;
 
-![](<../../.gitbook/assets/image (1).png>)
+![](../../.gitbook/assets/image.png)
 
 ## **📋** A list of available Expectations
 
