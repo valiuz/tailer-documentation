@@ -8,7 +8,7 @@ description: >-
 
 ## ⚙️ How it works
 
-When a Tables to Tables Tailer data operation is triggered by an event (for example a Storage to Tables data operation success) or scheduled to start:
+When a Tables to Tables Tailer data operation is triggered by an event (for example a Storage to Tables data operation successful run) or scheduled to start:
 
 * A number of workflow tasks (SQL queries and JSON table creation/copy tasks) are run in the order set in the **task\_dependencies** parameter of the data operation configuration file.
 * You obtain one or several BigQuery tables containing the reorganized data.
@@ -39,5 +39,5 @@ When a Tables to Tables Tailer data operation is triggered by an event (for exam
 The subject taken with the Iowa dataset aggregates all sales from a year at each iteration to account for new sales by the week. Here are some examples to better address a need or use case:
 
 * Proceed to a daily aggregation with a daily CRON trigger after receiving the sales file (applicable by the week, month or quarter)
-* Modify the script to modify only the current week and avoid calculating old dates
+* Modify the script to calculate only the current week and avoid calculating old dates
 * Link the output data table to a datastudio visualization

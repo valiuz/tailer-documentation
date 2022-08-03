@@ -12,10 +12,10 @@ A SQL workflow is a sequence of tasks that feed tables in parallel or sequential
 
 ### :oil: SQL tasks
 
-SQL tasks are steps from the workflow. Each SQL task is defined with a .sql file that contains the query. You can write the queries directly in the query editor of [BigQuery](https://console.cloud.google.com/bigquery) and then save them to .sql files.
+SQL tasks are steps from the workflow. Each SQL task is defined by a .sql file that contains the query. You can write the queries directly in the query editor of [BigQuery](https://console.cloud.google.com/bigquery) and then save them into .sql files.
 
 {% hint style="info" %}
-There can be only one SQL query for each task. If a table need several SQL queries to be well loaded, you need to execute a task for each of them.
+There can be only one SQL query for each task. If a table needs several SQL queries to be well loaded, you need to execute a task for each of them.
 {% endhint %}
 
 {% hint style="info" %}

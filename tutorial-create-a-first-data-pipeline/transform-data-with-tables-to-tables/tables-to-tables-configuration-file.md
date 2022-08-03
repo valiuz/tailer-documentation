@@ -13,7 +13,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 ## :video\_camera: Tables to Tables script video
 
-Here is an example of TTT configuration file:
+Here is an example of a TTT configuration file:
 
 ```
 {
