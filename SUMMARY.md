@@ -19,6 +19,11 @@
 * [Build predictions](tutorial-create-a-first-data-pipeline/build-predictions.md)
 * [Export data](tutorial-create-a-first-data-pipeline/export-data.md)
 * [Congratulations!](tutorial-create-a-first-data-pipeline/congratulations.md)
+* [\[Video\] Automatic Script](tutorial-create-a-first-data-pipeline/transform-data-with-tables-to-tables/README.md)
+  * [SQL script file](tutorial-create-a-first-data-pipeline/transform-data-with-tables-to-tables/table-to-table-sql-and-ddl-files.md)
+  * [DDL script file](tutorial-create-a-first-data-pipeline/transform-data-with-tables-to-tables/table-to-table-sql-and-ddl-files-1.md)
+  * [Tables to Tables script file](tutorial-create-a-first-data-pipeline/transform-data-with-tables-to-tables/tables-to-tables-configuration-file.md)
+  * [Launch configuration and furthermore](tutorial-create-a-first-data-pipeline/transform-data-with-tables-to-tables/transform-data-with-tables-to-tables.md)
 
 ## Data Pipeline Operations
 
