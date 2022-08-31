@@ -6,6 +6,10 @@ description: >-
 
 # Tailer Beta Releases
 
+## Tailer API Endpoint Staging (Europe)
+
+https://fd-io-jarvis-platform-api-proxy-staging-a7nkzexitq-ew.a.run.app/
+
 ## Tailer SDK Beta releases
 
 {% hint style="danger" %}
@@ -40,4 +44,4 @@ From a terminal, use PIP to go back to the latest Tailer SDK RELEASE:
 
 `pip3 install tailer-sdk --force-reinstall`
 
-###
+``
