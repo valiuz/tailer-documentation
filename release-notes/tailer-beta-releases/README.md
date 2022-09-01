@@ -23,10 +23,11 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 #### Beta 1.3.7 Release Note
 
 * TTT : added new criticality level -> stop.
+* Context : removed error messages related to protected variables (FD\_\*)
 
-Last updated : 2022-07-28 10:18
+Last updated : 2022-00-01 08:54
 
-{% file src="../../.gitbook/assets/package.zip" %}
+{% file src="../../.gitbook/assets/package (2).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
