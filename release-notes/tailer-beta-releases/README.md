@@ -24,10 +24,11 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 * TTT : added new criticality level -> stop.
 * Context : removed error messages related to protected variables (FD\_\*)
+* Context : a configuration cannot be deployed if a placeholder cannot be replaced through the context application.
 
-Last updated : 2022-00-01 08:54
+Last updated : 2022-00-01 09:06
 
-{% file src="../../.gitbook/assets/package (2).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
