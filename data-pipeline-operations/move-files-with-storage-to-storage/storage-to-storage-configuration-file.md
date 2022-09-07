@@ -19,13 +19,15 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
 ```json
 {
   "$schema": "http://jsonschema.tailer.ai/schema/storage-to-storage",
-  "version": "2",
   
   "configuration_type": "storage-to-storage",
   "configuration_id": "copy-my-files-gcs-to-sftp",
   
   "environment": "PROD",
   "account": "000099",
+  
+  "version": "3",
+  "direct_execution": true,
   
   "activated": true,
   "archived": false,
@@ -44,7 +46,8 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
   ],
   
   "source": {
-    "type": "gcs"
+    "type": "gcs",
+    "gcp_project_id": "my_gcp_project",
     "gcs_source_bucket" : "my-input-bucket",
     "gcs_source_prefix" : "input-folder",
     "gcs_archive_prefix": "archive-folder",
@@ -84,6 +87,8 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
 | <p><strong>configuration_id</strong></p><p>type: string</p><p>mandatory</p>   | <p>ID of the data operation.</p><p>You can pick any name you want, but is has to be <strong>unique</strong> for this data operation type.</p><p>Note that in case of conflict, the newly deployed data operation will overwrite the previous one. To guarantee its uniqueness, the best practice is to name your data operation by concatenating:</p><ul><li>your account ID,</li><li>the source bucket name,</li><li>and the source directory name.</li></ul>                                                                                                                                                                                                                                            |
 | <p><strong>environment</strong></p><p>type: string</p><p>mandatory</p>        | <p>Deployment context.</p><p>Values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <p><strong>version</strong></p><p>type: string</p><p>mandatory</p>            | Version of the configuration in order to use new features.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <p><strong>direct_execution</strong></p><p>type: boolean</p><p>optional</p>   | <p>Tailer's execution engine has been rewritten to switch from Airflow/Composer to a Kubernetes severless architecture, improving its speed, stability, security and scalability.</p><p>To use the new execution mode, the <strong>direct_execution</strong> parameter must be set to "true".</p><p><em>Default value: true</em> <em>(from January 5, 2021)</em></p>                                                                                                                                                                                                                                                                                                                                      |
 | <p><strong>filename_templates</strong></p><p>type: string</p><p>mandatory</p> | <p>List of filename templates that will be processed.</p><p></p><p>You can set the value to "*" for all files to be copied. However, this is <strong>not recommended</strong>, as unnecessary or sensitive files might be included by mistake. Besides, the date value specified in <strong>filename_template</strong> will be used to sort files in the archive folder. If no date value is specified, all files will be stored together under one folder named <strong>/ALL</strong>.</p><p></p><p>The best practice is to specify one or more filename templates with the <strong>filename_template</strong> and <strong>file_description</strong> parameters as described in the next paragraphe.</p> |
 | <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
