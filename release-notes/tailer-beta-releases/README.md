@@ -27,7 +27,7 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * Context : a configuration cannot be deployed if a placeholder cannot be replaced through the context application.
 * TTT : fixed default timeout on lock. Now set to 15 seconds.
 
-Last updated : 2022-00-01 09:06
+Last updated : 2022-09-28 09:20
 
 {% file src="../../.gitbook/assets/package (7).zip" %}
 
