@@ -62,6 +62,13 @@ There are two generic constants you can use in a your data operation configurati
 
 When you deploy a configuration using a Context, the ID of the configuration deployed in Tailer is the concatenation of the Context's `account_id`, the Context's `configuration_id`, your data operation's `configuration_id` and your data operation's `environment`. With this concatenation, you don't risk to erase configurations for different contexts.
 
+{% hint style="warning" %}
+Please note that you cannot define the following custom constant:
+
+* any constant prefixed with **FD\_**
+* the protected name : **TEMPLATE\_CURRENT\_DATE**
+{% endhint %}
+
 ## **📋 How to set and use a constant**
 
 1. Access your **tailer** folder (created during [installation](../../getting-started/install-tailer-sdk.md)).
