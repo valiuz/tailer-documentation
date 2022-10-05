@@ -21,6 +21,16 @@ A Table to Storage (TTS) data pipeline operation allows you to export your data 
 * CSV file in Google Cloud Storage
 * JSON file in Google Cloud Storage
 
+{% hint style="info" %}
+Please note that all BigQuery export limits apply to table-to-storage data operations. See BigQuery [documentation](https://cloud.google.com/bigquery/docs/exporting-data#export\_limitations) for more information.
+
+In particular:
+
+* You can export up to 1 GB of table data to a single file. If you are exporting more than 1 GB of data, the data is loaded into multiple files. When you export data to multiple files, the size of the files will vary.
+* When you export data in [JSON](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#json\_type) format, [INT64](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#integer-type) (integer) data types are encoded as JSON strings to preserve 64-bit precision when the data is read by other systems.
+* Lorsque vous exportez une table au format JSON, les symboles `<`, `>` et `&` sont convertis à l'aide de la notation Unicode `\uNNNN`, où `N` est un chiffre hexadécimal. Par exemple, `profit&loss` devient `profit\u0026loss`. Cette conversion Unicode est effectuée pour éviter les failles de sécurité.
+{% endhint %}
+
 ## ⚙️ How it works
 
 When the Table to Storage Tailer workflow is triggered by an event (usually a BigQuery table update):
@@ -45,6 +55,6 @@ When the Table to Storage Tailer workflow is triggered by an event (usually a Bi
     ```
     tailer deploy configuration your-configuration.json
     ```
-8. Log in to [Tailer Studio](http://studio.tailer.ai) to check the status and details of your data operation.
-9. For your workflow to be executed, you either need to run the data operation that is set to trigger it in your Workflow data operation (previous step in your data pipeline), or to launch it manually from [Tailer Studio](http://studio.tailer.ai).
+8. Log in to [Tailer Studio](http://studio.tailer.ai) to check the status and details of your data operation.
+9. For your workflow to be executed, you either need to run the data operation that is set to trigger it in your Workflow data operation (previous step in your data pipeline), or to launch it manually from [Tailer Studio](http://studio.tailer.ai).
 10. Access the GCS bucket to check your output file (CSV or JSON).
