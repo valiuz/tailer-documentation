@@ -18,18 +18,15 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.7
+### Latest BETA package : 1.3.9
 
-#### Beta 1.3.7 Release Note
+#### Beta 1.3.9 Release Note
 
-* TTT : added new criticality level -> stop.
-* Context : removed error messages related to protected variables (FD\_\*)
-* Context : a configuration cannot be deployed if a placeholder cannot be replaced through the context application.
-* TTT : fixed default timeout on lock. Now set to 15 seconds.
+* TTS : support for context in SQL query.
 
 Last updated : 2022-09-28 09:20
 
-{% file src="../../.gitbook/assets/package (7).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
