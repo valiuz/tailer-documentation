@@ -23,8 +23,9 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 #### Beta 1.3.9 Release Note
 
 * TTS : support for context in SQL query.
+* Global : enhanced SDK return codes
 
-Last updated : 2022-09-28 09:20
+Last updated : 2022-11-09 11:05
 
 {% file src="../../.gitbook/assets/package.zip" %}
 
