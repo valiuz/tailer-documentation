@@ -14,7 +14,7 @@ A GBQ to Firestore data pipeline allows you to transform each row of a BigQuery 
 
 ****:warning: GBQ to Firestore is an advanced data pipeline which requires prior knowledge of:
 
-* [Tables to storage configuration](../export-data-with-tables-to-storage/table-to-storage-configuration-file.md)
+* [Tables to storage configuration](../export-data-with-tables-to-storage/table-to-storage-configuration-file-1.md)
 * [VM-launcher configuration](../execute-code-processings-with-vm-launcher/process-code-with-vm-launcher/vm-launcher-code-processing-configuration-file.md)
 * [Workflow configuration](../orchestrate-processings-with-workflow/workflow-configuration-file.md)
 * Python [(Data structures - Dictionaries)](https://docs.python.org/3/tutorial/datastructures.html?highlight=dictionary#dictionaries)

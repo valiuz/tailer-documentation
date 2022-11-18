@@ -43,7 +43,7 @@ When the Table to Storage Tailer workflow is triggered by an event (usually a Bi
 1. Access your **tailer** folder (created during [installation](../../getting-started/install-tailer-sdk.md)).
 2. Create a working folder as you want, and create a JSON file for your data operation inside.
 3. Create a [SQL file](table-to-storage-sql-file.md) to determine what data to extract.
-4. Prepare your JSON configuration file. Refer to this page to learn about all the [parameters](table-to-storage-configuration-file.md).
+4. Prepare your JSON configuration file. Refer to this page to learn about all the [parameters](table-to-storage-configuration-file-1.md).
 5. Create a [Workflow configuration file](../orchestrate-processings-with-workflow/workflow-configuration-file.md) that will define how to trigger it.
 6.  Access your working folder by running the following command:
 
