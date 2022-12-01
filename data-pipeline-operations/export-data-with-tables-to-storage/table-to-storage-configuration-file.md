@@ -57,7 +57,7 @@ Here is an example of TTS configuration file:
             "destination_format": "JSON",
             "sql_query_template": "TEMPLATE_CURRENT_DATE",
             "generate_top_file": true,
-            "delete_dest_bucket_content": false
+            "delete_dest_bucket_content": false,
             "copy_table": true,
             "dest_gcp_project_id": "fd-tailer-demo-destination",
             "dest_gbq_dataset": "my_destination_dataset",
@@ -65,6 +65,7 @@ Here is an example of TTS configuration file:
             "dest_gbq_table_suffix": "dag_execution_date"
         }
     ]
+}
 ```
 
 ## :globe\_with\_meridians: Global parameters
