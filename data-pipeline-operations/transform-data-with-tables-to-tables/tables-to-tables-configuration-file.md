@@ -100,7 +100,7 @@ General information about the data operation.
 
 ## :loop: Workflow task parameters
 
-A Tables to Tables workflow can include for types of tasks:
+A Tables to Tables workflow can include four types of tasks:
 
 * **create\_gbq\_table**: This type of task allows you to create the skeleton of a table based on a DDL file. You could compare it to the baking pan of your table.
 * **sql**: This type of task allows you to fill that baking pan using a SQL query or a SQL script from a file.
