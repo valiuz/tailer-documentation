@@ -18,16 +18,16 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.9
+### Latest BETA package : 1.3.10
 
-#### Beta 1.3.9 Release Note
+#### Beta 1.3.10 Release Note
 
-* TTS : support for context in SQL query.
-* Global : enhanced SDK return codes
+* TTT : fixed criticity upon expectation failure.
+* TTT : added time partioning type to DDL file. You can use the "bq\_table\_timepartitioning\_type" set to "HOUR", "DAY", "MONTH" or "YEAR". If not present, default is "DAY".
 
-Last updated : 2022-11-09 11:05
+Last updated : 2023-01-24 08:21
 
-{% file src="../../.gitbook/assets/package.zip" %}
+{% file src="../../.gitbook/assets/package (17).zip" %}
 
 ### Install Tailer SDK Package using PIP
 

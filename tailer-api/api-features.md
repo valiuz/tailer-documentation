@@ -8,7 +8,7 @@ description: >-
 
 {% hint style="warning" %}
 For the table-to-table configurations, don't forget to add at the end of the configuration\__id the environnement (DEV, PROD, etc.) before querying it throw the APIs._\
-__Example :  the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
+\_\_Example : the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
 {% endhint %}
 
 ## :rocket: Launching a job's execution
@@ -31,7 +31,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/launch"
 ```
 
-As a result, the job is launched and you get a unique run ID in the following format:&#x20;
+As a result, the job is launched and you get a unique run ID in the following format:
 
 ```bash
 {"run_id":"20201230-113940-1fb692b0-3531-4578-9919-acf6fdb0a5b1"}
@@ -59,7 +59,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the run in the following format:&#x20;
+As a result, you get a json payload with information about the run in the following format:
 
 ```typescript
 {
@@ -102,7 +102,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last runs of this job in the following format:&#x20;
+As a result, you get a json payload with information about the last runs of this job in the following format:
 
 ```bash
 {
@@ -145,7 +145,6 @@ As a result, you get a json payload with information about the last runs of this
 		}
 	]
 }
-
 ```
 
 **Example with a data operation (configuration level)**
@@ -164,7 +163,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last runs of this configuration in the following format:&#x20;
+As a result, you get a json payload with information about the last runs of this configuration in the following format:
 
 ```bash
 {
@@ -204,7 +203,6 @@ As a result, you get a json payload with information about the last runs of this
 		}
 	]
 }
-
 ```
 
 **Example with a data operation (configuration) with specific parameters**
@@ -226,7 +224,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
 
-As a result, you get a json payload with information about the last 2 runs ins success, with a start date the 2020/12/09 of this configuration in the following format:&#x20;
+As a result, you get a json payload with information about the last 2 runs ins success, with a start date the 2020/12/09 of this configuration in the following format:
 
 ```bash
 {
@@ -283,7 +281,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/workflow/status"
 ```
 
-As a result, you get a response (OK, or KO) in the following format:&#x20;
+As a result, you get a response (OK, or KO) in the following format:
 
 ```bash
 {"code":200,"data":{},"message":"ok"}
@@ -311,7 +309,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-As a result, you get a response (OK, or KO) in the following format:&#x20;
+As a result, you get a response (OK, or KO) in the following format:
 
 ```bash
 {"message":"ok"}
@@ -339,7 +337,7 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-As a result, you get a response (OK, or KO) in the following format:&#x20;
+As a result, you get a response (OK, or KO) in the following format:
 
 ```bash
 {"message":"ok"}
@@ -367,9 +365,8 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/configuration/status"
 ```
 
-As a result, you get a response (OK, or KO) in the following format:&#x20;
+As a result, you get a response (OK, or KO) in the following format:
 
 ```bash
 {"message":"ok"}
 ```
-

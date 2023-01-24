@@ -65,7 +65,7 @@ The dedicated task must be of type “expectation”. For example:
     "short_description": "Check for data integrity (pk, count, dates,...).",
     "doc_md": "000001_load_PDA_products.md",
     "sql_file": "000001_load_PDA_products_expects_r7.sql",
-    "task_criticality": "warning"
+    "criticality": "warning"
 }
 ```
 
@@ -121,7 +121,7 @@ Here are the fields of this:
 | configuration\_id   | STRING | Identifier of the Configuration         |
 | task\_id            | STRING | Identifier of the Task                  |
 | execution\_date     | STRING | Execution Date                          |
-| task\_criticality   | STRING | Task Criticality                        |
+| criticality         | STRING | Task Criticality                        |
 | expectation\_result | STRING | Expectation Result                      |
 
 The field called “expectation\_result” contains additionnal informations about the expectation in JSON format. The generic output is defined here, and some specific results could be added for some expectations (see details in the [list of expectations](list-of-expectations.md)):
