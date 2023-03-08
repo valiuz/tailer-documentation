@@ -21,7 +21,7 @@ A workflow can be composed of the following task types:
 SQL tasks are steps of the workflow. Each SQL task is defined with a .sql file that contains the query. You can write the queries directly in the query editor of [BigQuery](https://console.cloud.google.com/bigquery) and then save them to .sql files.
 
 {% hint style="info" %}
-There can be only one SQL query for each task. If a table need several SQL queries to be well loaded, you need to execute a task for each of them.
+The file can contain a SQL query or a SQL script (like assertions or expectations).
 {% endhint %}
 
 {% hint style="info" %}
@@ -30,25 +30,15 @@ The name of the SQL file should be the same as the SQL task.
 
 Example:
 
-```
-#standardSQL
-
+```sql
 SELECT
-
-t1.customer_id,
-
-COUNT(distinct t2.id_family) as nb_families,
-
-SUM(t3.amount) as total_amount
-
+    t1.customer_id,
+    COUNT(distinct t2.id_family) as nb_families,
+    SUM(t3.amount) as total_amount
 FROM Project_A.Dataset_Y.Tab_Y1 t1
-
 INNER JOIN project_A.Dataset_S.Tab_S1 t2
-
 ON t1.id_product=t2.id_article
-
 INNER JOIN project_A.Dataset_U.Tab_U3 t3
-
 ON t1.id_loyalty_card=t3.id_card
 ```
 
