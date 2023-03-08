@@ -18,20 +18,17 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
 
 ```json
 {
-  "$schema": "http://jsonschema.tailer.ai/schema/storage-to-storage",
+  "$schema": "http://jsonschema.tailer.ai/schema/storage-to-storage-vbeta",
   
   "configuration_type": "storage-to-storage",
   "configuration_id": "copy-my-files-gcs-to-sftp",
   
   "environment": "PROD",
   "account": "000099",
-  
   "version": "3",
   "direct_execution": true,
-  
   "activated": true,
   "archived": false,
-  
   "max_active_runs": 5,
   
   "filename_templates": [
@@ -50,7 +47,7 @@ Here is an example of STS configuration file for a GCS to SFTP transfer:
     "gcp_project_id": "my_gcp_project",
     "gcs_source_bucket" : "my-input-bucket",
     "gcs_source_prefix" : "input-folder",
-    "gcs_archive_prefix": "archive-folder",
+    "archive_prefix": "archive-folder",
     "gcp_credentials_secret": {
       "cipher_aes": "b42724dcbbf0aba89a0f106d1c4",
       "tag": "5c8816ea0a7aded7c6f2df61f5b9",
@@ -113,14 +110,14 @@ There can only be one source block, as STS data operations can only process one 
 
 Example:
 
-```
+```json
 {
   "source": {
     "type": "gcs",
     "gcp_project_id": "my_gcp_project",
-    "gcs_source_bucket" : "152-composer-test",
+    "gcs_source_bucket" : "my_bucket",
     "gcs_source_prefix" : "INPUT_SOMEDIR",
-    "gcs_archive_prefix": "archive",
+    "archive_prefix": "archive",
     "gcp_credentials_secret": {
       "cipher_aes": "b42724dcbbf6c3310aba89a0f106d1c4",
       "tag": "5c8816ea0a7aded9cb47c6f2df61f5b9",
@@ -137,17 +134,20 @@ Example:
 | <p><strong>gcp_project_id</strong></p><p>type: string</p><p>mandatory</p>       | <p>Set the project where deploy the source configuration and associated cloud functions</p><p>If not set, the user will be prompted to choose a profile where deploy the configuration</p>                                                                                                                                           |
 | <p><strong>gcs_source_bucket</strong></p><p>type: string</p><p>mandatory</p>    | Name of the source bucket.                                                                                                                                                                                                                                                                                                           |
 | <p><strong>gcs_source_prefix</strong></p><p>type: string</p><p>mandatory</p>    | Path where the files will be found, e.g. "some/sub/dir".                                                                                                                                                                                                                                                                             |
-| <p><strong>gcs_archive_prefix</strong></p><p>type: string optional</p>          | <p>Path where the source files will be archived.</p><p>If present and populated, the STS data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p>                                                                            |
+| <p><strong>archive_prefix</strong></p><p>type: string </p><p>optional</p>       | <p>Path where the source files will be archived.</p><p>If present and populated, the STS data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p>                                                                            |
 | <p><strong>gcp_credentials_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted credentials needed to read/move data from the source bucket.</p><p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **Amazon S3 source**
 
 Example:
 
-```
+```json
 {
   "source": {
     "type": "s3",
+    "s3_source_bucket": "my_s3_bucket",
+    "s3_source_prefix": "input/my_source/",
+    "archive_prefix": "archive"
     "aws_access_key": "3VJ3F6JJQBA2",
     "aws_access_key_secret": {
       "cipher_aes": "e6f5a68d4de8af89e83ea93e42facbed",
@@ -159,22 +159,54 @@ Example:
 }
 ```
 
-| Parameter                                                                      | **Description**                                                                                                                                                                                                                                  |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                | <p>Type of source.</p><p>In this case : "s3".</p>                                                                                                                                                                                                |
-| <p><strong>aws_access_key</strong></p><p>type: string</p><p>mandatory</p>      | Amazon S3 access key ID.                                                                                                                                                                                                                         |
-| <p><strong>aws_access_key_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted Amazon S3 access private key.</p><p>This is needed to read/move data from the source bucket. To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
+| Parameter                                                                      | **Description**                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                | <p>Type of source.</p><p>In this case : "s3".</p>                                                                                                                                                                                                         |
+| <p><strong>s3_source_bucket</strong></p><p>type: string</p><p>mandatory</p>    | Name of the source S3 bucket.                                                                                                                                                                                                                             |
+| <p><strong>s3_source_prefix</strong></p><p>type: string</p><p>mandatory</p>    | Path where the files will be found, e.g. "some/sub/dir".                                                                                                                                                                                                  |
+| <p><strong>archive_prefix</strong></p><p>type: string </p><p>optional</p>      | <p>Path where the source files will be archived.</p><p>If present and populated, the STS data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p> |
+| <p><strong>aws_access_key</strong></p><p>type: string</p><p>mandatory</p>      | Amazon S3 access key ID.                                                                                                                                                                                                                                  |
+| <p><strong>aws_access_key_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted Amazon S3 access private key.</p><p>This is needed to read/move data from the source bucket. To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>          |
+
+### **Azure source**
+
+Example:
+
+```json
+{
+    "source": {
+        "type": "azure",
+        "azure_source_storage": "my_azure_storage",
+        "azure_source_prefix": "input/my_source/",
+        "archive_prefix": "archive",
+        "azure_connection_string_secret": {
+            "cipher_aes": "f1c4xxxx",
+            "tag": "0052fxxxx",
+            "ciphertext": "7e1a3xxxx",
+            "enc_session_key": "2dc2xxxx"
+        }
+    }
+}
+```
+
+| Parameter                                                                               | **Description**                                                                                                                                                                                                                                           |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                         | <p>Type of source.</p><p>In this case : "azure"</p>                                                                                                                                                                                                       |
+| <p><strong>azure_source_storage</strong></p><p>type: string</p><p>mandatory</p>         | Name of the source Azure storage.                                                                                                                                                                                                                         |
+| <p><strong>azure_source_prefix</strong></p><p>type: string</p><p>mandatory</p>          | Path where the files will be found, e.g. "some/sub/dir".                                                                                                                                                                                                  |
+| <p><strong>archive_prefix</strong></p><p>type: string </p><p>optional</p>               | <p>Path where the source files will be archived.</p><p>If present and populated, the STS data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p> |
+| <p><strong>azure_connection_string_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted Azure access private key.</p><p>This is needed to read/move data from the source bucket. To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p>              |
 
 ### **SFTP source**
 
 Example:
 
-```
+```json
 {
   "source": {
     "type": "sftp",
-    "sftp_source_filename": "20190621_test_file.txt",
     "sftp_source_directory": "/",
+    "archive_prefix": "archive",
     "sftp_host": "sftp.domain.com",
     "sftp_port": 22,
     "sftp_userid": "john_doe",
@@ -192,8 +224,8 @@ Example:
 | **Parameter**                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                         | <p>Type of source.</p><p>In this case : "sftp".</p>                                                                                                                                                                                                                                                                                                                                     |
-| <p><strong>sftp_source_filename</strong></p><p>type: string</p><p>mandatory</p>         | File to retrieve.                                                                                                                                                                                                                                                                                                                                                                       |
 | <p><strong>sftp_source_directory</strong></p><p>type: string</p><p>mandatory</p>        | Sub-path to switch to before downloading the file.                                                                                                                                                                                                                                                                                                                                      |
+| <p><strong>archive_prefix</strong></p><p>type: string </p><p>optional</p>               | <p>Path where the source files will be archived.</p><p>If present and populated, the STS data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p>                                                                                                                               |
 | <p><strong>sftp_host</strong></p><p>type: string</p><p>mandatory</p>                    | SFTP host, e.g. "sftp.something.com".                                                                                                                                                                                                                                                                                                                                                   |
 | <p><strong>sftp_port</strong></p><p>type: integer</p><p>mandatory</p>                   | SFTP port, e.g. "22".                                                                                                                                                                                                                                                                                                                                                                   |
 | <p><strong>sftp_userid</strong></p><p>type: string</p><p>mandatory</p>                  | SFTP user ID, e.g. "john\_doe".                                                                                                                                                                                                                                                                                                                                                         |
@@ -210,13 +242,13 @@ These parameters allow you specify a list of destinations. You can add as many "
 
 Example:
 
-```
+```json
 {
   "destinations": [
     {
       "type": "gcs",
-      "gcs_destination_bucket": "152-composer-test",
-      "gcs_destination_prefix": "JULTEST",
+      "gcs_destination_bucket": "my_dest_bucket",
+      "gcs_destination_prefix": "DEV/output",
       "gcp_credentials_secret": {
         "cipher_aes": "b42724dcbbf6c3310aba89a0f106d1c4",
         "tag": "5c8816ea0a7aded9cb47c6f2df61f5b9",
@@ -239,19 +271,19 @@ Example:
 
 Example:
 
-```
+```json
 {
   "destinations": [
     {
       "type": "s3",
-      "s3_bucket" : "fd-io-exc-ysance-n-in",
-      "s3_destination_prefix": "TEST1",
+      "s3_bucket" : "my_dest_bucket",
+      "s3_destination_prefix": "PROD/output",
       "aws_access_key": "J3F6JLUVJQ",
       "aws_access_key_secret": {
-        "cipher_aes": "e6f5a68d4de8af89e83ea93e42facbed",
-        "tag": "20e174e34c5d0c537be77d85ed8dda33",
-        "ciphertext": "60a84",
-        "enc_session_key": "9c4619048e"
+        "cipher_aes": "e6f5a68dxxxx",
+        "tag": "20e1xxxx",
+        "ciphertext": "60a84xxxx",
+        "enc_session_key": "9c4619048exxxx"
       }
     }
   ]
@@ -262,20 +294,51 @@ Example:
 | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                  | <p>Type of destination.</p><p>In this case : "s3".</p>                                                                                                                                                                                                            |
 | <p><strong>s3_bucket</strong></p><p>type: string</p><p>mandatory</p>             | Amazon S3 bucket name.                                                                                                                                                                                                                                            |
-| <p><strong>s3_destination_prefix</strong></p><p>type: string</p><p>mandatory</p> | Amazon S3 destination path, e.g. "subdir\_A/subdir\_B" to send the files to "http://bucket.s3.amazonaws.com/subdir\_A/subdir\_B/source\_file.ext".                                                                                                                |
+| <p><strong>s3_destination_prefix</strong></p><p>type: string</p><p>mandatory</p> | Amazon S3 destination path, e.g. "subdir\_A/subdir\_B" to send the files to "s3://bucket/subdir\_A/subdir\_B/source\_file.ext".                                                                                                                                   |
 | <p><strong>aws_access_key</strong></p><p>type: string</p><p>mandatory</p>        | Amazon S3 access key ID.                                                                                                                                                                                                                                          |
 | <p><strong>aws_access_key_secret</strong></p><p>type: dict</p><p>mandatory</p>   | <p>Encrypted Amazon S3 access private key.</p><p>This is needed to read/write/move data from the destination bucket.</p><p>To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
+
+### Azure destination
+
+Example:
+
+```json
+{
+  "destinations": [
+    {
+      "type": "azure",
+      "azure_destination_bucket": "my_azure_bucket",
+      "azure_destination_prefix": "output",
+      "azure_connection_string_secret": {
+        "cipher_aes": "3926fxxxx",
+        "tag": "1f5cxxxx",
+        "ciphertext": "9217xxxx",
+        "enc_session_key": "2fb0xxxx"
+      }
+    }
+  ]
+}
+```
+
+| Parameter                                                                               | Description                                                                                                                                                                                                                                  |
+| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                         | <p>Type of destination.</p><p>In this case : "azure".</p>                                                                                                                                                                                    |
+| <p><strong>azure_destination_bucket</strong><br>type: string</p><p>mandatory</p>        | Name of the destination Azure storage name.                                                                                                                                                                                                  |
+| <p><strong>azure_destination_prefix</strong></p><p>type: string</p><p>mandatory</p>     | Azure destination path, e.g. "subdir\_A/subdir\_B" to send the files to "bucket/subdir\_A/subdir\_B/".                                                                                                                                       |
+| <p><strong>azure_connection_string_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted Azure access private key.</p><p>This is needed to read/move data from the source bucket. To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **SFTP destination**
 
 Example:
 
-```
+```json
 {
-  "source": [
+  "destinations": [
     {
       "type": "sftp",
       "generate_top_file": "REPLACE_EXTENSION",
+      "sftp_destination_dir": "/",
+      "sftp_destination_dir_create": false,
       "sftp_host": "sftp.domain.com",
       "sftp_port": 22,
       "sftp_userid": "john_doe",
@@ -284,9 +347,7 @@ Example:
         "tag": "1f5c066351db5f91041343a2ab37aebe",
         "ciphertext": "921776fd0caa71a04228fe8aaa42af04",
         "enc_session_key": "2fb0adf8d271"
-      },
-      "sftp_destination_dir": "/",
-      "sftp_destination_dir_create": false
+      }
     }
   ]
 }
