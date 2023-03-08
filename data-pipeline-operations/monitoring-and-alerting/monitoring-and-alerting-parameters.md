@@ -19,7 +19,7 @@ Currently, you can only send on alert message, and only by email. But we are thi
 
 Here is an example in a TTT configuration file:
 
-```
+```json
 {
 	"configuration_type": "table-to-table",
 	"configuration_id": "000001_append_tailer_activities_runs",

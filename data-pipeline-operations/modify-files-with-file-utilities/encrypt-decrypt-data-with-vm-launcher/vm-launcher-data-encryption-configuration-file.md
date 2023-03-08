@@ -16,7 +16,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of File Utilities configuration file for data encryption:
 
-```
+```json
 {
     "configuration_type": "file-utilities",
     "configuration_id": "000010-file-utilities-fd-io-dlk-demo-n-val-out-output",

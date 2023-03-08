@@ -16,7 +16,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of STT configuration file for a GCS to BigQuery transfer:
 
-```
+```sql
 {
   "configuration_type": "storage-to-tables",
   "configuration_id": "Load_sales_files_from_it",
@@ -101,7 +101,7 @@ General information about the data operation
 
 The destination section contains all information related to the data source provider.
 
-```
+```json
 "source": {
   "type": "gcs",
   "gcp_project_id": "fd-io-dlk-orsay",
@@ -141,7 +141,7 @@ The **destinations** parameter is an array containing maps. Each map can contain
 
 Example:
 
-```
+```json
 "destinations": [
 {
   "type": "bigquery",

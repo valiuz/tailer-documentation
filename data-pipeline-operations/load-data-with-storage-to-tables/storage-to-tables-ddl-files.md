@@ -10,7 +10,7 @@ You need to provide one DDL file for each database table that will be created. E
 
 ## 👁️‍🗨️ Example
 
-```
+```json
 {
   "schema": [
     {
@@ -39,6 +39,6 @@ You need to provide one DDL file for each database table that will be created. E
 
 ## :gear: Parameters
 
-| Parameter                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>schema</strong></p><p>type: array</p><p>mandatory</p> | <p></p><p>GBQ table schema. It contains a list of fields corresponding to the number of columns found in the CSV.</p><p>Each field described has three attributes:</p><ul><li><strong>name</strong>: Name of the field. Keep column names as in the input file.</li><li><strong>type</strong>: Use only the STRING type at this stage to avoid cast errors. The type can modified with a transformation operation later on.</li><li><strong>description</strong>: Text describing the meaning of the data.</li></ul> |
+| Parameter                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>schema</strong></p><p>type: array</p><p>mandatory</p> | <p>GBQ table schema. It contains a list of fields corresponding to the number of columns found in the CSV.</p><p>Each field described has three attributes:</p><ul><li><strong>name</strong>: Name of the field. Keep column names as in the input file.</li><li><strong>type</strong>: Use only the STRING type at this stage to avoid cast errors. The type can modified with a transformation operation later on.</li><li><strong>description</strong>: Text describing the meaning of the data.</li></ul> |

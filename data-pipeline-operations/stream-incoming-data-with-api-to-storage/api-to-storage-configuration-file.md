@@ -10,7 +10,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of ATS configuration file exposing a Pub/Sub endpoint and an output to GCS :
 
-```
+```json
 {
   "configuration_type": "api-to-storage",
   "configuration_id": "000099-ats-example-products",
@@ -90,7 +90,7 @@ The definition should be defined as follow. Note that the message "Item" is wher
 
 Let's use the following example where the attribute "new\_item" is optional:
 
-```
+```json
 {
     "input_data": [
         {
@@ -144,7 +144,7 @@ These parameters allow you specify a list of destinations. You can add as many "
 
 Example:
 
-```
+```json
 "destinations": [
     {
       "type": "gcs",

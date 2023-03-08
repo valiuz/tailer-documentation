@@ -16,7 +16,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of VM Launcher configuration file for data encryption:
 
-```
+```json
 {
     "configuration_type": "vm-launcher",
     "configuration_id": "pgp-encrypt-to-valiuz",

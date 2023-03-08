@@ -25,7 +25,7 @@ Example: "python3 file-to-firestore.py ./000001 '{\\"next\_execution\\":{\\"sub\
 
 Here is an example of VM Launcher configuration file that loads data from the tailer-freshness Google Cloud Storage Bucket. The Firestore destination will be specified inside the Python script (see next page).
 
-```
+```json
 {
     "configuration_type": "vm-launcher",
     "configuration_id": "000001_json_to_firestore_freshness_next_execution",

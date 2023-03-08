@@ -12,10 +12,17 @@ The SQL file must contains a BigQuery Standard SQL query. You can write it direc
 
 Example:
 
-```
-SELECT * FROM 'fd-tailer-datalake.rmp152_datalake.coupon' LIMIT 100000
+```sql
+SELECT * FROM 'myproject.datalake.sales'
 ```
 
 This query will be executed when the data operation is deployed, and the result will display in the CSV export file and the table copy if specified.
 
-You can now use constants with context but **only if** you stated version :"3" in the global parameters of the configuration **and if** your tailer SDK version is 1.3.9 or later. See [here](https://docs.tailer.ai/data-pipeline-operations/set-constants-with-context) for the constants with context.&#x20;
+{% hint style="info" %}
+You can now use constants with context but **only if** you stated version :"3" in the global parameters of the configuration **and if** your tailer SDK version is 1.3.9 or later. See [here](https://docs.tailer.ai/data-pipeline-operations/set-constants-with-context) for the constants with context. For example:
+
+```
+SELECT * FROM {{SOURCE_DATASET}}.sales
+```
+{% endhint %}
+

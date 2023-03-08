@@ -16,7 +16,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of VM Launcher configuration file for code processing:
 
-```
+```json
 {
     "version": "2",
     "configuration_type": "vm-launcher",

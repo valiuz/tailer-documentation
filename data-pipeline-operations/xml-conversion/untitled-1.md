@@ -16,7 +16,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of Convert XML to CSV configuration file:
 
-```
+```json
 {
     "configuration_type": "xml-conversion",
     "configuration_id": "000099-test-xml-conversion",

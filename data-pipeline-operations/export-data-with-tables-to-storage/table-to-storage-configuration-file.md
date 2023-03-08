@@ -15,7 +15,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of TTS configuration file:
 
-```
+```json
 {
     "configuration_type": "table-to-storage",
     "configuration_id": "tts-some-id-example",

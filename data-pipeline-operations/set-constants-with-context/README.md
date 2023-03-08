@@ -17,7 +17,7 @@ Constants can be used for example to replace GCP credential parameters so they c
 All data operations can contain the constants set with Context.
 
 {% hint style="warning" %}
-For STS, STT, TTT and TTS data operations, you will need to add`"version" : "2"`in the JSON configuration file to be able to use constants.
+When you want to apply context to your configurations, you should always make sure than the latest version is specified. For example, add in you configuration`"version": "3"`for a table-to-storage configuration.
 {% endhint %}
 
 ## ⚙️ How it works
@@ -50,9 +50,11 @@ Once you have deployed your Context configuration, you can start using the const
 
 When you deploy a configuration file, you will be asked the Context you want to use. The constants are then replaced by the values defined in the Context configuration.
 
-You can use the constants in the SQL files of your table-to-table, for example:
+You can use the constants in the SQL files of your table-to-table and table-to-storage, for example:
 
-`SELECT * FROM {{bq_dataset}}.my_table`
+```sql
+SELECT * FROM {{bq_dataset}}.my_table
+```
 
 There are two generic constants you can use in a your data operation configurations without setting them explicitly in your Context configuration:
 

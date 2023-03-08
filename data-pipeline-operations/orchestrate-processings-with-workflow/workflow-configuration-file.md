@@ -10,7 +10,7 @@ A Workflow data operation is used to specify one or several data operation IDs t
 
 ## :eye\_in\_speech\_bubble: Example
 
-```
+```json
 {
     "version":"2",
     "configuration_type": "workflow",

@@ -12,7 +12,7 @@ If you want to extract data from BigQuery to load it into Firestore, then **you 
 
 Here is an example of TTS configuration file for a GBQ to Firestore data pipeline:
 
-```
+```json
 {
     "configuration_type" : "table-to-storage",
     "configuration_id" : "000001_load_bda_freshness_next_exe_export_json",

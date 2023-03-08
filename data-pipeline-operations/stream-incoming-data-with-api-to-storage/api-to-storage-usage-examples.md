@@ -39,7 +39,7 @@ API To Storage processor expects an array of objects build with the following sc
 
 Example:
 
-```
+```json
 {
     "input_data": [
         {
@@ -70,7 +70,7 @@ Then, the JSON string must be Base64 encoded. Using the previous example, the re
 
 Using CURL, we can now simply send the data payload to Pub/Sub:
 
-```
+```bash
 curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -85,4 +85,3 @@ Note that the Pub/Sub endpoint is not publicly callable. You need to specify a J
 The user MUST have the Pub/Sub Publisher role to the according GCP Project to have access.
 
 This is a link to GCP documentation on how to generate a JWT from a service account credential file : [https://cloud.google.com/endpoints/docs/openapi/service-account-authentication](https://cloud.google.com/endpoints/docs/openapi/service-account-authentication)
-

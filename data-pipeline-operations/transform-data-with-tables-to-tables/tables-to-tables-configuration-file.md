@@ -15,7 +15,7 @@ The configuration file is in JSON format. It contains the following sections:
 
 Here is an example of TTT configuration file:
 
-```
+```json
 {
   "configuration_type" : "table-to-table",
   "configuration_id" : "000099_test_sql_dag_v1",
