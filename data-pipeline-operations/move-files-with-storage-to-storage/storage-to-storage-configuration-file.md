@@ -307,8 +307,7 @@ Example:
   "destinations": [
     {
       "type": "azure",
-      "azure_destination_bucket": "my_azure_bucket",
-      "azure_destination_prefix": "output",
+      "azure_destination_prefix": "my_azure_bucket/output",
       "azure_connection_string_secret": {
         "cipher_aes": "3926fxxxx",
         "tag": "1f5cxxxx",
@@ -323,8 +322,7 @@ Example:
 | Parameter                                                                               | Description                                                                                                                                                                                                                                  |
 | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p><strong>type</strong></p><p>type: string</p><p>mandatory</p>                         | <p>Type of destination.</p><p>In this case : "azure".</p>                                                                                                                                                                                    |
-| <p><strong>azure_destination_bucket</strong><br>type: string</p><p>mandatory</p>        | Name of the destination Azure storage name.                                                                                                                                                                                                  |
-| <p><strong>azure_destination_prefix</strong></p><p>type: string</p><p>mandatory</p>     | Azure destination path, e.g. "subdir\_A/subdir\_B" to send the files to "bucket/subdir\_A/subdir\_B/".                                                                                                                                       |
+| <p><strong>azure_destination_prefix</strong></p><p>type: string</p><p>mandatory</p>     | Complete Azure destination path, i.e. storage name and subdirectory if needed.                                                                                                                                                               |
 | <p><strong>azure_connection_string_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted Azure access private key.</p><p>This is needed to read/move data from the source bucket. To learn how to encrypt the private key value, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
 ### **SFTP destination**
