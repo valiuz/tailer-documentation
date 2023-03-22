@@ -18,16 +18,15 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.10
+### Latest BETA package : 1.3.11
 
-#### Beta 1.3.10 Release Note
+#### Beta 1.3.11 Release Note
 
-* TTT : fixed criticity upon expectation failure.
-* TTT : added time partioning type to DDL file. You can use the "bq\_table\_timepartitioning\_type" set to "HOUR", "DAY", "MONTH" or "YEAR". If not present, default is "DAY".
+* TTT : added Mermaid Graph for tasks dependencies
 
-Last updated : 2023-01-24 08:21
+Last updated : 2023-03-22 08:38
 
-{% file src="../../.gitbook/assets/package (17).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
