@@ -93,4 +93,5 @@
 * [Tailer Beta Releases](release-notes/tailer-beta-releases/README.md)
   * [Beta features](release-notes/tailer-beta-releases/beta-features.md)
   * [Beta configuration](release-notes/tailer-beta-releases/beta-configuration.md)
+  * [Tailer SDK API](release-notes/tailer-beta-releases/tailer-sdk-api.md)
 * [Tailer Status](release-notes/tailer-status.md)
