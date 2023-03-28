@@ -11,6 +11,12 @@ For the table-to-table configurations, don't forget to add at the end of the con
 \_\_Example : the table-to-table configuration\_id "000099\_iowa\_liquor\_prepare\_pda" in your json file in DEV environnement is referenced as the "000099\_iowa\_liquor\_prepare\_pda\_DEV" in the payload below.
 {% endhint %}
 
+## 🔑 Get a JWT token
+
+You will need to provide a JWT token for your API call. You can use different methods to get a JWT token based on your credentials.
+
+You can use the`tailer auth get-token` function to get a few info, including a JWT token associated with the credentials you use with your tailer-sdk. You can get this token only using TAILER\_API\_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'`&#x20;
+
 ## :rocket: Launching a job's execution
 
 Tables to Tables or Tables to Storage data operations can be launched through the Tailer API.
