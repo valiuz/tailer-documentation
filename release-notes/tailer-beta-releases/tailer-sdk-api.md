@@ -13,7 +13,7 @@ tailer config
 Override the Tailer API Endpoint with the following value:
 
 ```
-https://fd-io-jarvis-platform-api-proxy-staging-a7nkzexitq-ew.a.run.app
+https://fd-io-jarvis-platform-api-proxy-staging-a7nkzexitq-ew.a.run.app/
 ```
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
