@@ -25,5 +25,5 @@ Now your Tailer SDK is set to use the Tailer SDK Staging API.
 To revert to PRODUCTION, just execute Tailer config again and set the Tailer API Endpoint with the following value:
 
 ```
-https://fd-io-jarvis-platform-api-proxy-a7nkzexitq-uc.a.run.app
+https://fd-io-jarvis-platform-api-proxy-a7nkzexitq-uc.a.run.app/
 ```
