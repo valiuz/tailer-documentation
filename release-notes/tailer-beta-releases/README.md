@@ -24,7 +24,7 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 * TTT : added Mermaid Graph for tasks dependencies
 
-Last updated : 2023-03-22 08:38
+Last updated : 2023-04-03 10:09
 
 {% file src="../../.gitbook/assets/package.zip" %}
 
