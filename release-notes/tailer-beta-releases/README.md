@@ -24,9 +24,9 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 * TTT : added Mermaid Graph for tasks dependencies
 
-Last updated : 2023-04-03 10:09
+Last updated : 2023-04-03 14:21
 
-{% file src="../../.gitbook/assets/package.zip" %}
+{% file src="../../.gitbook/assets/package (3).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
