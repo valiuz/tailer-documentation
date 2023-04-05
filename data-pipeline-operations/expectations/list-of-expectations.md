@@ -5,6 +5,7 @@
 * Key constraints
   * [primarykey\_named](list-of-expectations.md#primarykey\_named-dataset-tablename-column-threshold)
   * [primarykey](list-of-expectations.md#primarykey-dataset-tablename-threshold)
+  * [primarykey\_where](list-of-expectations.md#primarykey\_where-dataset-tablename-threshold-where\_clause)
   * [foreignkey](list-of-expectations.md#foreignkey-dataset-tablename-column-target\_dataset-target\_tablename-target\_column-threshold)
 * Temporal continuity
   * [everyday\_since](list-of-expectations.md#everyday\_since-dataset-tablename-column-start\_date-exception-minimum)
@@ -62,6 +63,27 @@ This procedure looks for a column with a name that starts wiht 'PK' or with a de
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
+*   **Returns**
+
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
+
+#### <mark style="color:purple;">primarykey\_where(dataset, tablename, threshold, where\_clause)</mark>
+
+```sql
+CALL `tailer-ai.expect.primarykey_where`('my-project.my_dataset', 'stocks', 0, 'WHERE date >= current_date - 7');
+```
+
+Expect a table to have a column that respects a pseudo Primary Key constraint. Apply a WHERE condition before testing the primary key constraint to limit the number of rows requested.
+
+The test performed is the as with the primarykey expectation. See more detail above.
+
+**Parameters**
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
+  * **where\_clause** (_STRING_) – A proper WHERE clause that will filter the table before applying the test.
 *   **Returns**
 
     The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.

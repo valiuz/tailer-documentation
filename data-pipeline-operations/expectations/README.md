@@ -162,3 +162,21 @@ Click in the left pannel on "Expectations Overview" in the "Data Quality" sectio
 ## **📋** A list of available Expectations
 
 A complete documentation of all avaibable expectations and their specific parameters is available on the next page: [List of Expectations](list-of-expectations.md).
+
+## 🌍 Multiple regions
+
+{% hint style="info" %}
+If you need expectations in a specific BigQuery location where they are not already available, please feel free to contact us!
+{% endhint %}
+
+The first set of expectations is located in region EU. So this call will work if you apply it to a BigQuery table located in EU:
+
+```sql
+CALL `tailer-ai.expect.primarykey`('my_project.my_dataset_EU', 'products', 'PK_products', 0);                     
+```
+
+We've also released expectations on a few other region, each in a specific dataset. For example, you can use primarykey on a table in europe-west1 region using excpect\_euw1:
+
+```sql
+CALL `tailer-ai.expect_euw1.primarykey`('my_project.my_dataset_europe_west1', 'products', 'PK_products', 0);                     
+```
