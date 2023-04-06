@@ -23,10 +23,12 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 #### Beta 1.3.11 Release Note
 
 * TTT : added Mermaid Graph for tasks dependencies
+* TTT : refactoring of TTT DAG generation
+* All : standard way of processing Markdown documentation
 
-Last updated : 2023-04-03 16:54
+Last updated : 2023-04-06 14:25
 
-{% file src="../../.gitbook/assets/package (3).zip" %}
+{% file src="../../.gitbook/assets/package (1).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
@@ -44,4 +46,3 @@ From a terminal, use PIP to go back to the latest Tailer SDK RELEASE:
 
 `pip3 install tailer-sdk --force-reinstall`
 
-``

@@ -12,7 +12,7 @@ A GBQ to Firestore data pipeline allows you to transform each row of a BigQuery 
 
 ## ✅ **Overall operations needed**
 
-****:warning: GBQ to Firestore is an advanced data pipeline which requires prior knowledge of:
+:warning: GBQ to Firestore is an advanced data pipeline which requires prior knowledge of:
 
 * [Tables to storage configuration](../export-data-with-tables-to-storage/table-to-storage-configuration-file-1.md)
 * [VM-launcher configuration](../execute-code-processings-with-vm-launcher/process-code-with-vm-launcher/vm-launcher-code-processing-configuration-file.md)
@@ -32,8 +32,8 @@ A GBQ to Firestore data pipeline allows you to transform each row of a BigQuery 
 
 You must follow these steps:
 
-1. ****[**Deploy a tables to storage data operation**](https://docs.tailer.ai/data-pipeline-operations/export-data-with-tables-to-storage#how-to-deploy-a-table-to-storage-data-operation)****
-2. ****[**Deploy a vm-launcher data operation for code processing**](https://docs.tailer.ai/data-pipeline-operations/execute-code-processings-with-vm-launcher/process-code-with-vm-launcher#how-to-deploy-a-vm-launcher-data-operation-for-code-processing)****
-3. ****[**Deploy a workflow data operation**](../orchestrate-processings-with-workflow/workflow-configuration-file.md)****
+1. [**Deploy a tables to storage data operation**](https://docs.tailer.ai/data-pipeline-operations/export-data-with-tables-to-storage#how-to-deploy-a-table-to-storage-data-operation)
+2. [**Deploy a vm-launcher data operation for code processing**](https://docs.tailer.ai/data-pipeline-operations/execute-code-processings-with-vm-launcher/process-code-with-vm-launcher#how-to-deploy-a-vm-launcher-data-operation-for-code-processing)
+3. [**Deploy a workflow data operation**](../orchestrate-processings-with-workflow/workflow-configuration-file.md)
 
 The following pages describe how to deploy a first end-to-end GBQ to Firestore data pipeline.
