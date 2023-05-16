@@ -22,30 +22,30 @@ Here is an example in a TTT configuration file:
 ```json
 {
 	"configuration_type": "table-to-table",
-	"configuration_id": "000001_append_tailer_activities_runs",
-	"short_description": "Append the Tailer runs from the firestore streamed view to a partitioned table",
-	"account": "000001",
+	"configuration_id": "000001_append_some_data",
+	"short_description": "Append some data to a partitioned table",
+	"account": "000099",
 	"environment": "DEV",
 	"activated": true,
 	"archived": false,
-	"start_date": "2019, 1, 23",
+	"start_date": "2023, 1, 23",
 	"schedule_interval": "*/5 * * * *",
 	"max_active_runs": 1,
 	"task_concurrency": 3,
-	"default_gcp_project_id": "fd-jarvis-datalake",
-	"default_bq_dataset": "jarvis_activities",
+	"default_gcp_project_id": "my-project",
+	"default_bq_dataset": "my_dataset",
 	"default_write_disposition": "WRITE_TRUNCATE",
 	"direct_execution": true,
 	"task_dependencies": [
-		"create_tailer_activities_runs >> merge_table_with_last_data"
+		"create_my_data_table >> merge_table_with_last_data"
 	],
 	"workflow": [
 		{
 			"task_type": "create_gbq_table",
-			"id": "create_tailer_activities_runs",
+			"id": "create_my_data_table",
 			"short_description": "Create the destination table with partitioning on date and clustering",
-			"bq_table": "all_jarvis_runs_raw_latest_table",
-			"ddl_file": "create_table_tailer_activities_runs.json",
+			"bq_table": "my_data",
+			"ddl_file": "my_data.json",
 			"force_delete": false
 		},
 		{
@@ -79,15 +79,15 @@ Here is an example in a TTT configuration file:
 
 General parameters about the monitoring.
 
-| Parameter                                                                                                                                                             | Description                                                                                                                                                                                                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>impact</strong></p><p>type: integer</p><p>optional</p>                                                                                                     | <p>'Impact' is an ITIL measure of the extent of the Incident and of the potential damage caused by the Incident before it can be resolved. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a></p><p>If not specified, the default value will be 2.</p> |
-| <p><strong>urgency</strong></p><p>type: integer</p><p>optional</p>                                                                                                    | <p>'Urgency' is a measure of how quickly a resolution of the Incident is required. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a></p><p>If not specified, the default value will be 2.</p>                                                         |
-| <p><strong>alert_enabled</strong></p><p>type: boolean</p><p>mandatory</p>                                                                                             | Flag used to enable/disable the execution of the alerting (i.e. send an alert to a recipient when the run failed)                                                                                                                                                                                     |
-| <p><strong>alert_status </strong><mark style="color:green;background-color:orange;"><strong>(beta)</strong></mark><br><strong></strong>type: array</p><p>optional</p> | <p>Specifies the Run Status that will trigger the alert.</p><p>Possible values: FAILED, SUCCESS, NO_MATCH, CHECKED.<br>Default value: "FAILED"</p>                                                                                                                                                    |
-| <p><strong>alert_environment</strong></p><p>type: array</p><p>mandatory</p>                                                                                           | <p>Specifies the environments that will trigger the alert.</p><p>Possible values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                    |
-| <p><strong>alert_info</strong></p><p>type: string</p><p>optional</p>                                                                                                  | <p>Short information describing the alert.<br>You can refer it as a variable in your triggering message (as email) with the @alert_info parameter.</p>                                                                                                                                                |
-| <p><strong>alert</strong></p><p>type: array of maps</p><p>optional</p>                                                                                                | <p>List of alert messages the data operation will trigger if it fails.</p><p>Check the section below for detailed information on their parameters.</p>                                                                                                                                                |
+| Parameter                                                                                                                                            | Description                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>impact</strong></p><p>type: integer</p><p>optional</p>                                                                                    | <p>'Impact' is an ITIL measure of the extent of the Incident and of the potential damage caused by the Incident before it can be resolved. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a></p><p>If not specified, the default value will be 2.</p> |
+| <p><strong>urgency</strong></p><p>type: integer</p><p>optional</p>                                                                                   | <p>'Urgency' is a measure of how quickly a resolution of the Incident is required. <a href="https://wiki.en.it-processmaps.com/index.php/Checklist_Incident_Priority">Learn more</a></p><p>If not specified, the default value will be 2.</p>                                                         |
+| <p><strong>alert_enabled</strong></p><p>type: boolean</p><p>mandatory</p>                                                                            | Flag used to enable/disable the execution of the alerting (i.e. send an alert to a recipient when the run failed)                                                                                                                                                                                     |
+| <p><strong>alert_status </strong><mark style="color:green;background-color:orange;"><strong>(beta)</strong></mark><br>type: array</p><p>optional</p> | <p>Specifies the Run Status that will trigger the alert.</p><p>Possible values: FAILED, SUCCESS, NO_MATCH, CHECKED.<br>Default value: "FAILED"</p>                                                                                                                                                    |
+| <p><strong>alert_environment</strong></p><p>type: array</p><p>mandatory</p>                                                                          | <p>Specifies the environments that will trigger the alert.</p><p>Possible values: PROD, PREPROD, STAGING, DEV.</p>                                                                                                                                                                                    |
+| <p><strong>alert_info</strong></p><p>type: string</p><p>optional</p>                                                                                 | <p>Short information describing the alert.<br>You can refer it as a variable in your triggering message (as email) with the @alert_info parameter.</p>                                                                                                                                                |
+| <p><strong>alert</strong></p><p>type: array of maps</p><p>optional</p>                                                                               | <p>List of alert messages the data operation will trigger if it fails.</p><p>Check the section below for detailed information on their parameters.</p>                                                                                                                                                |
 
 ## :warning: Alert parameters
 

@@ -44,7 +44,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
   "destinations": [
     {
       "type": "bigquery",
-      "gcp_project_id": "fd-io-dlk-orsay",
+      "gcp_project_id": "my-project",
       "gbq_dataset": "dlk_demo_wbd_psa",
       "source_format": "CSV",
       "create_disposition": "CREATE_IF_NEEDED",
@@ -106,7 +106,7 @@ The destination section contains all information related to the data source prov
 ```json
 "source": {
   "type": "gcs",
-  "gcp_project_id": "fd-io-dlk-orsay",
+  "gcp_project_id": "my-project",
   "gcs_source_bucket": "mirror-fd-io-exc-demo-wbd--n-in",
   "gcs_source_prefix": "testjul",
   "gcs_archive_prefix": "archive",
@@ -147,7 +147,7 @@ Example:
 "destinations": [
 {
   "type": "bigquery",
-  "gcp_project_id": "fd-io-dlk-orsay",
+  "gcp_project_id": "my-project",
   "gbq_dataset": "dlk_demo_wbd_psa",
   "source_format": "CSV",
   "create_disposition": "CREATE_IF_NEEDED",

@@ -29,13 +29,13 @@ Here is an example of VM Launcher configuration file that loads data from the ta
 {
     "configuration_type": "vm-launcher",
     "configuration_id": "000001_json_to_firestore_freshness_next_execution",
-    "environment": "PROD",
-    "account": "000001",
+    "environment": "DEV",
+    "account": "000099",
     "activated": true,
     "archived": false,
     "direct_execution": true,
-    "gcp_project_id": "fd-tailer-datalake",
-    "gcs_bucket": "tailer-freshness",
+    "gcp_project_id": "my-project",
+    "gcs_bucket": "my-bucket",
     "gcs_working_directory": "gbq-to-firestore",
     "credentials": {
         "gcp-credentials.json": {

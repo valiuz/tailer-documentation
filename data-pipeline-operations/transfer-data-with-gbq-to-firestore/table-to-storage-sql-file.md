@@ -85,7 +85,7 @@ WITH
     ORDER BY date ASC
   ) AS data
   FROM
-    `fd-io-dlk-f3.dlk_bda_pa_demo.product_metrics_details`
+    `dlk_bda_pa_demo.product_metrics_details`
   WHERE
     (1=1) -- you could add filters here
   GROUP BY

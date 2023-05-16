@@ -19,42 +19,42 @@ Here is an example of VM Launcher configuration file for data encryption:
 ```json
 {
     "configuration_type": "vm-launcher",
-    "configuration_id": "pgp-encrypt-to-valiuz",
-    "environment": "PROD",
-    "account": "000010",
+    "configuration_id": "pgp-encrypt",
+    "environment": "DEV",
+    "account": "000099",
     "activated": true,
     "archive": false,
     "pgp_mode": "ENCRYPT",
-    "gcp_project_id": "fd-jarvis-datalake",
-    "gcs_source_bucket": "fd-io-exc-jules-s-val-out",
+    "gcp_project_id": "my-project",
+    "gcs_source_bucket": "my-buckeet",
     "gcs_source_prefix": "output",
-    "destination_gcs_bucket": "fd-io-exc-jules-s-val-out",
+    "destination_gcs_bucket": "my-bucket",
     "destination_gcs_path": "output_encrypted",
     "vm_delete": true,
     "credentials": {
         "input-credentials.json": {
             "content": {
-                "cipher_aes": "",
-                "tag": "",
-                "ciphertext": "",
-                "enc_session_key": ""
+                "cipher_aes": "xxx",
+                "tag": "xxx",
+                "ciphertext": "xxx",
+                "enc_session_key": "xxx"
             }
         },
         "output-credentials.json": {
             "content": {
-                "cipher_aes": "",
-                "tag": "",
-                "ciphertext": "",
-                "enc_session_key": ""
+                "cipher_aes": "xxx",
+                "tag": "xxx",
+                "ciphertext": "xxx",
+                "enc_session_key": "xxx"
             }
         },
         "public_key.pgp": {
-            "recipient": "security+fashiondata@valiuz.com",
+            "recipient": "my-recipient@my-domain.com",
             "content": {
-                "cipher_aes": "",
-                "tag": "",
-                "ciphertext": "",
-                "enc_session_key": ""
+                "cipher_aes": "xxx",
+                "tag": "xxx",
+                "ciphertext": "xxx",
+                "enc_session_key": "xxx"
             }
         }
     }

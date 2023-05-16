@@ -20,30 +20,30 @@ Here is an example of VM Launcher configuration file for code processing:
 {
     "$schema": "http://jsonschema.tailer.ai/schema/vm-launcher-veditor",
     "configuration_type": "vm-launcher",
-    "configuration_id": "000010_critizr_JUL_to_file",
+    "configuration_id": "000010_my-vm-job",
     "version": "2",
-    "environment": "PROD",
-    "account": "000010",
+    "environment": "DEV",
+    "account": "000099",
     "start_date": "2022, 11, 16",
     "schedule_interval": "0 7 * * *",
     "activated": false,
     "archived": false,
-    "gcp_project_id": "fd-io-sct-jules",
-    "gcs_bucket": "fd-io-sct-jules-s-critizr-in",
+    "gcp_project_id": "my-project",
+    "gcs_bucket": "my-bucket",
     "gcs_working_directory": "/",
     "credentials": {
         "gcp-credentials.json": {
             "content": {
-                "cipher_aes": "", 
-                "tag": "", 
-                "ciphertext": "", 
-                "enc_session_key": ""
+                "cipher_aes": "xxx", 
+                "tag": "xxx", 
+                "ciphertext": ""xxx, 
+                "enc_session_key": "xxx"
             }
         }
     },
     "script_to_execute": [
         "mkdir -p input_DEV",
-        "cd ./input_DEV && python3 critizr_API_JUL.py"
+        "cd ./input_DEV && python3 my-python-script.py"
     ],
     "vm_delete": true,
     "vm_core_number": "2",

@@ -16,7 +16,7 @@ You need to provide one DDL file for each database table that will be created. E
     {
       "name": "COMPANYCODE",
       "type": "STRING",
-      "description": "Company code: mostly Orsay."
+      "description": "Company code."
     },
     {
       "name": "STOREID",

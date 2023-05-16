@@ -20,24 +20,24 @@ Here is an example of File Utilities configuration file for data encryption:
 {
     "$schema": "http://jsonschema.tailer.ai/schema/file-utilities-veditor",
     "configuration_type": "file-utilities",
-    "configuration_id": "000010-file-utilities-fd-io-dlk-demo-n-val-out-output",
-    "environment": "PROD",
-    "account": "000010",
+    "configuration_id": "000010-file-utilities-demo",
+    "environment": "DEV",
+    "account": "000099",
     "activated": true,
     "archived": false,
     "version": "2",
-    "gcp_project_id": "fd-io-dlk-demo",
-    "gcs_bucket": "fd-io-dlk-demo-n-val-out",
+    "gcp_project_id": "my-project",
+    "gcs_bucket": "my-bucket",
     "gcs_path": "output",
     "gcs_destination_suffix": "output_encrypt",
     "launch_mode": "gcs",
     "filename_templates": [{
             "filename_template": "{{FD_DATE}}_PRODUITS-{{FD_BLOB_12}}.csv",
-            "file_description": "Customer data from demo system"
+            "file_description": "Product data from demo system"
         },
         {
             "filename_template": "{{FD_DATE}}_SITES-{{FD_BLOB_12}}.csv",
-            "file_description": "Customer data from demo system"
+            "file_description": "Site data from demo system"
         }
     ],
     "task_dependencies": [

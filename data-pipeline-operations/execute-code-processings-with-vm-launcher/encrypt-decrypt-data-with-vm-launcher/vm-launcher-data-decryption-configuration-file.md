@@ -19,16 +19,16 @@ Here is an example of VM Launcher configuration file for data decryption:
 ```json
 {
     "configuration_type": "vm-launcher",
-    "configuration_id": "pgp-decrypt-from-valiuz",
-    "environment": "PROD",
-    "account": "000010",
+    "configuration_id": "pgp-decrypt",
+    "environment": "DEV",
+    "account": "000099",
     "activated": true,
     "archive": false,
     "pgp_mode": "DECRYPT",
-    "gcp_project_id": "fd-jarvis-datalake",
-    "gcs_source_bucket": "fd-io-exc-jules-n-val-in",
+    "gcp_project_id": "my-project",
+    "gcs_source_bucket": "my-bucket",
     "gcs_source_prefix": "input",
-    "destination_gcs_bucket": "mirror-fd-io-exc-jules-n-val-in",
+    "destination_gcs_bucket": "my-bucket",
     "destination_gcs_path": "input_decrypted",
     "vm_delete": true,
     "credentials": {
@@ -56,7 +56,7 @@ Here is an example of VM Launcher configuration file for data decryption:
                 "ciphertext": "",
                 "enc_session_key": ""
             },
-            "recipient": "olivier.colin@fashiondata.io",
+            "recipient": "my.recipient@domain.com",
             "content": {
                 "cipher_aes": "",
                 "tag": "",
