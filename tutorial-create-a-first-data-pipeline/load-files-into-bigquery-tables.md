@@ -43,7 +43,7 @@ description: >-
         {
           "type": "bigquery",
           "gcp_project_id": "my-gcp-project",
-          "gbq_dataset": "my-gbq-dataset-YOUR-NAME",
+          "gbq_dataset": "my_gbq_dataset_YOUR_NAME",
           "source_format": "CSV",
           "create_disposition": "CREATE_IF_NEEDED",
           "write_disposition": "WRITE_TRUNCATE",
@@ -96,7 +96,7 @@ description: >-
 
     ◾ In the **destinations** section, replace **my-gcp-project** with the ID of the GCP project containing the target dataset. It can be the same as in the source section or a different one.
 
-    ◾ In the **destinations** section, replace **my-gbq-dataset-YOUR-NAME** with the name of the dataset that will contain the tables.
+    ◾ In the **destinations** section, replace **my-gbq-dataset-YOUR-NAME** with the name of the dataset that will contain the tables. You need to create this dataset in your destination project beforehand. The storage-to-tables data operation won't create an empty dataset if needed.
 
     ◾ In the **destinations** section, replace the value of the **gcp\_credentials\_secret parameter** with the service account credentials for the GCP project containing the target dataset.\
     ◾ If you share the demo project with other developers, then in the configuration\_id, replace YOUR-NAME by a personal value, like your name. This way, you won't overwrite a configuration deployed by someone else. You should also add your name in the source's gcs\_source\_prefix and archive\_prefix, and in the destinations' gbq\_dataset to avoid any interferences with another developer's data operation.
