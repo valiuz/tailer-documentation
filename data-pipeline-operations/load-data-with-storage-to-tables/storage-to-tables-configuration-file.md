@@ -26,7 +26,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
   "activated": true,
   "archived": false,
   "max_active_runs" : 5,
-  "short_description": "This Job load sales files sended by IT into the Orsay PSA",
+  "short_description": "This Job load sales files into the Persistent Staging Area",
   "doc_md": "Load_sales_files_from_it.md",
   "source": {
     "type": "gcs",

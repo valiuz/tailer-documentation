@@ -106,7 +106,7 @@ You may be asked to select a context (see [this page](../data-pipeline-operation
 tailer deploy configuration 000099-tailer-demo-copy-files.json --context NO_CONTEXT
 ```
 
-## :white\_check\_mark: Check the data operation status in Tailer Studio
+## :white\_check\_mark: Check the data operation in Tailer Studio
 
 1. Access [Tailer Studio](http://studio.tailer.ai).
 2. Sign in with your Tailer Platform credentials.

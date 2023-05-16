@@ -15,10 +15,11 @@ description: >-
 3. In this folder, create a JSON file named **000099-tailer-demo-load-files.json** for your data operation.
 4.  Copy the following contents into your file:
 
-    ```
+    ```json
     {
+      "$schema": "http://jsonschema.tailer.ai/schema/storage-to-tables-veditor",
       "configuration_type": "storage-to-tables",
-      "configuration_id": "000099-tailer-demo-load-files",
+      "configuration_id": "000099-tailer-demo-load-files-YOUR-NAME",
       "environment": "DEV",
       "account": "000099",
       "activated": true,
@@ -28,9 +29,9 @@ description: >-
       "source": {
         "type": "gcs",
         "gcp_project_id": "my-gcp-project",
-        "gcs_source_bucket": "my-second-bucket",
-        "gcs_source_prefix": "tailer-demo-input-folder",
-        "gcs_archive_prefix": "tailer-demo-archive-folder",
+        "gcs_source_bucket": "my-bucket",
+        "gcs_source_prefix": "input-folder-YOUR-NAME",
+        "gcs_archive_prefix": "archive-folder-YOUR-NAME",
         "gcp_credentials_secret": {
           "cipher_aes": "xxx",
           "ciphertext": "xxx",
@@ -42,13 +43,12 @@ description: >-
         {
           "type": "bigquery",
           "gcp_project_id": "my-gcp-project",
-          "gbq_dataset": "my-gbq-dataset",
+          "gbq_dataset": "my-gbq-dataset-YOUR-NAME",
           "source_format": "CSV",
           "create_disposition": "CREATE_IF_NEEDED",
           "write_disposition": "WRITE_TRUNCATE",
           "skip_leading_rows": 1,
-          "field_delimiter": ",",
-          "quote_character": "\"",
+          "field_delimiter": "|",
           "gcp_credentials_secret": {
             "cipher_aes": "xxx",
             "ciphertext": "xxx",
@@ -86,20 +86,20 @@ description: >-
       ]
     }
     ```
-5.  Edit the following values:\
-
+5.  Edit the following values:
 
     ◾ In the **source** section, replace **my-gcp-project** with the ID of the GCP project containing the source bucket.
 
-    ◾ In the **source** section, replace **my-second-bucket** with the name of the GCS bucket containing the input files (output files from the previous step).
+    ◾ In the **source** section, replace **my-bucket** with the name of the GCS bucket containing the input files (output files from the previous step).
 
     ◾In the **source** section, replace the value of the **gcp\_credentials\_secret parameter** with the service account credentials for the GCP project containing the source bucket.
 
     ◾ In the **destinations** section, replace **my-gcp-project** with the ID of the GCP project containing the target dataset. It can be the same as in the source section or a different one.
 
-    ◾ In the **destinations** section, replace **my-gbq-dataset** with the name of the dataset that will contain the tables.
+    ◾ In the **destinations** section, replace **my-gbq-dataset-YOUR-NAME** with the name of the dataset that will contain the tables.
 
-    ◾ In the **destinations** section, replace the value of the **gcp\_credentials\_secret parameter** with the service account credentials for the GCP project containing the target dataset.
+    ◾ In the **destinations** section, replace the value of the **gcp\_credentials\_secret parameter** with the service account credentials for the GCP project containing the target dataset.\
+    ◾ If you share the demo project with other developers, then in the configuration\_id, replace YOUR-NAME by a personal value, like your name. This way, you won't overwrite a configuration deployed by someone else. You should also add your name in the source's gcs\_source\_prefix and archive\_prefix, and in the destinations' gbq\_dataset to avoid any interferences with another developer's data operation.
 6. Create a Markdown file named **tailer-demo-stt.md**. You can use it freely to describe the data operation.
 
 ### **Create the table schema files‌**
@@ -338,13 +338,29 @@ Once your files are ready, you can deploy the data operation:
     tailer deploy configuration 000099-tailer-demo-load-files.json
     ```
 
+You may be asked to select a context (see [this page](../data-pipeline-operations/set-constants-with-context/context-configuration-file.md) for more information). If you haven't deployed any context, then choose "no context". You can also use the flag --context to specify the context of your choice, or NO\_CONTEXT if that's what you want:
+
+```
+tailer deploy configuration 000099-tailer-demo-load-files.json --context NO_CONTEXT
+```
+
 {% hint style="success" %}
-Your data operation is now deployed, which means the files will shortly be loaded into tables, and your data operation status is now visible in Tailer Studio.
+Your data operation is now deployed, which means the files will shortly be loaded into tables, and your data operation status is now visible in Tailer Studio.
 {% endhint %}
 
-## :white\_check\_mark: Check the data operation status in Tailer Studio
+## :white\_check\_mark: Check the data operation in Tailer Studio
 
-1. Access [Tailer Studio](http://studio.tailer.ai) again.‌
+1. Access [Tailer Studio](http://studio.tailer.ai) again.‌
 2. In the left navigation menu, select **Storage-to-tables**.
 3. In the **Configurations** tab, search for your data operation, **000099-tailer-demo-load-files**. You can see its status is **Activated**.
 4. Click the data operation ID to display its parameters and full JSON file, or to leave comments about it. in the **Tables** section, you can access the table schema, parameters, and documentation provided in the Markdown files.
+
+## &#x20;🗳️ Check the result in GCP
+
+Now that our configuration is deployed, we can test it. Let's mimic production behavior. Access the folders you created when [preparing the demonstration environment](prepare-the-demonstration-environment.md):
+
+* In your source bucket, copy a file. The file name must match one of the filename\_template specified in the configuration.
+* On Tailer Studio, in the Storage-to-Tables section, Runs tab, you should see a run for your data operation. It should appear as "running" and quickly get the status "success".
+* In your source bucket, **input-folder** should be empty.
+* In your source bucket, **archive-tailer-demo-folder** should contain a folder for each input file, named as the filename date.
+* Your destination dataset should contain a table corresponding to the input files.
