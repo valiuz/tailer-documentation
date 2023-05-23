@@ -48,23 +48,25 @@ The objective of this step will be to create new BigQuery tables into which we w
           "task_type": "sql",
           "id": "load_temp_sales",
           "short_description": "Load temp sales table",
+          "bq_dataset": "temp",
           "table_name": "sales",
           "sql_file": "load_sales.sql"
         },
         {
           "id": "swap_sales_tables",
           "task_type": "copy_gbq_table",
-          "source_gcp_project_id": "my-project",
+          "source_gcp_project_id": "my-gcp-project",
           "source_bq_dataset": "temp",
           "source_bq_table": "sales",
+          "bq_dataset": "my-gcp-project",
           "destination_bq_table": "sales"
         }
       ]
     }
     ```
 5. Edit the following values:\
-   ◾ Replace **my-gcp-project-id** with the ID of the GCP project containing your BigQuery dataset.\
-   ◾ Replace **my-gbq-dataset** with the name of your working dataset.\
+   ◾ Replace **my-gcp-project** with the ID of the GCP project containing your BigQuery dataset in the default\_gcp\_project\_id and in the source\_gcp\_project\_id parameters.\
+   ◾ Replace **my\_gbq\_dataset** with the name of your working dataset.\
    ◾ Also replace the project and dataset in the configuration\_id
 
 ### Create a SQL file&#x20;
@@ -144,3 +146,13 @@ Your data operation is now deployed, which means the new tables will shortly be 
 4. Check for your workflow configuration. It should also be activated and deployed by you a few seconds ago.
 5. Try to copy a sales file in your Storage-to-Tables source bucket. It should automatically trigger a Storage-to-Tables run. If it's successful, then it should trigger the workflow and create a Table-to-Table run.
 6. When it's completed and successful, you can check on BigQuery and see that your target table  is loaded.
+
+## 🚀 Further steps
+
+We've seen here a very basic example of a Table-to-Table data operation that loads a temporary table, and then copy it to the target destination when no error occurs.
+
+We could go further and add different steps, and use different Tailer features, for instance:
+
+* create the temporary table using a task of type create\_gbq\_table. This way, you can specify a DDL for this table, add column descriptions, column types, and define partitioning and clustering fields.
+* add a task that performs tests using expectations or custom asserts
+* add several SQL tasks &#x20;
