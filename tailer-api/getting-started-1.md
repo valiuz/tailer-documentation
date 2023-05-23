@@ -50,3 +50,29 @@ TAILER_API_JWT=`python3 google-jwt-generator.py your-credentials.json` \
          "run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179"}' \
 "https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
 ```
+
+### Use your Tailer identity instead
+
+You can use the identity provided when you installed your tailer-sdk:
+
+```bash
+tailer auth get-token | awk '/User token :/ {print $4}'
+```
+
+You can use this to get your JWT token:
+
+```bash
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{"action": "check_run_status",
+         "account": "000099",
+         "environment": "DEV",
+         "configuration_type": "table-to-table",
+         "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+         "job_id": "gbq-to-gbq|000099_iowa_liquor_prepare_pda_DEV",
+         "run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179"}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```

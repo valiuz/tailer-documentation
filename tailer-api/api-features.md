@@ -24,7 +24,7 @@ Tables to Tables or Tables to Storage data operations can be launched through th
 You need to provide the full identity of the job as input (the **execution\_date** parameter is optional):
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -50,7 +50,7 @@ Once you have a run ID, you can check its current status to see how the processi
 You need to provide the full identity of the job and the run ID as input:
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -95,7 +95,7 @@ You need to provide the full identity of the job/data operation as input. If nee
 **Example with a job**
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -156,7 +156,7 @@ As a result, you get a json payload with information about the last runs of this
 **Example with a data operation (configuration level)**
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -214,7 +214,7 @@ As a result, you get a json payload with information about the last runs of this
 **Example with a data operation (configuration) with specific parameters**
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -274,7 +274,7 @@ If a situation happens where JA and JB are OK, but JC is not, JT is not triggere
 You need to provide the full identity of the Workflow data operation as input:
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -300,7 +300,7 @@ You can disable a data operation (configuration) using the API. (This feature is
 You need to provide the full identity of the data operation as input:
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -328,7 +328,7 @@ You can enable a data operation that had been disabled using the API. (This feat
 You need to provide the full identity of the data operation as input:
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
@@ -356,7 +356,7 @@ You can archive a data operation using the API. (This feature is also available 
 You need to provide the full identity of the data operation as input:
 
 ```bash
-TAILER_API_JWT=`tailer auth get-token | sed '7q;d' | sed 's/User token : //g'` \
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
 && curl --request POST \
 --http2 \
 --header "content-type:application/json" \
