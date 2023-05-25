@@ -1,6 +1,6 @@
 # Beta features
 
-## Storage To Table : automatic metadata
+## \[RELEASED] Storage To Table : automatic metadata
 
 Automatic metadata feature will add specific columns during the ingestion process related to the inpput source.
 

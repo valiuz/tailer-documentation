@@ -114,9 +114,7 @@ if __name__ == "__main__":
 
 **To use the python deployment automation on Firestore, the SQL must follow a specific pattern.**
 
-| Variables                                                        | Descriptions                                                                                                        |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>project_id</strong></p><p>line 30</p><p>mandatory</p> | For your different use cases, it can be interesting to have the last calculation date of your dataset to Firestore. |
+<table><thead><tr><th width="150">Variables</th><th>Descriptions</th></tr></thead><tbody><tr><td><p><strong>project_id</strong></p><p>line 30</p><p>mandatory</p></td><td>For your different use cases, it can be interesting to have the last calculation date of your dataset to Firestore.</td></tr></tbody></table>
 
 **Except for the project\_id variable, nothing needs to be changed. You can copy and paste the code in your python file for this data operation.**
 

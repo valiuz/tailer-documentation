@@ -8,7 +8,7 @@ description: >-
 
 ## :bulb: What is Storage to Tables?
 
-A Storage to Tables (STT) data pipeline operation allows you to load data files from a Google Cloud Storage (GCS) bucket into one or several BigQuery databases.
+A Storage to Tables (STT) data pipeline operation allows you to load data files from a Google Cloud Storage (GCS) bucket into one or several BigQuery databases.
 
 {% hint style="warning" %}
 Note that the uniqueness of the configuration is checked against the GCS bucket name AND directory combination. This means that you can have only **one configuration per bucket/directory combination**, as any new configuration will overwrite the previous one.
@@ -28,11 +28,26 @@ Note that the uniqueness of the configuration is checked against the GCS bucket 
 
 ## ⚙️ How it works
 
-Every time a new file matching the specified rule appears in a given directory of a Google Cloud Storage bucket:
+Every time a new file matching the specified rule appears in a given directory of a Google Cloud Storage bucket:
 
 * it will be removed from the source directory,
 * if options have been set accordingly, the file will be copied to an archive directory located in the same storage, inside a folder named with the date contained in the filename,
 * the file data will be loaded into a BigQuery table matching its filename template for each database specified.
+
+## 🤖 Automated metadata
+
+Automatic metadata feature will add specific columns during the ingestion process related to the inpput source.
+
+The added columns are:
+
+```
+tlr_ingestion_timestamp_utc (TIMESTAMP)
+tlr_input_file_source_type (STRING)
+tlr_input_file_name (STRING)
+tlr_input_file_full_resource_name (STRING)
+```
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ## **📋 How to deploy a Storage to Tables data operation**
 
@@ -50,5 +65,5 @@ Every time a new file matching the specified rule appears in a given directory o
     ```
     tailer deploy your-file.json
     ```
-7. Log in to [Tailer Studio](https://studio.tailer.ai) to check the status and details of your data operation.
+7. Log in to [Tailer Studio](https://studio.tailer.ai) to check the status and details of your data operation.
 8. Access your output table(s), and archive folder, if any, to check the result of the data operation.
