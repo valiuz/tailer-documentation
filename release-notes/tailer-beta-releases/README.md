@@ -18,17 +18,15 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.11
+### Latest BETA package : 1.3.14
 
-#### Beta 1.3.11 Release Note
+#### Beta 1.3.14 Release Note
 
-* TTT : added Mermaid Graph for tasks dependencies
-* TTT : refactoring of TTT DAG generation
-* All : standard way of processing Markdown documentation
+* TTT : fix Markdown documentation processing
 
-Last updated : 2023-04-06 14:25
+Last updated : 2023-05-31 14:49
 
-{% file src="../../.gitbook/assets/package (1).zip" %}
+{% file src="../../.gitbook/assets/package (2).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
