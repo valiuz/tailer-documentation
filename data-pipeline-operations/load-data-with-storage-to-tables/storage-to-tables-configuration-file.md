@@ -128,13 +128,6 @@ The destination section contains all information related to the data source prov
 | <p><strong>gcs_archive_prefix</strong></p><p>type: string optional</p>          | <p>Path where the source files will be archived.</p><p>If present and populated, the STT data operation will archive the source files in the location specified, in the GCS source bucket.</p><p>If not present or empty, there will be no archiving.</p>                                                                            |
 | <p><strong>gcp_credentials_secret</strong></p><p>type: dict</p><p>mandatory</p> | <p>Encrypted credentials needed to read/move data from the source bucket.</p><p>You should have generated credentials when <a href="../../getting-started/set-up-google-cloud-platform.md">setting up GCP</a>. To learn how to encrypt them, refer to <a href="../../getting-started/encrypt-your-credentials.md">this page</a>.</p> |
 
-{% hint style="danger" %}
-**The length of the gcs\_source\_bucket name concatenated with the gcs\_source\_prefix name must be lower than 45 characters.**&#x20;
-
-If the concatenation is longer than 45 characters, you could have this error message when deploying a STT configuration: \
-`ERROR: (gcloud.functions.deploy) argument NAME: Invalid value`
-{% endhint %}
-
 ## :arrow\_up: Destination parameters (BigQuery)
 
 The destination section contains all the information related to the data destinations.

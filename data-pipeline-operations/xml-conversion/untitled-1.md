@@ -25,6 +25,7 @@ Here is an example of Convert XML to CSV configuration file:
     "account": "000099",
     "activated": true,
     "archived": false,
+    "doc_md": "readme.md",
     "gcp_project_id": "fd-io-jarvis-demo-dlk",
     "gcs_bucket": "fd-io-demo-ds",
     "gcs_working_directory": "test_xml_conversion",
@@ -65,6 +66,7 @@ General information about the data operation.
 | <p><strong>account</strong></p><p>type: string</p><p>mandatory</p>            | Your account ID is a 6-digit number assigned to you by your Tailer Platform administrator.                                                                                                                                                                                                                                                                                                                                                                          |
 | <p><strong>activated</strong></p><p>type: boolean</p><p>optional</p>          | <p>Flag used to enable/disable the execution of the data operation.</p><p>If not specified, the default value will be "true".</p>                                                                                                                                                                                                                                                                                                                                   |
 | <p><strong>archived</strong></p><p>type: boolean</p><p>optional</p>           | <p>Flag used to enable/disable the visibility of the data operation's configuration and runs in Tailer Studio.</p><p>If not specified, the default value will be "false".</p>                                                                                                                                                                                                                                                                                       |
+| <p><strong>doc_md</strong></p><p>type: string</p><p>optional</p>              | Path to a file containing a detailed description of the data operation. The file must be in Markdown format.                                                                                                                                                                                                                                                                                                                                                        |
 
 ## :briefcase: Working folder parameters
 
