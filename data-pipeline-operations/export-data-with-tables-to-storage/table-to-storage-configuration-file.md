@@ -49,7 +49,7 @@ Here is an example of TTS configuration file:
         {
             "task_id": "Export_with_default_values",
             "sql_file" : "the_tts_SQL_file.sql",
-            "output_filename" : "THE_FILE_NAME_{{DATE}}.csv",
+            "output_filename" : "THE_FILE_NAME_{{FD_DATE}}.csv",
             "dest_gbq_table": "to_exemple_tts"
         },
         {
@@ -60,7 +60,7 @@ Here is an example of TTS configuration file:
             "field_delimiter": "|",
             "compression": "GZIP",
             "sql_file": "my_other_SQL_file.sql",
-            "output_filename": "A_DIFFERENT_FILE_NAME_{{DATE}}.csv",
+            "output_filename": "A_DIFFERENT_FILE_NAME_{{FD_DATE}}.csv",
             "destination_format": "JSON",
             "sql_query_template": "TEMPLATE_CURRENT_DATE",
             "generate_top_file": true,
