@@ -24,9 +24,9 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 * TTT : fix Markdown documentation processing
 
-Last updated : 2023-05-31 14:49
+Last updated : 2023-06-01 11:38
 
-{% file src="../../.gitbook/assets/package (2).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
