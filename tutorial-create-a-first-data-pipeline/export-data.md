@@ -143,3 +143,14 @@ Access the GCS folder in the bucket you've just created. Your data should now ap
 {% hint style="success" %}
 You can now add more files into the input folder from the [first step of this tutorial](prepare-the-demonstration-environment.md) to see the whole pipeline play out!
 {% endhint %}
+
+## 🚀 Further steps
+
+You can check the full [Tables to Storage documentation](../data-pipeline-operations/export-data-with-tables-to-storage/) and try other parameters:
+
+* Add some tasks to perform different extractions
+* Create a JSON extract or compress the output using GZIP&#x20;
+* Send the data file to a partner using a [Storage to Storage](../data-pipeline-operations/move-files-with-storage-to-storage/) operation, or ingest it into Firestore using [a specific VM Launcher](../data-pipeline-operations/transfer-data-with-gbq-to-firestore/) operation.
+* Insert the run date in your query using the "sql\_query\_template" parameters
+* Insert environment variables in your SQL using a [Context configuration](../data-pipeline-operations/set-constants-with-context/).
+

@@ -112,7 +112,7 @@ description: >-
    **◾ sales\_daily.json**
 3.  Copy the following contents into the **stores.json** file:
 
-    ```
+    ```json
     {
       "schema": [
         {
@@ -160,7 +160,7 @@ description: >-
     ```
 4.  Copy the following contents into the **products.json** file.
 
-    ```
+    ```json
     {
       "schema": [
         {
@@ -213,7 +213,7 @@ description: >-
     ```
 5.  Copy the following contents into the **sales.json** file.
 
-    ```
+    ```json
     {
       "schema": [
         {
@@ -266,7 +266,7 @@ description: >-
     ```
 6.  Copy the following contents into the **sales\_daily.json** file.
 
-    ```
+    ```json
     {
       "schema": [
         {
@@ -364,3 +364,11 @@ Now that our configuration is deployed, we can test it. Let's mimic production b
 * In your source bucket, **input-folder** should be empty.
 * In your source bucket, **archive-tailer-demo-folder** should contain a folder for each input file, named as the filename date.
 * Your destination dataset should contain a table corresponding to the input files.
+
+## 🚀 Further steps
+
+You can check the full [Storage to Tables documentation](../data-pipeline-operations/load-data-with-storage-to-tables/) and try other features:
+
+* Load different input format as JSON, PARQUET or AVRO files, or gzip compressed files
+* Allow unknown supplementary fields using the "bq\_load\_job\_ignore\_unknown\_values" parameter to allow partners to provide new columns without any risk of service interruption
+* Try the other ddl\_mode, like "header" to infer a table format based on the header row, or "file\_template" which allow to provide a ddl\_file directly in the source bucket &#x20;
