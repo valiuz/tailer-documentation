@@ -80,6 +80,7 @@
 * [Archive data operations](tailer-studio/archive-data-operations.md)
 * [Add notes to data operations and runs](tailer-studio/add-notes-to-data-operations-and-runs.md)
 * [View your data catalog](tailer-studio/view-your-data-catalog.md)
+* [Time your data with freshness](tailer-studio/time-your-data-with-freshness.md)
 
 ## Tailer API
 
