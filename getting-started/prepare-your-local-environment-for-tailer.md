@@ -6,11 +6,11 @@ description: >-
 
 # Prepare your local environment for Tailer
 
-Tailer SDK runs on Windows, Linux, and macOS. Tailer SDK requires Python. Supported versions are 3.7 or higher.
+Tailer SDK runs on Windows, Linux, and macOS. Tailer SDK requires Python. Supported versions are 3.7 or higher.
 
 Before installing Tailer SDK, a number of tasks need to be performed depending if you're planning to use a Windows or macOS/Linux environment.
 
-## :computer:  Windows
+## :computer: Windows
 
 ### **Install Python**
 
@@ -22,8 +22,8 @@ To install Python:
 4. Select the **Customize installation** option, and make sure you check the **Add Python to environment variables** checkbox.
 5.  To check if Python installation was successful, open a terminal, and run the following command:
 
-    ```
-    python --version
+    ```bash
+    python3 --version
     ```
 
 {% hint style="success" %}
@@ -36,12 +36,12 @@ To create a working folder for Tailer SDK:
 
 1.  Access the working folder of your choice:
 
-    ```
+    ```bash
     cd your_working_folder
     ```
-2.  Create a folder for Tailer SDK and access it:
+2.  Create a folder for Tailer SDK and access it:
 
-    ```
+    ```bash
     mkdir tailer
     cd tailer
     ```
@@ -50,7 +50,7 @@ To create a working folder for Tailer SDK:
 Your Windows environment is now ready. You can proceed with the [installation](install-tailer-sdk.md).
 {% endhint %}
 
-## :green\_apple:  macOS/Linux
+## :green\_apple: macOS/Linux
 
 ### **Set Bash as default shell**
 
@@ -58,13 +58,13 @@ To change the default shell to Bash:
 
 1.  Run the following command:
 
-    ```
+    ```bash
     chsh -s /bin/bash
     ```
 2. Close your terminal and reopen it.
 3.  Run the following command to make sure the default shell is now bash:
 
-    ```
+    ```bash
     env
     ```
 
@@ -79,12 +79,12 @@ SHELL=/bin/bash
 ### **Create a working folder**
 
 {% hint style="info" %}
-We recommend that you create the Tailer** **SDK working folder in your home root directory.
+We recommend that you create the Tailer SDK working folder in your home root directory.
 {% endhint %}
 
 To create and access the working folder, run the following commands:
 
-```
+```bash
 mkdir ~/tailer
 cd ~/tailer
 ```
@@ -101,12 +101,12 @@ To install Python, you first need to install Homebrew, a package management syst
 
 1.  Run the following command:
 
-    ```
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 2.  Make sure the installation was successful by running the following command:
 
-    ```
+    ```bash
     brew doctor
     ```
 
@@ -120,17 +120,17 @@ To upgrade Python:
 
 1.  Check your current version of Python by running the following command:
 
-    ```
+    ```bash
     python --version
     ```
-2.  If your version is inferior to 3.7, install the latest version of Python 3 by running the following command:
+2.  If your version is inferior to 3.7, install the latest version of Python 3 by running the following command:
 
-    ```
+    ```bash
     brew install python3
     ```
 3.  To confirm which version of Python 3 was installed, run the following command:
 
-    ```
+    ```bash
     python3 --version
     ```
 
