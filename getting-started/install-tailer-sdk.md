@@ -71,6 +71,9 @@ Once the installation and the configuration are done, you need to log in to Tail
 4. Provide again the same email address and the password of your choice.
 5. Confirm your email address by clicking on the link sent to your email address.
 
+:warning: _If this is your first connection with command line, **please inform your Valiuz contact so that he accepts the connection.** Otherwise, the first time you deploy, you'll get an expired token error. **Then, run the command a second time to validate your account.**_\
+_For mor informations, send an email to support@tailer.ai ._
+
 {% hint style="success" %}
 The account is successfully created and you're now logged in to Tailer Platform! :tada:
 

@@ -134,6 +134,34 @@ To upgrade Python:
     python3 --version
     ```
 
+### **Always use a Virtual Environment**
+
+Virtual environments let you have a stable, reproducible, and portable environment. You are in control of which packages versions are installed and when they are upgraded. You can have as many venvs as you want.&#x20;
+
+1.  You can install venv to your host Python by running this command in your terminal:
+
+    ```bash
+    pip3 install virtualenv
+    ```
+2.  To use venv in your project, in your terminal, create a new project folder, cd to the **Tailer** folder in your terminal, and run the following command:
+
+    ```bash
+    python3 -m venv tailerenv
+    ```
+3.  Now that you have created the virtual environment, you will need to activate it before you can use it in your project. On a mac, to activate your virtual environment, run the code below:
+
+    ```bash
+    source /Users/username/tailerenv/bin/activate
+    ```
+
+Don't forget to change _**username**_ by the name of your user. Keep this line on a notepad. You need it each time you open a new terminal to use the Tailer SDK set on the venv.
+
 {% hint style="success" %}
 Your macOS/Linux environment is now ready. You can proceed with the [installation](install-tailer-sdk.md).
 {% endhint %}
+
+*   To confirm which version of Python 3 was installed, run the following command:
+
+    ```bash
+    python3 --version
+    ```
