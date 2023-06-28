@@ -123,3 +123,11 @@ Now that our configuration is deployed, we can test it. Let's mimic production b
 * In your source bucket, **input-folder** should be empty.
 * In your source bucket, **archive-tailer-demo-folder** should contain a folder for each input file, named as the filename date.
 * In your destination bucket, **input-tailer-demo-folder** should contain a copy of the input files.
+
+## 🚀 Further steps
+
+You can see in the [Storage to Storage documentation](../data-pipeline-operations/move-files-with-storage-to-storage/storage-to-storage-configuration-file.md) that you can handle different use cases with this data operation:
+
+* You can add multiple destinations to share data with different consumers.
+* You can send data to external partners. You just need a service account (or a user and a password) that can access the destination. Then you generate credentials associated with it (see documentation [here](../getting-started/encrypt-your-credentials.md)) and specify it in the "destinations" object.
+* You can work with Google Cloud Storage, but also Amazon S3, Azure and SFTP.
