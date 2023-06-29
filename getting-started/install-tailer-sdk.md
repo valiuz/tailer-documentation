@@ -42,16 +42,15 @@ When the installation is complete, you can proceed with the configuration of Tai
     ```
 2.  You'll be prompted to answer a series of questions. Use the values listed in the table below. Directly press **Enter** if the suggested value is right.
 
-    | Question                              | Value                                                                                                                                                                    |
-    | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | Email address                         | Provide the email address you want to use to connect to Tailer SDK.                                                                                                      |
-    | Tailer Firebase API key               | **AIzaSyA\_FFZmy9jZaRGVTNQuOK0mv4wDxWOKScQ**                                                                                                                             |
-    | Tailer Firebase authentication domain | **fd-io-jarvis-platform.firebaseapp.com**                                                                                                                                |
-    | Tailer API Endpoint (Europe)          | **https://fd-io-jarvis-platform-api-proxy-a7nkzexitq-ew.a.run.app/**                                                                                                     |
-    | Tailer API Endpoint (USA)             | **https://fd-io-jarvis-platform-api-proxy-a7nkzexitq-uc.a.run.app/**                                                                                                     |
-    | SSL verification                      | Specify if you want to enable SSL verification (**y**) or not (**n**). Default is **y**.                                                                                 |
-    | Custom client SSL verification        | Specify if you want to use custom client SSL verification (**y**) or not (**n**). Default is **n**.                                                                      |
-    | Full path to the SSL certificate      | This question only displays if you answered **y** at the previous question. Provide your custom SSL certificate in PEM format (e.g. "C:\My Certificates\cert\_XYZ.pem"). |
+    | Question                              | Value                                                                                                                                                                                                               |
+    | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Email address                         | Provide the email address you want to use to connect to Tailer SDK.                                                                                                                                                 |
+    | Tailer Firebase API key               | **AIzaSyA\_FFZmy9jZaRGVTNQuOK0mv4wDxWOKScQ**                                                                                                                                                                        |
+    | Tailer Firebase authentication domain | **fd-io-jarvis-platform.firebaseapp.com**                                                                                                                                                                           |
+    | Tailer API Endpoint                   | <p><strong>For Europe:</strong></p><p>https://fd-io-jarvis-platform-api-proxy-a7nkzexitq-ew.a.run.app/<br><br><strong>For the USA:</strong><br>https://fd-io-jarvis-platform-api-proxy-a7nkzexitq-uc.a.run.app/</p> |
+    | SSL verification                      | Specify if you want to enable SSL verification (**y**) or not (**n**). Default is **y**.                                                                                                                            |
+    | Custom client SSL verification        | Specify if you want to use custom client SSL verification (**y**) or not (**n**). Default is **n**.                                                                                                                 |
+    | Full path to the SSL certificate      | This question only displays if you answered **y** at the previous question. Provide your custom SSL certificate in PEM format (e.g. "C:\My Certificates\cert\_XYZ.pem").                                            |
 3. Once you've answered all the questions, close and restart your terminal for changes to be implemented.
 4. Optionally, you can set the Tailer Public key for data encryption.
 
