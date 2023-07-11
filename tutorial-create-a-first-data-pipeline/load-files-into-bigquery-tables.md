@@ -45,6 +45,7 @@ description: >-
           "gcp_project_id": "my-gcp-project",
           "gbq_dataset": "my_gbq_dataset_YOUR_NAME",
           "source_format": "CSV",
+          "bq_load_job_ignore_unknown_values": true,
           "create_disposition": "CREATE_IF_NEEDED",
           "write_disposition": "WRITE_TRUNCATE",
           "skip_leading_rows": 1,

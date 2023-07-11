@@ -49,6 +49,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
       "source_format": "CSV",
       "create_disposition": "CREATE_IF_NEEDED",
       "write_disposition": "WRITE_TRUNCATE",
+      "bq_load_job_ignore_unknown_values": true,
       "skip_leading_rows": 1,
       "field_delimiter": "|",
       "gcp_credentials_secret": {
@@ -61,7 +62,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
         {
           "table_name": "sales_details_test",
           "short_description": "Daily sales with tickets and tickets lines",
-          "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-ORS-ventes.csv",
+          "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-sales_details.csv",
           "ddl_mode": "file",
           "ddl_file": "ddl/sales_details.json",
           "doc_md": "ddl/sales_details.md",
@@ -71,7 +72,7 @@ Here is an example of STT configuration file for a GCS to BigQuery transfer:
         {
           "table_name": "stores",
           "short_description": "Full Stores referential",
-          "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-ORS-magasins.csv",
+          "filename_template": "input_{{FD_DATE}}-{{FD_TIME}}-stores.csv",
           "ddl_mode": "file",
           "ddl_file": "ddl/stores.json",
           "doc_md": "ddl/stores.md"
