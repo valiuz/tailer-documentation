@@ -91,6 +91,7 @@ Copy the following contents into your file:
     "activated": true,
     "archived": false,
     "gcp_project_id": "my-project",
+    "schedule_interval_reset": "None",
     "authorized_job_ids": [
       "storage-to-tables|000099|000099-tailer-demo-load-files-YOUR-NAME|DEV|sales_{{FD_BLOB_8}}-{{FD_DATE}}.csv"
     ],
