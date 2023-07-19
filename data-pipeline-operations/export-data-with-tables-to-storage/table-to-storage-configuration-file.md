@@ -19,7 +19,7 @@ Here is an example of TTS configuration file:
 
 ```json
 {
-    "$schema": "http://jsonschema.tailer.ai/schema/table-to-storage-veditor",
+    "$schema": "http://jsonschema.tailer.ai/schema/table-to-storage-v3editor",
     "configuration_type": "table-to-storage",
     "configuration_id": "tts-some-id-example",
     "short_description": "Short description of the job",
