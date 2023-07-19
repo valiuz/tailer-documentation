@@ -32,14 +32,15 @@ Example:
 
 ```sql
 SELECT
-    t1.customer_id,
-    COUNT(distinct t2.id_family) as nb_families,
-    SUM(t3.amount) as total_amount
-FROM Project_A.Dataset_Y.Tab_Y1 t1
-INNER JOIN project_A.Dataset_S.Tab_S1 t2
-ON t1.id_product=t2.id_article
-INNER JOIN project_A.Dataset_U.Tab_U3 t3
-ON t1.id_loyalty_card=t3.id_card
+    customer_id,
+    optin,
+    cast(creation_date as date) as creation_date
+FROM `referential.customers`
+QUALIFY ROW_NUMBER() OVER(dedup_pk) = 1
+WINDOW dedup_pk as (
+  PARTITION BY customer_id
+  ORDER BY update_date desc, import_date desc, tlr_ingestion_timestamp_utc desc
+)
 ```
 
 ## :new: Table creation tasks
@@ -69,7 +70,7 @@ Once the SQL queries are ready, you need to use one or several DDL files to crea
             "mode": "REQUIRED"
         }
     ],
-    "bq_table_clustering_fields": "field_3",
+    "bq_table_clustering_fields": ["field_2", "field_3"]
     "bq_table_timepartitioning_field": "field_date",
     "bq_table_timepartitioning_type": "MONTH",
     "bq_table_timepartitioning_expiration_ms": "86400000",
