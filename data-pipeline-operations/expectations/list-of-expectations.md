@@ -7,6 +7,7 @@
   * [primarykey](list-of-expectations.md#primarykey-dataset-tablename-threshold)
   * [primarykey\_where](list-of-expectations.md#primarykey\_where-dataset-tablename-threshold-where\_clause)
   * [foreignkey](list-of-expectations.md#foreignkey-dataset-tablename-column-target\_dataset-target\_tablename-target\_column-threshold)
+  * [foreignkey\_where](list-of-expectations.md#foreignkey\_where-dataset-tablename-column-filter\_condition-target\_dataset-target\_tablename-target\_co)
 * Temporal continuity
   * [everyday\_since](list-of-expectations.md#everyday\_since-dataset-tablename-column-start\_date-exception-minimum)
   * [everyday\_increasing\_since](list-of-expectations.md#everyday\_increasing\_since-dataset-tablename-value)
@@ -102,6 +103,31 @@ This procedure checks that every non-null value in the column can be found in th
   * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
   * **tablename** (_STRING_) – The table name
   * **column** (_STRING_) – The column name
+  * **target\_dataset** (_STRING_) – The target dataset of the foreign table (and its GCP project)
+  * **target\_tablename** (_STRING_) – The foreign table name
+  * **target\_column** (_STRING_) – The foreign key column of the foreign table
+  * **threshold** (_FLOAT64_) – The threshold to use to trigger an assertion failure
+*   **Returns**
+
+    The last SQL job of the procedure returns a line as described [here](./#analyzing-raw-metrics). When this expectation is embedded in a table-to-table data operation, then this line is inserted into the tailer\_common.expectation\_results table in your GCP project.
+
+#### <mark style="color:purple;">foreignkey\_where(dataset, tablename, column, filter\_condition, target\_dataset, target\_tablename, target\_column, threshold)</mark>
+
+```sql
+CALL `tailer-ai.expect.foreignkey`('my-project.my_dataset', 'sales_details', 'customer_id', 'and SALE_DATE >= current_date - 90', 'my-project.my_dataset', 'customers', 'customer_id', 0.001);          
+```
+
+Expect a column in a table to respect a pseudo Foreign Key constraint.
+
+Add a filter condition to the WHERE clause before testing the foreign key constraint to limit the number of rows requested.
+
+This procedure checks that every non-null value in the column can be found in the values of the target column of the reference target table. A threshold percentage can be provided, so the test is passed if the number of rejected rows divided by the table total row count is less than the threshold. Use 0 if no rejected row is allowed.
+
+* **Parameters**
+  * **dataset** (_STRING_) – The dataset of the table (and its GCP project)
+  * **tablename** (_STRING_) – The table name
+  * **column** (_STRING_) – The column name
+  * **filter\_condition** (_STRING_) – The filter condition that will be applied on the table to check
   * **target\_dataset** (_STRING_) – The target dataset of the foreign table (and its GCP project)
   * **target\_tablename** (_STRING_) – The foreign table name
   * **target\_column** (_STRING_) – The foreign key column of the foreign table
