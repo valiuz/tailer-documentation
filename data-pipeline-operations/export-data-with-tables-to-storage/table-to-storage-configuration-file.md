@@ -27,7 +27,7 @@ Here is an example of TTS configuration file:
     "account": "000099",    
     "version": "3",
     "activated": true,
-    "archive": false,
+    "archived": false,
     "doc_md": "readme.md",
     "start_date" : "2023, 2, 10",
     "schedule_interval" : "5 1 * * *",

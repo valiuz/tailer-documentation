@@ -36,7 +36,7 @@ For the detailed procedure on how to create GCS buckets (manually or using gsuti
         "account": "000099",    
         "version": "3",
         "activated": true,
-        "archive": false,
+        "archived": false,
         "start_date" : "2023, 2, 10",
         "schedule_interval" : "None",
         
