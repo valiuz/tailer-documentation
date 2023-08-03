@@ -61,7 +61,7 @@ Here is an example of TTS configuration file:
             "compression": "GZIP",
             "sql_file": "my_other_SQL_file.sql",
             "output_filename": "A_DIFFERENT_FILE_NAME_{{FD_DATE}}.csv",
-            "destination_format": "JSON",
+            "destination_format": "NEWLINE_DELIMITED_JSON",
             "sql_query_template": "TEMPLATE_CURRENT_DATE",
             "generate_top_file": true,
             "delete_dest_bucket_content": false,
