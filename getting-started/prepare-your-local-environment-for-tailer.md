@@ -6,7 +6,7 @@ description: >-
 
 # Prepare your local environment for Tailer
 
-Tailer SDK runs on Windows, Linux, and macOS. Tailer SDK requires Python. Supported versions are 3.7 or higher.
+Tailer SDK runs on Windows, Linux, and macOS. Tailer SDK requires Python. Supported versions are 3.8 or higher.
 
 Before installing Tailer SDK, a number of tasks need to be performed depending if you're planning to use a Windows or macOS/Linux environment.
 
@@ -17,7 +17,7 @@ Before installing Tailer SDK, a number of tasks need to be performed depending i
 To install Python:
 
 1. Access this page: https://www.python.org/downloads/release/python-382/
-2. Select and download the installer for the release (3.7 or higher) that matches your operating system.
+2. Select and download the installer for the release (3.8 or higher) that matches your operating system.
 3. Launch the installer.
 4. Select the **Customize installation** option, and make sure you check the **Add Python to environment variables** checkbox.
 5.  To check if Python installation was successful, open a terminal, and run the following command:
@@ -93,7 +93,7 @@ Examples in this documentation will assume that you're working in the **tailer**
 
 ### **Upgrade Python**
 
-While current versions of macOS and Linux include a version of Python 2, Tailer SDK only supports Python 3.7 or higher, so you need to upgrade to a newer version.
+While current versions of macOS and Linux include a version of Python 2, Tailer SDK only supports Python 3.8 or higher, so you need to upgrade to a newer version.
 
 #### **Install Homebrew**
 
@@ -123,7 +123,7 @@ To upgrade Python:
     ```bash
     python --version
     ```
-2.  If your version is inferior to 3.7, install the latest version of Python 3 by running the following command:
+2.  If your version is inferior to 3.8, install the latest version of Python 3 by running the following command:
 
     ```bash
     brew install python3
