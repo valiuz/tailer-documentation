@@ -20,6 +20,7 @@ description: >-
       "$schema": "http://jsonschema.tailer.ai/schema/storage-to-tables-veditor",
       "configuration_type": "storage-to-tables",
       "configuration_id": "000099-tailer-demo-load-files-YOUR-NAME",
+      "version": "2",
       "environment": "DEV",
       "account": "000099",
       "activated": true,
