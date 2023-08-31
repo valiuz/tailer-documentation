@@ -66,7 +66,7 @@ Once the installation and the configuration are done, you need to log in to Tail
     ```
     tailer auth login
     ```
-2. Provide the same email address as before as suggested, and the password of your Tailer Platform account. If you don't have an account yet, just press **Enter**. If you already have a Tailer Platform account, your login is successful and you can stop here. If not, follow the steps below to sign in.
+2. Provide the same email address as before as suggested, and the password of your Tailer Platform account. If you don't have an account yet, you can enter a new password and press **Enter**. You can reset your password later if needed (see below). If you already have a Tailer Platform account, your login is successful and you can stop here. If not, follow the steps below to sign in.
 3. Confirm that you want to create a Tailer Platform account by entering **y**.
 4. Provide again the same email address and the password of your choice.
 5. Confirm your email address by clicking on the link sent to your email address.
