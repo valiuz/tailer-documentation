@@ -15,8 +15,18 @@ tlr_input_file_full_resource_name (STRING)
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-To test this new feature, please add the following attribute to any Storage To Table configuration and deploy it:
+To test this new feature, please add the following attribute **"add\_tailer\_metadata": true** to any Storage To Table configuration and deploy it like this in the tables section :
 
 ```json
-"beta_mode": "20230227_STT_with_metadata"
+"tables": [
+    {
+    "table_name": "sales_details_test",
+    "short_description": "Daily sales with tickets and tickets lines",
+    "filename_template": "sales_{{FD_DATE}}-{{FD_DATE}}.csv",
+    "ddl_mode": "file",
+    "ddl_file": "sales_full_ddl.json",
+    "add_tailer_metadata": true,
+    "skip_leading_rows": 0
+    }
+]
 ```
