@@ -18,15 +18,17 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.14
+### Latest BETA package : 1.3.16
 
-#### Beta 1.3.14 Release Note
+#### Beta 1.3.16 Release Note
 
-* TTT : fix Markdown documentation processing
+* TTT : enhanced the way tasks dependencies are parsed.
 
-Last updated : 2023-06-01 11:38
+Last updated : 2023-11-27 11:49
 
-{% file src="../../.gitbook/assets/package.zip" %}
+
+
+{% file src="../../.gitbook/assets/package (18).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
@@ -43,4 +45,3 @@ Last updated : 2023-06-01 11:38
 From a terminal, use PIP to go back to the latest Tailer SDK RELEASE:
 
 `pip3 install tailer-sdk --force-reinstall`
-
