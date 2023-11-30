@@ -23,12 +23,13 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 #### Beta 1.3.16 Release Note
 
 * TTT : enhanced the way tasks dependencies are parsed.
+* Misc : enhanced encoding detection when reading input files
 
-Last updated : 2023-11-27 11:49
+Last updated : 2023-11-30 112:11
 
 
 
-{% file src="../../.gitbook/assets/package (18).zip" %}
+{% file src="../../.gitbook/assets/package (19).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
