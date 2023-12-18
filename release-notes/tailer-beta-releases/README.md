@@ -25,11 +25,11 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * TTT : enhanced the way tasks dependencies are parsed.
 * Misc : enhanced encoding detection when reading input files
 
-Last updated : 2023-12-01 11:57
+Last updated : 2023-12-18 08:34
 
 
 
-{% file src="../../.gitbook/assets/package (21).zip" %}
+{% file src="../../.gitbook/assets/package (22).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
