@@ -24,12 +24,13 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 
 * TTT : enhanced the way tasks dependencies are parsed.
 * Misc : enhanced encoding detection when reading input files
+* TTT : Allow clustering of table without time partionning
 
-Last updated : 2023-12-18 08:34
+Last updated : 2024-01-11 10/04
 
 
 
-{% file src="../../.gitbook/assets/package (22).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
