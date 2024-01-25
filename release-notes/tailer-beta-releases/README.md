@@ -18,15 +18,14 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.16
+### Latest BETA package : 1.3.17
 
-#### Beta 1.3.16 Release Note
+#### Beta 1.3.17 Release Note
 
-* TTT : enhanced the way tasks dependencies are parsed.
-* Misc : enhanced encoding detection when reading input files
-* TTT : Allow clustering of table without time partionning
+* TTT : fixed an issue in the dependencies parser.
+* Misc : enhanced encoding detection when reading input files.
 
-Last updated : 2024-01-11 10/04
+Last updated : 2024-01-25 10:11
 
 
 
