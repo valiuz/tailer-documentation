@@ -25,11 +25,11 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * TTT : fixed an issue in the dependencies parser.
 * Misc : enhanced encoding detection when reading input files.
 
-Last updated : 2024-01-25 10:47
+Last updated : 2024-01-25 13:45
 
 
 
-{% file src="../../.gitbook/assets/package (23).zip" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
