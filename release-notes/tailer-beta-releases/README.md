@@ -25,7 +25,7 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * TTT : fixed an issue in the dependencies parser.
 * Misc : enhanced encoding detection when reading input files.
 
-Last updated : 2024-01-29 09:07
+Last updated : 2024-01-30 17:15
 
 
 
