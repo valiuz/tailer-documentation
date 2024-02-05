@@ -23,9 +23,11 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 #### Beta 1.3.17 Release Note
 
 * TTT : fixed an issue in the dependencies parser.
+* TTT : added range partitioning for table creation
+* TTT : bq\_table\_timepartitioning\_require\_partition\_filter flag is now DEPRECATED, please use bq\_table\_require\_partition\_filter instead.
 * Misc : enhanced encoding detection when reading input files.
 
-Last updated : 2024-01-30 17:15
+Last updated : 2024-02-05 10:58
 
 
 
