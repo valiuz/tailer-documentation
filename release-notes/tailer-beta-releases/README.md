@@ -26,8 +26,9 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * TTT : added range partitioning for table creation
 * TTT : bq\_table\_timepartitioning\_require\_partition\_filter flag is now DEPRECATED, please use bq\_table\_require\_partition\_filter instead.
 * Misc : enhanced encoding detection when reading input files.
+* TTT : added DDL information in the saved configuration
 
-Last updated : 2024-02-05 10:58
+Last updated : 2024-02-19 07:55
 
 
 
