@@ -6,7 +6,6 @@ New `delete_gbq_table` task type available.
 
 Task configuration example:
 
-````python
 ```json
 {
     "id": "delete_table_my_table",
@@ -16,8 +15,8 @@ Task configuration example:
     "gcp_project_id": "myGcpProject",
     "bq_dataset": "myDataset",
 }
+
 ```
-````
 
 Note that the partition decorator '$' will work with this task:
 
@@ -30,7 +29,6 @@ You can now specify the BigQuery write disposition in a copy table task.
 
 
 
-````json
 ```json
 {
     "id": "copy_some_data",
@@ -42,4 +40,3 @@ You can now specify the BigQuery write disposition in a copy table task.
     "write_disposition": "WRITE_APPEND"
 } 
 ```
-````
