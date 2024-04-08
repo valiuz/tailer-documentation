@@ -18,21 +18,18 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.17
+### Latest BETA package : 1.3.18
 
-#### Beta 1.3.17 Release Note
+#### Beta 1.3.18 Release Note
 
-* TTT : fixed an issue in the dependencies parser.
-* TTT : added range partitioning for table creation
-* TTT : bq\_table\_timepartitioning\_require\_partition\_filter flag is now DEPRECATED, please use bq\_table\_require\_partition\_filter instead.
-* Misc : enhanced encoding detection when reading input files.
-* TTT : added DDL information in the saved configuration
+* TTT : added GBQ write disposition on copy table tasks.
+* TTT : added 'delete\_gbq\_table' task type.
 
-Last updated : 2024-02-19 07:55
+Last updated : 2024-04-08 11:38
 
 
 
-{% file src="../../.gitbook/assets/package.zip" %}
+{% file src="../../.gitbook/assets/tailer_sdk-1.3.18-py3-none-any.whl" %}
 
 ### Install Tailer SDK Package using PIP
 
