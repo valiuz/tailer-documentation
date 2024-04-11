@@ -25,11 +25,11 @@ INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 * TTT : added GBQ write disposition on copy table tasks.
 * TTT : added 'delete\_gbq\_table' task type.
 
-Last updated : 2024-04-08 11:38
+Last updated : 2024-04-11 10:11
 
 
 
-{% file src="../../.gitbook/assets/tailer_sdk-1.3.18-py3-none-any.whl" %}
+{% file src="../../.gitbook/assets/package.zip" %}
 
 ### Install Tailer SDK Package using PIP
 
