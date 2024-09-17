@@ -15,7 +15,7 @@ For the table-to-table configurations, don't forget to add at the end of the con
 
 You will need to provide a JWT token for your API call. You can use different methods to get a JWT token based on your credentials.
 
-You can use the`tailer auth get-token` function to get a few tokens, including a JWT token associated with the credentials you use with your tailer-sdk. You can get this token only using `TAILER_API_JWT=tailer auth get-token | sed '7q;d' | sed 's/User token : //g'`&#x20;
+You can use the`tailer auth get-token` function to get a few tokens, including a JWT token associated with the credentials you use with your tailer-sdk. You can get this token only using `TAILER_API_JWT=tailer auth get-token | sed '7q;d' | sed 's/User token : //g'`
 
 ## :rocket: Launching a job's execution
 
@@ -260,6 +260,29 @@ As a result, you get a json payload with information about the last 2 runs ins s
 	]
 }
 ```
+
+## &#x20;⚙️ Setting a run's status
+
+Once you have a run ID, you can modify the status of any run.
+
+You need to provide the full identity and run ID as input:
+
+```bash
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{"action": "set_run_status",
+         "account": "000099",
+         "configuration_type": "table-to-table",
+         "configuration_id": "000099_iowa_liquor_prepare_pda_DEV",
+         "run_id": "20201230-112837-0a795c70-2557-4a60-ba16-788aa2bea179"
+         "status": "CHECKED"}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```
+
+Note that only the following statuses are supported: SUCCESS, FAILED, RUNNING, NO\_MATCH, CHECKED
 
 ## :zero: Resetting a workflow
 
