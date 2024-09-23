@@ -261,7 +261,61 @@ As a result, you get a json payload with information about the last 2 runs ins s
 }
 ```
 
-## &#x20;⚙️ Setting a run's status
+## Getting job/data operations by status
+
+You can list job/data operations using a specific status.
+
+You need to provide at least the account, the environment and the configuration type:
+
+**Example with TTT**
+
+```bash
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{"action": "get_by_status",
+         "account": "000099",
+         "configuration_type": "table-to-table",
+         "limit": 100}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```
+
+You can filter using a specific status:
+
+```bash
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{"action": "get_by_status",
+         "account": "000099",
+         "configuration_type": "table-to-table",
+         "status": "RUNNING",
+         "limit": 15}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```
+
+You can filter further using a specific date
+
+```bash
+TAILER_API_JWT=`tailer auth get-token | awk '/User token :/ {print $4}'` \
+&& curl --request POST \
+--http2 \
+--header "content-type:application/json" \
+--header "Authorization: Bearer ${TAILER_API_JWT}" \
+--data '{"action": "get_by_status",
+         "account": "000099",
+         "configuration_type": "table-to-table",
+         "status": "RUNNING",
+         "execution_date": "2024-09-18",
+         "limit": 15}' \
+"https://tailer-api-nqonovswsq-ew.a.run.app/v1/dag/status"
+```
+
+## ⚙️ Setting a run's status
 
 Once you have a run ID, you can modify the status of any run.
 
