@@ -18,18 +18,18 @@ Beta versions of Tailer SDK are available here for testing purposes.
 INSTALL ONLY IF YOU KNOW WHAT YOU ARE DOING !
 {% endhint %}
 
-### Latest BETA package : 1.3.18
+### Latest BETA package : 1.3.19
 
-#### Beta 1.3.18 Release Note
+#### Beta 1.3.19 Release Note
 
-* TTT : added GBQ write disposition on copy table tasks.
-* TTT : added 'delete\_gbq\_table' task type.
+* auth : fixed a bug during login where default value would not be used properly
+* TTT : added usage of FD\_DATE templates on table name for sql tasks and delete table tasks
 
-Last updated : 2024-04-11 10:11
+Last updated : 2024-09-23 09:22
 
 
 
-{% file src="../../.gitbook/assets/package.zip" %}
+{% file src="../../.gitbook/assets/package (24).zip" %}
 
 ### Install Tailer SDK Package using PIP
 
